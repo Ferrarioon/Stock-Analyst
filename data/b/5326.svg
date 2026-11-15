@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="Segoe UI, Inter, sans-serif">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e6fb"/><stop offset="1" stop-color="#f7f3ee"/></linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe8d6"/><stop offset="1" stop-color="#b9dcc4"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#6c63d9"/></marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2b9a66"/></marker>
+  </defs>
+  <rect width="1000" height="400" fill="url(#sky)"/>
+  <circle cx="900" cy="62" r="30" fill="#ffe9a8"/>
+  <g fill="#fff" opacity=".85"><ellipse cx="160" cy="58" rx="42" ry="13"/><ellipse cx="190" cy="50" rx="30" ry="12"/><ellipse cx="610" cy="44" rx="38" ry="11"/><ellipse cx="640" cy="38" rx="24" ry="10"/></g>
+  <path d="M0 262 Q250 248 500 258 T1000 254 V400 H0z" fill="url(#ground)"/>
+  <rect x="0" y="286" width="1000" height="26" fill="#d7d9e3"/>
+  <g stroke="#fff" stroke-width="3" stroke-dasharray="18 14"><line x1="0" y1="299" x2="1000" y2="299"/></g>
+
+  <!-- 1 suppliers: factory -->
+  <g transform="translate(40 150)">
+    <path d="M0 136V60l40 22V60l40 22V40h26v96z" fill="#a9b4d6"/>
+    <rect x="106" y="10" width="16" height="126" fill="#8f9bc4"/>
+    <g fill="#fff" opacity=".7"><circle cx="114" cy="0" r="9"/><circle cx="126" cy="-14" r="7"/><circle cx="138" cy="-24" r="5"/></g>
+    <rect x="14" y="100" width="18" height="18" fill="#f2f4fb"/><rect x="54" y="100" width="18" height="18" fill="#f2f4fb"/><rect x="84" y="96" width="16" height="40" fill="#6f7aa6"/>
+    <g transform="translate(-6 112)"><rect width="22" height="20" rx="2" fill="#e2b26e"/><path d="M0 7h22" stroke="#c9934b"/></g>
+  </g>
+  <text x="104" y="335" text-anchor="middle" font-size="15" font-weight="700" fill="#34326b">1. Suppliers</text>
+  <text x="104" y="354" text-anchor="middle" font-size="12" fill="#5b6075">Brands sell in bulk and pay</text>
+  <text x="104" y="369" text-anchor="middle" font-size="12" fill="#5b6075">rebates for shelf space</text>
+
+  <!-- truck 1 -->
+  <g transform="translate(200 236)">
+    <rect width="78" height="44" rx="5" fill="#6c63d9"/><path d="M78 14h22l14 16v14H78z" fill="#8f86e8"/><rect x="84" y="18" width="16" height="11" rx="2" fill="#e9e6fb"/>
+    <circle cx="20" cy="48" r="9" fill="#34326b"/><circle cx="20" cy="48" r="4" fill="#d7d9e3"/><circle cx="96" cy="48" r="9" fill="#34326b"/><circle cx="96" cy="48" r="4" fill="#d7d9e3"/>
+    <g fill="#e2b26e"><rect x="8" y="8" width="18" height="14" rx="2"/><rect x="30" y="8" width="18" height="14" rx="2"/><rect x="52" y="8" width="18" height="14" rx="2"/></g>
+  </g>
+  <path d="M200 228 C240 200 300 200 330 214" fill="none" stroke="#6c63d9" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+
+  <!-- 2 distribution centre -->
+  <g transform="translate(340 140)">
+    <path d="M0 50 L80 14 L160 50 V146 H0z" fill="#c4c9e6"/><path d="M0 50 L80 14 L160 50" fill="none" stroke="#9aa3cf" stroke-width="5"/>
+    <rect x="16" y="78" width="38" height="68" fill="#8f9bc4"/><rect x="62" y="78" width="38" height="68" fill="#8f9bc4"/><rect x="108" y="78" width="38" height="68" fill="#8f9bc4"/>
+    <g stroke="#7a85b3" stroke-width="2"><path d="M16 90h38M16 102h38M16 114h38M62 90h38M62 102h38M62 114h38M108 90h38M108 102h38M108 114h38"/></g>
+    <rect x="38" y="52" width="84" height="16" rx="3" fill="#fff"/><text x="80" y="64" text-anchor="middle" font-size="10" font-weight="700" fill="#34326b">DISTRIBUTION</text>
+  </g>
+  <text x="420" y="335" text-anchor="middle" font-size="15" font-weight="700" fill="#34326b">2. 22 distribution centres</text>
+  <text x="420" y="354" text-anchor="middle" font-size="12" fill="#5b6075">Its own warehouses and lorries</text>
+  <text x="420" y="369" text-anchor="middle" font-size="12" fill="#5b6075">restock the shops</text>
+
+  <!-- truck 2 -->
+  <g transform="translate(520 236)">
+    <rect width="70" height="40" rx="5" fill="#8f86e8"/><path d="M70 12h20l12 14v14H70z" fill="#6c63d9"/><rect x="75" y="16" width="14" height="10" rx="2" fill="#e9e6fb"/>
+    <circle cx="18" cy="44" r="8" fill="#34326b"/><circle cx="18" cy="44" r="3.5" fill="#d7d9e3"/><circle cx="86" cy="44" r="8" fill="#34326b"/><circle cx="86" cy="44" r="3.5" fill="#d7d9e3"/>
+  </g>
+  <path d="M510 212 C540 196 600 196 630 210" fill="none" stroke="#6c63d9" stroke-width="2.5" stroke-dasharray="6 6" marker-end="url(#arr)"/>
+
+  <!-- 3 neighbourhood mini-marts -->
+  <g transform="translate(640 150)">
+    <rect x="0" y="40" width="70" height="96" fill="#f3d9c4"/><path d="M-6 44 L35 14 L76 44z" fill="#d99a7a"/><rect x="14" y="62" width="18" height="18" fill="#fff"/><rect x="40" y="62" width="18" height="18" fill="#fff"/><rect x="26" y="100" width="18" height="36" fill="#c98a6a"/>
+    <rect x="80" y="30" width="110" height="106" fill="#fff4dc"/>
+    <rect x="80" y="30" width="110" height="24" fill="#e8504f"/><text x="135" y="47" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">MINI MART</text>
+    <g><path d="M76 56h118l-6 18H82z" fill="#e8504f"/><path d="M90 56l-4 18M106 56l-2 18M122 56v18M138 56l2 18M154 56l4 18M170 56l6 18" stroke="#fff" stroke-width="5"/></g>
+    <rect x="92" y="82" width="40" height="40" fill="#cfe3f5"/><g fill="#e2b26e"><rect x="96" y="104" width="10" height="14"/><rect x="108" y="98" width="10" height="20"/><rect x="120" y="106" width="9" height="12"/></g>
+    <rect x="140" y="82" width="38" height="54" fill="#b7d3ee"/><path d="M159 82v54" stroke="#fff" stroke-width="2"/>
+    <rect x="200" y="40" width="70" height="96" fill="#d8e6d1"/><path d="M194 44 L235 14 L276 44z" fill="#9bbf8e"/><rect x="214" y="62" width="18" height="18" fill="#fff"/><rect x="240" y="62" width="18" height="18" fill="#fff"/><rect x="226" y="100" width="18" height="36" fill="#86a978"/>
+  </g>
+  <text x="775" y="335" text-anchor="middle" font-size="15" font-weight="700" fill="#34326b">3. 3,037 mini-marts</text>
+  <text x="775" y="354" text-anchor="middle" font-size="12" fill="#5b6075">Small shops inside housing areas,</text>
+  <text x="775" y="369" text-anchor="middle" font-size="12" fill="#5b6075">close to where people live</text>
+
+  <!-- 4 shoppers -->
+  <g transform="translate(920 214)">
+    <circle cx="0" cy="0" r="9" fill="#f1c7a3"/><path d="M-12 46 Q-12 14 0 12 Q12 14 12 46z" fill="#6c63d9"/><path d="M-6 46v22M6 46v22" stroke="#34326b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M12 26 l14 6" stroke="#f1c7a3" stroke-width="4" stroke-linecap="round"/><rect x="20" y="28" width="22" height="18" rx="3" fill="#2b9a66"/><path d="M24 28v-6h14v6" fill="none" stroke="#2b9a66" stroke-width="2.5"/>
+    <g transform="translate(-40 10)"><circle cx="0" cy="0" r="7" fill="#e7b48c"/><path d="M-9 36 Q-9 10 0 9 Q9 10 9 36z" fill="#e0913a"/><path d="M-4 36v16M4 36v16" stroke="#34326b" stroke-width="4" stroke-linecap="round"/></g>
+  </g>
+  <text x="920" y="335" text-anchor="middle" font-size="15" font-weight="700" fill="#34326b">4. Shoppers</text>
+  <text x="920" y="354" text-anchor="middle" font-size="12" fill="#5b6075">Pay at the till for</text>
+  <text x="920" y="369" text-anchor="middle" font-size="12" fill="#5b6075">daily essentials</text>
+
+  <!-- money back -->
+  <path d="M905 140 C820 96 360 92 150 132" fill="none" stroke="#2b9a66" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" marker-end="url(#arrg)"/>
+  <g transform="translate(520 92)"><rect x="-150" y="-16" width="300" height="30" rx="15" fill="#fff" stroke="#bfe3cc"/><circle cx="-130" cy="-1" r="9" fill="#2b9a66"/><text x="-130" y="3" text-anchor="middle" font-size="10" font-weight="800" fill="#fff">RM</text>
+    <text x="8" y="4" text-anchor="middle" font-size="12.5" fill="#1f6b46">Of every RM100 sold, about RM5.30 is profit</text></g>
+
+  <g transform="translate(16 16)"><rect width="96" height="24" rx="12" fill="#34326b" opacity=".85"/><text x="48" y="16" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">ILLUSTRATION</text></g>
+</svg>

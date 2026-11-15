@@ -408,6 +408,8 @@ function businessCard(b) {
     <div class="biz-tag">The business in plain words</div>
     <div class="biz-one">${esc(b.oneLine)}</div>
     <ul class="biz-plain">${b.inPlainWords.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+    ${(b.aiImages || []).length ? `<div class="aigal">${b.aiImages.map(x => `<figure><div class="aiwrap"><img src="${esc(x.src)}" alt="${esc(x.caption)}" loading="lazy"><span class="aibadge">AI-generated illustration</span></div><figcaption>${esc(x.caption)}</figcaption></figure>`).join('')}</div>
+      <p class="note" style="margin-top:4px">These pictures were created with AI to help explain the business. They are not photos of the company, its premises or its people.</p>` : b.illustration ? `<figure class="illus"><img src="${esc(b.illustration.src)}" alt="${esc(b.illustration.alt)}"><figcaption>Illustration, not a photo. Drawn to explain the business model; figures are from the company's annual report.</figcaption></figure>` : ''}
     <h3>${esc(b.flowTitle || 'How it makes money')}</h3>
     <div class="flow">${b.flow.map((f, i) => `${i ? '<div class="arrow">→</div>' : ''}<div class="flow-step">${flowIcon(f)}<b>${esc(f.label)}</b><span>${esc(f.detail)}</span></div>`).join('')}</div>
     ${b.moneyNote ? `<p class="biz-note">${esc(b.moneyNote)}</p>` : ''}

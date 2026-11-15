@@ -1,7 +1,11 @@
 {
-  "code": "3816", "name": "MISC Berhad",
+  "code": "3816",
+  "name": "MISC Berhad",
   "period": "Financial year ended 31 December 2025",
-  "source": {"title": "MISC Integrated Annual Report 2025", "url": "https://www.miscgroup.com/awcontent/Web/Documents/IntegratedAnnualReport/IAR-2025.pdf"},
+  "source": {
+    "title": "MISC Integrated Annual Report 2025",
+    "url": "https://www.miscgroup.com/awcontent/Web/Documents/IntegratedAnnualReport/IAR-2025.pdf"
+  },
   "oneLine": "A shipping company that carries oil and gas across the world and owns floating facilities used in offshore oil and gas production.",
   "inPlainWords": [
     "MISC owns large ships. Energy companies hire them to move gas, crude oil and petroleum products over long distances.",
@@ -9,28 +13,89 @@
     "It has 108 gas and petroleum vessels and 12 offshore floating production assets, and operates in 11 countries."
   ],
   "flow": [
-    {"label": "Energy companies", "detail": "Oil and gas producers need their cargo moved or their offshore fields supported."},
-    {"label": "Contracts", "detail": "They hire MISC's ships and offshore assets. The company says its portfolio is supported by long-term contracted assets."},
-    {"label": "108 vessels, 12 offshore assets", "detail": "MISC earns income from the hire while it pays for crew, fuel and upkeep."},
-    {"label": "Engineering yard", "detail": "Separately earns from offshore construction, marine repair and conversion work."}
+    {
+      "label": "Energy companies",
+      "detail": "Oil and gas producers need their cargo moved or their offshore fields supported."
+    },
+    {
+      "label": "Contracts",
+      "detail": "They hire MISC's ships and offshore assets. The company says its portfolio is supported by long-term contracted assets."
+    },
+    {
+      "label": "108 vessels, 12 offshore assets",
+      "detail": "MISC earns income from the hire while it pays for crew, fuel and upkeep."
+    },
+    {
+      "label": "Engineering yard",
+      "detail": "Separately earns from offshore construction, marine repair and conversion work."
+    }
   ],
   "moneyNote": "Petroleum and Products shipping is the largest segment, with RM5.2 billion revenue and RM1.4 billion operating profit in 2025.",
   "segmentsTitle": "Business segments, 2025 (RM million revenue)",
   "segments": [
-    {"name": "Petroleum and Products", "revenue": 5169.8, "desc": "Ships carrying crude oil and petroleum products"},
-    {"name": "Gas Assets and Solutions", "revenue": 2095.0, "desc": "Gas shipping and related gas assets"},
-    {"name": "Marine and Heavy Engineering", "revenue": 1976.3, "desc": "Offshore construction, marine repair and conversion"},
-    {"name": "Offshore", "revenue": 1931.0, "desc": "Floating production assets for offshore oil and gas fields"}
+    {
+      "name": "Petroleum and Products",
+      "revenue": 5169.8,
+      "desc": "Ships carrying crude oil and petroleum products"
+    },
+    {
+      "name": "Gas Assets and Solutions",
+      "revenue": 2095.0,
+      "desc": "Gas shipping and related gas assets"
+    },
+    {
+      "name": "Marine and Heavy Engineering",
+      "revenue": 1976.3,
+      "desc": "Offshore construction, marine repair and conversion"
+    },
+    {
+      "name": "Offshore",
+      "revenue": 1931.0,
+      "desc": "Floating production assets for offshore oil and gas fields"
+    }
   ],
   "segmentNote": "Segment revenue is from the Group Financial Review (p.73-74). The segments add up to slightly more than group revenue of RM11.1 billion because of other items and eliminations. The short descriptions are in plain words.",
-  "geographyTitle": "Fleet and reach", "geographyUnit": "",
+  "geographyTitle": "Fleet and reach",
+  "geographyUnit": "",
   "geography": [
-    {"name": "Gas and petroleum vessels", "value": 108}, {"name": "Nationalities in workforce", "value": 44},
-    {"name": "Offshore floating assets", "value": 12}, {"name": "Countries with operations", "value": 11}
+    {
+      "name": "Gas and petroleum vessels",
+      "value": 108
+    },
+    {
+      "name": "Nationalities in workforce",
+      "value": 44
+    },
+    {
+      "name": "Offshore floating assets",
+      "value": 12
+    },
+    {
+      "name": "Countries with operations",
+      "value": 11
+    }
   ],
   "keyFacts": [
-    {"label": "Revenue", "value": "RM11.1 billion"}, {"label": "Operating profit", "value": "RM2.8 billion"},
-    {"label": "Profit before tax", "value": "RM1.9 billion"}, {"label": "Employees", "value": "8,630"},
-    {"label": "Experience", "value": "57 years"}
-  ]
+    {
+      "label": "Revenue",
+      "value": "RM11.1 billion"
+    },
+    {
+      "label": "Operating profit",
+      "value": "RM2.8 billion"
+    },
+    {
+      "label": "Profit before tax",
+      "value": "RM1.9 billion"
+    },
+    {
+      "label": "Employees",
+      "value": "8,630"
+    },
+    {
+      "label": "Experience",
+      "value": "57 years"
+    }
+  ],
+  "aiImages": []
 }

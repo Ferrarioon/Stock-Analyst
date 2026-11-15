@@ -164,3 +164,14 @@ canvas.chart { height: 470px; cursor: crosshair; touch-action: pan-y; } canvas.c
 .media figcaption a { text-decoration: underline; }
 .vframe { position: relative; aspect-ratio: 16 / 9; background: #111; } .vframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .media .video { grid-column: span 2; } @media (max-width: 800px) { .media .video { grid-column: auto; } }
+
+.illus { margin: 4px 0 18px; } .illus img { width: 100%; display: block; border-radius: 18px; box-shadow: var(--shadow); background: #f7f3ee; }
+.illus figcaption { font-size: 11.5px; color: var(--muted); margin-top: 6px; }
+
+/* AI-generated illustrations */
+.aigal { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 6px 0 4px; }
+.aigal figure { margin: 0; } .aiwrap { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.aiwrap img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+.aibadge { position: absolute; left: 10px; top: 10px; background: rgba(30, 32, 48, .78); color: #fff; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .3px; padding: 4px 9px; border-radius: 999px; backdrop-filter: blur(4px); }
+.aigal figcaption { font-size: 12.5px; color: #3a4052; margin-top: 7px; }

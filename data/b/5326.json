@@ -174,5 +174,10 @@
     "title": "99 Bulksales Official Launch",
     "channel": "99 Speedmart_MY",
     "channelUrl": "https://www.youtube.com/@99Speedmart_MY"
-  }
+  },
+  "illustration": {
+    "src": "data/b/5326.svg",
+    "alt": "Illustration of how 99 Speed Mart works: suppliers, distribution centres, neighbourhood mini-marts and shoppers"
+  },
+  "aiImages": []
 }

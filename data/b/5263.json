@@ -100,5 +100,22 @@
     "channel": "Sunway Construction Group Berhad",
     "channelUrl": "https://www.youtube.com/@sunwayconstructiongroup"
   },
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/5263_1.jpg",
+      "caption": "A data centre under construction, Sunway Construction's biggest new market"
+    },
+    {
+      "src": "data/b/img/5263_2.jpg",
+      "caption": "A Sunway Construction worker at a building site"
+    },
+    {
+      "src": "data/b/img/5263_3.jpg",
+      "caption": "A precast concrete factory making wall panels"
+    },
+    {
+      "src": "data/b/img/5263_4.jpg",
+      "caption": "Public housing in Singapore built from precast parts"
+    }
+  ]
 }

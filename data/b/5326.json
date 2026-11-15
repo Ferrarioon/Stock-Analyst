@@ -179,5 +179,18 @@
     "src": "data/b/5326.svg",
     "alt": "Illustration of how 99 Speed Mart works: suppliers, distribution centres, neighbourhood mini-marts and shoppers"
   },
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/5326_1.jpg",
+      "caption": "A neighbourhood mini-mart in a housing area, the kind of shop the company runs"
+    },
+    {
+      "src": "data/b/img/5326_2.jpg",
+      "caption": "Inside a mini-mart: about 3,000 everyday items in a compact shop"
+    },
+    {
+      "src": "data/b/img/5326_3.jpg",
+      "caption": "A distribution centre that restocks the shops by lorry"
+    }
+  ]
 }

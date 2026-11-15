@@ -154,75 +154,6 @@ function perfStats(px) {
            hi5: Math.max(...px.h), lo5: Math.min(...px.l), years, first: px.d[0] };
 }
 
-async function stock(id) {
-  const s = BYID[id];
-  if (!s) { view.innerHTML = '<h1>Stock not found</h1><a class="btn" href="#/stocks">Back to stocks</a>'; return; }
-  const calls = CALLS_BY[id] || [];
-  const latestCall = b => calls.find(c => c.broker === b);              // calls are newest first
-  const rows = IDX.brokers.filter(b => s.latest[b]).map(b => {
-    const l = s.latest[b], lc = latestCall(b), st = hitStats(calls.filter(c => c.broker === b)), bst = hitStats(CALLS.filter(c => c.broker === b));
-    const ast = l.an ? hitStats(CALLS.filter(c => c.analyst === l.an)) : null, p0 = lc && lc.price;
-    return `<tr><td><b>${bdot(b)}${esc(b)}</b></td><td>${fdate(l.d)}</td><td>${callBadge(l.call)}${l.orig && l.orig !== l.call ? ` <small class="sub">${esc(l.orig)}</small>` : ''}</td>
-      <td class="num">${num(p0)}</td><td class="num">${num(l.tp)}</td><td class="num">${num(s.last)}</td>
-      <td class="num">${p0 && s.last ? spct(s.last / p0 - 1) : '–'}</td><td class="num"><b>${l.tp && s.last ? spct(l.tp / s.last - 1) : '–'}</b></td>
-      <td>${esc(plainAnalyst(l.an) || 'Not shown')}</td>
-      <td class="num">${st.res ? `${pct(st.rate)} <small class="sub">(${st.hit}/${st.res})</small>` : '–'}</td><td>${accBadge(st)}</td>
-      <td class="num">${st.days == null ? '–' : Math.round(st.days)}</td><td class="num">${spct(st.dd)}</td><td class="num">${pct(bst.rate)}</td><td class="num">${ast && ast.res >= 5 ? pct(ast.rate) : '–'}</td></tr>`;
-  }).join('');
-  const all = hitStats(calls);
-  const tps = IDX.brokers.map(b => s.latest[b] && s.latest[b].tp).filter(Boolean), avgTp = tps.length ? avg(tps) : null;
-  view.innerHTML = `<div class="crumb"><a href="#/stocks">Stocks</a> › ${esc(s.t)}</div>
-    <div class="head"><h1>${esc(s.name)} <small class="sub" style="font-size:15px">${esc(s.t)}${s.code ? ' · ' + esc(s.code) : ''}</small></h1><div style="width:280px">${searchBox('q-stock', 'Search another stock…')}</div></div>
-    <div class="stats">
-      <div class="stat"><small>Last price</small><b>${num(s.last)}</b></div>
-      <div class="stat"><small>Average latest target (${tps.length} broker${tps.length === 1 ? '' : 's'})</small><b>${num(avgTp)}</b> ${avgTp && s.last ? spct(avgTp / s.last - 1, 0) : ''}</div>
-      <div class="stat"><small>52-week low / high</small><b>${num(s.lo52)} / ${num(s.hi52)}</b></div>
-      <div class="stat"><small>Up from 52-week low</small><b>${s.last && s.lo52 ? spct(s.last / s.lo52 - 1) : '–'}</b></div>
-      <div class="stat"><small>Off 52-week high</small><b>${s.last && s.hi52 ? spct(s.last / s.hi52 - 1) : '–'}</b></div>
-      <div class="stat"><small>Sector · board</small><b style="font-size:14px">${esc(s.sector || '–')} · ${esc(s.board || '–')}</b></div>
-      <div class="stat"><small>Buy calls that reached target (all brokers)</small><b>${pct(all.rate)}</b> ${accBadge(all)}</div></div>
-    <div class="stack">
-    <div id="biz"></div>
-    <div class="glass card"><h2>Latest call and accuracy by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th>Latest report</th><th>Call</th>
-      <th class="num">Price at call</th><th class="num">Target price</th><th class="num">Latest price</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th>Analyst</th>
-      <th class="num">Buy calls reached target (this stock)</th><th>Accuracy</th><th class="num">Avg days to target</th>
-      <th class="num">Avg worst drop</th><th class="num">Broker, all stocks</th><th class="num">Analyst, all stocks</th></tr></thead><tbody>${rows}</tbody></table></div>
-      <p class="note">Change since call = latest price vs the price on the report. Latest price to target = how far the price still has to move to reach the target (negative means it is already above the target).
-        Accuracy = share of resolved Buy calls whose target price was reached within 12 months: High 60%+, Medium 40–60%, Low under 40%; under 5 resolved calls is too few to judge.</p></div>
-    <div class="glass card"><div class="head"><h2>Price chart</h2>
-        <div class="chart-tools"><div class="seg" id="range"><button data-d="91">3M</button><button data-d="182">6M</button><button data-d="365">1Y</button><button data-d="730">2Y</button><button data-d="0" class="on">5Y</button></div>
-          <div class="seg" id="ctype"><button data-t="candle" class="on">Candles</button><button data-t="line">Line</button></div>
-          <div class="seg" id="zoom"><button data-z="in" title="Zoom in">＋</button><button data-z="out" title="Zoom out">－</button><button data-z="reset" title="Show all">Reset</button></div></div></div>
-      <div class="chart-layers" id="layers">${IDX.brokers.filter(b => calls.some(c => c.broker === b)).map(b => `<label><input type="checkbox" data-b="${esc(b)}" checked>${bdot(b)}${esc(b)}</label>`).join('')}
-        <label><input type="checkbox" data-l="ma50" checked><i class="ln" style="background:#7c6fd6"></i>50-day avg</label><label><input type="checkbox" data-l="ma200" checked><i class="ln" style="background:#e0913a"></i>200-day avg</label>
-        <label><input type="checkbox" data-l="band"><i class="ln dash"></i>52-week high / low</label><label><input type="checkbox" data-l="tp" checked>Target lines</label></div>
-      <canvas id="chart" class="chart"></canvas>
-      <p class="note">Scroll on the chart to zoom, drag to move along the timeline, double-click to show everything. Markers sit at the report date in each broker's colour: ▲ Buy, ▼ Sell, ● Neutral / Not rated.
-        Dashed lines show each broker's target price until its next report; ◆ marks where the target was set. Prices are adjusted for splits and bonus issues, not for dividends.</p></div>
-    <div class="glass card" id="perf"></div>
-    <div class="glass card"><h2>All reports on this stock</h2><div class="tablewrap" style="max-height:520px"><table><thead><tr><th>Date</th><th>Broker</th><th>Call</th><th class="num">Price at call</th><th class="num">Target</th>
-      <th class="num">Upside at call</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th class="num">Up from 52w low</th><th class="num">Off 52w high</th><th>Result</th><th class="num">Days to target</th><th class="num">Worst drop</th><th class="num">6m return</th><th>Analyst</th></tr></thead>
-      <tbody>${calls.map(c => { const [t, k] = status(c, 9); return `<tr><td>${fdate(c.date)}</td><td>${bdot(c.broker)}${esc(c.broker)}</td><td>${callBadge(c.call)}</td><td class="num">${num(c.price)}</td><td class="num">${num(c.tp)}</td>
-        <td class="num">${spct(c.upside, 0)}</td><td class="num">${c.price && s.last ? spct(s.last / c.price - 1) : '–'}</td><td class="num">${c.tp && s.last ? spct(c.tp / s.last - 1) : '–'}</td>
-        <td class="num">${spct(c.fromLow, 0)}</td><td class="num">${spct(c.fromHigh, 0)}</td><td><span class="badge ${k}">${t}</span></td>
-        <td class="num">${c.days ?? '–'}</td><td class="num">${spct(c.maxdd)}</td><td class="num">${spct(c.t6m)}</td><td>${esc(plainAnalyst(c.analyst) || '–')}</td></tr>`; }).join('')}</tbody></table></div>
-      <p class="note">Prices and targets are adjusted for later share splits and bonus issues. Change since call and latest price to target use the latest price (${num(s.last)}). 6m return includes dividends.</p></div></div>`;
-  wireSearch('q-stock');
-  fetch(`data/b/${encodeURIComponent(id)}.json`).then(r => r.ok ? r.json() : null).then(b => { const el = $('#biz'); if (b && el) el.innerHTML = businessCard(b); }).catch(() => {});
-  let px = null;
-  try { px = await fetch(`data/s/${encodeURIComponent(id)}.json`).then(r => r.ok ? r.json() : null); } catch (e) { px = null; }
-  if (px && !px.o) px = { ...px, o: px.c, h: px.c, l: px.c, v: px.c.map(() => 0) };      // older data files had closes only
-  const pf = perfStats(px), perfEl = $('#perf');
-  if (perfEl) perfEl.innerHTML = pf ? `<h2>Price performance <small class="sub" style="font-size:12px">(price only, excluding dividends, to ${fdate(px.d[px.d.length - 1])})</small></h2>
-    <div class="perf">${pf.periods.map(([k, v]) => `<div class="perf-cell"><small>${k}</small><b>${spct(v)}</b></div>`).join('')}
-      <div class="perf-cell"><small>5-year high / low</small><b>${num(pf.hi5)} / ${num(pf.lo5)}</b></div></div>
-    ${pf.years.length ? `<h3 style="margin-top:16px">By calendar year</h3><div class="yearbars">${(() => { const m = Math.max(...pf.years.map(y => Math.abs(y[1])), .01);
-      return pf.years.map(([y, v]) => `<div class="yb"><span class="yb-l">${esc(y)}</span><div class="yb-track"><i class="${v >= 0 ? 'up' : 'dn'}" style="width:${(Math.abs(v) / m * 50).toFixed(1)}%;${v >= 0 ? 'left:50%' : `right:50%`}"></i></div><b>${spct(v)}</b></div>`).join(''); })()}</div>` : ''}
-    ${pf.first > daysAgo(px.d[px.d.length - 1], 1800) ? `<p class="note">Price history starts ${fdate(pf.first)}, so longer periods are not available.</p>` : ''}` : '<h2>Price performance</h2><p class="sub">No price history for this stock.</p>';
-  const cv = $('#chart'); if (!cv) return;
-  setupChart(cv, px, calls);
-}
-
 /* ---------- interactive price chart: candles or line, volume, broker markers, target lines, zoom and pan ---------- */
 function setupChart(cv, px, calls) {
   const st = { type: 'candle', layers: { ma50: true, ma200: true, band: false, tp: true }, hide: new Set(), a: 0, b: px && px.c.length ? px.c.length - 1 : 0 };
@@ -350,6 +281,295 @@ function showTip(e, cv, px, calls, st) {
   tip.innerHTML = `<b>${fdate(px.d[i])}</b><br>Open ${num(px.o[i])} · High ${num(px.h[i])} · Low ${num(px.l[i])} · Close <b>${num(px.c[i])}</b>${chg != null ? ` (${chg >= 0 ? '+' : ''}${(chg * 100).toFixed(1)}%)` : ''}
     ${px.v[i] ? `<br>Volume ${Number(px.v[i]).toLocaleString()}` : ''}${on.map(c => `<br><span class="tdot" style="background:${bcolor(c.broker)}"></span>${esc(c.broker)}: ${esc(c.call)}, target ${num(c.tp)}`).join('')}`;
   tip.style.left = Math.min(e.clientX + 14, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; tip.hidden = false;
+}
+
+/* ---------- detailed financials (data/f/<id>.json, built by fundamentals/financials/fin_<code>.py) ---------- */
+const fmtM = v => v == null ? '–' : Math.round(v).toLocaleString();
+const dirBadge = d => { const k = /^Positive/.test(d) ? 'high' : /^Negative/.test(d) ? 'low' : 'medium'; const a = /^Positive/.test(d) ? '▲ ' : /^Negative/.test(d) ? '▼ ' : '● '; return `<span class="badge ${k}">${a}${esc(d)}</span>`; };
+/* ---------- stock page: tabs, story cards and interactive infographics ---------- */
+const TABS = [['overview', 'Overview'], ['business', 'Business'], ['money', 'Money'], ['health', 'Health'], ['valuation', 'Valuation'], ['drivers', 'What moves it'], ['analysts', 'Analysts'], ['price', 'Price chart']];
+const LAYMAN = {   // plain-English meaning of each metric, keyed by the start of its label
+  'Market value': v => `What the whole company costs at today's share price: ${v}.`,
+  'P/E': v => `You pay about RM${parseFloat(v)} for every RM1 of profit the company makes in a year. A high number means investors expect strong growth.`,
+  'EPS': v => `Profit earned for each share you own over the last year: ${v}.`,
+  'Dividend yield': v => `For every RM100 of shares, you would get about RM${(parseFloat(v)).toFixed(1)} a year back as cash dividends.`,
+  'Payout ratio': v => `Of every RM100 profit, about RM${parseFloat(v)} is paid out to shareholders; the rest is kept to grow.`,
+  'Price to book': v => `The share price is ${v} the accounting value of what shareholders own. Shop chains earn from their network, not their buildings, so this is often high.`,
+  'EV / EBITDA': v => `Another price tag that includes debt and rent obligations: about ${v} its yearly cash earnings.`,
+  'Return on equity': v => `For every RM100 shareholders have put in, the company earned about RM${parseFloat(v)} profit last year.`,
+  'Gross margin': v => `After paying for the goods it sells, RM${parseFloat(v)} of every RM100 is left to cover running costs and profit.`,
+  'Net margin': v => `What is finally left as profit from every RM100 of sales: RM${parseFloat(v)}.`,
+  'Net cash': v => `Cash and investments minus bank borrowings: ${v}. Positive means no net debt.`,
+  'Free cash flow after rent': v => `Cash left after running the shops, investing in new ones and paying rent: ${v}.`,
+  'Free cash flow yield': v => `That spare cash as a share of the company's value: ${v}.`,
+  'Revenue growth': v => `Sales compared with the same period last year: ${v}.`,
+  'Profit growth': v => `Profit compared with the same period last year: ${v}.`,
+  'Inventory days': v => `Goods sit on shelves and in warehouses for about ${v} days before being sold.`,
+  'Payable days': v => `It pays suppliers about ${v} days after buying, so suppliers fund much of the stock.`,
+};
+const laymanFor = m => { const k = Object.keys(LAYMAN).find(k => m.label.startsWith(k)); return k ? LAYMAN[k](m.value) : ''; };
+const RM100_TIPS = {   // what each cost means in everyday words
+  'Cost of goods sold': 'Buying the rice, noodles, drinks and toiletries it sells, after discounts from suppliers.',
+  'Staff costs': 'Salaries and EPF for cashiers, warehouse staff, drivers and head office.',
+  'Shop and warehouse rent (depreciation of leases)': 'Rent for the shop lots and warehouses, spread over the lease period.',
+  'Depreciation of equipment and buildings': 'The wear-and-tear cost of shelves, chillers, lorries and buildings it owns.',
+  'Utilities, repairs, logistics and other costs': 'Electricity, repairs, transport and everything else needed to keep shops open.',
+  'Finance costs': 'Interest, mostly on its long-term shop rental agreements.',
+  'Tax': 'Corporate income tax paid to the government.',
+  'Profit after tax': 'What is left for shareholders: paid as dividends or used to open new shops.',
+};
+const PIE_COLS = ['#8f86e8', '#e0913a', '#d6336c', '#1c7ed6', '#9aa0b4', '#c08ad6', '#0c8599', '#2b9a66'];
+
+function countUps(root) {                 // animate numbers marked data-count="1234.5" data-dec="1" data-pre="RM" data-suf=" m"
+  root.querySelectorAll('[data-count]').forEach(el => {
+    if (el.dataset.done) return; el.dataset.done = 1;
+    const to = +el.dataset.count, dec = +(el.dataset.dec || 0), pre = el.dataset.pre || '', suf = el.dataset.suf || '', t0 = performance.now(), dur = 900;
+    const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = pre + (to * e).toLocaleString(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+  root.querySelectorAll('[data-w]').forEach(el => { requestAnimationFrame(() => { el.style.width = el.dataset.w; }); });
+}
+const cnt = (v, dec = 0, pre = '', suf = '') => `<span data-count="${v}" data-dec="${dec}" data-pre="${pre}" data-suf="${suf}">${pre}0${suf}</span>`;
+
+function donut(parts, id) {               // SVG donut; each slice is clickable
+  const R = 80, r = 52, C = 100; let a0 = -Math.PI / 2; const tot = parts.reduce((t, p) => t + p.v, 0);
+  const arc = (a1, a2) => { const big = a2 - a1 > Math.PI ? 1 : 0, p = (rad, a) => [C + rad * Math.cos(a), C + rad * Math.sin(a)];
+    const [x1, y1] = p(R, a1), [x2, y2] = p(R, a2), [x3, y3] = p(r, a2), [x4, y4] = p(r, a1);
+    return `M${x1} ${y1}A${R} ${R} 0 ${big} 1 ${x2} ${y2}L${x3} ${y3}A${r} ${r} 0 ${big} 0 ${x4} ${y4}Z`; };
+  return `<svg viewBox="0 0 200 200" class="donut" id="${id}">${parts.map((p, i) => { const a1 = a0, a2 = a0 + p.v / tot * 2 * Math.PI * 0.9999; a0 = a2;
+    return `<path d="${arc(a1, a2)}" fill="${p.c}" data-i="${i}" tabindex="0"><title>${esc(p.l)}: RM${p.v.toFixed(2)}</title></path>`; }).join('')}
+    <text x="100" y="94" text-anchor="middle" class="d-big" id="${id}-v">RM100</text><text x="100" y="114" text-anchor="middle" class="d-small" id="${id}-l">of sales</text></svg>`;
+}
+
+function overviewPanel(s, b, f, calls, all, avgTp) {
+  const cards = [];
+  const img = b && (b.aiImages || [])[0];
+  if (b) cards.push(`<div class="story" ${img ? `style="background-image:linear-gradient(180deg,rgba(20,20,40,.05),rgba(20,20,40,.82)),url('${esc(img.src)}')"` : ''}>
+    <span class="s-tag">What it does</span><div class="s-body"><b class="s-head">${esc(b.oneLine)}</b>${img ? '<small class="s-ai">AI-generated illustration</small>' : ''}</div></div>`);
+  if (f) {
+    const it = f.pnl.items, rev = it[0].value, pat = it[it.length - 1].value;
+    cards.push(`<div class="story s2"><span class="s-tag">How big</span><div class="s-body"><div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>sales in ${esc(f.pnl.period)}</b>
+      <div class="s-num sm">${esc(f.revenueFormula.outlets.split(' at ')[0])}</div><b>shops across Malaysia</b></div></div>`);
+    cards.push(`<div class="story s3"><span class="s-tag">Out of every RM100</span><div class="s-body"><div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>
+      <small>RM${(Math.abs(it[1].value) / rev * 100).toFixed(0)} goes to buying the goods it sells</small></div></div>`);
+    const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values, P = T.rows.find(r => r.label === 'Profit after tax').values, g = (a, i) => (a[i] / a[i - 1] - 1) * 100;
+    cards.push(`<div class="story s4"><span class="s-tag">Still growing?</span><div class="s-body"><div class="s-num ${g(R, 3) >= 0 ? 'up' : 'dn'}">${g(R, 3) >= 0 ? '▲' : '▼'} ${cnt(Math.abs(g(R, 3)), 1, '', '%')}</div><b>sales, first half 2026</b>
+      <div class="s-num sm ${g(P, 3) >= 0 ? 'up' : 'dn'}">${g(P, 3) >= 0 ? '▲' : '▼'} ${Math.abs(g(P, 3)).toFixed(1)}%</div><b>profit, same period</b></div></div>`);
+    const nc = f.metrics.find(m => m.label.startsWith('Net cash'));
+    cards.push(`<div class="story s5"><span class="s-tag">Any debt?</span><div class="s-body"><div class="s-num">${nc ? esc(nc.value) : '–'}</div><b>net cash, no bank borrowings</b><small>Its suppliers are paid after about ${esc((f.metrics.find(m => m.label.startsWith('Payable')) || {}).value || '–')} days</small></div></div>`);
+    const pe = f.metrics.find(m => m.label.startsWith('P/E'));
+    cards.push(`<div class="story s6"><span class="s-tag">Price tag</span><div class="s-body"><div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(laymanFor(pe)) : ''}</small></div></div>`);
+  }
+  cards.push(`<div class="story s7"><span class="s-tag">What analysts say</span><div class="s-body"><div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
+    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small></div></div>`);
+  const chips = [];
+  if (f) {
+    const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values;
+    chips.push([R[3] > R[2] ? 'Growing sales' : 'Sales falling', R[3] > R[2] ? 'high' : 'low']);
+    chips.push([f.metrics.find(m => m.label.startsWith('Net cash')) ? 'Net cash' : 'Has debt', 'high']);
+    const pe = parseFloat((f.metrics.find(m => m.label.startsWith('P/E')) || {}).value);
+    if (pe) chips.push([pe > 25 ? 'Priced for growth' : pe < 12 ? 'Low price tag' : 'Middle price tag', pe > 25 ? 'medium' : 'high']);
+  }
+  if (all.res >= 5) { const [t, k] = accuracy(all); chips.push([`Analyst accuracy: ${t}`, k]); }
+  return `<div class="chips">${chips.map(([t, k]) => `<span class="badge ${k}">${esc(t)}</span>`).join('')}</div>
+    <div class="stories" id="stories">${cards.join('')}</div>
+    <div class="story-nav"><button class="btn ghost sm" data-dir="-1">‹</button><span class="sub">Swipe or use the arrows</span><button class="btn ghost sm" data-dir="1">›</button></div>
+    ${f || b ? `<div class="next-hint">Want the details? ${[b && ['business', 'How the business works'], f && ['money', 'Where the money goes'], f && ['drivers', 'What moves the share price']].filter(Boolean).map(([k, t]) => `<a href="#" data-goto="${k}">${t} →</a>`).join('')}</div>` : ''}`;
+}
+
+function moneyPanel(f) {
+  const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1], inc = it.find(x => x.kind === 'income');
+  const parts = [...costs.map((c, i) => ({ l: c.label, v: Math.abs(c.value) / rev * 100, c: PIE_COLS[i % PIE_COLS.length] })), { l: 'Profit after tax', v: pat.value / rev * 100, c: '#2b9a66' }];
+  const T = f.trend, row = l => (T.rows.find(r => r.label === l) || { values: [] }).values;
+  const R = row('Revenue'), C = row('Cost of sales'), O = row('Other income'), A = row('Administrative and other operating expenses'), F = row('Finance costs'), X = row('Income tax'), P = row('Profit after tax');
+  const GP = R.map((v, i) => v + C[i]), PBT = R.map((v, i) => v + C[i] + O[i] + A[i] + F[i]);
+  const lines = [['Revenue', R, 1], ['Cost of goods sold', C], ['Gross profit', GP, 1], ['Other income', O], ['Operating expenses', A], ['Finance costs', F], ['Profit before tax', PBT, 1], ['Tax', X], ['Profit after tax', P, 1]];
+  const yoy = (a, i) => i % 2 === 1 && a[i - 1] ? `<br><small class="${a[i] >= a[i - 1] ? 'pos' : 'neg'}">${a[i] >= a[i - 1] ? '+' : ''}${((a[i] / a[i - 1] - 1) * 100).toFixed(1)}%</small>` : '';
+  const fy = f.fiveYear, fyMax = Math.max(...fy.revenue), pMax = Math.max(...fy.pat);
+  return `<div class="glass card"><h2>Where every RM100 of sales goes <small class="sub">${esc(f.pnl.period)}</small></h2>
+    <div class="rm100-wrap">${donut(parts, 'pie')}
+      <div class="rm100-list">${parts.map((p, i) => `<button class="rm-item" data-i="${i}"><i style="background:${p.c}"></i><span>${esc(p.l.replace(' (depreciation of leases)', ''))}</span><b>RM${p.v.toFixed(2)}</b></button>`).join('')}
+        <div class="rm-tip" id="rm-tip"><b>Tap a slice or a line</b><br>to see what each cost means in everyday words.</div></div></div>
+    <p class="note">Plus RM${(inc.value / rev * 100).toFixed(2)} of other income per RM100, mostly interest on its cash. Cost of goods is after supplier rebates.</p></div>
+  <div class="glass card"><div class="head"><h2>Sales and profit over time</h2><div class="seg" id="pl-mode"><button data-m="simple" class="on">Simple</button><button data-m="detail">Detailed</button></div></div>
+    <div id="pl-simple">${fy.cols.map((y, i) => `<div class="fy big"><span>${y}</span><div class="fy-bars"><i class="r" data-w="${(fy.revenue[i] / fyMax * 100).toFixed(1)}%" style="width:0"></i><i class="p" data-w="${(fy.pat[i] / pMax * 100).toFixed(1)}%" style="width:0"></i></div>
+      <div class="fy-n"><b>RM${(fy.revenue[i] / 1000).toFixed(2)} bn</b><b class="pos">RM${Math.round(fy.pat[i])} m profit</b></div></div>`).join('')}
+      <div class="legend"><span><i style="background:#8f86e8"></i>Sales</span><span><i style="background:#2b9a66"></i>Profit after tax (own scale)</span></div>
+      <p class="note">Gross margin (what is left after buying goods): ${fy.cols.map((y, i) => `${y} ${fy.gm[i]}%`).join(' · ')}</p></div>
+    <div id="pl-detail" hidden><div class="tablewrap"><table class="fin-t"><thead><tr><th>RM million</th>${T.cols.map(c => `<th class="num">${esc(c)}</th>`).join('')}</tr></thead><tbody>
+      ${lines.map(([l, a, b]) => `<tr class="${b ? 'tot' : ''}"><td>${l}</td>${a.map((v, i) => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}${b ? yoy(a, i) : ''}</td>`).join('')}</tr>`).join('')}
+      <tr><td><i>Gross margin</i></td>${GP.map((v, i) => `<td class="num"><i>${(v / R[i] * 100).toFixed(1)}%</i></td>`).join('')}</tr>
+      <tr><td><i>Net margin</i></td>${P.map((v, i) => `<td class="num"><i>${(v / R[i] * 100).toFixed(1)}%</i></td>`).join('')}</tr></tbody></table></div>
+      <p class="note">Growth compares with the same period a year earlier. 1H = January to June, Q2 = April to June. 2026 figures are unaudited.</p></div></div>
+  <div class="glass card"><h2>How sales are made</h2><div class="fin-formula">
+      <div class="wide"><small>The formula</small><b>${esc(f.revenueFormula.text)}</b></div>
+      <div><small>Shop visits</small><b>${esc(f.revenueFormula.visits)}</b></div><div><small>Average basket</small><b>${esc(f.revenueFormula.basket)}</b></div>
+      <div><small>Shops</small><b>${esc(f.revenueFormula.outlets)}</b></div><div><small>Sales per shop</small><b>RM${f.revenueFormula.perOutlet} m a year</b></div></div>
+    <p class="note">${esc(f.segmentNote)}</p></div>`;
+}
+
+function waterfall(steps) {               // horizontal cash waterfall: start bar, ups and downs, end bar
+  let run = 0; const pts = steps.map(s => { const from = s.total ? 0 : run; run = s.total ? s.v : run + s.v; return { ...s, from, to: s.total ? s.v : run }; });
+  const mx = Math.max(...pts.map(p => Math.max(p.from, p.to))), W = 100;
+  return `<div class="wf">${pts.map(p => { const a = Math.min(p.from, p.to) / mx * W, w = Math.abs(p.to - p.from) / mx * W;
+    return `<div class="wf-row"><span class="wf-l">${esc(p.l)}</span><div class="wf-track"><i class="${p.total ? 'tot' : p.v >= 0 ? 'up' : 'dn'}" style="left:${a.toFixed(2)}%;width:0" data-w="${Math.max(.6, w).toFixed(2)}%"></i></div>
+      <b class="${p.total ? '' : p.v >= 0 ? 'pos' : 'neg'}">${p.v >= 0 && !p.total ? '+' : ''}${Math.round(p.v).toLocaleString()}</b></div>`; }).join('')}</div>`;
+}
+
+function healthPanel(f) {
+  const bs = f.balance, aTot = bs.assets.reduce((t, x) => t + x.value, 0), liabs = [...bs.liabilities, { label: "Shareholders' equity", value: bs.equity }];
+  const ACOL = ['#6c63d9', '#8f86e8', '#b9b4f2', '#e0913a', '#f2b56b', '#d9d6f7', '#2b9a66', '#7fcfa4'], LCOL = ['#c0392b', '#e0675a', '#9aa0b4', '#d6336c', '#f0a3b5', '#2b9a66'];
+  const stack = (arr, cols) => `<div class="bsbar">${arr.map((x, i) => x.value ? `<span style="width:0;background:${cols[i % cols.length]}" data-w="${(x.value / aTot * 100).toFixed(2)}%" title="${esc(x.label)}: RM${fmtM(x.value)} m"></span>` : '').join('')}</div>
+    <div class="bs-legend">${arr.map((x, i) => `<div><i style="background:${cols[i % cols.length]}"></i>${esc(x.label)}<b>${fmtM(x.value)}</b></div>`).join('')}</div>`;
+  const cf = f.cash, k = 1, ocf = cf.ocf[k], capex = cf.rows.find(r => r.label.startsWith('Purchase')).values[k], rent = cf.rows.find(r => r.label.startsWith('Repayment')).values[k], div = cf.rows.find(r => r.label.startsWith('Dividends')).values[k];
+  return `<div class="glass card"><h2>Where the cash came from and went <small class="sub">${esc(cf.cols[k])}, RM million</small></h2>
+    ${waterfall([{ l: 'Cash from running the shops', v: ocf, total: 1 }, { l: 'New shops, warehouses, equipment', v: capex }, { l: 'Rent on shops and warehouses', v: rent }, { l: 'Dividends to shareholders', v: div }, { l: 'Left over', v: ocf + capex + rent + div, total: 1 }])}
+    <p class="note">Cash from running the shops paid for expansion, rent and dividends, with RM${Math.round(ocf + capex + rent + div)} m to spare.</p>
+    <details class="more"><summary>See the full cash flow table</summary><div class="tablewrap"><table class="fin-t"><thead><tr><th>RM million</th>${cf.cols.map(c => `<th class="num">${esc(c)}</th>`).join('')}</tr></thead><tbody>
+      ${cf.rows.slice(0, 3).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}</td>`).join('')}</tr>`).join('')}
+      <tr class="tot"><td>Cash from operations</td>${cf.ocf.map(v => `<td class="num">${fmtM(v)}</td>`).join('')}</tr>
+      ${cf.rows.slice(3, 5).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">(${fmtM(-v)})</td>`).join('')}</tr>`).join('')}
+      <tr class="tot"><td>Free cash flow after rent</td>${cf.fcf.map(v => `<td class="num">${fmtM(v)}</td>`).join('')}</tr>
+      ${cf.rows.slice(5).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}</td>`).join('')}</tr>`).join('')}
+    </tbody></table></div></details></div>
+  <div class="glass card"><h2>What it owns vs. what it owes <small class="sub">${esc(bs.date)}, RM million</small></h2>
+    <div class="owe-grid"><div><div class="owe-h">Owns <b>RM${cnt(aTot / 1000, 2)} bn</b></div>${stack(bs.assets, ACOL)}</div>
+      <div><div class="owe-h">Funded by</div>${stack(liabs, LCOL)}</div></div>
+    <div class="biz-note">${esc(bs.note)}</div></div>`;
+}
+
+function valuationPanel(f) {
+  return `<div class="glass card"><h2>The numbers investors watch, in plain English</h2>
+    <p class="sub">Tap any card to see what it means.</p>
+    <div class="mcards">${f.metrics.map(m => `<button class="mcard"><small>${esc(m.label)}</small><b>${esc(m.value)}</b><span class="m-plain">${esc(laymanFor(m))}</span></button>`).join('')}</div>
+    <p class="note">Valuation uses the share price of RM${f.price} on ${fdate(f.priceDate)}. "Last 12 months" = July 2025 to June 2026. These describe the company; they are not a recommendation.</p></div>`;
+}
+
+function driversPanel(f) {
+  const kind = d => /^Positive/.test(d) ? 'pos' : /^Negative/.test(d) ? 'neg' : 'watch';
+  return `<div class="glass card"><h2>What moves sales, profit and the share price</h2>
+    <div class="filters chipsel" id="drv-f"><button class="on" data-k="all">All ${f.drivers.length}</button><button data-k="pos">▲ Helping ${f.drivers.filter(d => kind(d.direction) === 'pos').length}</button>
+      <button data-k="neg">▼ Hurting ${f.drivers.filter(d => kind(d.direction) === 'neg').length}</button><button data-k="watch">● To watch ${f.drivers.filter(d => kind(d.direction) === 'watch').length}</button></div>
+    <p class="sub">Tap a card to flip it.</p>
+    <div class="flips">${f.drivers.map(d => `<div class="flip ${kind(d.direction)}" data-k="${kind(d.direction)}" tabindex="0"><div class="flip-in">
+      <div class="flip-f">${flowIcon({ label: d.factor, detail: d.evidence })}<b>${esc(d.factor)}</b><span class="sub">${esc(d.affects)}</span>${dirBadge(d.direction)}</div>
+      <div class="flip-b"><b>Why it matters</b><p>${esc(d.why)}</p><small>${esc(d.evidence)}</small></div></div></div>`).join('')}</div>
+    <p class="note">"Helping" or "hurting" is a plain reading of each factor from the company's reports, not a forecast or a recommendation.</p></div>
+  <div class="two"><div class="glass card"><h2>Competitors</h2>${f.competitors.map(c => `<div class="row-item"><span><b>${esc(c.name)}</b><br><small>${esc(c.how)}</small></span><small class="sub" style="max-width:40%;text-align:right">${esc(c.source)}</small></div>`).join('')}</div>
+    <div class="glass card"><h2>Management's outlook</h2><ul class="biz-plain">${f.outlook.map(o => `<li>${esc(o)}</li>`).join('')}</ul>
+      <p class="note">From ${f.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener" style="text-decoration:underline">${esc(x.title)}</a>`).join(' and ')}.</p></div></div>`;
+}
+
+async function stock(id, tab) {
+  const s = BYID[id];
+  if (!s) { view.innerHTML = '<h1>Stock not found</h1><a class="btn" href="#/stocks">Back to stocks</a>'; return; }
+  const calls = CALLS_BY[id] || [];
+  const get = u => fetch(u).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [b, f] = await Promise.all([get(`data/b/${encodeURIComponent(id)}.json`), get(`data/f/${encodeURIComponent(id)}.json`)]);
+  const latestCall = br => calls.find(c => c.broker === br);
+  const rows = IDX.brokers.filter(br => s.latest[br]).map(br => {
+    const l = s.latest[br], lc = latestCall(br), st = hitStats(calls.filter(c => c.broker === br)), bst = hitStats(CALLS.filter(c => c.broker === br));
+    const ast = l.an ? hitStats(CALLS.filter(c => c.analyst === l.an)) : null, p0 = lc && lc.price;
+    return `<tr><td><b>${bdot(br)}${esc(br)}</b></td><td>${fdate(l.d)}</td><td>${callBadge(l.call)}${l.orig && l.orig !== l.call ? ` <small class="sub">${esc(l.orig)}</small>` : ''}</td>
+      <td class="num">${num(p0)}</td><td class="num">${num(l.tp)}</td><td class="num">${num(s.last)}</td>
+      <td class="num">${p0 && s.last ? spct(s.last / p0 - 1) : '–'}</td><td class="num"><b>${l.tp && s.last ? spct(l.tp / s.last - 1) : '–'}</b></td>
+      <td>${esc(plainAnalyst(l.an) || 'Not shown')}</td>
+      <td class="num">${st.res ? `${pct(st.rate)} <small class="sub">(${st.hit}/${st.res})</small>` : '–'}</td><td>${accBadge(st)}</td>
+      <td class="num">${st.days == null ? '–' : Math.round(st.days)}</td><td class="num">${spct(st.dd)}</td><td class="num">${pct(bst.rate)}</td><td class="num">${ast && ast.res >= 5 ? pct(ast.rate) : '–'}</td></tr>`;
+  }).join('');
+  const all = hitStats(calls);
+  const tps = IDX.brokers.map(br => s.latest[br] && s.latest[br].tp).filter(Boolean), avgTp = tps.length ? avg(tps) : null;
+  const has = { business: !!b, money: !!f, health: !!f, valuation: !!f, drivers: !!f };
+  const tabs = TABS.filter(([k]) => has[k] !== false);
+  tab = tabs.some(([k]) => k === tab) ? tab : 'overview';
+  const panels = {
+    overview: overviewPanel(s, b, f, calls, all, avgTp),
+    business: b ? businessCard(b) : '', money: f ? moneyPanel(f) : '', health: f ? healthPanel(f) : '', valuation: f ? valuationPanel(f) : '', drivers: f ? driversPanel(f) : '',
+    analysts: `<div class="glass card"><h2>Latest call and accuracy by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th>Latest report</th><th>Call</th>
+      <th class="num">Price at call</th><th class="num">Target price</th><th class="num">Latest price</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th>Analyst</th>
+      <th class="num">Buy calls reached target (this stock)</th><th>Accuracy</th><th class="num">Avg days to target</th>
+      <th class="num">Avg worst drop</th><th class="num">Broker, all stocks</th><th class="num">Analyst, all stocks</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="note">Change since call = latest price vs the price on the report. Latest price to target = how far the price still has to move to reach the target.
+        Accuracy = share of resolved Buy calls whose target was reached within 12 months: High 60%+, Medium 40–60%, Low under 40%; under 5 resolved calls is too few to judge.</p></div>
+    <div class="glass card"><h2>All reports on this stock</h2><div class="tablewrap" style="max-height:520px"><table><thead><tr><th>Date</th><th>Broker</th><th>Call</th><th class="num">Price at call</th><th class="num">Target</th>
+      <th class="num">Upside at call</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th class="num">Up from 52w low</th><th class="num">Off 52w high</th><th>Result</th><th class="num">Days to target</th><th class="num">Worst drop</th><th class="num">6m return</th><th>Analyst</th></tr></thead>
+      <tbody>${calls.map(c => { const [t, k] = status(c, 9); return `<tr><td>${fdate(c.date)}</td><td>${bdot(c.broker)}${esc(c.broker)}</td><td>${callBadge(c.call)}</td><td class="num">${num(c.price)}</td><td class="num">${num(c.tp)}</td>
+        <td class="num">${spct(c.upside, 0)}</td><td class="num">${c.price && s.last ? spct(s.last / c.price - 1) : '–'}</td><td class="num">${c.tp && s.last ? spct(c.tp / s.last - 1) : '–'}</td>
+        <td class="num">${spct(c.fromLow, 0)}</td><td class="num">${spct(c.fromHigh, 0)}</td><td><span class="badge ${k}">${t}</span></td>
+        <td class="num">${c.days ?? '–'}</td><td class="num">${spct(c.maxdd)}</td><td class="num">${spct(c.t6m)}</td><td>${esc(plainAnalyst(c.analyst) || '–')}</td></tr>`; }).join('')}</tbody></table></div>
+      <p class="note">Prices and targets are adjusted for later share splits and bonus issues. 6m return includes dividends.</p></div>`,
+    price: `<div class="glass card"><div class="head"><h2>Price chart</h2>
+        <div class="chart-tools"><div class="seg" id="range"><button data-d="91">3M</button><button data-d="182">6M</button><button data-d="365">1Y</button><button data-d="730">2Y</button><button data-d="0" class="on">5Y</button></div>
+          <div class="seg" id="ctype"><button data-t="candle" class="on">Candles</button><button data-t="line">Line</button></div>
+          <div class="seg" id="zoom"><button data-z="in" title="Zoom in">＋</button><button data-z="out" title="Zoom out">－</button><button data-z="reset" title="Show all">Reset</button></div></div></div>
+      <div class="chart-layers" id="layers">${IDX.brokers.filter(br => calls.some(c => c.broker === br)).map(br => `<label><input type="checkbox" data-b="${esc(br)}" checked>${bdot(br)}${esc(br)}</label>`).join('')}
+        <label><input type="checkbox" data-l="ma50" checked><i class="ln" style="background:#7c6fd6"></i>50-day avg</label><label><input type="checkbox" data-l="ma200" checked><i class="ln" style="background:#e0913a"></i>200-day avg</label>
+        <label><input type="checkbox" data-l="band"><i class="ln dash"></i>52-week high / low</label><label><input type="checkbox" data-l="tp" checked>Target lines</label></div>
+      <canvas id="chart" class="chart"></canvas>
+      <p class="note">Scroll on the chart to zoom, drag to move, double-click to show everything. Markers sit at the report date in each broker's colour: ▲ Buy, ▼ Sell, ● Neutral.
+        Dashed lines show each broker's target until its next report. Prices are adjusted for splits and bonus issues, not for dividends.</p></div>
+    <div class="glass card" id="perf"></div>`,
+  };
+  const chg = s.last && s.lo52 ? s.last / s.lo52 - 1 : null;
+  view.innerHTML = `<div class="crumb"><a href="#/stocks">Stocks</a> › ${esc(s.t)}</div>
+    <div class="head"><h1>${esc(s.name)} <small class="sub" style="font-size:15px">${esc(s.t)}${s.code ? ' · ' + esc(s.code) : ''}</small></h1><div style="width:280px">${searchBox('q-stock', 'Search another stock…')}</div></div>
+    <div class="pricebar"><div><small>Last price</small><b>RM${num(s.last)}</b></div>
+      <div><small>Average analyst target</small><b>${avgTp ? 'RM' + num(avgTp) : '–'}</b> ${avgTp && s.last ? spct(avgTp / s.last - 1, 0) : ''}</div>
+      <div><small>52-week range</small><div class="range52"><span>${num(s.lo52)}</span><div class="r-track"><i style="left:${s.lo52 && s.hi52 && s.hi52 > s.lo52 ? ((s.last - s.lo52) / (s.hi52 - s.lo52) * 100).toFixed(0) : 50}%"></i></div><span>${num(s.hi52)}</span></div></div>
+      <div><small>Sector</small><b style="font-size:14px">${esc(s.sector || '–')}</b></div></div>
+    <nav class="tabs" id="tabs">${tabs.map(([k, t]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}">${t}</button>`).join('')}</nav>
+    <div id="panels">${tabs.map(([k]) => `<section class="panel stack" data-p="${k}" ${k === tab ? '' : 'hidden'}>${panels[k]}</section>`).join('')}</div>`;
+  wireSearch('q-stock');
+  let chartReady = false, px = null;
+  const pxP = get(`data/s/${encodeURIComponent(id)}.json`).then(p => { if (p && !p.o) p = { ...p, o: p.c, h: p.c, l: p.c, v: p.c.map(() => 0) }; px = p; return p; });
+  const show = async k => {
+    document.querySelectorAll('#tabs button').forEach(x => x.classList.toggle('on', x.dataset.t === k));
+    document.querySelectorAll('#panels .panel').forEach(p => { p.hidden = p.dataset.p !== k; });
+    history.replaceState(null, '', `#/stock/${encodeURIComponent(id)}${k === 'overview' ? '' : '/' + k}`);
+    const p = document.querySelector(`.panel[data-p="${k}"]`); p.classList.remove('enter'); void p.offsetWidth; p.classList.add('enter'); countUps(p);
+    $('#tabs').scrollIntoView({ block: 'nearest' });
+    if (k === 'price' && !chartReady) { chartReady = true; await pxP; renderPerf(px); setupChart($('#chart'), px, calls); }
+  };
+  $('#tabs').onclick = e => { const t = e.target.closest('button'); if (t) show(t.dataset.t); };
+  view.querySelectorAll('[data-goto]').forEach(a => a.onclick = e => { e.preventDefault(); show(a.dataset.goto); window.scrollTo({ top: $('#tabs').offsetTop - 10, behavior: 'smooth' }); });
+  const st = $('#stories'); if (st) view.querySelectorAll('.story-nav button').forEach(bt => bt.onclick = () => st.scrollBy({ left: +bt.dataset.dir * st.clientWidth * .8, behavior: 'smooth' }));
+  if (f) wireMoney(f); wireFlips();
+  show(tab);
+}
+
+function renderPerf(px) {
+  const pf = perfStats(px), perfEl = $('#perf'); if (!perfEl) return;
+  perfEl.innerHTML = pf ? `<h2>Price performance <small class="sub" style="font-size:12px">(price only, excluding dividends, to ${fdate(px.d[px.d.length - 1])})</small></h2>
+    <div class="perf">${pf.periods.map(([k, v]) => `<div class="perf-cell"><small>${k}</small><b>${spct(v)}</b></div>`).join('')}
+      <div class="perf-cell"><small>5-year high / low</small><b>${num(pf.hi5)} / ${num(pf.lo5)}</b></div></div>
+    ${pf.years.length ? `<h3 style="margin-top:16px">By calendar year</h3><div class="yearbars">${(() => { const m = Math.max(...pf.years.map(y => Math.abs(y[1])), .01);
+      return pf.years.map(([y, v]) => `<div class="yb"><span class="yb-l">${esc(y)}</span><div class="yb-track"><i class="${v >= 0 ? 'up' : 'dn'}" style="width:${(Math.abs(v) / m * 50).toFixed(1)}%;${v >= 0 ? 'left:50%' : 'right:50%'}"></i></div><b>${spct(v)}</b></div>`).join(''); })()}</div>` : ''}` : '<h2>Price performance</h2><p class="sub">No price history for this stock.</p>';
+}
+
+function wireMoney(f) {
+  const pie = $('#pie'); if (!pie) return;
+  const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1];
+  const parts = [...costs, pat].map(x => ({ l: x.label, v: Math.abs(x.value) / rev * 100, m: Math.abs(x.value) }));
+  const pick = i => {
+    pie.querySelectorAll('path').forEach((p, j) => p.classList.toggle('dim', j !== i));
+    document.querySelectorAll('.rm-item').forEach((b, j) => b.classList.toggle('on', j === i));
+    $('#pie-v').textContent = 'RM' + parts[i].v.toFixed(2); $('#pie-l').textContent = 'of every RM100';
+    $('#rm-tip').innerHTML = `<b>${esc(parts[i].l)}</b><br>${esc(RM100_TIPS[parts[i].l] || '')}<br><small class="sub">RM${Math.round(parts[i].m).toLocaleString()} million in ${esc(f.pnl.period)}</small>`;
+  };
+  pie.querySelectorAll('path').forEach(p => { p.onclick = () => pick(+p.dataset.i); p.onmouseenter = () => pick(+p.dataset.i); });
+  document.querySelectorAll('.rm-item').forEach(b => { b.onclick = () => pick(+b.dataset.i); b.onmouseenter = () => pick(+b.dataset.i); });
+  const mode = $('#pl-mode');
+  if (mode) mode.onclick = e => { const b = e.target.closest('button'); if (!b) return; [...mode.children].forEach(x => x.classList.toggle('on', x === b));
+    $('#pl-simple').hidden = b.dataset.m !== 'simple'; $('#pl-detail').hidden = b.dataset.m === 'simple'; };
+}
+
+function wireFlips() {
+  document.querySelectorAll('.flip').forEach(c => { c.onclick = () => c.classList.toggle('flipped'); c.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('flipped'); } }; });
+  const fl = $('#drv-f');
+  if (fl) fl.onclick = e => { const b = e.target.closest('button'); if (!b) return; [...fl.children].forEach(x => x.classList.toggle('on', x === b));
+    document.querySelectorAll('.flip').forEach(c => { c.hidden = b.dataset.k !== 'all' && c.dataset.k !== b.dataset.k; }); };
+  document.querySelectorAll('.mcard').forEach(c => c.onclick = () => c.classList.toggle('open'));
 }
 
 /* ---------- business profile (data/b/<id>.json, summarised from the company's annual report) ---------- */
@@ -495,7 +715,7 @@ function route() {
   const page = parts[0] || 'home';
   document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.r === (page === 'stock' ? 'stocks' : page)));
   window.onresize = null; window.onmouseup = null; $('#tip').hidden = true; window.scrollTo(0, 0);
-  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || '')), latest, brokers, method }[page] || home)();
+  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), latest, brokers, method }[page] || home)();
 }
 $('#signin').onclick = () => { $('#modal').hidden = false; };
 $('#modal-close').onclick = () => { $('#modal').hidden = true; };

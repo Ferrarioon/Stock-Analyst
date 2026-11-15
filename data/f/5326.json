@@ -1,0 +1,558 @@
+{
+ "code": "5326",
+ "price": 3.03,
+ "priceDate": "2026-11-13",
+ "unit": "RM million",
+ "sources": [
+  {
+   "title": "Integrated Annual Report 2025",
+   "url": "https://99speedmart.com.my/wp-content/uploads/2026/04/99SMART-Integrated-Annual-Report-2025.pdf"
+  },
+  {
+   "title": "Interim Financial Report Q2 FY2026",
+   "url": "https://99speedmart.com.my/wp-content/uploads/2026/08/Interim-Financial-Report-Q2-FY26.pdf"
+  }
+ ],
+ "segmentNote": "One business segment: retail of everyday goods. Revenue is 99.96% sale of goods and 0.04% commission from in-store Speedpoint services; China is under 10% (AR p.209, p.216).",
+ "revenueFormula": {
+  "text": "Revenue = number of shop visits x average basket",
+  "visits": "287.6 million transactions in 1H2026 (+15.7%)",
+  "basket": "RM21.4 average basket",
+  "outlets": "3,151 outlets at 30 June 2026",
+  "perOutlet": 3.93
+ },
+ "pnl": {
+  "period": "FY2025",
+  "items": [
+   {
+    "label": "Revenue",
+    "value": 11433.2,
+    "kind": "total"
+   },
+   {
+    "label": "Cost of goods sold",
+    "value": -9206.7,
+    "kind": "cost",
+    "note": "Goods bought from suppliers, net of supplier rebates"
+   },
+   {
+    "label": "Gross profit",
+    "value": 2226.5,
+    "kind": "subtotal"
+   },
+   {
+    "label": "Staff costs",
+    "value": -862.6,
+    "kind": "cost",
+    "note": "25,647 employees"
+   },
+   {
+    "label": "Shop and warehouse rent (depreciation of leases)",
+    "value": -195.8,
+    "kind": "cost"
+   },
+   {
+    "label": "Depreciation of equipment and buildings",
+    "value": -81.3,
+    "kind": "cost"
+   },
+   {
+    "label": "Utilities, repairs, logistics and other costs",
+    "value": -291.0,
+    "kind": "cost",
+    "note": "Balancing figure, includes RM9.3m stock written off"
+   },
+   {
+    "label": "Other income",
+    "value": 55.4,
+    "kind": "income",
+    "note": "Mostly interest on short-term investments"
+   },
+   {
+    "label": "Finance costs",
+    "value": -47.9,
+    "kind": "cost",
+    "note": "Mostly interest on lease liabilities"
+   },
+   {
+    "label": "Profit before tax",
+    "value": 803.4,
+    "kind": "subtotal"
+   },
+   {
+    "label": "Tax",
+    "value": -196.1,
+    "kind": "cost",
+    "note": "Effective rate 24.4%"
+   },
+   {
+    "label": "Profit after tax",
+    "value": 607.3,
+    "kind": "total"
+   }
+  ]
+ },
+ "trend": {
+  "cols": [
+   "FY2024",
+   "FY2025",
+   "1H2025",
+   "1H2026",
+   "Q2 2025",
+   "Q2 2026"
+  ],
+  "rows": [
+   {
+    "label": "Revenue",
+    "values": [
+     9981.6,
+     11433.2,
+     5319.4,
+     6144.3,
+     2707.8,
+     3075.9
+    ]
+   },
+   {
+    "label": "Cost of sales",
+    "values": [
+     -8088.4,
+     -9206.7,
+     -4257.0,
+     -4913.5,
+     -2166.4,
+     -2470.7
+    ]
+   },
+   {
+    "label": "Other income",
+    "values": [
+     31.4,
+     55.4,
+     24.0,
+     27.5,
+     13.1,
+     13.7
+    ]
+   },
+   {
+    "label": "Administrative and other operating expenses",
+    "values": [
+     -1245.9,
+     -1430.7,
+     -676.5,
+     -766.4,
+     -348.2,
+     -388.9
+    ]
+   },
+   {
+    "label": "Finance costs",
+    "values": [
+     -45.0,
+     -47.9,
+     -23.5,
+     -25.2,
+     -12.0,
+     -12.7
+    ]
+   },
+   {
+    "label": "Income tax",
+    "values": [
+     -168.3,
+     -196.1,
+     -96.8,
+     -114.2,
+     -49.8,
+     -53.5
+    ]
+   },
+   {
+    "label": "Profit after tax",
+    "values": [
+     465.4,
+     607.3,
+     289.5,
+     352.5,
+     144.6,
+     163.9
+    ]
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "revenue": [
+   7840.6,
+   8078.5,
+   9214.1,
+   9981.6,
+   11433.2
+  ],
+  "pat": [
+   408.9,
+   302.0,
+   390.1,
+   465.4,
+   607.3
+  ],
+  "gm": [
+   18.24,
+   18.03,
+   18.27,
+   18.97,
+   19.47
+  ]
+ },
+ "balance": {
+  "date": "30 Jun 2026",
+  "assets": [
+   {
+    "label": "Property, plant and equipment",
+    "value": 698.9
+   },
+   {
+    "label": "Right-of-use assets",
+    "value": 975.9
+   },
+   {
+    "label": "Other non-current assets",
+    "value": 86.2
+   },
+   {
+    "label": "Inventories",
+    "value": 1424.0
+   },
+   {
+    "label": "Trade receivables",
+    "value": 218.1
+   },
+   {
+    "label": "Other receivables and tax assets",
+    "value": 69.9
+   },
+   {
+    "label": "Short-term investments",
+    "value": 836.2
+   },
+   {
+    "label": "Cash and bank balances",
+    "value": 48.2
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Trade payables",
+    "value": 1343.1
+   },
+   {
+    "label": "Other payables, contract liability, tax",
+    "value": 91.3
+   },
+   {
+    "label": "Borrowings",
+    "value": 0.0
+   },
+   {
+    "label": "Lease liabilities",
+    "value": 1011.8
+   },
+   {
+    "label": "Provision for restoration costs",
+    "value": 66.7
+   }
+  ],
+  "equity": 1844.4,
+  "note": "Suppliers fund the stock: trade payables (RM1.34bn) are almost as large as inventories (RM1.42bn). Lease liabilities are future rent for shops and warehouses."
+ },
+ "cash": {
+  "cols": [
+   "FY2024",
+   "FY2025",
+   "1H2025",
+   "1H2026"
+  ],
+  "rows": [
+   {
+    "label": "Cash from operations before working capital",
+    "values": [
+     926.5,
+     1107.5,
+     533.4,
+     628.0
+    ]
+   },
+   {
+    "label": "Working capital change",
+    "values": [
+     -226.3,
+     41.1,
+     32.8,
+     -103.2
+    ]
+   },
+   {
+    "label": "Interest and tax paid",
+    "values": [
+     -211.7,
+     -245.3,
+     -96.4,
+     -124.4
+    ]
+   },
+   {
+    "label": "Purchase of property, plant and equipment (capex)",
+    "values": [
+     -170.7,
+     -173.3,
+     -64.1,
+     -66.3
+    ]
+   },
+   {
+    "label": "Repayment of lease liabilities (rent)",
+    "values": [
+     -160.6,
+     -179.8,
+     -87.3,
+     -97.9
+    ]
+   },
+   {
+    "label": "Dividends paid",
+    "values": [
+     -200.0,
+     -378.0,
+     -189.0,
+     -189.0
+    ]
+   },
+   {
+    "label": "Net (purchase) of short-term investments and deposits",
+    "values": [
+     -479.0,
+     -277.0,
+     -228.6,
+     -80.2
+    ]
+   }
+  ],
+  "ocf": [
+   488.4,
+   903.3,
+   469.9,
+   400.4
+  ],
+  "fcf": [
+   157.2,
+   550.1,
+   318.4,
+   236.2
+  ]
+ },
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM25.5 bn"
+  },
+  {
+   "label": "P/E (last 12 months)",
+   "value": "38.0x"
+  },
+  {
+   "label": "EPS (last 12 months)",
+   "value": "7.98 sen"
+  },
+  {
+   "label": "Dividend yield (FY2025 dividends)",
+   "value": "1.5%"
+  },
+  {
+   "label": "Payout ratio FY2025",
+   "value": "62%"
+  },
+  {
+   "label": "Price to book",
+   "value": "13.8x"
+  },
+  {
+   "label": "EV / EBITDA",
+   "value": "22.7x"
+  },
+  {
+   "label": "Return on equity FY2025",
+   "value": "39%"
+  },
+  {
+   "label": "Gross margin (1H2026)",
+   "value": "20.0%"
+  },
+  {
+   "label": "Net margin (1H2026)",
+   "value": "5.7%"
+  },
+  {
+   "label": "Net cash (excl. leases)",
+   "value": "RM884 m"
+  },
+  {
+   "label": "Free cash flow after rent FY2025",
+   "value": "RM550 m"
+  },
+  {
+   "label": "Free cash flow yield",
+   "value": "2.2%"
+  },
+  {
+   "label": "Revenue growth 1H2026",
+   "value": "+15.5%"
+  },
+  {
+   "label": "Profit growth 1H2026",
+   "value": "+21.8%"
+  },
+  {
+   "label": "Inventory days FY2025",
+   "value": "50"
+  },
+  {
+   "label": "Payable days FY2025",
+   "value": "45"
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "New outlets",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "3,151 outlets at Jun 2026, +257 in a year; target about 250 new outlets a year (AR p.22, Q2 p.11)",
+   "why": "The main growth engine: each new shop adds sales. Investors pay a premium while openings stay on track; a slowdown would hurt the valuation."
+  },
+  {
+   "factor": "Customer transactions x basket size",
+   "affects": "Revenue",
+   "direction": "Neutral",
+   "evidence": "Transactions +13.6% to 146.4m in Q2 2026; basket stable at about RM21 (Q2 p.11)",
+   "why": "Growth comes from more visits, not bigger baskets. A falling basket would signal weaker spending."
+  },
+  {
+   "factor": "Longer opening hours",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Earlier opening nationwide lifted traffic (Q2 p.11; AR p.22)",
+   "why": "Extra sales from existing shops at little extra cost."
+  },
+  {
+   "factor": "99 Bulksales e-commerce",
+   "affects": "Revenue",
+   "direction": "Positive (small)",
+   "evidence": "Added about RM22.4m revenue in 1H2026 (Q2 p.12)",
+   "why": "Small today (under 0.5% of revenue); an option for future growth."
+  },
+  {
+   "factor": "Consumer spending",
+   "affects": "Revenue",
+   "direction": "Negative",
+   "evidence": "Management notes softer demand and cautious spending (Q2 p.13)",
+   "why": "Essentials are defensive, but weaker spending can slow sales growth per shop."
+  },
+  {
+   "factor": "Competition",
+   "affects": "Revenue and margin",
+   "direction": "Negative",
+   "evidence": "Market is competitive and fragmented: mini-markets, supermarkets, hypermarkets, online grocery (AR p.55, p.46)",
+   "why": "Price competition could limit margin gains."
+  },
+  {
+   "factor": "Buying power and supplier rebates",
+   "affects": "Gross margin",
+   "direction": "Positive",
+   "evidence": "Gross margin up from 19.0% (FY2024) to 19.5% (FY2025) and 20.0% (1H2026) from scale and direct sourcing (AR p.44; Q2 p.12)",
+   "why": "Every 0.1 percentage point of margin is roughly RM12m of gross profit a year."
+  },
+  {
+   "factor": "Wages",
+   "affects": "Costs",
+   "direction": "Negative",
+   "evidence": "Personnel costs rose 18.2% to RM862.6m in FY2025, faster than revenue (AR p.211)",
+   "why": "The largest operating cost; minimum-wage rises squeeze profit."
+  },
+  {
+   "factor": "Utilities and green initiatives",
+   "affects": "Costs",
+   "direction": "Positive",
+   "evidence": "Utility costs fell in 1H2026 from energy-efficiency upgrades and solar (Q2 p.12)",
+   "why": "Offsets part of the wage pressure."
+  },
+  {
+   "factor": "Depreciation from expansion",
+   "affects": "Costs",
+   "direction": "Negative (short term)",
+   "evidence": "Higher depreciation from new shops and warehouses (Q2 p.11-12)",
+   "why": "Front-loaded cost of growth; earns back as new shops mature."
+  },
+  {
+   "factor": "New distribution centre (Semenyih)",
+   "affects": "Capacity",
+   "direction": "Positive",
+   "evidence": "Opened July 2026, supports about 180 outlets (Q2 p.13)",
+   "why": "Removes a bottleneck for opening more shops."
+  },
+  {
+   "factor": "China pilot",
+   "affects": "Growth / risk",
+   "direction": "Watch",
+   "evidence": "5 pilot outlets in Fuzhou, under 10 more planned (AR p.10; analyst commentary)",
+   "why": "Tiny today; success could add a new market, failure costs little."
+  },
+  {
+   "factor": "Net cash balance sheet",
+   "affects": "Risk",
+   "direction": "Positive",
+   "evidence": "Borrowings fully repaid by Jun 2026; RM884m cash and short-term investments (Q2 p.3)",
+   "why": "Lowers financial risk and supports dividends."
+  },
+  {
+   "factor": "Valuation",
+   "affects": "Share price",
+   "direction": "Negative (risk)",
+   "evidence": "About 38 times trailing earnings at RM3.03 (see Metrics)",
+   "why": "A high multiple prices in steady growth; any earnings miss can hit the share price hard."
+  }
+ ],
+ "competitors": [
+  {
+   "name": "Other mini-market chains (e.g. KK Super Mart, Econsave mini-marts)",
+   "how": "Neighbourhood grocery in the same housing areas",
+   "source": "Names from general market knowledge, not the report"
+  },
+  {
+   "name": "Convenience stores (7-Eleven Malaysia, FamilyMart, MyNews)",
+   "how": "Small-basket convenience, longer hours; 7-Eleven Malaysia and MyNews are listed on Bursa",
+   "source": "General market knowledge"
+  },
+  {
+   "name": "Supermarkets and hypermarkets (Mydin, Lotus's, AEON, Giant)",
+   "how": "Larger weekly shops with wider range",
+   "source": "Category named in AR p.55; brand names from general knowledge"
+  },
+  {
+   "name": "Online grocery platforms",
+   "how": "Delivery of groceries",
+   "source": "Category named in AR p.55"
+  }
+ ],
+ "outlook": [
+  "Growth in FY2026 expected from outlet expansion, steady demand for everyday goods, efficiency gains and 99 Bulksales (AR p.46).",
+  "New Semenyih distribution centre opened July 2026 to support about 180 outlets (Q2 p.13).",
+  "Risks flagged by management: rising wages, utilities and logistics costs; more competition; execution risk while expanding; softer consumer demand (AR p.46; Q2 p.13).",
+  "Dividend policy: sustainable returns while keeping enough cash for growth; FY2025 dividends 4.5 sen per share (AR p.46, p.213)."
+ ]
+}

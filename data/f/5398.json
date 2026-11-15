@@ -529,6 +529,10 @@
    }
   ]
  },
+ "safety": null,
+ "safetyTitle": null,
+ "safetyIntro": null,
+ "bank": false,
  "metrics": [
   {
    "label": "Market value",

@@ -435,7 +435,7 @@ function healthPanel(f) {
   const stack = (arr, cols) => `<div class="bsbar">${arr.map((x, i) => x.value ? `<span style="width:0;background:${cols[i % cols.length]}" data-w="${(x.value / aTot * 100).toFixed(2)}%" title="${esc(x.label)}: RM${fmtM(x.value)} m"></span>` : '').join('')}</div>
     <div class="bs-legend">${arr.map((x, i) => `<div><i style="background:${cols[i % cols.length]}"></i>${esc(x.label)}<b>${fmtM(x.value)}</b></div>`).join('')}</div>`;
   const cf = f.cash;
-  if (!cf) return `<div class="glass card"><h2>How safe is the bank?</h2><p class="sub">Banks are judged on their capital cushion and the quality of their loans, not on free cash flow. Tap a card to see what it means.</p>
+  if (!cf) return `<div class="glass card"><h2>${esc(f.safetyTitle || 'How safe is the bank?')}</h2><p class="sub">${esc(f.safetyIntro || 'Banks are judged on their capital cushion and the quality of their loans, not on free cash flow. Tap a card to see what it means.')}</p>
     <div class="mcards">${(f.safety || []).map(m => `<button class="mcard"><small>${esc(m.label)}</small><b>${esc(m.value)}</b><span class="m-plain">${esc(m.plain)}</span></button>`).join('')}</div></div>
   <div class="glass card"><h2>What it owns vs. what it owes <small class="sub">${esc(bs.date)}, RM million</small></h2>
     <div class="owe-grid"><div><div class="owe-h">Owns <b>RM${cnt(aTot / 1000, 1)} bn</b></div>${stack(bs.assets, ACOL)}</div>

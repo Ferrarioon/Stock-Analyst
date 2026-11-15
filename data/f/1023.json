@@ -352,6 +352,8 @@
    "plain": "Yearly cost of bad loans as a share of all loans (0.25% in 2024)."
   }
  ],
+ "safetyTitle": null,
+ "safetyIntro": null,
  "bank": true,
  "metrics": [
   {

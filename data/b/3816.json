@@ -97,5 +97,22 @@
       "value": "57 years"
     }
   ],
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/3816_1.jpg",
+      "caption": "An LNG carrier at sea, like MISC's gas fleet"
+    },
+    {
+      "src": "data/b/img/3816_2.jpg",
+      "caption": "A floating production unit (FPSO) moored offshore"
+    },
+    {
+      "src": "data/b/img/3816_3.jpg",
+      "caption": "A crude oil tanker, the kind run by MISC's AET"
+    },
+    {
+      "src": "data/b/img/3816_4.jpg",
+      "caption": "An offshore platform being built at a Malaysian yard"
+    }
+  ]
 }

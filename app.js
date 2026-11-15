@@ -560,10 +560,11 @@ async function stock(id, tab) {
   const chg = s.last && s.lo52 ? s.last / s.lo52 - 1 : null;
   view.innerHTML = `<div class="crumb"><a href="#/stocks">Stocks</a> › ${esc(s.t)}</div>
     <div class="stock-head"><h1>${esc(s.name)} <small class="sub" style="font-size:15px;letter-spacing:0">${esc(s.t)}${s.code ? ' · ' + esc(s.code) : ''}</small></h1>${searchBox('q-stock', 'Search another stock…')}</div>
-    <div class="pricebar"><div><small>Last price</small><b>RM${num(s.last)}</b></div>
-      <div><small>Average analyst target</small><b>${avgTp ? 'RM' + num(avgTp) : '–'}</b> ${avgTp && s.last ? spct(avgTp / s.last - 1, 0) : ''}</div>
-      <div><small>52-week range</small><div class="range52"><span>${num(s.lo52)}</span><div class="r-track"><i style="left:${s.lo52 && s.hi52 && s.hi52 > s.lo52 ? ((s.last - s.lo52) / (s.hi52 - s.lo52) * 100).toFixed(0) : 50}%"></i></div><span>${num(s.hi52)}</span></div></div>
-      <div><small>Sector</small><b style="font-size:14px">${esc(s.sector || '–')}</b></div></div>
+    <div class="pricebar">
+      <div class="c-blue"><span class="ring blue"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg></span><div class="pb-body"><small>Last price</small><b>RM${num(s.last)}</b></div></div>
+      <div class="c-pink"><span class="ring pink"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6"/></svg></span><div class="pb-body"><small>Average analyst target</small><b>${avgTp ? 'RM' + num(avgTp) : '–'}</b> ${avgTp && s.last ? spct(avgTp / s.last - 1, 0) : ''}</div></div>
+      <div class="c-gold"><span class="ring gold"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div class="pb-body"><small>52-week range</small><div class="range52"><span>${num(s.lo52)}</span><div class="r-track"><i style="left:${s.lo52 && s.hi52 && s.hi52 > s.lo52 ? ((s.last - s.lo52) / (s.hi52 - s.lo52) * 100).toFixed(0) : 50}%"></i></div><span>${num(s.hi52)}</span></div></div></div>
+      <div class="c-teal"><span class="ring teal"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M11 21v-3h2v3"/></svg></span><div class="pb-body"><small>Sector</small><b style="font-size:14px">${esc(s.sector || '–')}</b></div></div></div>
     <nav class="tabs" id="tabs">${tabs.map(([k, t]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}">${t}</button>`).join('')}</nav>
     <div id="panels">${tabs.map(([k]) => `<section class="panel stack" data-p="${k}" ${k === tab ? '' : 'hidden'}>${panels[k]}</section>`).join('')}</div>`;
   wireSearch('q-stock');

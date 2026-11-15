@@ -392,3 +392,74 @@ th { background: var(--th-bg); } tr.link:hover td { background: var(--grey-bg); 
 .ol-item.neg { border-color: #e0675a; } .ol-item.neg .ol-tone { color: var(--red); }
 .ol-item.neu { border-color: #f2c94c; } .ol-item.neu .ol-tone { color: var(--amber); }
 @media (max-width: 900px) { .heroes { grid-template-columns: 1fr; } .ol-item { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ===================== theme v3: fintech navy + gold, frosted glass on grey / navy gradients ===================== */
+:root, :root[data-theme="light"] {
+  --bg: #c7ccd4; --card: rgba(255, 255, 255, .56); --glass: rgba(255, 255, 255, .56); --glass-strong: rgba(255, 255, 255, .66); --grey-bg: rgba(15, 23, 42, .06);
+  --ink: #0d1424; --ink2: #3b4456; --muted: #6a7284; --line: rgba(15, 23, 42, .09);
+  --accent: #a87b22; --accent-2: #d9ab4a; --accent-soft: rgba(201, 152, 54, .15); --solid: #0d1424; --on-solid: #ffffff;
+  --blue: #2f6fd6; --pink: #c2477c; --teal: #0f8f88;
+  --shadow: 0 1px 0 rgba(255, 255, 255, .7) inset, 0 10px 30px rgba(30, 40, 60, .10);
+  --tabs-bg: rgba(255, 255, 255, .5); --th-bg: rgba(240, 242, 246, .92); --tip-bg: rgba(13, 20, 36, .92);
+  --shell-bg: radial-gradient(900px 600px at 100% 0%, rgba(255, 255, 255, .75), transparent 60%), radial-gradient(800px 600px at 0% 100%, rgba(173, 186, 210, .55), transparent 60%), linear-gradient(160deg, #eceef2 0%, #dadee5 50%, #cdd2da 100%);
+  --pic-shade: linear-gradient(180deg, rgba(8, 12, 22, 0) 25%, rgba(8, 12, 22, .7) 58%, rgba(8, 12, 22, .95) 100%);
+}
+:root[data-theme="dark"] {
+  --bg: #03060c; --card: rgba(15, 22, 38, .62); --glass: rgba(15, 22, 38, .62); --glass-strong: rgba(25, 34, 54, .62); --grey-bg: rgba(148, 163, 184, .1);
+  --ink: #eef2f8; --ink2: #b4bfd0; --muted: #7c879a; --line: rgba(148, 163, 184, .15);
+  --accent: #e9b949; --accent-2: #f6d27a; --accent-soft: rgba(233, 185, 73, .13); --solid: #e9b949; --on-solid: #0a0f1c;
+  --blue: #5aa2ff; --pink: #f0679f; --teal: #35c7bd;
+  --green: #4ad295; --red: #ff7a6b; --amber: #f3c55a;
+  --shadow: 0 1px 0 rgba(255, 255, 255, .05) inset, 0 14px 34px rgba(0, 0, 0, .45);
+  --tabs-bg: rgba(10, 16, 30, .7); --th-bg: rgba(16, 24, 40, .96); --tip-bg: rgba(20, 28, 46, .96);
+  --shell-bg: radial-gradient(700px 520px at 0% 100%, rgba(139, 77, 255, .30), transparent 62%), radial-gradient(600px 420px at 18% 108%, rgba(236, 72, 153, .20), transparent 60%), radial-gradient(800px 500px at 100% 0%, rgba(37, 99, 235, .16), transparent 60%), linear-gradient(180deg, #0a1122 0%, #060a15 100%);
+  --pic-shade: linear-gradient(180deg, rgba(4, 7, 14, 0) 25%, rgba(4, 7, 14, .72) 58%, rgba(4, 7, 14, .96) 100%);
+}
+body { background: var(--bg); }
+.shell { background: var(--shell-bg); border: 1px solid var(--line); background-attachment: local; }
+.glass, .pricebar > div, .hero-m, .vgroup, .tone-meter, .ol-item, .flip-f, .stat, .perf-cell, .mcard, .flow-step, .fin-formula > div, .rm-tip, .theme-sw {
+  background: var(--card); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border: 1px solid var(--line); }
+:root[data-theme="light"] .glass, :root[data-theme="light"] .pricebar > div { border-color: rgba(255, 255, 255, .8); }
+.hero-m, .vgroup, .ol-item, .tone-meter { background: var(--glass-strong); }
+.logo { background: linear-gradient(135deg, var(--accent-2), var(--accent) 45%, #2b4f9e 100%); border-radius: 9px; }
+nav a.on { background: var(--solid); color: var(--on-solid); }
+:root[data-theme="dark"] nav a.on { background: linear-gradient(90deg, rgba(233, 185, 73, .18), rgba(233, 185, 73, .04)); color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); border-radius: 12px; }
+:root[data-theme="dark"] .tabs button.on, :root[data-theme="dark"] .chipsel button.on, :root[data-theme="dark"] .seg button.on { background: rgba(233, 185, 73, .14); color: var(--accent); box-shadow: inset 0 0 0 1px rgba(233, 185, 73, .55); }
+:root[data-theme="dark"] .next-hint a, :root[data-theme="dark"] .btn { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px rgba(233, 185, 73, .6); }
+:root[data-theme="dark"] .btn.ghost { color: var(--ink); box-shadow: none; }
+.biz-tag { color: var(--accent); }
+.story { background: #0a1020; } .story .s-shade { background: var(--pic-shade); }
+.story .s-pic, .story:not(.photo) .s-pic { background-size: cover; background-position: center; background-color: #0a1020; }
+.s-num.up { color: #7fe3b0; } .s-num { font-variant-numeric: tabular-nums; }
+.gz.warn { stroke: #e0675a; } .gz.mid { stroke: #e9b949; } .gz.good { stroke: #3fbf85; }
+.hm-top, .vg-pic, .flip-pic { background-color: #0a1020; }
+.hm-pic { background-size: cover; background-position: center; }
+.hm-pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4, 7, 14, .15), rgba(4, 7, 14, .55)); }
+.hm-no { color: #fff; opacity: .95; z-index: 1; text-shadow: 0 2px 10px rgba(0, 0, 0, .4); } .hm-q { z-index: 1; }
+.vg-pic { background-size: cover; background-position: center; border-radius: 14px; }
+.flip-pic { background-size: cover; background-position: center; }
+.flip-b { background: linear-gradient(160deg, #0f1a33, #172446 60%, #2a2140); }
+.r-track i { border-color: var(--accent); }
+.geo-bar i, .wf-track i.tot { background: linear-gradient(90deg, #2b4f9e, var(--accent)); }
+.tone-meter.neu .tm-scale span.on { background: #c99a1a; }
+
+/* header cards: outlined circular line icons */
+.pricebar > div { display: flex; align-items: center; gap: 12px; border-radius: 18px; }
+.pricebar > div > .pb-body { flex: 1; min-width: 0; }
+.ring { width: 44px; height: 44px; flex: none; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid currentColor; background: color-mix(in srgb, currentColor 10%, transparent); }
+.ring svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ring.blue { color: var(--blue); } .ring.pink { color: var(--pink); } .ring.gold { color: var(--accent); } .ring.teal { color: var(--teal); }
+.pricebar > div.c-blue { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue) 35%, transparent); }
+.pricebar > div.c-pink { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pink) 35%, transparent); }
+.pricebar > div.c-gold { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent); }
+.pricebar > div.c-teal { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--teal) 35%, transparent); }
+/* light theme: neutral grey only (no blue), graphite + gold accents */
+:root, :root[data-theme="light"] {
+  --blue: #2a2d33; --pink: #a87b22; --teal: #2a2d33;
+  --shell-bg: radial-gradient(900px 600px at 100% 0%, rgba(255, 255, 255, .8), transparent 60%), radial-gradient(800px 600px at 0% 100%, rgba(150, 150, 150, .35), transparent 60%), linear-gradient(160deg, #efefef 0%, #dcdcdc 50%, #cbcbcb 100%);
+  --bg: #c4c4c4; --ink: #121314; --ink2: #3e4044; --muted: #6e7075; --line: rgba(0, 0, 0, .08); --solid: #121314;
+  --pic-shade: linear-gradient(180deg, rgba(10, 10, 10, 0) 25%, rgba(10, 10, 10, .7) 58%, rgba(10, 10, 10, .95) 100%);
+}
+:root[data-theme="light"] .geo-bar i, :root[data-theme="light"] .wf-track i.tot { background: linear-gradient(90deg, #3a3c40, var(--accent)); }
+.story, .hm-top, .vg-pic, .flip-pic { background-color: #141414; }
+.s-num { font-size: 38px; white-space: nowrap; } .s-num.sm { font-size: 28px; }

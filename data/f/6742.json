@@ -1,0 +1,674 @@
+{
+ "code": "6742",
+ "price": 4.35,
+ "priceDate": "2026-11-13",
+ "unit": "RM million",
+ "fyNote": "Financial year ends 30 June. FY2025 = July 2024 to June 2025. FY2024 restated.",
+ "sources": [
+  {
+   "title": "YTL Power Annual Report 2025",
+   "url": "https://www.ytl.com/wp-content/uploads/ytles/sites/2/files/annual-report/YTL_Power_AR_2025.pdf"
+  }
+ ],
+ "segmentNote": "A utilities group: Singapore power and UK water earn most of the money; data centres and AI are the new growth areas (AR p.10-11, p.18).",
+ "how": {
+  "title": "How YTL Power makes money",
+  "text": "Revenue = electricity sold in Singapore + water and sewerage bills in the UK and Johor + mobile and broadband subscriptions + data centre services",
+  "facts": [
+   [
+    "Electricity sold",
+    "10,626 GWh in FY2025 (AR p.10)"
+   ],
+   [
+    "Geneco retail market share",
+    "29.7%, Singapore's largest (AR p.10)"
+   ],
+   [
+    "Wessex Water regulated asset base",
+    "GBP4.7 billion, +9% (AR p.10)"
+   ],
+   [
+    "Revenue from overseas",
+    "About 85% (AR p.18)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "10,626 GWh",
+  "scale_label": "of electricity sold in Singapore",
+  "debt_label": "net debt (borrowings minus cash)"
+ },
+ "growth": {
+  "period": "FY2025",
+  "revenue": -2.2,
+  "profit": -25.3
+ },
+ "debt": {
+  "netCash": false,
+  "value": "RM25.7 bn",
+  "label": "net debt (borrowings minus cash)"
+ },
+ "pnl": {
+  "period": "FY2025",
+  "items": [
+   {
+    "label": "Revenue",
+    "value": 21801.8,
+    "kind": "total"
+   },
+   {
+    "label": "Cost of sales",
+    "value": -16315.5,
+    "kind": "cost",
+    "tip": "Fuel and gas for power plants, electricity bought, running the water network, staff and depreciation of plants and pipes."
+   },
+   {
+    "label": "Finance costs",
+    "value": -1545.1,
+    "kind": "cost",
+    "tip": "Interest on about RM38bn of borrowings, including UK bonds linked to inflation."
+   },
+   {
+    "label": "Administrative expenses",
+    "value": -928.2,
+    "kind": "cost",
+    "tip": "Head office and management costs."
+   },
+   {
+    "label": "Other operating costs",
+    "value": -656.4,
+    "kind": "cost",
+    "tip": "Including allowances for unpaid bills and foreign exchange losses."
+   },
+   {
+    "label": "Tax",
+    "value": -638.6,
+    "kind": "cost",
+    "tip": "Tax in Singapore, the UK and Malaysia."
+   },
+   {
+    "label": "Partners' share of profit",
+    "value": -126.4,
+    "kind": "cost",
+    "tip": "Profit belonging to minority shareholders, for example in Ranhill."
+   },
+   {
+    "label": "Other operating income",
+    "value": 548.7,
+    "kind": "income",
+    "tip": ""
+   },
+   {
+    "label": "Associates and joint ventures",
+    "value": 405.2,
+    "kind": "income",
+    "tip": ""
+   },
+   {
+    "label": "Profit to shareholders",
+    "value": 2545.4,
+    "kind": "total",
+    "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
+   }
+  ],
+  "incomeNote": "Plus about RM4.38 per RM100 of revenue from other income and associates."
+ },
+ "trend": {
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "lines": [
+   {
+    "label": "Revenue",
+    "values": [
+     22284.3,
+     21801.8
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Cost of sales",
+    "values": [
+     -16202.4,
+     -16315.5
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Gross profit",
+    "values": [
+     6081.9,
+     5486.3
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Other income",
+    "values": [
+     409.8,
+     548.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Admin and other costs",
+    "values": [
+     -938.4,
+     -1584.6
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Finance costs",
+    "values": [
+     -1785.3,
+     -1545.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Associates and joint ventures",
+    "values": [
+     264.8,
+     405.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before tax",
+    "values": [
+     4032.9,
+     3310.4
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Tax",
+    "values": [
+     -611.0,
+     -638.6
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Partners' share",
+    "values": [
+     -15.6,
+     -126.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit to shareholders",
+    "values": [
+     3406.3,
+     2545.4
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "revenue": [
+   10785,
+   17805,
+   21890,
+   22284,
+   21802
+  ],
+  "pat": [
+   -147,
+   1477,
+   2028,
+   3406,
+   2545
+  ],
+  "note": "Dividend per share (sen): 2021 4.5 · 2022 4.5 · 2023 6.0 · 2024 7.0 · 2025 8.0. FY2024 was boosted by unusually high Singapore electricity prices."
+ },
+ "segments": {
+  "period": "FY2025",
+  "rows": [
+   {
+    "name": "Power generation",
+    "revenue": 12190.5,
+    "profit": 2757.2,
+    "tip": "YTL PowerSeraya power plants and the Geneco electricity retailer in Singapore, plus power in Johor."
+   },
+   {
+    "name": "Water and sewerage",
+    "revenue": 7046.7,
+    "profit": 384.3,
+    "tip": "Wessex Water in south-west England and Ranhill's water business in Johor; back in profit in 2025."
+   },
+   {
+    "name": "Investment holding",
+    "revenue": 1679.4,
+    "profit": 424.9,
+    "tip": "Investments, data centres and other activities."
+   },
+   {
+    "name": "Telecommunications (Yes)",
+    "revenue": 885.2,
+    "profit": -256.0,
+    "tip": "Mobile and broadband in Malaysia; still loss-making."
+   }
+  ],
+  "geo": [],
+  "note": "Profit here is profit before tax by segment. About 85% of revenue is earned outside Malaysia (AR p.18)."
+ },
+ "balance": {
+  "date": "30 Jun 2025",
+  "assets": [
+   {
+    "label": "Power plants, pipes and other property",
+    "value": 37343.1
+   },
+   {
+    "label": "Cash and investments",
+    "value": 13731.8
+   },
+   {
+    "label": "Licences, goodwill and concessions",
+    "value": 11746.6
+   },
+   {
+    "label": "Money owed by customers and others",
+    "value": 7768.6
+   },
+   {
+    "label": "Associates and joint ventures",
+    "value": 2258.2
+   },
+   {
+    "label": "Other assets",
+    "value": 2008.9
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Borrowings",
+    "value": 37960.7
+   },
+   {
+    "label": "Owed to suppliers and others",
+    "value": 8429.7
+   },
+   {
+    "label": "Deferred tax and other",
+    "value": 5176.2
+   },
+   {
+    "label": "Leases and concession obligations",
+    "value": 1676.5
+   }
+  ],
+  "equity": 21614.2,
+  "note": "Utilities borrow heavily against steady, regulated income: borrowings of RM38bn are larger than shareholders' funds. Wessex Water's regulated asset base (GBP4.7bn) supports much of this debt (AR p.10)."
+ },
+ "cash": {
+  "wfPeriod": "FY2025",
+  "waterfall": [
+   {
+    "l": "Cash from operations",
+    "v": 4240.9,
+    "total": 1
+   },
+   {
+    "l": "Power plants, data centres and networks",
+    "v": -6712.3,
+    "total": 0
+   },
+   {
+    "l": "Dividends received from associates",
+    "v": 466.5,
+    "total": 0
+   },
+   {
+    "l": "Other investing",
+    "v": -410.2,
+    "total": 0
+   },
+   {
+    "l": "New borrowing (net)",
+    "v": 6108.1,
+    "total": 0
+   },
+   {
+    "l": "Dividends paid",
+    "v": -498.7,
+    "total": 0
+   },
+   {
+    "l": "Shares and warrants",
+    "v": 582.0,
+    "total": 0
+   },
+   {
+    "l": "Leases and other",
+    "v": -225.1,
+    "total": 0
+   },
+   {
+    "l": "Increase in cash",
+    "v": 3551.2,
+    "total": 1
+   }
+  ],
+  "wfNote": "Operations produced RM4.2bn of cash, but spending on power plants, data centres and networks rose to RM6.7bn, funded with RM6.1bn of new borrowing.",
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "table": [
+   {
+    "label": "Cash generated from operations",
+    "values": [
+     6156.1,
+     6894.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Interest, tax and other paid",
+    "values": [
+     -1616.9,
+     -2653.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Cash from operations",
+    "values": [
+     4539.2,
+     4240.9
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Plants, data centres and networks",
+    "values": [
+     -3467.9,
+     -6712.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other investing",
+    "values": [
+     469.9,
+     56.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash used in investing",
+    "values": [
+     -2998.0,
+     -6656.0
+    ],
+    "bold": 1
+   },
+   {
+    "label": "New borrowing (net)",
+    "values": [
+     -811.5,
+     6108.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Dividends paid",
+    "values": [
+     -688.9,
+     -498.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Shares, leases and other",
+    "values": [
+     -98.0,
+     356.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash from financing",
+    "values": [
+     -1598.5,
+     5966.3
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Net change in cash",
+    "values": [
+     -57.3,
+     3551.2
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "safety": null,
+ "safetyTitle": null,
+ "safetyIntro": null,
+ "bank": false,
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM37.3 bn",
+   "plain": "What the whole company costs at today's share price: RM37.3 billion."
+  },
+  {
+   "label": "P/E (FY2025 profit)",
+   "value": "14.7x",
+   "plain": "You pay about RM15 for every RM1 of yearly profit. A high number means investors expect growth."
+  },
+  {
+   "label": "EPS (FY2025)",
+   "value": "29.66 sen",
+   "plain": "Profit earned for each share you own over the year."
+  },
+  {
+   "label": "Dividend yield (FY2025 dividends)",
+   "value": "1.8%",
+   "plain": "For every RM100 of shares, about RM1.8 a year comes back as cash dividends."
+  },
+  {
+   "label": "Payout ratio FY2025",
+   "value": "27%",
+   "plain": "Of every RM100 profit, about RM27 is paid out; the rest is kept to grow."
+  },
+  {
+   "label": "Price to book",
+   "value": "1.7x",
+   "plain": "The share price is 1.7 times the accounting value of what shareholders own."
+  },
+  {
+   "label": "Return on equity FY2025",
+   "value": "12%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM12 profit last year."
+  },
+  {
+   "label": "Net margin FY2025",
+   "value": "11.7%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM11.68."
+  },
+  {
+   "label": "Revenue growth FY2025",
+   "value": "-2.2%",
+   "plain": "Revenue compared with the year before."
+  },
+  {
+   "label": "Profit growth FY2025",
+   "value": "-25.3%",
+   "plain": "Profit to shareholders compared with the year before."
+  },
+  {
+   "label": "Net debt",
+   "value": "RM25.74 bn",
+   "plain": "Borrowings minus cash: RM25.74 billion owed to lenders after using all its cash."
+  },
+  {
+   "label": "Net gearing",
+   "value": "119%",
+   "plain": "Net debt is 119% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
+  },
+  {
+   "label": "Free cash flow FY2025",
+   "value": "RM-2,471 m",
+   "plain": "Cash from operations minus spending on assets and land: RM-2,471 million. Negative means it borrowed or used savings to fund growth."
+  },
+  {
+   "label": "Free cash flow yield",
+   "value": "-6.6%",
+   "plain": "That spare cash as a share of the company's market value."
+  },
+  {
+   "label": "EV / EBITDA",
+   "value": "9.3x",
+   "plain": "A price tag that includes debt: about 9.3 times its yearly cash earnings before interest and tax."
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "Singapore power prices",
+   "affects": "Profit",
+   "direction": "Negative",
+   "evidence": "Power generation profit fell from RM3.69bn to RM2.76bn after last year's exceptionally high prices (AR p.10, p.18)",
+   "why": "The biggest earner; prices are normalising."
+  },
+  {
+   "factor": "Wessex Water turnaround",
+   "affects": "Profit",
+   "direction": "Positive",
+   "evidence": "Water and sewerage swung from a RM101m loss to RM384m profit as UK inflation on index-linked bonds eased (AR p.10, p.18)",
+   "why": "A regulated, steady business returning to profit."
+  },
+  {
+   "factor": "UK water price review",
+   "affects": "Revenue",
+   "direction": "Watch",
+   "evidence": "Wessex Water asked for its 2025-2030 plan to be referred to the Competition and Markets Authority (AR p.10)",
+   "why": "The outcome sets how much it can spend and charge for five years."
+  },
+  {
+   "factor": "Growing regulated assets",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Wessex Water's regulated asset base grew about 9% to GBP4.7bn (AR p.10)",
+   "why": "Allowed returns grow with the asset base."
+  },
+  {
+   "factor": "Johor water demand",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Full-year consolidation of Ranhill; rising industrial demand in Johor (AR p.10-11)",
+   "why": "Malaysia's share of revenue rose from 4% to 15%."
+  },
+  {
+   "factor": "Data centres and AI",
+   "affects": "Growth",
+   "direction": "Positive",
+   "evidence": "YTL Green Data Center Park in Kulai and YTL AI Cloud with NVIDIA GB200 systems (AR p.11)",
+   "why": "A new growth engine riding AI demand, but needs heavy investment."
+  },
+  {
+   "factor": "Heavy spending",
+   "affects": "Cash flow",
+   "direction": "Watch",
+   "evidence": "Spending on plants and property rose to RM6.7bn from RM3.5bn (AR p.167)",
+   "why": "Builds future income but used more cash than operations produced."
+  },
+  {
+   "factor": "High debt",
+   "affects": "Risk",
+   "direction": "Negative",
+   "evidence": "Borrowings RM38.0bn vs shareholders' funds RM21.6bn (AR p.162)",
+   "why": "Normal for utilities, but higher interest rates would hurt."
+  },
+  {
+   "factor": "Yes telecoms losses",
+   "affects": "Profit",
+   "direction": "Negative",
+   "evidence": "Telecommunications lost RM256m (RM326m in FY2024) (AR p.18)",
+   "why": "Still a drag, though narrowing."
+  },
+  {
+   "factor": "New hydrogen-ready plant",
+   "affects": "Capacity",
+   "direction": "Positive",
+   "evidence": "600MW hydrogen-ready plant in Singapore targeted for end-2027 (AR p.11)",
+   "why": "Replaces older capacity and supports long-term earnings."
+  },
+  {
+   "factor": "Currency moves",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "About 85% of revenue is from overseas (AR p.18)",
+   "why": "Changes in the Singapore dollar and pound affect ringgit profit."
+  },
+  {
+   "factor": "Higher dividend",
+   "affects": "Shareholder returns",
+   "direction": "Positive",
+   "evidence": "Dividend raised 14% to 8.0 sen (AR p.10)",
+   "why": "Signals confidence in cash flow."
+  },
+  {
+   "factor": "Valuation",
+   "affects": "Share price",
+   "direction": "Neutral",
+   "evidence": "About 15 times FY2025 profit at RM4.35 (see Valuation)",
+   "why": "Investors weigh steady utilities against data-centre growth hopes."
+  }
+ ],
+ "competitors": [
+  {
+   "name": "Other Singapore power generators and retailers (e.g. Tuas Power, Senoko, Keppel)",
+   "how": "Compete in Singapore's electricity market",
+   "source": "General market knowledge, not the report"
+  },
+  {
+   "name": "Maxis, CelcomDigi, U Mobile",
+   "how": "Mobile operators competing with Yes",
+   "source": "General market knowledge"
+  },
+  {
+   "name": "Data-centre developers in Johor",
+   "how": "Compete for hyperscale and AI customers",
+   "source": "General market knowledge"
+  }
+ ],
+ "outlook": [
+  {
+   "tone": "Positive",
+   "text": "Renewable energy momentum expected to continue in Singapore and Malaysia; 600MW hydrogen-ready plant due by end-2027 (AR p.11)."
+  },
+  {
+   "tone": "Positive",
+   "text": "YTL Green Data Center Park and the AI cloud business are progressing well (AR p.11)."
+  },
+  {
+   "tone": "Neutral",
+   "text": "Wessex Water awaits the competition regulator's decision on its 2025-2030 plan (AR p.10)."
+  },
+  {
+   "tone": "Negative",
+   "text": "The global outlook remains uncertain, with higher trade restrictions (AR p.38)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Positive",
+  "text": "Management describes performance as sound and points to growth in renewables, Johor water and data centres (AR p.10-11)."
+ }
+}

@@ -126,5 +126,22 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
     }
   ],
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/6742_1.jpg",
+      "caption": "A gas-fired power station in Singapore, like YTL PowerSeraya's"
+    },
+    {
+      "src": "data/b/img/6742_2.jpg",
+      "caption": "A water treatment works in England, run by Wessex Water"
+    },
+    {
+      "src": "data/b/img/6742_3.jpg",
+      "caption": "A data centre campus with a solar farm, like the YTL Green Data Center Park in Johor"
+    },
+    {
+      "src": "data/b/img/6742_4.jpg",
+      "caption": "Inside a data hall with AI computing servers"
+    }
+  ]
 }

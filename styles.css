@@ -421,26 +421,26 @@ body { background: var(--bg); }
   background: var(--card); backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); border: 1px solid var(--line); }
 :root[data-theme="light"] .glass, :root[data-theme="light"] .pricebar > div { border-color: rgba(255, 255, 255, .8); }
 .hero-m, .vgroup, .ol-item, .tone-meter { background: var(--glass-strong); }
-.logo { background: linear-gradient(135deg, var(--accent-2), var(--accent) 45%, #2b4f9e 100%); border-radius: 9px; }
+.logo { background: linear-gradient(135deg, var(--accent-2), var(--accent) 45%, #3a3a3d 100%); border-radius: 9px; }
 nav a.on { background: var(--solid); color: var(--on-solid); }
 :root[data-theme="dark"] nav a.on { background: linear-gradient(90deg, rgba(233, 185, 73, .18), rgba(233, 185, 73, .04)); color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); border-radius: 12px; }
 :root[data-theme="dark"] .tabs button.on, :root[data-theme="dark"] .chipsel button.on, :root[data-theme="dark"] .seg button.on { background: rgba(233, 185, 73, .14); color: var(--accent); box-shadow: inset 0 0 0 1px rgba(233, 185, 73, .55); }
 :root[data-theme="dark"] .next-hint a, :root[data-theme="dark"] .btn { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px rgba(233, 185, 73, .6); }
 :root[data-theme="dark"] .btn.ghost { color: var(--ink); box-shadow: none; }
 .biz-tag { color: var(--accent); }
-.story { background: #0a1020; } .story .s-shade { background: var(--pic-shade); }
-.story .s-pic, .story:not(.photo) .s-pic { background-size: cover; background-position: center; background-color: #0a1020; }
+.story { background: #141414; } .story .s-shade { background: var(--pic-shade); }
+.story .s-pic, .story:not(.photo) .s-pic { background-size: cover; background-position: center; background-color: #141414; }
 .s-num.up { color: #7fe3b0; } .s-num { font-variant-numeric: tabular-nums; }
 .gz.warn { stroke: #e0675a; } .gz.mid { stroke: #e9b949; } .gz.good { stroke: #3fbf85; }
-.hm-top, .vg-pic, .flip-pic { background-color: #0a1020; }
+.hm-top, .vg-pic, .flip-pic { background-color: #141414; }
 .hm-pic { background-size: cover; background-position: center; }
 .hm-pic::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4, 7, 14, .15), rgba(4, 7, 14, .55)); }
 .hm-no { color: #fff; opacity: .95; z-index: 1; text-shadow: 0 2px 10px rgba(0, 0, 0, .4); } .hm-q { z-index: 1; }
 .vg-pic { background-size: cover; background-position: center; border-radius: 14px; }
 .flip-pic { background-size: cover; background-position: center; }
-.flip-b { background: linear-gradient(160deg, #0f1a33, #172446 60%, #2a2140); }
+.flip-b { background: linear-gradient(160deg, #262628, #1a1a1b 60%, #2b2416); }
 .r-track i { border-color: var(--accent); }
-.geo-bar i, .wf-track i.tot { background: linear-gradient(90deg, #2b4f9e, var(--accent)); }
+.geo-bar i, .wf-track i.tot { background: linear-gradient(90deg, #3a3a3d, var(--accent)); }
 .tone-meter.neu .tm-scale span.on { background: #c99a1a; }
 
 /* header cards: outlined circular line icons */
@@ -463,3 +463,15 @@ nav a.on { background: var(--solid); color: var(--on-solid); }
 :root[data-theme="light"] .geo-bar i, :root[data-theme="light"] .wf-track i.tot { background: linear-gradient(90deg, #3a3c40, var(--accent)); }
 .story, .hm-top, .vg-pic, .flip-pic { background-color: #141414; }
 .s-num { font-size: 38px; white-space: nowrap; } .s-num.sm { font-size: 28px; }
+/* dark theme: neutral dark grey (no blue), gold accent */
+:root[data-theme="dark"] {
+  --bg: #0b0b0c; --card: rgba(38, 38, 40, .58); --glass: rgba(38, 38, 40, .58); --glass-strong: rgba(48, 48, 51, .6); --grey-bg: rgba(255, 255, 255, .07);
+  --ink: #f2f2f2; --ink2: #c2c2c4; --muted: #8c8c90; --line: rgba(255, 255, 255, .09);
+  --blue: #d8d8da; --pink: #e9b949; --teal: #d8d8da;
+  --tabs-bg: rgba(28, 28, 30, .72); --th-bg: rgba(36, 36, 38, .96); --tip-bg: rgba(40, 40, 42, .96);
+  --shell-bg: radial-gradient(800px 560px at 100% 0%, rgba(255, 255, 255, .07), transparent 60%), radial-gradient(700px 520px at 0% 100%, rgba(233, 185, 73, .08), transparent 62%), linear-gradient(160deg, #2a2a2c 0%, #1c1c1e 50%, #141415 100%);
+  --pic-shade: linear-gradient(180deg, rgba(12, 12, 12, 0) 25%, rgba(12, 12, 12, .72) 58%, rgba(12, 12, 12, .96) 100%);
+}
+:root[data-theme="dark"] .flip-b { background: linear-gradient(160deg, #262628, #1a1a1b 60%, #2b2416); }
+:root[data-theme="dark"] .geo-bar i, :root[data-theme="dark"] .wf-track i.tot { background: linear-gradient(90deg, #5a5a5e, var(--accent)); }
+:root[data-theme="dark"] .logo, :root[data-theme="light"] .logo { background: linear-gradient(135deg, #f6d27a, #b8862b 55%, #2a2a2c 100%); }

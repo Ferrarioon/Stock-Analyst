@@ -550,9 +550,25 @@
   }
  ],
  "outlook": [
-  "Growth in FY2026 expected from outlet expansion, steady demand for everyday goods, efficiency gains and 99 Bulksales (AR p.46).",
-  "New Semenyih distribution centre opened July 2026 to support about 180 outlets (Q2 p.13).",
-  "Risks flagged by management: rising wages, utilities and logistics costs; more competition; execution risk while expanding; softer consumer demand (AR p.46; Q2 p.13).",
-  "Dividend policy: sustainable returns while keeping enough cash for growth; FY2025 dividends 4.5 sen per share (AR p.46, p.213)."
- ]
+  {
+   "tone": "Positive",
+   "text": "Growth in FY2026 expected from outlet expansion, steady demand for everyday goods, efficiency gains and 99 Bulksales (AR p.46)."
+  },
+  {
+   "tone": "Positive",
+   "text": "New Semenyih distribution centre opened July 2026 to support about 180 outlets (Q2 p.13)."
+  },
+  {
+   "tone": "Negative",
+   "text": "Risks flagged by management: rising wages, utilities and logistics costs; more competition; execution risk while expanding; softer consumer demand (AR p.46; Q2 p.13)."
+  },
+  {
+   "tone": "Neutral",
+   "text": "Dividend policy: sustainable returns while keeping enough cash for growth; FY2025 dividends 4.5 sen per share (AR p.46, p.213)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Positive",
+  "text": "Management expects FY2026 to grow, while naming cost and competition risks (AR p.46)."
+ }
 }

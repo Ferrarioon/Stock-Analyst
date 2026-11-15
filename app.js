@@ -1,6 +1,7 @@
 /* Stock Analyst prototype — reads data/index.json, data/calls.json and data/s/<id>.json (written by combined/export_web.py). */
 const $ = (s, el = document) => el.querySelector(s);
 const view = $('#view');
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pct = (v, d = 0) => v == null || isNaN(v) ? '–' : (v * 100).toFixed(d) + '%';
 const spct = (v, d = 1) => v == null || isNaN(v) ? '–' : `<span class="${v > 0 ? 'pos' : v < 0 ? 'neg' : ''}">${v > 0 ? '+' : ''}${(v * 100).toFixed(d)}%</span>`;
@@ -199,7 +200,7 @@ function drawChart(cv, px, calls, st, pre) {
   const dpr = window.devicePixelRatio || 1, G = chartGeom(cv, st), { W, H, L, R, T, B, VH, PH, X } = G;
   cv.width = W * dpr; cv.height = H * dpr; const g = cv.getContext('2d'); g.scale(dpr, dpr); g.clearRect(0, 0, W, H);
   g.font = '11px Segoe UI, sans-serif';
-  if (!px || !px.c.length) { g.fillStyle = '#6f7687'; g.fillText('No price history for this stock.', 16, 30); return; }
+  if (!px || !px.c.length) { g.fillStyle = cssv('--muted'); g.fillText('No price history for this stock.', 16, 30); return; }
   const a = st.a, b = st.b, pos = Object.fromEntries(px.d.map((d, i) => [d, i])), N = px.c.length;
   const vis = calls.filter(c => c.scored && pos[c.date] != null && !st.hide.has(c.broker));
   // target steps: each broker's target holds from its report until that broker's next report on this stock
@@ -215,7 +216,7 @@ function drawChart(cv, px, calls, st, pre) {
   const pad = (mx - mn) * .07 || mx * .05 || 1; mn -= pad; mx += pad;
   const Y = v => T + (mx - v) / (mx - mn) * PH;
   // grid + axes
-  g.strokeStyle = 'rgba(120,128,160,.16)'; g.fillStyle = '#6f7687'; g.lineWidth = 1;
+  g.strokeStyle = cssv('--line'); g.fillStyle = cssv('--muted'); g.lineWidth = 1;
   const stepV = niceStep((mx - mn) / 5);
   for (let v = Math.ceil(mn / stepV) * stepV; v <= mx; v += stepV) { const y = Y(v); g.beginPath(); g.moveTo(L, y); g.lineTo(W - R, y); g.stroke(); g.fillText(v.toFixed(stepV < .1 ? 3 : 2), 4, y + 4); }
   const span = b - a, every = span > 900 ? 12 : span > 450 ? 6 : span > 200 ? 3 : span > 70 ? 1 : 0;
@@ -247,7 +248,7 @@ function drawChart(cv, px, calls, st, pre) {
       const y1 = Y(Math.max(px.o[i], px.c[i])), y2 = Y(Math.min(px.o[i], px.c[i]));
       g.fillRect(x - body / 2, y1, body, Math.max(1, y2 - y1));
     }
-  } else line(px.c, '#34326b', 1.7);
+  } else line(px.c, cssv('--ink'), 1.7);
   if (st.layers.ma200) line(pre.ma200, '#e0913a', 1.3);
   if (st.layers.ma50) line(pre.ma50, '#7c6fd6', 1.3);
   // call markers and target diamonds in broker colours
@@ -266,7 +267,7 @@ function drawChart(cv, px, calls, st, pre) {
   const vy = T + PH + 8; let vmax = 0; for (let i = a; i <= b; i++) vmax = Math.max(vmax, px.v[i] || 0);
   if (vmax > 0) {
     for (let i = a; i <= b; i++) { const h = (px.v[i] || 0) / vmax * VH; g.fillStyle = px.c[i] >= px.o[i] ? 'rgba(31,138,76,.35)' : 'rgba(192,57,43,.35)'; g.fillRect(X(i) - Math.max(.6, bw * .34), vy + VH - h, Math.max(1.2, bw * .68), h); }
-    g.fillStyle = '#6f7687'; g.fillText('Volume', 4, vy + 10);
+    g.fillStyle = cssv('--muted'); g.fillText('Volume', 4, vy + 10);
   }
   g.strokeStyle = 'rgba(120,128,160,.25)'; g.beginPath(); g.moveTo(L, vy - 4); g.lineTo(W - R, vy - 4); g.stroke();
 }
@@ -318,6 +319,15 @@ const RM100_TIPS = {   // what each cost means in everyday words
   'Tax': 'Corporate income tax paid to the government.',
   'Profit after tax': 'What is left for shareholders: paid as dividends or used to open new shops.',
 };
+/* shared picture library: generic AI-generated objects in data/lib, matched to a topic by keywords */
+const LIBPIC = n => `data/lib/${n}.jpg`;
+const PIC_RULES = [[/valuation|share price/i, 'pricetag'], [/outlet|shop|store|branch/i, 'shop'], [/transaction|basket|customer/i, 'basket'], [/hour|opening/i, 'clock'],
+  [/e-?commerce|online|bulksales|digital|app\b/i, 'ecommerce'], [/consumer|spending|demand|income/i, 'wallet'], [/competi|rival/i, 'chess'],
+  [/supplier|rebate|buying power|partner/i, 'puzzle'], [/wage|staff|labour|salar|people/i, 'badge'], [/utilit|energy|electric|green|power/i, 'bulb'],
+  [/depreciation|ageing|time/i, 'hourglass'], [/distribution|logistic|warehouse|centre/i, 'warehouse'], [/china|overseas|international|export|abroad|pilot/i, 'globe'],
+  [/net cash|balance sheet|debt|borrow/i, 'safe'], [/risk|regulat|policy/i, 'shield'], [/growth|expan/i, 'growth'], [/delivery|transport|fleet/i, 'truck']];
+const picFor = t => (PIC_RULES.find(([r]) => r.test(t)) || [0, 'magnifier'])[1];
+const bgPic = src => `style="background-image:url('${esc(src)}')"`;
 const PIE_COLS = ['#8f86e8', '#e0913a', '#d6336c', '#1c7ed6', '#9aa0b4', '#c08ad6', '#0c8599', '#2b9a66'];
 
 function countUps(root) {                 // animate numbers marked data-count="1234.5" data-dec="1" data-pre="RM" data-suf=" m"
@@ -343,26 +353,27 @@ function donut(parts, id) {               // SVG donut; each slice is clickable
 }
 
 function overviewPanel(s, b, f, calls, all, avgTp) {
-  const cards = [];
-  const img = b && (b.aiImages || [])[0];
-  if (b) cards.push(`<div class="story" ${img ? `style="background-image:linear-gradient(180deg,rgba(20,20,40,.05),rgba(20,20,40,.82)),url('${esc(img.src)}')"` : ''}>
-    <span class="s-tag">What it does</span><div class="s-body"><b class="s-head">${esc(b.oneLine)}</b>${img ? '<small class="s-ai">AI-generated illustration</small>' : ''}</div></div>`);
+  const cards = [], ai = (b && b.aiImages) || [];
+  const story = (tag, pic, body, opts = {}) => `<div class="story${opts.cls ? ' ' + opts.cls : ''}"><div class="s-pic" ${bgPic(pic)}></div><div class="s-shade"></div>
+    <span class="s-tag">${tag}</span>${opts.ai ? '<span class="s-aib">AI illustration</span>' : ''}<div class="s-body">${body}</div></div>`;
+  if (b) cards.push(story('What it does', ai[0] ? ai[0].src : LIBPIC('shop'), `<b class="s-head">${esc(b.oneLine)}</b>`, { ai: 1, cls: 'photo' }));
   if (f) {
     const it = f.pnl.items, rev = it[0].value, pat = it[it.length - 1].value;
-    cards.push(`<div class="story s2"><span class="s-tag">How big</span><div class="s-body"><div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>sales in ${esc(f.pnl.period)}</b>
-      <div class="s-num sm">${esc(f.revenueFormula.outlets.split(' at ')[0])}</div><b>shops across Malaysia</b></div></div>`);
-    cards.push(`<div class="story s3"><span class="s-tag">Out of every RM100</span><div class="s-body"><div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>
-      <small>RM${(Math.abs(it[1].value) / rev * 100).toFixed(0)} goes to buying the goods it sells</small></div></div>`);
+    const big = ai[2] || ai[1];
+    cards.push(story('How big', big ? big.src : LIBPIC('warehouse'), `<div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>sales in ${esc(f.pnl.period)}</b>
+      <div class="s-num sm">${esc(f.revenueFormula.outlets.split(' at ')[0])}</div><b>shops across Malaysia</b>`, { ai: 1, cls: big ? 'photo' : '' }));
+    cards.push(story('Out of every RM100', LIBPIC('coins'), `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>
+      <small>RM${(Math.abs(it[1].value) / rev * 100).toFixed(0)} goes to buying the goods it sells</small>`, { ai: 1 }));
     const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values, P = T.rows.find(r => r.label === 'Profit after tax').values, g = (a, i) => (a[i] / a[i - 1] - 1) * 100;
-    cards.push(`<div class="story s4"><span class="s-tag">Still growing?</span><div class="s-body"><div class="s-num ${g(R, 3) >= 0 ? 'up' : 'dn'}">${g(R, 3) >= 0 ? '▲' : '▼'} ${cnt(Math.abs(g(R, 3)), 1, '', '%')}</div><b>sales, first half 2026</b>
-      <div class="s-num sm ${g(P, 3) >= 0 ? 'up' : 'dn'}">${g(P, 3) >= 0 ? '▲' : '▼'} ${Math.abs(g(P, 3)).toFixed(1)}%</div><b>profit, same period</b></div></div>`);
+    cards.push(story('Still growing?', LIBPIC('growth'), `<div class="s-num ${g(R, 3) >= 0 ? 'up' : 'dn'}">${g(R, 3) >= 0 ? '▲' : '▼'} ${cnt(Math.abs(g(R, 3)), 1, '', '%')}</div><b>sales, first half 2026</b>
+      <div class="s-num sm ${g(P, 3) >= 0 ? 'up' : 'dn'}">${g(P, 3) >= 0 ? '▲' : '▼'} ${Math.abs(g(P, 3)).toFixed(1)}%</div><b>profit, same period</b>`, { ai: 1 }));
     const nc = f.metrics.find(m => m.label.startsWith('Net cash'));
-    cards.push(`<div class="story s5"><span class="s-tag">Any debt?</span><div class="s-body"><div class="s-num">${nc ? esc(nc.value) : '–'}</div><b>net cash, no bank borrowings</b><small>Its suppliers are paid after about ${esc((f.metrics.find(m => m.label.startsWith('Payable')) || {}).value || '–')} days</small></div></div>`);
+    cards.push(story('Any debt?', LIBPIC('safe'), `<div class="s-num">${nc ? esc(nc.value) : '–'}</div><b>net cash, no bank borrowings</b><small>Its suppliers are paid after about ${esc((f.metrics.find(m => m.label.startsWith('Payable')) || {}).value || '–')} days</small>`, { ai: 1 }));
     const pe = f.metrics.find(m => m.label.startsWith('P/E'));
-    cards.push(`<div class="story s6"><span class="s-tag">Price tag</span><div class="s-body"><div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(laymanFor(pe)) : ''}</small></div></div>`);
+    cards.push(story('Price tag', LIBPIC('pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(laymanFor(pe)) : ''}</small>`, { ai: 1 }));
   }
-  cards.push(`<div class="story s7"><span class="s-tag">What analysts say</span><div class="s-body"><div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
-    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small></div></div>`);
+  cards.push(story('What analysts say', LIBPIC('binoculars'), `<div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
+    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1 }));
   const chips = [];
   if (f) {
     const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values;
@@ -439,11 +450,46 @@ function healthPanel(f) {
     <div class="biz-note">${esc(bs.note)}</div></div>`;
 }
 
+function gauge(v, max, zones) {          // semicircle gauge; zones = [[upTo, label, cls], ...]
+  const R = 70, C = [90, 86], ang = x => Math.PI * (1 - Math.min(Math.max(x, 0), max) / max), pt = (a, r = R) => [C[0] + r * Math.cos(a), C[1] - r * Math.sin(a)];
+  let lo = 0; const arcs = zones.map(([hi, , cls]) => { const [x1, y1] = pt(ang(lo)), [x2, y2] = pt(ang(Math.min(hi, max))); lo = hi;
+    return `<path d="M${x1.toFixed(1)} ${y1.toFixed(1)}A${R} ${R} 0 0 1 ${x2.toFixed(1)} ${y2.toFixed(1)}" class="gz ${cls}"/>`; }).join('');
+  const deg = Math.min(Math.max(v, 0), max) / max * 180, zone = zones.find(([hi]) => v <= hi) || zones[zones.length - 1];
+  return { svg: `<svg viewBox="0 0 180 100" class="gauge">${arcs}<g class="gneedle" style="--deg:${deg.toFixed(1)}deg"><line x1="${C[0]}" y1="${C[1]}" x2="${C[0] - R + 18}" y2="${C[1]}"/></g><circle cx="${C[0]}" cy="${C[1]}" r="6" class="ghub"/></svg>`, zone };
+}
+const VAL_GROUPS = [
+  ['Price tag', 'Is the share cheap or expensive?', 'pricetag', /^(Market value|P\/E|EPS|Price to book|EV|Free cash flow yield)/],
+  ['Business quality', 'Does it make good money?', 'growth', /^(Return on equity|Gross margin|Net margin|Revenue growth|Profit growth)/],
+  ['Safety', 'Could it get into trouble?', 'safe', /^(Net cash|Free cash flow after|Inventory|Payable|Debt|Gearing)/],
+  ['Cash back to you', 'What do shareholders receive?', 'coins', /^(Dividend|Payout)/],
+];
 function valuationPanel(f) {
-  return `<div class="glass card"><h2>The numbers investors watch, in plain English</h2>
-    <p class="sub">Tap any card to see what it means.</p>
-    <div class="mcards">${f.metrics.map(m => `<button class="mcard"><small>${esc(m.label)}</small><b>${esc(m.value)}</b><span class="m-plain">${esc(laymanFor(m))}</span></button>`).join('')}</div>
+  const M = k => f.metrics.find(m => m.label.startsWith(k)), n = m => m ? parseFloat(String(m.value).replace(/[^0-9.\-]/g, '')) : NaN;
+  const heroes = [
+    ['01', 'Is the price high?', M('P/E'), 'pricetag', 50, [[12, 'Low price tag', 'good'], [20, 'Middle', 'mid'], [999, 'High price tag', 'warn']]],
+    ['02', 'Is it a good business?', M('Return on equity'), 'growth', 50, [[10, 'Weak', 'warn'], [15, 'Fair', 'mid'], [999, 'Strong', 'good']]],
+    ['03', 'What do I get paid?', M('Dividend yield'), 'coins', 8, [[2, 'Low payout', 'warn'], [5, 'Middle', 'mid'], [999, 'High payout', 'good']]],
+  ].filter(h => h[2] && !isNaN(n(h[2])));
+  const used = new Set(), groups = VAL_GROUPS.map(([t, q, pic, re]) => { const ms = f.metrics.filter(m => re.test(m.label) && !used.has(m)); ms.forEach(m => used.add(m)); return [t, q, pic, ms]; }).filter(g => g[3].length);
+  const rest = f.metrics.filter(m => !used.has(m)); if (rest.length) groups.push(['Other', 'More numbers', 'magnifier', rest]);
+  return `<div class="glass card"><div class="biz-tag">Start here</div><h2 style="margin-top:4px">Three questions, three numbers</h2>
+    <div class="heroes">${heroes.map(([no, q, m, pic, max, zones]) => { const g = gauge(n(m), max, zones);
+      return `<div class="hero-m"><div class="hm-top"><div class="hm-pic" ${bgPic(LIBPIC(pic))}></div><span class="hm-no">${no}</span><div class="hm-q">${q}</div></div>
+        <div class="hm-g">${g.svg}<div class="hm-v">${esc(m.value)}</div></div><span class="badge ${g.zone[2] === 'good' ? 'high' : g.zone[2] === 'warn' ? 'medium' : ''}">${g.zone[1]}</span>
+        <small class="hm-l">${esc(m.label)}</small><p>${esc(laymanFor(m))}</p></div>`; }).join('')}</div>
+    <p class="note">Gauge zones are general rules of thumb for reading these numbers, not official benchmarks; a fast-growing company often carries a high price tag.</p></div>
+  <div class="glass card"><div class="biz-tag">Dig deeper</div><h2 style="margin-top:4px">Every number, grouped by the question it answers</h2><p class="sub">Tap a line to see what it means.</p>
+    <div class="vgroups">${groups.map(([t, q, pic, ms]) => `<div class="vgroup"><div class="vg-head"><div class="vg-pic" ${bgPic(LIBPIC(pic))}></div><div><b>${t}</b><small>${q}</small></div></div>
+      ${ms.map(m => `<button class="mrow"><span class="mr-l">${esc(m.label)}</span><b>${esc(m.value)}</b><span class="m-plain">${esc(laymanFor(m))}</span></button>`).join('')}</div>`).join('')}</div>
     <p class="note">Valuation uses the share price of RM${f.price} on ${fdate(f.priceDate)}. "Last 12 months" = July 2025 to June 2026. These describe the company; they are not a recommendation.</p></div>`;
+}
+
+function outlookBlock(f) {
+  const items = f.outlook.map(o => typeof o === 'string' ? { tone: 'Neutral', text: o } : o), ov = f.outlookOverall;
+  const cls = t => /^Pos/.test(t) ? 'pos' : /^Neg/.test(t) ? 'neg' : 'neu', ic = t => /^Pos/.test(t) ? '▲' : /^Neg/.test(t) ? '▼' : '●';
+  return `${ov ? `<div class="tone-meter ${cls(ov.tone)}"><small>Overall, management sounds</small><div class="tm-scale">${['Negative', 'Neutral', 'Positive'].map(t => `<span class="${t === ov.tone ? 'on' : ''}">${t}</span>`).join('')}</div><p>${esc(ov.text)}</p></div>` : ''}
+    <div class="ol-list">${items.map(o => `<div class="ol-item ${cls(o.tone)}"><span class="ol-tone">${ic(o.tone)} ${esc(o.tone)}</span><p>${esc(o.text)}</p></div>`).join('')}</div>
+    <p class="note">Tone is our plain reading of management's own words in its reports, not a forecast.</p>`;
 }
 
 function driversPanel(f) {
@@ -453,11 +499,11 @@ function driversPanel(f) {
       <button data-k="neg">▼ Hurting ${f.drivers.filter(d => kind(d.direction) === 'neg').length}</button><button data-k="watch">● To watch ${f.drivers.filter(d => kind(d.direction) === 'watch').length}</button></div>
     <p class="sub">Tap a card to flip it.</p>
     <div class="flips">${f.drivers.map(d => `<div class="flip ${kind(d.direction)}" data-k="${kind(d.direction)}" tabindex="0"><div class="flip-in">
-      <div class="flip-f">${flowIcon({ label: d.factor, detail: d.evidence })}<b>${esc(d.factor)}</b><span class="sub">${esc(d.affects)}</span>${dirBadge(d.direction)}</div>
+      <div class="flip-f"><div class="flip-pic" ${bgPic(LIBPIC(picFor(d.factor)))}>${dirBadge(d.direction)}</div><div class="flip-t"><b>${esc(d.factor)}</b><span class="sub">Affects: ${esc(d.affects)}</span><small class="flip-hint">Tap to flip ↻</small></div></div>
       <div class="flip-b"><b>Why it matters</b><p>${esc(d.why)}</p><small>${esc(d.evidence)}</small></div></div></div>`).join('')}</div>
     <p class="note">"Helping" or "hurting" is a plain reading of each factor from the company's reports, not a forecast or a recommendation.</p></div>
   <div class="two"><div class="glass card"><h2>Competitors</h2>${f.competitors.map(c => `<div class="row-item"><span><b>${esc(c.name)}</b><br><small>${esc(c.how)}</small></span><small class="sub" style="max-width:40%;text-align:right">${esc(c.source)}</small></div>`).join('')}</div>
-    <div class="glass card"><h2>Management's outlook</h2><ul class="biz-plain">${f.outlook.map(o => `<li>${esc(o)}</li>`).join('')}</ul>
+    <div class="glass card"><h2>Management's outlook</h2>${outlookBlock(f)}
       <p class="note">From ${f.sources.map(x => `<a href="${esc(x.url)}" target="_blank" rel="noopener" style="text-decoration:underline">${esc(x.title)}</a>`).join(' and ')}.</p></div></div>`;
 }
 
@@ -513,7 +559,7 @@ async function stock(id, tab) {
   };
   const chg = s.last && s.lo52 ? s.last / s.lo52 - 1 : null;
   view.innerHTML = `<div class="crumb"><a href="#/stocks">Stocks</a> › ${esc(s.t)}</div>
-    <div class="head"><h1>${esc(s.name)} <small class="sub" style="font-size:15px">${esc(s.t)}${s.code ? ' · ' + esc(s.code) : ''}</small></h1><div style="width:280px">${searchBox('q-stock', 'Search another stock…')}</div></div>
+    <div class="stock-head"><h1>${esc(s.name)} <small class="sub" style="font-size:15px;letter-spacing:0">${esc(s.t)}${s.code ? ' · ' + esc(s.code) : ''}</small></h1>${searchBox('q-stock', 'Search another stock…')}</div>
     <div class="pricebar"><div><small>Last price</small><b>RM${num(s.last)}</b></div>
       <div><small>Average analyst target</small><b>${avgTp ? 'RM' + num(avgTp) : '–'}</b> ${avgTp && s.last ? spct(avgTp / s.last - 1, 0) : ''}</div>
       <div><small>52-week range</small><div class="range52"><span>${num(s.lo52)}</span><div class="r-track"><i style="left:${s.lo52 && s.hi52 && s.hi52 > s.lo52 ? ((s.last - s.lo52) / (s.hi52 - s.lo52) * 100).toFixed(0) : 50}%"></i></div><span>${num(s.hi52)}</span></div></div>
@@ -569,7 +615,7 @@ function wireFlips() {
   const fl = $('#drv-f');
   if (fl) fl.onclick = e => { const b = e.target.closest('button'); if (!b) return; [...fl.children].forEach(x => x.classList.toggle('on', x === b));
     document.querySelectorAll('.flip').forEach(c => { c.hidden = b.dataset.k !== 'all' && c.dataset.k !== b.dataset.k; }); };
-  document.querySelectorAll('.mcard').forEach(c => c.onclick = () => c.classList.toggle('open'));
+  document.querySelectorAll('.mcard, .mrow').forEach(c => c.onclick = () => c.classList.toggle('open'));
 }
 
 /* ---------- business profile (data/b/<id>.json, summarised from the company's annual report) ---------- */
@@ -717,6 +763,14 @@ function route() {
   window.onresize = null; window.onmouseup = null; $('#tip').hidden = true; window.scrollTo(0, 0);
   ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), latest, brokers, method }[page] || home)();
 }
+/* light / dark theme: remembered per browser, defaults to the device setting */
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  try { localStorage.setItem('sa-theme', t); } catch (e) {}
+  document.querySelectorAll('#theme button').forEach(b => b.classList.toggle('on', b.dataset.th === t));
+}
+setTheme(document.documentElement.dataset.theme || 'light');
+$('#theme').onclick = e => { const b = e.target.closest('button'); if (b && b.dataset.th !== document.documentElement.dataset.theme) { setTheme(b.dataset.th); if (IDX) { const y = window.scrollY; route(); window.scrollTo(0, y); } } };
 $('#signin').onclick = () => { $('#modal').hidden = false; };
 $('#modal-close').onclick = () => { $('#modal').hidden = true; };
 window.addEventListener('hashchange', route);

@@ -1,0 +1,38 @@
+{
+  "code": "5225", "name": "IHH Healthcare Berhad",
+  "period": "Financial year ended 31 December 2025",
+  "source": {"title": "IHH Healthcare Annual Report 2025", "url": "https://ihhmy.listedcompany.com/misc/ar/IHH_Annual_Report_2025.pdf"},
+  "oneLine": "A private hospital group with a network of 60 hospitals across Malaysia, Singapore, Türkiye, India, Greater China and other markets.",
+  "inPlainWords": [
+    "IHH owns and runs private hospitals. Patients, or their insurers, pay for consultations, surgery, ward stays and tests.",
+    "It also runs diagnostic laboratories, and it owns part of a property trust (Parkway Life REIT) that holds hospital buildings and earns rent.",
+    "Malaysia is only one of its markets: most of its revenue comes from Türkiye and Europe, Singapore and India."
+  ],
+  "flow": [
+    {"label": "Patients and insurers", "detail": "People come for treatment and pay out of pocket or through insurance."},
+    {"label": "60 hospitals", "detail": "Hospital and healthcare services brought in RM24.3 billion, about 95% of revenue (calculated)."},
+    {"label": "Laboratories", "detail": "Diagnostic lab tests brought in about RM1.0 billion."},
+    {"label": "Hospital property", "detail": "Rental income of RM335 million, mostly through Parkway Life REIT."}
+  ],
+  "moneyNote": "Türkiye and Europe is the largest unit by revenue, but Singapore earns nearly as much operating profit from less revenue (segment EBITDA of RM1.67 billion against RM1.69 billion).",
+  "segmentsTitle": "Business units, 2025 (RM million, revenue from outside customers)",
+  "segments": [
+    {"name": "Hospitals: Türkiye and Europe", "revenue": 8448, "profit": 1691, "desc": "Hospital and healthcare services"},
+    {"name": "Hospitals: Singapore", "revenue": 5950, "profit": 1666, "desc": "Hospital and healthcare services"},
+    {"name": "Hospitals: Malaysia", "revenue": 4825, "profit": 1281, "desc": "Hospital and healthcare services"},
+    {"name": "Hospitals: India", "revenue": 4176, "profit": 770, "desc": "Hospital and healthcare services"},
+    {"name": "Hospitals: Greater China", "revenue": 1620, "profit": 146, "desc": "Hospital and healthcare services"},
+    {"name": "Labs", "revenue": 1023, "profit": 359, "desc": "Diagnostic laboratory services"},
+    {"name": "Parkway Life REIT", "revenue": 178, "profit": 320, "desc": "Real estate investment trust; most of its income is rent from within the group"}
+  ],
+  "segmentNote": "Profit shown is segment EBITDA (operating profit before interest, tax, depreciation and amortisation), from the segment note on p.218. Figures are before the hyperinflation accounting adjustment; reported group revenue after it is RM25.7 billion.",
+  "geographyTitle": "Revenue by location, 2025 (RM million)", "geographyUnit": "RM million",
+  "geography": [
+    {"name": "Türkiye and Europe", "value": 8091}, {"name": "Singapore", "value": 6100}, {"name": "Malaysia", "value": 4960},
+    {"name": "India", "value": 4827}, {"name": "Greater China", "value": 1620}, {"name": "Japan", "value": 139}
+  ],
+  "keyFacts": [
+    {"label": "Revenue", "value": "RM25.7 billion"}, {"label": "Profit to shareholders", "value": "RM2.1 billion"},
+    {"label": "Hospitals", "value": "60"}, {"label": "Largest market", "value": "Türkiye and Europe"}
+  ]
+}

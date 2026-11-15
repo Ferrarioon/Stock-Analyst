@@ -1,0 +1,39 @@
+{
+  "code": "5326", "name": "99 Speed Mart Retail Holdings Berhad",
+  "period": "Financial year ended 31 December 2025",
+  "source": {"title": "99 Speed Mart Integrated Annual Report 2025", "url": "https://99speedmart.com.my/wp-content/uploads/2026/04/99SMART-Integrated-Annual-Report-2025.pdf"},
+  "oneLine": "Malaysia's leading chain of neighbourhood mini-marts, selling everyday groceries and household goods at low prices.",
+  "inPlainWords": [
+    "Think of the 99 Speedmart shop near your house: small, close by, and stocked with daily essentials such as groceries, drinks, household products and personal care items.",
+    "It started as one sundry shop in Klang in 1987 and now has shops in every Malaysian state. In 2025 it opened five pilot shops in Fuzhou, China.",
+    "Its motto is \"Near 'n Save\": be close to where people live, and keep prices low by buying in very large volumes."
+  ],
+  "flowTitle": "How it makes money",
+  "flow": [
+    {"label": "Suppliers", "detail": "Buys goods in bulk from brands and distributors. Suppliers also pay rebates and incentives, which lower its cost of goods.", "ref": "p.44, 47"},
+    {"label": "22 distribution centres", "detail": "Its own warehouses and lorries send stock to the shops, across Malaysia and China.", "ref": "p.10, 12"},
+    {"label": "3,037 mini-marts", "detail": "Small shops inside housing areas, plus the 99 Bulksales online platform for bulk orders.", "ref": "p.11, 17"},
+    {"label": "Shoppers", "detail": "Customers pay at the till. No single customer makes up 10% or more of revenue.", "ref": "p.216"}
+  ],
+  "moneyNote": "For every RM100 of sales in 2025, about RM19.50 was left after the cost of the goods, and about RM5.30 was profit after all costs and tax (calculated from the reported figures).",
+  "segmentsTitle": "Where the revenue comes from (RM million)",
+  "segments": [
+    {"name": "Sale of goods in its shops", "revenue": 11429.1, "desc": "Groceries, household products, beverages and personal care items"},
+    {"name": "Speedpoint in-store services", "revenue": 4.1, "desc": "Commission from services offered at the counter"}
+  ],
+  "segmentNote": "The company reports a single business segment: retail of consumable merchandise and other household products, almost entirely in Malaysia (p.216).",
+  "geographyTitle": "Shops by state (number of outlets, 31 Dec 2025)",
+  "geographyUnit": "outlets",
+  "geography": [
+    {"name": "Selangor", "value": 854}, {"name": "Johor", "value": 443}, {"name": "Perak", "value": 346}, {"name": "Sabah", "value": 266},
+    {"name": "Kuala Lumpur & Putrajaya", "value": 237}, {"name": "Kedah", "value": 195}, {"name": "Negeri Sembilan", "value": 193},
+    {"name": "Melaka", "value": 155}, {"name": "Penang", "value": 153}, {"name": "Pahang", "value": 143}, {"name": "Sarawak", "value": 20},
+    {"name": "Perlis", "value": 13}, {"name": "Terengganu", "value": 13}, {"name": "Fuzhou, China", "value": 5}, {"name": "Kelantan", "value": 1}
+  ],
+  "keyFacts": [
+    {"label": "Revenue", "value": "RM11.43 billion", "ref": "p.23"}, {"label": "Profit after tax", "value": "RM607 million", "ref": "p.23"},
+    {"label": "Shops", "value": "3,037 (259 opened in 2025)", "ref": "p.11"}, {"label": "Distribution centres", "value": "22", "ref": "p.10"},
+    {"label": "Products", "value": "3,000+ items in 50 categories", "ref": "p.10"}, {"label": "Employees", "value": "25,647", "ref": "p.57"},
+    {"label": "Founded", "value": "1987, Klang", "ref": "p.17"}
+  ]
+}

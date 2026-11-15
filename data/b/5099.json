@@ -1,0 +1,37 @@
+{
+  "code": "5099", "name": "Capital A Berhad",
+  "period": "Financial year ended 31 December 2025",
+  "source": {"title": "Capital A Annual Report 2025", "url": "https://www.capitala.com/misc/Capital_A_ar2025.pdf"},
+  "oneLine": "The group behind the AirAsia brand, whose 2025 accounts split it into the airline business and a set of non-airline businesses such as cargo, aircraft maintenance and a travel app.",
+  "inPlainWords": [
+    "Most people know Capital A through AirAsia flights. In the 2025 accounts the aviation business is shown as a \"discontinued operation\", separate from the businesses the group continues to run.",
+    "The continuing businesses are Teleport (cargo and logistics), ADE (aircraft maintenance and engineering), AirAsia MOVE (online travel and e-commerce app), BigPay (financial services) and AirAsia Next (licensing the AirAsia brand).",
+    "In 2025 aviation still made up about 90% of total revenue, so the numbers for the continuing businesses are much smaller than the group most people picture."
+  ],
+  "flow": [
+    {"label": "Passengers", "detail": "Buy seats and extras on AirAsia flights. Aviation revenue was RM16.5 billion in 2025, shown as a discontinued operation.", "ref": "p.117"},
+    {"label": "Cargo customers", "detail": "Pay Teleport to move freight. RM1.2 billion, the largest continuing business.", "ref": "p.117"},
+    {"label": "Airlines", "detail": "Pay ADE for aircraft maintenance, repair and overhaul. RM212 million.", "ref": "p.117"},
+    {"label": "App users and brand users", "detail": "AirAsia MOVE, BigPay and brand licensing fees together brought about RM231 million (calculated).", "ref": "p.117"}
+  ],
+  "moneyNote": "Read this company's figures with care: the 2025 accounts report continuing businesses (RM1.9 billion revenue) separately from aviation (RM16.5 billion), and the reported profit includes items related to that split.",
+  "segmentsTitle": "Revenue by business, 2025 (RM million)",
+  "segments": [
+    {"name": "Aviation (discontinued operation)", "revenue": 16524.6, "desc": "Passenger seat sales RM13.3 billion and other passenger revenue RM3.3 billion"},
+    {"name": "Teleport", "revenue": 1215.2, "desc": "Logistics and freight services"},
+    {"name": "ADE", "revenue": 212.2, "desc": "Engineering services: aircraft maintenance, repair and overhaul"},
+    {"name": "Others", "revenue": 208.3, "desc": "Other continuing businesses"},
+    {"name": "AirAsia MOVE", "revenue": 161.2, "desc": "Online travel and e-commerce platform"},
+    {"name": "AirAsia Next", "revenue": 39.2, "desc": "Brand licensing fees"},
+    {"name": "BigPay", "revenue": 30.9, "desc": "Financial and other related services"}
+  ],
+  "segmentNote": "From the revenue note (p.117). Total revenue including the discontinued aviation operation was RM18.4 billion; continuing operations were RM1.9 billion.",
+  "geographyTitle": "Revenue by country, 2025 (RM million, including aviation)", "geographyUnit": "RM million",
+  "geography": [
+    {"name": "Malaysia", "value": 9474.6}, {"name": "Thailand", "value": 5495.2}, {"name": "Indonesia", "value": 1909.3}, {"name": "Philippines", "value": 1341.6}, {"name": "Others", "value": 170.9}
+  ],
+  "keyFacts": [
+    {"label": "Total revenue", "value": "RM18.4 billion"}, {"label": "Continuing businesses", "value": "RM1.9 billion"},
+    {"label": "Aviation (discontinued)", "value": "RM16.5 billion"}, {"label": "Aircraft operated", "value": "More than 200"}
+  ]
+}

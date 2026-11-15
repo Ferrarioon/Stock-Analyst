@@ -1,0 +1,33 @@
+{
+  "code": "5263", "name": "Sunway Construction Group Berhad",
+  "period": "Financial year ended 31 December 2025",
+  "source": {"title": "Sunway Construction Integrated Annual Report 2025", "url": "https://www.sunwayconstruction.com.my/annual-report-2025/template/pdf/SunCon-IAR25.pdf"},
+  "oneLine": "A construction contractor that builds buildings, infrastructure and data centres, mostly in Malaysia, and makes precast concrete parts.",
+  "inPlainWords": [
+    "SunCon is hired by developers, companies and governments to construct things: buildings, civil engineering and infrastructure works, foundations, and mechanical, electrical and plumbing works.",
+    "It has delivered more than 156 megawatts of data centre capacity, and it also has a sustainable energy business.",
+    "It does most of the specialised work in-house instead of relying on outside vendors, which it says gives it more control over cost, schedule and quality."
+  ],
+  "flow": [
+    {"label": "Clients award projects", "detail": "Work won but not yet built (the order book) stood at RM5.7 billion at the end of 2025.", "ref": "p.7"},
+    {"label": "SunCon builds", "detail": "Its own teams handle design, foundations, building works and mechanical and electrical works.", "ref": "p.7, 248"},
+    {"label": "Paid as work progresses", "detail": "Revenue is recognised as each project advances. 2025 revenue was RM5.3 billion.", "ref": "p.248"},
+    {"label": "Precast factory", "detail": "Also makes and sells precast concrete components, about 4% of revenue.", "ref": "p.248"}
+  ],
+  "moneyNote": "For every RM100 of revenue in 2025, about RM8.40 was operating profit (calculated from the segment note). Construction is a thin-margin business, so profit depends on winning enough work and controlling costs.",
+  "segmentsTitle": "Business segments, 2025 (RM million, sales to outside customers)",
+  "segments": [
+    {"name": "Construction", "revenue": 5131.6, "profit": 511.8, "desc": "Design and build, civil engineering, building works, geotechnical services, mechanical and engineering works, sustainable energy"},
+    {"name": "Precast concrete", "revenue": 207.1, "profit": 13.7, "desc": "Making and distributing precast components and building materials"}
+  ],
+  "segmentNote": "Profit shown is profit before tax by segment (p.248).",
+  "geographyTitle": "Revenue by country, 2025 (RM million)", "geographyUnit": "RM million",
+  "geography": [
+    {"name": "Malaysia", "value": 5067.9}, {"name": "Singapore", "value": 207.1}, {"name": "India", "value": 63.8}
+  ],
+  "keyFacts": [
+    {"label": "Revenue", "value": "RM5.34 billion"}, {"label": "Profit before tax", "value": "RM526 million"},
+    {"label": "Profit to shareholders", "value": "RM362 million"}, {"label": "Order book", "value": "RM5.7 billion"},
+    {"label": "Data centre capacity delivered", "value": "Over 156 MW"}, {"label": "Employees", "value": "1,747"}
+  ]
+}

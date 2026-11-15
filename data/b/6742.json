@@ -1,0 +1,35 @@
+{
+  "code": "6742", "name": "YTL Power International Berhad",
+  "period": "Financial year ended 30 June 2025",
+  "source": {"title": "YTL Power Annual Report 2025", "url": "https://www.ytl.com/wp-content/uploads/ytles/sites/2/files/annual-report/YTL_Power_AR_2025.pdf"},
+  "oneLine": "An owner and operator of utilities: power plants in Singapore, a water and sewerage company in the UK, and the YES mobile network in Malaysia.",
+  "inPlainWords": [
+    "YTL Power sells things people pay for every month: electricity, water and mobile data.",
+    "Most of the business is overseas. It owns YTL PowerSeraya, which generates and sells electricity in Singapore, and Wessex Water, which supplies water and sewerage services to 2.9 million customers in the UK.",
+    "In Malaysia it owns 60% of YTL Communications, which runs the YES 4G and 5G service, and a majority stake in Ranhill Utilities."
+  ],
+  "flow": [
+    {"label": "Power plants (Singapore)", "detail": "Generates electricity and sells it to wholesale and retail customers. Licensed capacity of 3,100 megawatts.", "ref": "p.4"},
+    {"label": "Water pipes (UK)", "detail": "Wessex Water bills households and businesses for water and sewerage. Its prices are regulated.", "ref": "p.4, 317"},
+    {"label": "Mobile network (Malaysia)", "detail": "YES sells 4G and 5G data plans. This segment made a loss in FY2025.", "ref": "p.318"},
+    {"label": "Monthly bills", "detail": "Customers pay regularly, so revenue is steady, but the assets are costly to build and carry large borrowings."}
+  ],
+  "moneyNote": "Power generation brought 56% of revenue and 83% of segment profit in FY2025. Water and sewerage brought 32% of revenue but 12% of profit, after RM962 million of finance costs (calculated from the segment note).",
+  "segmentsTitle": "Business segments, FY2025 (RM million, revenue from outside customers)",
+  "segments": [
+    {"name": "Power generation", "revenue": 12190.5, "profit": 2757.2, "desc": "Electricity generation and sale in Singapore and Malaysia, plus oil trading and oil tank leasing"},
+    {"name": "Water and sewerage", "revenue": 7046.7, "profit": 384.3, "desc": "Regulated water utilities in the UK and Malaysia"},
+    {"name": "Investment holding activities", "revenue": 1679.4, "profit": 424.9, "desc": "Investments and other holdings"},
+    {"name": "Telecommunications", "revenue": 885.2, "profit": 0, "desc": "Telecommunication services and infrastructure. Made a loss of RM256 million, shown here as zero"}
+  ],
+  "segmentNote": "Profit shown is segment profit from Note 39 (p.318). The telecommunications loss of RM256.0 million is shown as zero so the share-of-profit bar adds up; group segment profit including it is RM3,310.4 million.",
+  "geographyTitle": "Revenue by customer location, FY2025 (RM million)", "geographyUnit": "RM million",
+  "geography": [
+    {"name": "Singapore", "value": 11878.1}, {"name": "United Kingdom", "value": 5897.2}, {"name": "Malaysia", "value": 3166.9}, {"name": "Other countries", "value": 859.5}
+  ],
+  "keyFacts": [
+    {"label": "Revenue", "value": "RM21.8 billion"}, {"label": "Profit before tax", "value": "RM3.3 billion"},
+    {"label": "Profit to shareholders", "value": "RM2.5 billion"}, {"label": "Total assets", "value": "RM74.9 billion"},
+    {"label": "Borrowings", "value": "RM38.0 billion"}, {"label": "Employees", "value": "9,642"}
+  ]
+}

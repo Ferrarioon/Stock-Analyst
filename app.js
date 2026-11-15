@@ -434,7 +434,14 @@ function healthPanel(f) {
   const ACOL = ['#c9a24a', '#e2c27a', '#8a8f98', '#5f6670', '#b38a3a', '#d8d2c2', '#3fbf85', '#9bd6b6'], LCOL = ['#c8503f', '#e0675a', '#8a8f98', '#d6336c', '#f0a3b5', '#3fbf85'];
   const stack = (arr, cols) => `<div class="bsbar">${arr.map((x, i) => x.value ? `<span style="width:0;background:${cols[i % cols.length]}" data-w="${(x.value / aTot * 100).toFixed(2)}%" title="${esc(x.label)}: RM${fmtM(x.value)} m"></span>` : '').join('')}</div>
     <div class="bs-legend">${arr.map((x, i) => `<div><i style="background:${cols[i % cols.length]}"></i>${esc(x.label)}<b>${fmtM(x.value)}</b></div>`).join('')}</div>`;
-  const cf = f.cash, end = cf.waterfall[cf.waterfall.length - 1];
+  const cf = f.cash;
+  if (!cf) return `<div class="glass card"><h2>How safe is the bank?</h2><p class="sub">Banks are judged on their capital cushion and the quality of their loans, not on free cash flow. Tap a card to see what it means.</p>
+    <div class="mcards">${(f.safety || []).map(m => `<button class="mcard"><small>${esc(m.label)}</small><b>${esc(m.value)}</b><span class="m-plain">${esc(m.plain)}</span></button>`).join('')}</div></div>
+  <div class="glass card"><h2>What it owns vs. what it owes <small class="sub">${esc(bs.date)}, RM million</small></h2>
+    <div class="owe-grid"><div><div class="owe-h">Owns <b>RM${cnt(aTot / 1000, 1)} bn</b></div>${stack(bs.assets, ACOL)}</div>
+      <div><div class="owe-h">Funded by</div>${stack(liabs, LCOL)}</div></div>
+    <div class="biz-note">${esc(bs.note)}</div></div>`;
+  const end = cf.waterfall[cf.waterfall.length - 1];
   return `<div class="glass card"><h2>Where the cash came from and went <small class="sub">${esc(cf.wfPeriod)}, RM million</small></h2>
     ${waterfall(cf.waterfall)}
     <p class="note">${esc(cf.wfNote || `${end.l}: RM${Math.round(end.v)} m.`)}</p>
@@ -456,8 +463,8 @@ function gauge(v, max, zones) {          // semicircle gauge; zones = [[upTo, la
 }
 const VAL_GROUPS = [
   ['Price tag', 'Is the share cheap or expensive?', 'pricetag', /^(Market value|P\/E|EPS|Price to book|EV|Free cash flow yield)/],
-  ['Business quality', 'Does it make good money?', 'growth', /^(Return on equity|Gross margin|Net margin|Revenue growth|Profit growth)/],
-  ['Safety', 'Could it get into trouble?', 'safe', /^(Net cash|Net debt|Net gearing|Free cash flow(?! yield)|Inventory|Payable|Debt|Gearing|Current ratio|CET1|Capital|Loan|Gross impaired)/],
+  ['Business quality', 'Does it make good money?', 'growth', /^(Return on equity|Gross margin|Net margin|Revenue growth|Profit growth|Core profit|Net interest margin|Cost to income)/],
+  ['Safety', 'Could it get into trouble?', 'safe', /^(Net cash|Net debt|Net gearing|Free cash flow(?! yield)|Inventory|Payable|Debt|Gearing|Current ratio|CET1|Capital|Loan|Gross impaired|CASA)/],
   ['Cash back to you', 'What do shareholders receive?', 'coins', /^(Dividend|Payout)/],
 ];
 function valuationPanel(f) {
@@ -523,7 +530,7 @@ async function stock(id, tab) {
   }).join('');
   const all = hitStats(calls);
   const tps = IDX.brokers.map(br => s.latest[br] && s.latest[br].tp).filter(Boolean), avgTp = tps.length ? avg(tps) : null;
-  const has = { business: !!b, money: !!(f && f.how), health: !!(f && f.cash && f.cash.waterfall), valuation: !!f, drivers: !!f };
+  const has = { business: !!b, money: !!(f && f.how), health: !!(f && f.balance && (f.cash || f.safety)), valuation: !!f, drivers: !!f };
   const tabs = TABS.filter(([k]) => has[k] !== false);
   tab = tabs.some(([k]) => k === tab) ? tab : 'overview';
   const panels = {

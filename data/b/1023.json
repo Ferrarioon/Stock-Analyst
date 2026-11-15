@@ -125,5 +125,22 @@
     "channel": "CIMB Malaysia",
     "channelUrl": "https://www.youtube.com/@CIMBGroupHoldingsBhd"
   },
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/1023_1.jpg",
+      "caption": "A CIMB branch in Kuala Lumpur"
+    },
+    {
+      "src": "data/b/img/1023_2.jpg",
+      "caption": "A relationship manager meeting a small-business owner, CIMB's commercial banking"
+    },
+    {
+      "src": "data/b/img/1023_3.jpg",
+      "caption": "Mobile banking on a phone, where most customer transactions now happen"
+    },
+    {
+      "src": "data/b/img/1023_4.jpg",
+      "caption": "A treasury dealing room, part of CIMB's wholesale banking"
+    }
+  ]
 }

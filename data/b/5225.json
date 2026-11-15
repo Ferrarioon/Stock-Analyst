@@ -147,5 +147,22 @@
     "channel": "IHH Healthcare",
     "channelUrl": "https://www.youtube.com/@CareForGood"
   },
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/5225_1.jpg",
+      "caption": "A modern private hospital in Kuala Lumpur, like IHH's Gleneagles hospitals"
+    },
+    {
+      "src": "data/b/img/5225_2.jpg",
+      "caption": "A nurse caring for a patient in a private hospital room"
+    },
+    {
+      "src": "data/b/img/5225_3.jpg",
+      "caption": "Surgeons at work in a modern operating theatre"
+    },
+    {
+      "src": "data/b/img/5225_4.jpg",
+      "caption": "A diagnostic laboratory testing blood samples, IHH's Labs business"
+    }
+  ]
 }

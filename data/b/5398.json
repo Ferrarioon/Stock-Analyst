@@ -1,7 +1,11 @@
 {
-  "code": "5398", "name": "Gamuda Berhad",
+  "code": "5398",
+  "name": "Gamuda Berhad",
   "period": "Financial year ended 31 July 2025",
-  "source": {"title": "Gamuda Integrated Report 2025", "url": "https://gamuda.listedcompany.com/newsroom/GAMUDA_IR2025_(Cover_to_Page_71).pdf"},
+  "source": {
+    "title": "Gamuda Integrated Report 2025",
+    "url": "https://gamuda.listedcompany.com/newsroom/GAMUDA_IR2025_(Cover_to_Page_71).pdf"
+  },
   "oneLine": "A builder of large infrastructure such as rail lines, tunnels, dams and data centres, which also develops housing townships.",
   "inPlainWords": [
     "Gamuda does two main things. First, governments and large clients pay it to build big projects: metro and rail lines, tunnels, expressways, water treatment plants, dams, renewable energy plants and data centres.",
@@ -10,27 +14,126 @@
   ],
   "flowTitle": "How it makes money",
   "flow": [
-    {"label": "Wins contracts", "detail": "Bids for infrastructure projects from governments and large clients. Work already won but not yet built: more than RM38 billion.", "ref": "Part 1, p.61"},
-    {"label": "Builds over several years", "detail": "Earns revenue as each project progresses, so a contract won today pays out over years.", "ref": "Part 2, p.243"},
-    {"label": "Develops land", "detail": "Buys land, builds townships and sells homes. Homes sold but not yet billed: RM8 billion.", "ref": "Part 1, p.61"},
-    {"label": "Profit", "detail": "Construction brought 61% of pre-tax profit in 2025 and property 39% (calculated from the segment figures).", "ref": "Part 2, p.243"}
+    {
+      "label": "Wins contracts",
+      "detail": "Bids for infrastructure projects from governments and large clients. Work already won but not yet built: more than RM38 billion.",
+      "ref": "Part 1, p.61"
+    },
+    {
+      "label": "Builds over several years",
+      "detail": "Earns revenue as each project progresses, so a contract won today pays out over years.",
+      "ref": "Part 2, p.243"
+    },
+    {
+      "label": "Develops land",
+      "detail": "Buys land, builds townships and sells homes. Homes sold but not yet billed: RM8 billion.",
+      "ref": "Part 1, p.61"
+    },
+    {
+      "label": "Profit",
+      "detail": "Construction brought 61% of pre-tax profit in 2025 and property 39% (calculated from the segment figures).",
+      "ref": "Part 2, p.243"
+    }
   ],
   "moneyNote": "Construction gives most of the revenue, but property is more profitable per ringgit: it made 23% of revenue and 39% of pre-tax profit (calculated from the segment figures).",
   "segmentsTitle": "Business segments, FY2025 (RM million, including its share of joint ventures)",
   "segments": [
-    {"name": "Engineering and construction", "revenue": 12541.6, "profit": 782.9, "desc": "Highways, bridges, rail, tunnels, airfields, water treatment plants, dams and water supply management"},
-    {"name": "Property development and club operations", "revenue": 3824.7, "profit": 498.1, "desc": "Residential and commercial property development and club operations"}
+    {
+      "name": "Engineering and construction",
+      "revenue": 12541.6,
+      "profit": 782.9,
+      "desc": "Highways, bridges, rail, tunnels, airfields, water treatment plants, dams and water supply management"
+    },
+    {
+      "name": "Property development and club operations",
+      "revenue": 3824.7,
+      "profit": 498.1,
+      "desc": "Residential and commercial property development and club operations"
+    }
   ],
   "segmentNote": "Profit shown is profit before tax by segment (Part 2, p.243).",
   "geographyTitle": "Revenue by country, FY2025 (RM million, excluding joint ventures)",
   "geographyUnit": "RM million",
   "geography": [
-    {"name": "Australia", "value": 7055.1}, {"name": "Malaysia", "value": 5458.5}, {"name": "Vietnam", "value": 1607.6},
-    {"name": "Singapore", "value": 743.5}, {"name": "Taiwan", "value": 706.1}, {"name": "United Kingdom", "value": 399.4}
+    {
+      "name": "Australia",
+      "value": 7055.1
+    },
+    {
+      "name": "Malaysia",
+      "value": 5458.5
+    },
+    {
+      "name": "Vietnam",
+      "value": 1607.6
+    },
+    {
+      "name": "Singapore",
+      "value": 743.5
+    },
+    {
+      "name": "Taiwan",
+      "value": 706.1
+    },
+    {
+      "name": "United Kingdom",
+      "value": 399.4
+    }
   ],
   "keyFacts": [
-    {"label": "Revenue", "value": "RM16.37 billion", "ref": "Part 2, p.243"}, {"label": "Profit to shareholders", "value": "RM1.0 billion", "ref": "Part 2, p.243"},
-    {"label": "Construction order book", "value": "Over RM38 billion", "ref": "Part 1, p.61"}, {"label": "Unbilled property sales", "value": "RM8 billion", "ref": "Part 1, p.61"},
-    {"label": "Employees", "value": "6,702 in nine countries", "ref": "Part 1, p.60"}, {"label": "Founded", "value": "1976", "ref": "Part 1, p.9"}
-  ]
+    {
+      "label": "Revenue",
+      "value": "RM16.37 billion",
+      "ref": "Part 2, p.243"
+    },
+    {
+      "label": "Profit to shareholders",
+      "value": "RM1.0 billion",
+      "ref": "Part 2, p.243"
+    },
+    {
+      "label": "Construction order book",
+      "value": "Over RM38 billion",
+      "ref": "Part 1, p.61"
+    },
+    {
+      "label": "Unbilled property sales",
+      "value": "RM8 billion",
+      "ref": "Part 1, p.61"
+    },
+    {
+      "label": "Employees",
+      "value": "6,702 in nine countries",
+      "ref": "Part 1, p.60"
+    },
+    {
+      "label": "Founded",
+      "value": "1976",
+      "ref": "Part 1, p.9"
+    }
+  ],
+  "photos": [
+    {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/SMART_tunnel_entrance.jpg/960px-SMART_tunnel_entrance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "page": "https://commons.wikimedia.org/wiki/File:SMART_tunnel_entrance.jpg",
+      "caption": "The SMART Tunnel in Kuala Lumpur, a road and stormwater tunnel built by an MMC-Gamuda joint venture",
+      "author": "David Boey",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Gamuda_Cove_from_AirAsia_flight.jpg/960px-Gamuda_Cove_from_AirAsia_flight.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "page": "https://commons.wikimedia.org/wiki/File:Gamuda_Cove_from_AirAsia_flight.jpg",
+      "caption": "Gamuda Cove, a township by Gamuda Land in Selangor, seen from the air",
+      "author": "Countryball mys123",
+      "license": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+    }
+  ],
+  "video": {
+    "id": "LRVGggX8hfk",
+    "title": "Gamuda 50th Anniversary | Official Commemorative Video",
+    "channel": "Gamuda Berhad",
+    "channelUrl": "https://www.youtube.com/@GamudaBerhadChannel"
+  }
 }

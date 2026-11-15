@@ -1,7 +1,11 @@
 {
-  "code": "1023", "name": "CIMB Group Holdings Berhad",
+  "code": "1023",
+  "name": "CIMB Group Holdings Berhad",
   "period": "Financial year ended 31 December 2025",
-  "source": {"title": "CIMB Integrated Annual Report 2025", "url": "https://www.cimb.com/content/dam/cimb/group/documents/investor-relations/annual-reports/2025/cimb-iar2025.pdf"},
+  "source": {
+    "title": "CIMB Integrated Annual Report 2025",
+    "url": "https://www.cimb.com/content/dam/cimb/group/documents/investor-relations/annual-reports/2025/cimb-iar2025.pdf"
+  },
   "oneLine": "A bank for individuals, businesses and large institutions across ASEAN, headquartered in Kuala Lumpur.",
   "inPlainWords": [
     "CIMB is a bank. It serves over 30 million customers through 576 branches, with about 33,000 employees.",
@@ -9,28 +13,116 @@
     "Malaysia is the biggest part, but Indonesia (through 292 branches) and Singapore are large contributors too."
   ],
   "flow": [
-    {"label": "Depositors", "detail": "Customers place savings and deposits with the bank, which pays them interest."},
-    {"label": "The bank", "detail": "It lends that money out at a higher rate. The gap is net interest income, its main income."},
-    {"label": "Borrowers", "detail": "Home buyers, car buyers, businesses and large corporations pay interest on loans."},
-    {"label": "Fees and markets", "detail": "It also earns non-interest income: fees, commissions and treasury and markets income."}
+    {
+      "label": "Depositors",
+      "detail": "Customers place savings and deposits with the bank, which pays them interest."
+    },
+    {
+      "label": "The bank",
+      "detail": "It lends that money out at a higher rate. The gap is net interest income, its main income."
+    },
+    {
+      "label": "Borrowers",
+      "detail": "Home buyers, car buyers, businesses and large corporations pay interest on loans."
+    },
+    {
+      "label": "Fees and markets",
+      "detail": "It also earns non-interest income: fees, commissions and treasury and markets income."
+    }
   ],
   "moneyNote": "Wholesale Banking, which serves large companies and institutions, made 28% of revenue but 42% of pre-tax profit in 2025 (calculated from the segment figures).",
   "segmentsTitle": "Business segments, 2025 (RM million)",
   "segments": [
-    {"name": "Consumer Banking", "revenue": 9098, "profit": 2801, "desc": "Banking for individuals"},
-    {"name": "Wholesale Banking", "revenue": 6203, "profit": 4510, "desc": "Banking for large corporations and institutions, including treasury and markets"},
-    {"name": "Commercial Banking", "revenue": 4110, "profit": 1793, "desc": "Banking for businesses"},
-    {"name": "CIMB Digital Assets and Group Funding", "revenue": 3056, "profit": 1576, "desc": "Digital businesses and the group's funding"}
+    {
+      "name": "Consumer Banking",
+      "revenue": 9098,
+      "profit": 2801,
+      "desc": "Banking for individuals"
+    },
+    {
+      "name": "Wholesale Banking",
+      "revenue": 6203,
+      "profit": 4510,
+      "desc": "Banking for large corporations and institutions, including treasury and markets"
+    },
+    {
+      "name": "Commercial Banking",
+      "revenue": 4110,
+      "profit": 1793,
+      "desc": "Banking for businesses"
+    },
+    {
+      "name": "CIMB Digital Assets and Group Funding",
+      "revenue": 3056,
+      "profit": 1576,
+      "desc": "Digital businesses and the group's funding"
+    }
   ],
   "segmentNote": "Profit shown is profit before tax by segment (p.72). The short description of each segment is in plain words, not quoted from the report.",
-  "geographyTitle": "Revenue by country, 2025 (RM million)", "geographyUnit": "RM million",
+  "geographyTitle": "Revenue by country, 2025 (RM million)",
+  "geographyUnit": "RM million",
   "geography": [
-    {"name": "Malaysia", "value": 12291}, {"name": "Indonesia", "value": 4865}, {"name": "Singapore", "value": 2442},
-    {"name": "Thailand", "value": 1631}, {"name": "Other countries", "value": 1238}
+    {
+      "name": "Malaysia",
+      "value": 12291
+    },
+    {
+      "name": "Indonesia",
+      "value": 4865
+    },
+    {
+      "name": "Singapore",
+      "value": 2442
+    },
+    {
+      "name": "Thailand",
+      "value": 1631
+    },
+    {
+      "name": "Other countries",
+      "value": 1238
+    }
   ],
   "keyFacts": [
-    {"label": "Revenue", "value": "RM22.5 billion"}, {"label": "Profit before tax", "value": "RM10.7 billion"},
-    {"label": "Customers", "value": "Over 30 million"}, {"label": "Branches", "value": "576"},
-    {"label": "Employees", "value": "About 33,000"}, {"label": "An ASEAN bank since", "value": "2006"}
-  ]
+    {
+      "label": "Revenue",
+      "value": "RM22.5 billion"
+    },
+    {
+      "label": "Profit before tax",
+      "value": "RM10.7 billion"
+    },
+    {
+      "label": "Customers",
+      "value": "Over 30 million"
+    },
+    {
+      "label": "Branches",
+      "value": "576"
+    },
+    {
+      "label": "Employees",
+      "value": "About 33,000"
+    },
+    {
+      "label": "An ASEAN bank since",
+      "value": "2006"
+    }
+  ],
+  "photos": [
+    {
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/CIMB_Bank_Bendahara_Street_Branch.JPG/960px-CIMB_Bank_Bendahara_Street_Branch.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "page": "https://commons.wikimedia.org/wiki/File:CIMB_Bank_Bendahara_Street_Branch.JPG",
+      "caption": "A CIMB Bank branch in Melaka",
+      "author": "Chongkian",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  ],
+  "video": {
+    "id": "hJVtpq-Bhho",
+    "title": "Forward Together",
+    "channel": "CIMB Malaysia",
+    "channelUrl": "https://www.youtube.com/@CIMBGroupHoldingsBhd"
+  }
 }

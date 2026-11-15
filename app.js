@@ -230,7 +230,7 @@ function setupChart(cv, px, calls) {
   const N = px.c.length, MIN = 15;
   const pre = { ma50: maArr(px.c, 50), ma200: maArr(px.c, 200), hi: rollArr(px.h, Math.max), lo: rollArr(px.l, Math.min) };
   const redraw = () => drawChart(cv, px, calls, st, pre);
-  const setWin = (a, b) => { let span = Math.max(MIN, Math.min(N - 1, b - a)); a = Math.round(a); a = Math.max(0, Math.min(a, N - 1 - span)); st.a = a; st.b = Math.round(a + span); redraw(); };
+  const setWin = (a, b) => { if (!isFinite(a) || !isFinite(b)) return; const span = Math.round(Math.max(MIN, Math.min(N - 1, b - a))); a = Math.round(a); a = Math.max(0, Math.min(a, N - 1 - span)); st.a = a; st.b = a + span; redraw(); };
   const setRange = days => { [...$('#range').children].forEach(x => x.classList.toggle('on', +x.dataset.d === days));
     if (!days) return setWin(0, N - 1); const t = daysAgo(px.d[N - 1], days); let i = N - 1; while (i > 0 && px.d[i - 1] >= t) i--; setWin(i, N - 1); };
   const zoomAt = (f, centre) => { const span = st.b - st.a, c = centre ?? (st.a + st.b) / 2, ns = span * f; setWin(c - (c - st.a) / span * ns, c - (c - st.a) / span * ns + ns);
@@ -359,6 +359,47 @@ function shareBar(items, key) {
   if (!tot) return '';
   return `<div class="sharebar">${items.map((x, i) => x[key] ? `<span style="width:${(x[key] / tot * 100).toFixed(1)}%;background:${BIZ_COLORS[i % BIZ_COLORS.length]}" title="${esc(x.name)}: ${(x[key] / tot * 100).toFixed(0)}%"></span>` : '').join('')}</div>`;
 }
+/* simple line icons for the "how it makes money" flow, chosen from the step's wording */
+const ICON_PATHS = {
+  shop: '<path d="M4 10l1.5-5h13L20 10"/><path d="M4 10h16v9H4z"/><path d="M9 19v-5h6v5"/><path d="M4 10c0 1.5 1.3 2.5 2.7 2.5S9.3 11.5 9.3 10c0 1.5 1.2 2.5 2.7 2.5s2.7-1 2.7-2.5c0 1.5 1.3 2.5 2.6 2.5S20 11.5 20 10"/>',
+  truck: '<path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+  people: '<circle cx="9" cy="8" r="3"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.6-.5 4.6 1.2 5 4.3"/>',
+  factory: '<path d="M3 20V10l5 3V10l5 3V6h3v14z"/><path d="M16 20h5V4h-3"/><path d="M7 17h2M11 17h2"/>',
+  ship: '<path d="M3 15l2 4h14l2-4z"/><path d="M6 15V9h12v6"/><path d="M10 9V5h4v4"/><path d="M2 21c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/>',
+  plane: '<path d="M2 13l8-1 6-8h2l-3 8 5 1 2-2h1l-1 4 1 4h-1l-2-2-5 1 3 8h-2l-6-8-8-1z" transform="scale(.85) translate(2 0)"/>',
+  hospital: '<path d="M4 20V7h16v13"/><path d="M2 20h20"/><path d="M12 9v5M9.5 11.5h5"/><path d="M10 20v-3h4v3"/>',
+  bank: '<path d="M3 9l9-5 9 5"/><path d="M4 9h16"/><path d="M6 10v7M10 10v7M14 10v7M18 10v7"/><path d="M3 20h18"/>',
+  crane: '<path d="M5 21V4h2v17"/><path d="M7 5h13"/><path d="M7 5l4 4"/><path d="M17 5v5"/><path d="M15.5 10h3v2h-3z"/><path d="M3 21h8"/>',
+  power: '<path d="M13 2L5 14h6l-1 8 8-12h-6z"/>',
+  water: '<path d="M12 3c3.5 4.5 6 7.6 6 10.5A6 6 0 0 1 6 13.5C6 10.6 8.5 7.5 12 3z"/>',
+  phone: '<rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/>',
+  coins: '<ellipse cx="12" cy="6" rx="7" ry="2.5"/><path d="M5 6v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"/><path d="M5 10v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"/><path d="M5 14v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4"/>',
+  contract: '<path d="M6 2.5h9l4 4v15H6z"/><path d="M15 2.5v4h4"/><path d="M9 11h7M9 14.5h7M9 18h4"/>',
+  home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/>',
+  lab: '<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/>',
+  box: '<path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/>',
+  app: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+};
+const ICON_RULES = [[/hospital|patient|clinic|healthcare/, 'hospital'], [/laborator|lab test|diagnos/, 'lab'], [/ship|vessel|tanker|offshore|maritime|cargo customers/, 'ship'],
+  [/aircraft|flight|airline|passeng|aviation/, 'plane'], [/distribution|warehouse|lorr|logistic|freight|deliver/, 'truck'], [/mini-?mart|shop|outlet|store|retail/, 'shop'],
+  [/water|sewer/, 'water'], [/power|electric|energy/, 'power'], [/mobile|network|telecom|data plan/, 'phone'], [/deposit|bank|lend|borrow|loan/, 'bank'],
+  [/build|construct|contractor|tunnel|rail|infrastructure|project/, 'crane'], [/land|township|home|propert/, 'home'], [/contract|award|wins|bid/, 'contract'],
+  [/factory|precast|plant|yard|engineering/, 'factory'], [/supplier|goods|stock|product/, 'box'], [/app|platform|digital|brand/, 'app'],
+  [/shopper|customer|people|user/, 'people'], [/profit|fee|bill|paid|pay|income|money|rent/, 'coins']];
+function flowIcon(f) {
+  const t = `${f.label} ${f.detail}`.toLowerCase(), hit = ICON_RULES.find(([rx]) => rx.test(f.label.toLowerCase())) || ICON_RULES.find(([rx]) => rx.test(t));
+  const k = f.icon || (hit ? hit[1] : 'coins');
+  return `<svg class="ficon" viewBox="0 0 24 24" aria-hidden="true">${ICON_PATHS[k] || ICON_PATHS.coins}</svg>`;
+}
+function mediaBlock(b) {
+  const ph = (b.photos || []).map(p => `<figure class="photo"><a href="${esc(p.page)}" target="_blank" rel="noopener"><img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy"></a>
+    <figcaption>${esc(p.caption)}<br><small>Photo: ${esc(p.author)}, <a href="${esc(p.licenseUrl || p.page)}" target="_blank" rel="noopener">${esc(p.license)}</a>, via <a href="${esc(p.page)}" target="_blank" rel="noopener">Wikimedia Commons</a></small></figcaption></figure>`).join('');
+  const v = b.video ? `<figure class="video"><div class="vframe"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(b.video.id)}" title="${esc(b.video.title)}" loading="lazy"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <figcaption>${esc(b.video.title)}<br><small>Video from the company's own YouTube channel: <a href="${esc(b.video.channelUrl)}" target="_blank" rel="noopener">${esc(b.video.channel)}</a></small></figcaption></figure>` : '';
+  return ph || v ? `<h3 style="margin-top:18px">See the business</h3><div class="media">${v}${ph}</div>` : '';
+}
+
 function businessCard(b) {
   const segTot = b.segments.reduce((t, x) => t + (x.revenue || 0), 0), hasProfit = b.segments.some(x => x.profit != null);
   const profTot = b.segments.reduce((t, x) => t + (x.profit || 0), 0), geoMax = Math.max(...(b.geography || []).map(g => g.value), 1);
@@ -368,8 +409,9 @@ function businessCard(b) {
     <div class="biz-one">${esc(b.oneLine)}</div>
     <ul class="biz-plain">${b.inPlainWords.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
     <h3>${esc(b.flowTitle || 'How it makes money')}</h3>
-    <div class="flow">${b.flow.map((f, i) => `${i ? '<div class="arrow">→</div>' : ''}<div class="flow-step"><b>${esc(f.label)}</b><span>${esc(f.detail)}</span></div>`).join('')}</div>
+    <div class="flow">${b.flow.map((f, i) => `${i ? '<div class="arrow">→</div>' : ''}<div class="flow-step">${flowIcon(f)}<b>${esc(f.label)}</b><span>${esc(f.detail)}</span></div>`).join('')}</div>
     ${b.moneyNote ? `<p class="biz-note">${esc(b.moneyNote)}</p>` : ''}
+    ${mediaBlock(b)}
     <div class="two" style="margin-top:18px">
       <div><h3>${esc(b.segmentsTitle)}</h3>
         <div class="sub">Share of revenue</div>${shareBar(b.segments, 'revenue')}

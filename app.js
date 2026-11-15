@@ -343,14 +343,14 @@ function countUps(root) {                 // animate numbers marked data-count="
 }
 const cnt = (v, dec = 0, pre = '', suf = '') => `<span data-count="${v}" data-dec="${dec}" data-pre="${pre}" data-suf="${suf}">${pre}0${suf}</span>`;
 
-function donut(parts, id) {               // SVG donut; each slice is clickable
+function donut(parts, id, big = 'RM100', small = 'of revenue') {               // SVG donut; each slice is clickable
   const R = 80, r = 52, C = 100; let a0 = -Math.PI / 2; const tot = parts.reduce((t, p) => t + p.v, 0);
   const arc = (a1, a2) => { const big = a2 - a1 > Math.PI ? 1 : 0, p = (rad, a) => [C + rad * Math.cos(a), C + rad * Math.sin(a)];
     const [x1, y1] = p(R, a1), [x2, y2] = p(R, a2), [x3, y3] = p(r, a2), [x4, y4] = p(r, a1);
     return `M${x1} ${y1}A${R} ${R} 0 ${big} 1 ${x2} ${y2}L${x3} ${y3}A${r} ${r} 0 ${big} 0 ${x4} ${y4}Z`; };
   return `<svg viewBox="0 0 200 200" class="donut" id="${id}">${parts.map((p, i) => { const a1 = a0, a2 = a0 + p.v / tot * 2 * Math.PI * 0.9999; a0 = a2;
     return `<path d="${arc(a1, a2)}" fill="${p.c}" data-i="${i}" tabindex="0"><title>${esc(p.l)}: RM${p.v.toFixed(2)}</title></path>`; }).join('')}
-    <text x="100" y="94" text-anchor="middle" class="d-big" id="${id}-v">RM100</text><text x="100" y="114" text-anchor="middle" class="d-small" id="${id}-l">of sales</text></svg>`;
+    <text x="100" y="94" text-anchor="middle" class="d-big" id="${id}-v">${big}</text><text x="100" y="114" text-anchor="middle" class="d-small" id="${id}-l">${small}</text></svg>`;
 }
 
 function overviewPanel(s, b, f, calls, all, avgTp) {
@@ -363,11 +363,11 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
     const big = ai[2] || ai[1];
     cards.push(story('How big', big ? big.src : LIBPIC('warehouse'), `<div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>revenue in ${esc(f.pnl.period)}</b>
       <div class="s-num sm">${esc(st.scale_value || '')}</div><b>${esc(st.scale_label || '')}</b>`, { ai: 1, cls: big ? 'photo' : '' }));
-    cards.push(story('Out of every RM100', LIBPIC('coins'), `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>
+    cards.push(story('Out of every RM100', LIBPIC('coins'), (pat < 0 ? `<div class="s-num dn">−RM${cnt(-pat / rev * 100, 2)}</div><b>lost, before one-off gains</b>` : `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>`) + `
       <small>RM${(Math.abs(c1.value) / rev * 100).toFixed(0)} goes to ${esc(c1.label.toLowerCase())}</small>`, { ai: 1 }));
     const gr = f.growth;
     cards.push(story('Still growing?', LIBPIC('growth'), `<div class="s-num ${gr.revenue >= 0 ? 'up' : 'dn'}">${gr.revenue >= 0 ? '▲' : '▼'} ${cnt(Math.abs(gr.revenue), 1, '', '%')}</div><b>revenue, ${esc(gr.period)}</b>
-      <div class="s-num sm ${gr.profit >= 0 ? 'up' : 'dn'}">${gr.profit >= 0 ? '▲' : '▼'} ${Math.abs(gr.profit).toFixed(1)}%</div><b>profit, same period</b>`, { ai: 1 }));
+      ${gr.profit == null ? `<small>${esc(gr.profitNote || '')}</small>` : `<div class="s-num sm ${gr.profit >= 0 ? 'up' : 'dn'}">${gr.profit >= 0 ? '▲' : '▼'} ${Math.abs(gr.profit).toFixed(1)}%</div><b>profit, same period</b>`}`, { ai: 1 }));
     if (f.debt && f.debt.value) cards.push(story(f.debt.netCash ? 'Any debt?' : 'How much debt?', LIBPIC('safe'), `<div class="s-num">${esc(f.debt.value)}</div><b>${esc(f.debt.label)}</b>
       ${(() => { const g = f.metrics.find(m => m.label.startsWith('Net gearing')); return g ? `<small>Net gearing ${esc(g.value)} of shareholders' funds</small>` : ''; })()}`, { ai: 1 }));
     const pe = f.metrics.find(m => m.label.startsWith('P/E'));
@@ -391,13 +391,15 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
 
 function moneyPanel(f) {
   const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1], incs = it.filter(x => x.kind === 'income');
-  const parts = [...costs.map((c, i) => ({ l: c.label, v: Math.abs(c.value) / rev * 100, c: PIE_COLS[i % PIE_COLS.length], tip: c.tip })), { l: pat.label, v: pat.value / rev * 100, c: '#3fbf85', tip: pat.tip }];
+  const loss = pat.value < 0, costParts = costs.map((c, i) => ({ l: c.label, v: Math.abs(c.value) / rev * 100, c: PIE_COLS[i % PIE_COLS.length], tip: c.tip }));
+  const parts = [...costParts, { l: pat.label, v: pat.value / rev * 100, c: loss ? '#e0675a' : '#3fbf85', tip: pat.tip }];
+  const spent = costParts.reduce((t, p) => t + p.v, 0);
   const T = f.trend, yoy = (a, i) => i % 2 === 1 && a[i - 1] ? `<br><small class="${a[i] >= a[i - 1] ? 'pos' : 'neg'}">${a[i] >= a[i - 1] ? '+' : ''}${((a[i] / Math.abs(a[i - 1]) - 1) * 100).toFixed(1)}%</small>` : '';
   const fy = f.fiveYear, fyMax = Math.max(...fy.revenue), pMax = Math.max(...fy.pat), seg = f.segments, h = f.how;
   const segTot = seg ? seg.rows.reduce((t, r) => t + r.revenue, 0) : 0, segP = seg ? seg.rows.reduce((t, r) => t + Math.max(0, r.profit), 0) : 0, gTot = seg && seg.geo ? seg.geo.reduce((t, r) => t + r.value, 0) : 0;
   return `<div class="glass card"><h2>Where every RM100 of revenue goes <small class="sub">${esc(f.pnl.period)}</small></h2>
-    <div class="rm100-wrap">${donut(parts, 'pie')}
-      <div class="rm100-list">${parts.map((p, i) => `<button class="rm-item" data-i="${i}"><i style="background:${p.c}"></i><span>${esc(p.l.replace(' (depreciation of leases)', ''))}</span><b>RM${p.v.toFixed(2)}</b></button>`).join('')}
+    <div class="rm100-wrap">${loss ? donut(costParts, 'pie', 'RM' + spent.toFixed(0), 'spent per RM100') : donut(parts, 'pie')}
+      <div class="rm100-list">${parts.map((p, i) => `<button class="rm-item" data-i="${i}"><i style="background:${p.c}"></i><span>${esc(p.l.replace(' (depreciation of leases)', ''))}</span><b class="${p.v < 0 ? 'neg' : ''}">${p.v < 0 ? '−' : ''}RM${Math.abs(p.v).toFixed(2)}</b></button>`).join('')}
         <div class="rm-tip" id="rm-tip"><b>Tap a slice or a line</b><br>to see what each cost means in everyday words.</div></div></div>
     <p class="note">${esc(f.pnl.incomeNote || (incs.length ? `Plus RM${(incs.reduce((t, x) => t + x.value, 0) / rev * 100).toFixed(2)} of other income per RM100.` : ''))}</p></div>
   ${seg ? `<div class="glass card"><h2>Its businesses <small class="sub">${esc(seg.period)}</small></h2>

@@ -1,0 +1,685 @@
+{
+ "code": "5099",
+ "price": 0.24,
+ "priceDate": "2026-11-13",
+ "unit": "RM million",
+ "fyNote": "Financial year ends 31 December. 2025 includes a one-off RM11.3bn gain from selling the airlines to AirAsia X.",
+ "sources": [
+  {
+   "title": "Capital A Annual Report 2025",
+   "url": "https://www.capitala.com/misc/Capital_A_ar2025.pdf"
+  }
+ ],
+ "segmentNote": "After the airline sale, Capital A owns logistics, engineering, travel-app, digital and food businesses that mainly serve the AirAsia airlines (AR p.21).",
+ "how": {
+  "title": "How Capital A makes money now",
+  "text": "Revenue = fees from aircraft maintenance (ADE) + parcel and cargo delivery (Teleport) + travel bookings (MOVE) + food (Santan) + digital services",
+  "facts": [
+   [
+    "Monthly app users",
+    "17.3 million (AR p.13)"
+   ],
+   [
+    "Parcels delivered",
+    "167 million in 2025 (AR p.13)"
+   ],
+   [
+    "Cargo moved",
+    "348,000 tonnes (AR p.13)"
+   ],
+   [
+    "Status",
+    "Still under PN17, awaiting Bursa's decision to exit (AR p.21)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "5 businesses",
+  "scale_label": "logistics, engineering, travel app, digital and food",
+  "debt_label": "net debt (borrowings minus cash)"
+ },
+ "growth": {
+  "period": "FY2025",
+  "revenue": 9.2,
+  "profit": null,
+  "profitNote": "Profit jumped on a one-off RM11.3bn gain from the airline sale, so a growth figure is not meaningful."
+ },
+ "debt": {
+  "netCash": false,
+  "value": "RM0.8 bn",
+  "label": "net debt (borrowings minus cash)"
+ },
+ "pnl": {
+  "period": "FY2025, continuing businesses before the one-off gain",
+  "items": [
+   {
+    "label": "Revenue",
+    "value": 1866.9,
+    "kind": "total"
+   },
+   {
+    "label": "Other operating costs",
+    "value": -751.0,
+    "kind": "cost",
+    "tip": "Offices, marketing, IT and other running costs."
+   },
+   {
+    "label": "Staff costs",
+    "value": -679.9,
+    "kind": "cost",
+    "tip": "Salaries for engineers, logistics and digital staff."
+   },
+   {
+    "label": "Logistic expenses",
+    "value": -677.5,
+    "kind": "cost",
+    "tip": "Trucking, air freight and last-mile delivery paid by Teleport."
+   },
+   {
+    "label": "Consumables",
+    "value": -271.4,
+    "kind": "cost",
+    "tip": "Aircraft parts and materials used in maintenance."
+   },
+   {
+    "label": "Depreciation",
+    "value": -107.9,
+    "kind": "cost",
+    "tip": "Wear and tear on equipment, hangars and leased buildings."
+   },
+   {
+    "label": "Finance costs",
+    "value": -209.2,
+    "kind": "cost",
+    "tip": "Interest on about RM1.3bn of borrowings."
+   },
+   {
+    "label": "Tax and other",
+    "value": -5.5,
+    "kind": "cost",
+    "tip": "Tax and a small derivative loss."
+   },
+   {
+    "label": "Other income",
+    "value": 11.6,
+    "kind": "income",
+    "tip": ""
+   },
+   {
+    "label": "Finance income",
+    "value": 14.7,
+    "kind": "income",
+    "tip": ""
+   },
+   {
+    "label": "Foreign exchange gain",
+    "value": 14.5,
+    "kind": "income",
+    "tip": ""
+   },
+   {
+    "label": "Loss before the one-off gain",
+    "value": -794.6,
+    "kind": "total",
+    "tip": "Without the RM11.3bn disposal gain, the businesses Capital A still owns spent more than they earned in 2025."
+   }
+  ],
+  "incomeNote": "Costs exceeded revenue: about RM143 was spent for every RM100 earned. The RM11.3bn one-off gain and the airlines' profit until handover are left out here."
+ },
+ "trend": {
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "lines": [
+   {
+    "label": "Revenue (continuing businesses)",
+    "values": [
+     1709.7,
+     1866.9
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Staff costs",
+    "values": [
+     -682.0,
+     -679.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Logistics and consumables",
+    "values": [
+     -907.1,
+     -948.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other operating costs",
+    "values": [
+     -779.7,
+     -751.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Depreciation",
+    "values": [
+     -61.5,
+     -107.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other income",
+    "values": [
+     31.0,
+     11.6
+    ],
+    "bold": 0
+   },
+   {
+    "label": "One-off gain on airline sale",
+    "values": [
+     0.0,
+     11320.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Operating profit/(loss)",
+    "values": [
+     -689.7,
+     10711.0
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Net finance costs and FX",
+    "values": [
+     -201.4,
+     -182.5
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit/(loss) before tax",
+    "values": [
+     -891.1,
+     10528.5
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Airlines until handover",
+    "values": [
+     421.2,
+     2908.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Partners' share",
+    "values": [
+     -40.8,
+     -415.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit to shareholders",
+    "values": [
+     -501.2,
+     13018.1
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2024,
+   2025
+  ],
+  "revenue": [
+   1710,
+   1867
+  ],
+  "pat": [
+   -501,
+   13018
+  ],
+  "note": "Only two comparable years: earlier reports included the airlines. 2025 profit includes the one-off RM11.3bn gain."
+ },
+ "segments": {
+  "period": "FY2025",
+  "rows": [
+   {
+    "name": "Teleport (logistics)",
+    "revenue": 1215.2,
+    "profit": 43.5,
+    "tip": "Air cargo and e-commerce parcel delivery: 348,000 tonnes and 167 million parcels in 2025."
+   },
+   {
+    "name": "ADE (aircraft engineering)",
+    "revenue": 894.5,
+    "profit": 116.4,
+    "tip": "Aircraft maintenance and heavy checks for AirAsia and other airlines."
+   },
+   {
+    "name": "AirAsia MOVE (travel app)",
+    "revenue": 485.4,
+    "profit": 53.0,
+    "tip": "Online travel bookings: flights, hotels and duty-free; 17.3 million monthly users."
+   },
+   {
+    "name": "AirAsia Next (digital)",
+    "revenue": 246.4,
+    "profit": 109.9,
+    "tip": "Digital, data and brand services for the AirAsia ecosystem."
+   },
+   {
+    "name": "Santan (food)",
+    "revenue": 208.0,
+    "profit": 9.4,
+    "tip": "Inflight meals and food sold through retail partners."
+   }
+  ],
+  "geo": [],
+  "note": "Segment revenue includes sales to other Capital A companies; profit before tax excludes head-office items and the one-off disposal gain (AR p.149)."
+ },
+ "balance": {
+  "date": "31 Dec 2025",
+  "assets": [
+   {
+    "label": "Owed by related companies (mainly AirAsia)",
+    "value": 5097.4
+   },
+   {
+    "label": "Equipment and leased buildings",
+    "value": 884.0
+   },
+   {
+    "label": "Receivables and other",
+    "value": 541.3
+   },
+   {
+    "label": "Cash",
+    "value": 432.6
+   },
+   {
+    "label": "Software, brands and investments",
+    "value": 406.0
+   },
+   {
+    "label": "Inventories",
+    "value": 206.5
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Owed to suppliers and others",
+    "value": 3716.4
+   },
+   {
+    "label": "Owed to related companies",
+    "value": 1254.8
+   },
+   {
+    "label": "Borrowings",
+    "value": 1281.7
+   },
+   {
+    "label": "Lease liabilities",
+    "value": 305.2
+   },
+   {
+    "label": "Tax and other",
+    "value": 88.5
+   }
+  ],
+  "equity": 921.2,
+  "note": "After the airline sale, equity turned positive (RM921m) from a RM10bn deficit. Two-thirds of assets are money owed by related AirAsia companies (RM5.1bn), so collecting it matters."
+ },
+ "cash": {
+  "wfPeriod": "FY2025",
+  "waterfall": [
+   {
+    "l": "Cash from operations (incl. airlines until handover)",
+    "v": 5667.1,
+    "total": 1
+   },
+   {
+    "l": "Airlines' investing and financing until handover",
+    "v": -4021.6,
+    "total": 0
+   },
+   {
+    "l": "Airline cash handed over on disposal",
+    "v": -1674.5,
+    "total": 0
+   },
+   {
+    "l": "Equipment",
+    "v": -163.1,
+    "total": 0
+   },
+   {
+    "l": "Debt repaid (net)",
+    "v": -244.6,
+    "total": 0
+   },
+   {
+    "l": "Lease payments",
+    "v": -43.1,
+    "total": 0
+   },
+   {
+    "l": "Other",
+    "v": 55.5,
+    "total": 0
+   },
+   {
+    "l": "Change in cash",
+    "v": -424.3,
+    "total": 1
+   }
+  ],
+  "wfNote": "Most of the cash came from the airlines before they were handed over and went back into airline lease and debt payments. The businesses Capital A keeps produced RM451m of operating cash.",
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "table": [
+   {
+    "label": "Operating cash - continuing businesses",
+    "values": [
+     -863.1,
+     451.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Operating cash - airlines until handover",
+    "values": [
+     4686.7,
+     5216.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Cash from operations",
+    "values": [
+     3823.6,
+     5667.1
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Equipment",
+    "values": [
+     -231.8,
+     -163.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Airline cash handed over",
+    "values": [
+     0.0,
+     -1674.5
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other investing",
+    "values": [
+     37.4,
+     212.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash used in investing",
+    "values": [
+     -194.5,
+     -1625.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Borrowing, leases and warrants (continuing)",
+    "values": [
+     99.0,
+     -278.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Airlines' financing until handover",
+    "values": [
+     -3524.2,
+     -4188.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash used in financing",
+    "values": [
+     -3425.3,
+     -4466.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Net change in cash",
+    "values": [
+     203.9,
+     -424.3
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "safety": null,
+ "safetyTitle": null,
+ "safetyIntro": null,
+ "bank": false,
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM1.1 bn",
+   "plain": "What the whole company costs at today's share price: RM1.1 billion."
+  },
+  {
+   "label": "P/E (FY2025 profit)",
+   "value": "n/m",
+   "plain": "Not meaningful for 2025: profit is almost all a one-off RM11.3bn gain from handing the airlines to AirAsia X; without it the remaining businesses made a loss."
+  },
+  {
+   "label": "EPS (FY2025)",
+   "value": "n/m",
+   "plain": "Not meaningful for 2025: profit is almost all a one-off RM11.3bn gain from handing the airlines to AirAsia X; without it the remaining businesses made a loss."
+  },
+  {
+   "label": "Dividend yield (FY2025 dividends)",
+   "value": "0%",
+   "plain": "No cash dividend for 2025. Shareholders received AirAsia X shares as a dividend in specie (AR p.25)."
+  },
+  {
+   "label": "Payout ratio FY2025",
+   "value": "0%",
+   "plain": "No cash dividend; shareholders received AirAsia X shares instead."
+  },
+  {
+   "label": "Price to book",
+   "value": "1.1x",
+   "plain": "The share price is 1.1 times the accounting value of what shareholders own."
+  },
+  {
+   "label": "Return on equity FY2025",
+   "value": "n/m",
+   "plain": "Not meaningful: shareholders' equity was negative (RM-8.8bn) at the start of 2025."
+  },
+  {
+   "label": "Net margin FY2025",
+   "value": "n/m",
+   "plain": "Not meaningful for 2025: profit is almost all a one-off RM11.3bn gain from handing the airlines to AirAsia X; without it the remaining businesses made a loss."
+  },
+  {
+   "label": "Revenue growth FY2025",
+   "value": "+9.2%",
+   "plain": "Revenue compared with the year before."
+  },
+  {
+   "label": "Profit growth FY2025",
+   "value": "n/m",
+   "plain": "Not meaningful for 2025: profit is almost all a one-off RM11.3bn gain from handing the airlines to AirAsia X; without it the remaining businesses made a loss."
+  },
+  {
+   "label": "Net debt",
+   "value": "RM0.85 bn",
+   "plain": "Borrowings minus cash: RM0.85 billion owed to lenders after using all its cash."
+  },
+  {
+   "label": "Net gearing",
+   "value": "92%",
+   "plain": "Net debt is 92% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
+  },
+  {
+   "label": "Free cash flow FY2025",
+   "value": "RM288 m",
+   "plain": "Cash from operations minus spending on assets and land: RM288 million. Negative means it borrowed or used savings to fund growth."
+  },
+  {
+   "label": "Free cash flow yield",
+   "value": "26.8%",
+   "plain": "That spare cash as a share of the company's market value."
+  },
+  {
+   "label": "Loss of continuing businesses before the one-off gain",
+   "value": "RM795 m",
+   "plain": "Revenue minus all costs of the businesses Capital A still owns, before the RM11.3bn disposal gain (AR p.98-99)."
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "Airline sale completed",
+   "affects": "Balance sheet",
+   "direction": "Positive",
+   "evidence": "Airlines moved to AirAsia X in December 2025, with an RM11.3bn gain (AR p.93, p.21)",
+   "why": "Removes the airline's large debts and turns equity positive."
+  },
+  {
+   "factor": "PN17 exit",
+   "affects": "Share price",
+   "direction": "Watch",
+   "evidence": "Regularisation plan done; awaiting Bursa Malaysia's decision to lift PN17 (AR p.21)",
+   "why": "Exiting PN17 would remove a major overhang on the shares."
+  },
+  {
+   "factor": "Positive equity again",
+   "affects": "Risk",
+   "direction": "Positive",
+   "evidence": "Equity of RM921m vs a RM10.0bn deficit a year earlier (AR p.101)",
+   "why": "A healthier starting point for the remaining businesses."
+  },
+  {
+   "factor": "ADE engineering growth",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Revenue +25% to RM894m with more third-party customers (AR p.21)",
+   "why": "A profitable business that can grow beyond AirAsia."
+  },
+  {
+   "factor": "Teleport turnaround",
+   "affects": "Profit",
+   "direction": "Positive",
+   "evidence": "Revenue +14% to RM1.2bn; turned a RM21m loss into an operating profit (AR p.21)",
+   "why": "Logistics volume is growing fast."
+  },
+  {
+   "factor": "MOVE travel app",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Revenue over RM485m; Q4 revenue tripled quarter on quarter (AR p.21)",
+   "why": "Shows the app can earn from more than AirAsia flights."
+  },
+  {
+   "factor": "Losses before the one-off",
+   "affects": "Profit",
+   "direction": "Negative",
+   "evidence": "Continuing businesses lost about RM795m before the disposal gain (AR p.98-99)",
+   "why": "Head-office and financing costs still outweigh business profits."
+  },
+  {
+   "factor": "Money owed by AirAsia companies",
+   "affects": "Risk",
+   "direction": "Negative",
+   "evidence": "RM5.1bn due from related parties at year-end (AR p.100)",
+   "why": "Depends on the airlines' ability to pay."
+  },
+  {
+   "factor": "Borrowings",
+   "affects": "Risk",
+   "direction": "Negative",
+   "evidence": "Borrowings of RM1.28bn vs RM433m of cash (AR p.100-101)",
+   "why": "Interest costs weigh on a still-small business."
+  },
+  {
+   "factor": "Reliance on the airline group",
+   "affects": "Revenue",
+   "direction": "Watch",
+   "evidence": "Most businesses serve the AirAsia airlines (AR p.21)",
+   "why": "Their volumes rise and fall with airline capacity."
+  },
+  {
+   "factor": "Valuation",
+   "affects": "Share price",
+   "direction": "Watch",
+   "evidence": "P/E not meaningful; about 1.1 times book value at RM0.24 (see Valuation)",
+   "why": "The price reflects uncertainty about the new, smaller group."
+  }
+ ],
+ "competitors": [
+  {
+   "name": "Grab, Traveloka, Agoda",
+   "how": "Travel booking and super-apps competing with AirAsia MOVE",
+   "source": "General market knowledge, not the report"
+  },
+  {
+   "name": "DHL, J&T Express, Pos Malaysia",
+   "how": "Parcel and cargo logistics competing with Teleport",
+   "source": "General market knowledge"
+  },
+  {
+   "name": "SIA Engineering, ST Engineering",
+   "how": "Aircraft maintenance competing with ADE",
+   "source": "General market knowledge"
+  }
+ ],
+ "outlook": [
+  {
+   "tone": "Positive",
+   "text": "Restored to positive equity of RM921m; non-aviation businesses grew revenue 13% to RM3.18bn (AR p.21)."
+  },
+  {
+   "tone": "Positive",
+   "text": "First two goals of the regularisation plan achieved (AR p.21)."
+  },
+  {
+   "tone": "Neutral",
+   "text": "Awaiting Bursa Malaysia's decision on exiting PN17 (AR p.21)."
+  },
+  {
+   "tone": "Negative",
+   "text": "Management says the group is not completely out of the woods: still under PN17, and AirAsia has aircraft waiting to return to service (AR p.20)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Neutral",
+  "text": "Management sees the airline sale as a turning point but says the group is not yet out of the woods (AR p.20-21)."
+ }
+}

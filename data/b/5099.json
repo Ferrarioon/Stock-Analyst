@@ -126,5 +126,22 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
     }
   ],
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/5099_1.jpg",
+      "caption": "Aircraft maintenance in a hangar, the work of Capital A's ADE"
+    },
+    {
+      "src": "data/b/img/5099_2.jpg",
+      "caption": "Loading parcels and cargo at night, Teleport's logistics business"
+    },
+    {
+      "src": "data/b/img/5099_3.jpg",
+      "caption": "Booking travel on a phone, like the AirAsia MOVE app"
+    },
+    {
+      "src": "data/b/img/5099_4.jpg",
+      "caption": "A parcel delivery to a home, part of Teleport"
+    }
+  ]
 }

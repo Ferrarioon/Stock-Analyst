@@ -1,0 +1,741 @@
+{
+ "code": "5398",
+ "price": 4.56,
+ "priceDate": "2026-11-13",
+ "unit": "RM million",
+ "fyNote": "Financial year ends 31 July. FY2025 = August 2024 to July 2025.",
+ "sources": [
+  {
+   "title": "Gamuda Integrated Report 2025",
+   "url": "https://gamuda.listedcompany.com/newsroom/GAMUDA_IR2025_(Cover_to_Page_71).pdf"
+  }
+ ],
+ "segmentNote": "Two businesses: engineering and construction (78% of revenue, 62% of profit) and property development (22% of revenue, 38% of profit). Australia is now the biggest market (IR2 p.243, p.246).",
+ "how": {
+  "title": "How Gamuda makes money",
+  "text": "Revenue = construction work done for clients, billed as each project progresses + homes sold by Gamuda Land, recognised as they are built",
+  "facts": [
+   [
+    "Orderbook (work won, not yet done)",
+    "RM38 billion (IR2 p.4)"
+   ],
+   [
+    "New contracts won in FY2025",
+    "RM25 billion, a record (IR1 p.37)"
+   ],
+   [
+    "Property sales FY2025",
+    "RM4.1 billion (IR2 p.4)"
+   ],
+   [
+    "Revenue outside Malaysia",
+    "66% of reported revenue (IR2 p.246)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "RM38 bn",
+  "scale_label": "orderbook: work already won, still to be built",
+  "debt_label": "net debt (borrowings minus cash)",
+  "what_big": "6,702 employees across six countries"
+ },
+ "growth": {
+  "period": "FY2025",
+  "revenue": 19.7,
+  "profit": 10.0
+ },
+ "debt": {
+  "netCash": false,
+  "value": "RM6.4 bn",
+  "label": "net debt (borrowings minus cash)"
+ },
+ "pnl": {
+  "period": "FY2025",
+  "items": [
+   {
+    "label": "Revenue",
+    "value": 15970.2,
+    "kind": "total"
+   },
+   {
+    "label": "Construction contract costs",
+    "value": -10512.0,
+    "kind": "cost",
+    "tip": "Paying subcontractors, materials and equipment on building projects."
+   },
+   {
+    "label": "Land, building and materials for property",
+    "value": -3123.5,
+    "kind": "cost",
+    "tip": "Land, construction of homes, raw materials and site overheads for property and manufacturing."
+   },
+   {
+    "label": "Staff costs",
+    "value": -607.8,
+    "kind": "cost",
+    "tip": "Salaries and benefits for about 6,700 employees."
+   },
+   {
+    "label": "Depreciation and amortisation",
+    "value": -194.4,
+    "kind": "cost",
+    "tip": "Wear and tear on machines (such as tunnel boring machines), buildings and concession assets."
+   },
+   {
+    "label": "Other operating costs",
+    "value": -560.2,
+    "kind": "cost",
+    "tip": "Offices, insurance, marketing, IT and other running costs."
+   },
+   {
+    "label": "Finance costs",
+    "value": -178.7,
+    "kind": "cost",
+    "tip": "Interest on RM10.1 billion of borrowings."
+   },
+   {
+    "label": "Tax",
+    "value": -256.6,
+    "kind": "cost",
+    "tip": "Corporate income tax in Malaysia and overseas."
+   },
+   {
+    "label": "Partners' share of profit",
+    "value": -21.1,
+    "kind": "cost",
+    "tip": "Profit belonging to minority partners in subsidiaries."
+   },
+   {
+    "label": "Other income",
+    "value": 341.9,
+    "kind": "income",
+    "tip": "Mostly interest and returns on cash and investments."
+   },
+   {
+    "label": "Share of joint ventures and associates",
+    "value": 145.3,
+    "kind": "income",
+    "tip": "Gamuda's share of profit from projects run with partners."
+   },
+   {
+    "label": "Profit to shareholders",
+    "value": 1003.2,
+    "kind": "total",
+    "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
+   }
+  ],
+  "incomeNote": "Plus about RM3.06 of other income and RM0.91 of profit from joint ventures per RM100 of revenue."
+ },
+ "trend": {
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "lines": [
+   {
+    "label": "Revenue",
+    "values": [
+     13346.7,
+     15970.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Direct costs of construction and property",
+    "values": [
+     -11559.8,
+     -13635.5
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other income",
+    "values": [
+     282.5,
+     341.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Staff costs",
+    "values": [
+     -490.0,
+     -607.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Depreciation and amortisation",
+    "values": [
+     -165.1,
+     -194.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other operating costs",
+    "values": [
+     -468.4,
+     -560.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit from operations",
+    "values": [
+     945.9,
+     1314.4
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Finance costs",
+    "values": [
+     -173.4,
+     -178.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Share of joint ventures and associates",
+    "values": [
+     325.6,
+     145.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before tax",
+    "values": [
+     1098.1,
+     1281.0
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Tax",
+    "values": [
+     -155.1,
+     -256.6
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Partners' share",
+    "values": [
+     -30.9,
+     -21.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit to shareholders",
+    "values": [
+     912.1,
+     1003.2
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "revenue": [
+   3517,
+   5144,
+   8268,
+   13347,
+   15970
+  ],
+  "pat": [
+   588,
+   806,
+   1838,
+   912,
+   1003
+  ],
+  "note": "Orderbook (RM billion): 2021 5 · 2022 14 · 2023 21 · 2024 32 · 2025 38. FY2023 profit includes a one-off RM1,023m gain from selling highway concessions; core profit that year was RM815m."
+ },
+ "segments": {
+  "period": "FY2025",
+  "rows": [
+   {
+    "name": "Engineering and construction",
+    "revenue": 12392.5,
+    "profit": 625.5,
+    "tip": "Building railways, tunnels, highways, dams, water plants, solar and wind farms and data centres for governments and companies, in Malaysia, Australia, Taiwan and Singapore."
+   },
+   {
+    "name": "Property development and clubs",
+    "revenue": 3577.7,
+    "profit": 377.8,
+    "tip": "Building and selling homes in townships in Malaysia and city projects in Vietnam, Australia and the UK (Gamuda Land)."
+   }
+  ],
+  "geo": [
+   {
+    "name": "Australia",
+    "value": 7055.1
+   },
+   {
+    "name": "Malaysia",
+    "value": 5458.5
+   },
+   {
+    "name": "Vietnam",
+    "value": 1607.6
+   },
+   {
+    "name": "Singapore",
+    "value": 743.5
+   },
+   {
+    "name": "Taiwan",
+    "value": 706.1
+   },
+   {
+    "name": "United Kingdom",
+    "value": 399.4
+   }
+  ],
+  "note": "Revenue as reported, excluding Gamuda's share of joint-venture revenue (RM396m). Geography from IR2 p.246."
+ },
+ "balance": {
+  "date": "31 Jul 2025",
+  "assets": [
+   {
+    "label": "Land and property being developed",
+    "value": 9746.0
+   },
+   {
+    "label": "Work done, not yet billed",
+    "value": 6520.1
+   },
+   {
+    "label": "Money owed by customers and others",
+    "value": 3615.1
+   },
+   {
+    "label": "Cash and investments",
+    "value": 3720.9
+   },
+   {
+    "label": "Stakes in joint ventures and associates",
+    "value": 2217.8
+   },
+   {
+    "label": "Concessions and other intangibles",
+    "value": 1724.1
+   },
+   {
+    "label": "Machinery, buildings and investment property",
+    "value": 2328.9
+   },
+   {
+    "label": "Tax assets",
+    "value": 396.1
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Borrowings",
+    "value": 10130.2
+   },
+   {
+    "label": "Owed to suppliers and subcontractors",
+    "value": 6004.7
+   },
+   {
+    "label": "Customer advances",
+    "value": 1104.0
+   },
+   {
+    "label": "Provisions and tax",
+    "value": 912.1
+   }
+  ],
+  "equity": 12117.9,
+  "note": "Most of what Gamuda owns is land and property under development plus work done but not yet billed. Borrowings rose to RM10.1bn to buy land and fund growth; net gearing is 53%, under its own 70% ceiling (IR1 p.36)."
+ },
+ "cash": {
+  "wfPeriod": "FY2025",
+  "waterfall": [
+   {
+    "l": "Cash from operations",
+    "v": -78.5,
+    "total": 1
+   },
+   {
+    "l": "Machinery and buildings",
+    "v": -261.5,
+    "total": 0
+   },
+   {
+    "l": "Land and reclamation (Penang Silicon Island)",
+    "v": -1189.7,
+    "total": 0
+   },
+   {
+    "l": "Money put into joint ventures",
+    "v": -348.6,
+    "total": 0
+   },
+   {
+    "l": "Other investing items",
+    "v": 567.7,
+    "total": 0
+   },
+   {
+    "l": "New borrowing (net)",
+    "v": 2538.1,
+    "total": 0
+   },
+   {
+    "l": "Interest paid",
+    "v": -355.1,
+    "total": 0
+   },
+   {
+    "l": "Dividends paid in cash",
+    "v": -153.8,
+    "total": 0
+   },
+   {
+    "l": "Other financing",
+    "v": 110.8,
+    "total": 0
+   },
+   {
+    "l": "Increase in cash",
+    "v": 829.4,
+    "total": 1
+   }
+  ],
+  "wfNote": "Cash from operations was slightly negative because RM1.8bn of work was done but not yet billed (contract assets). Land for Penang Silicon Island and new projects was funded mainly with new borrowing.",
+  "cols": [
+   "FY2024",
+   "FY2025"
+  ],
+  "table": [
+   {
+    "label": "Operating profit before working capital",
+    "values": [
+     993.6,
+     1407.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Working capital: property and land",
+    "values": [
+     622.2,
+     1322.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Working capital: contracts, receivables, payables",
+    "values": [
+     -1166.3,
+     -2392.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Tax, interest and other paid",
+    "values": [
+     -308.5,
+     -415.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Cash from operations",
+    "values": [
+     141.0,
+     -78.5
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Machinery, buildings, land and reclamation",
+    "values": [
+     -1677.3,
+     -1451.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Joint ventures and other investing",
+    "values": [
+     759.6,
+     219.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash used in investing",
+    "values": [
+     -917.7,
+     -1232.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "New borrowing (net)",
+    "values": [
+     878.5,
+     2538.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Interest paid",
+    "values": [
+     -332.6,
+     -355.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Dividends and other financing",
+    "values": [
+     31.3,
+     -43.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net cash from financing",
+    "values": [
+     577.2,
+     2140.0
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Net change in cash",
+    "values": [
+     -199.5,
+     829.2
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM26.7 bn",
+   "plain": "What the whole company costs at today's share price: RM26.7 billion."
+  },
+  {
+   "label": "P/E (FY2025 profit)",
+   "value": "26.6x",
+   "plain": "You pay about RM27 for every RM1 of yearly profit. A high number means investors expect growth."
+  },
+  {
+   "label": "EPS (FY2025)",
+   "value": "17.14 sen",
+   "plain": "Profit earned for each share you own over the year."
+  },
+  {
+   "label": "Dividend yield (FY2025 dividends)",
+   "value": "2.2%",
+   "plain": "For every RM100 of shares, about RM2.2 a year comes back as cash dividends."
+  },
+  {
+   "label": "Payout ratio FY2025",
+   "value": "58%",
+   "plain": "Of every RM100 profit, about RM58 is paid out; the rest is kept to grow."
+  },
+  {
+   "label": "Price to book",
+   "value": "2.2x",
+   "plain": "The share price is 2.2 times the accounting value of what shareholders own."
+  },
+  {
+   "label": "Return on equity FY2025",
+   "value": "9%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM9 profit last year."
+  },
+  {
+   "label": "Net margin FY2025",
+   "value": "6.3%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM6.28."
+  },
+  {
+   "label": "Revenue growth FY2025",
+   "value": "+19.7%",
+   "plain": "Revenue compared with the year before."
+  },
+  {
+   "label": "Profit growth FY2025",
+   "value": "+10.0%",
+   "plain": "Profit to shareholders compared with the year before."
+  },
+  {
+   "label": "Net debt",
+   "value": "RM6.42 bn",
+   "plain": "Borrowings minus cash: RM6.42 billion owed to lenders after using all its cash."
+  },
+  {
+   "label": "Net gearing",
+   "value": "53%",
+   "plain": "Net debt is 53% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
+  },
+  {
+   "label": "Free cash flow FY2025",
+   "value": "RM-1,530 m",
+   "plain": "Cash from operations minus spending on assets and land: RM-1,530 million. Negative means it borrowed or used savings to fund growth."
+  },
+  {
+   "label": "Free cash flow yield",
+   "value": "-5.7%",
+   "plain": "That spare cash as a share of the company's market value."
+  },
+  {
+   "label": "EV / EBITDA",
+   "value": "20.0x",
+   "plain": "A price tag that includes debt: about 20.0 times its yearly cash earnings before interest and tax."
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "Record orderbook",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Orderbook up from RM32bn to RM38bn after a record RM25bn of new wins in FY2025 (IR2 p.4; IR1 p.37)",
+   "why": "Work already won gives years of revenue visibility; new wins are the main thing investors watch."
+  },
+  {
+   "factor": "Data centre construction",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "RM3.6bn of data centre jobs won in FY2025, with more packages under tender (IR1 p.36-37)",
+   "why": "A fast-growing new market that can add large contracts quickly."
+  },
+  {
+   "factor": "Penang LRT and Silicon Island",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "RM7.9bn Mutiara Line LRT started July 2025; 226 acres of Silicon Island reclaimed (IR1 p.38)",
+   "why": "Big multi-year Malaysian projects that should lift construction revenue for several years."
+  },
+  {
+   "factor": "Australia",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Biggest market: RM7.1bn revenue in FY2025, including renewable energy work via DT Infrastructure (IR2 p.246; IR1 p.37)",
+   "why": "Diversifies away from Malaysia, but ties results to Australian project margins and the Australian dollar."
+  },
+  {
+   "factor": "Property sales",
+   "affects": "Revenue",
+   "direction": "Negative",
+   "evidence": "Property sales fell from RM5.0bn to RM4.1bn in FY2025 (IR2 p.4)",
+   "why": "Lower sales today mean less property revenue to recognise in coming years."
+  },
+  {
+   "factor": "Vietnam property",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Celadon City completed; strong take-up at Eaton Park in Ho Chi Minh City; Vietnam revenue RM1.6bn (IR1 p.36; IR2 p.246)",
+   "why": "Quick-turnaround projects recycle capital and support property profit."
+  },
+  {
+   "factor": "Construction costs and labour",
+   "affects": "Costs",
+   "direction": "Negative",
+   "evidence": "Management names skilled-worker shortages, tariffs and material supply disruptions as risks (IR1 p.58)",
+   "why": "Fixed-price contracts can lose margin when costs rise."
+  },
+  {
+   "factor": "Rising borrowings",
+   "affects": "Risk",
+   "direction": "Negative",
+   "evidence": "Borrowings up from RM7.8bn to RM10.1bn; net gearing 53% from 39% (IR2 p.4)",
+   "why": "More debt means more interest cost and less room if projects run late."
+  },
+  {
+   "factor": "Cash tied up in projects",
+   "affects": "Cash flow",
+   "direction": "Negative",
+   "evidence": "Operating cash flow was -RM78m in FY2025 as RM1.8bn more work was done than billed (IR2 p.82)",
+   "why": "Profit that has not turned into cash yet; investors watch when it is collected."
+  },
+  {
+   "factor": "Interest rates and currencies",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "Named as a key risk; most revenue is earned overseas (IR1 p.59; IR2 p.246)",
+   "why": "Higher rates raise borrowing costs; currency moves change ringgit profit."
+  },
+  {
+   "factor": "Project delays",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "Sungai Rasau water project given a 563-day extension after a 2024 pond collapse (IR1 p.38)",
+   "why": "Delays can add costs and push profit into later years."
+  },
+  {
+   "factor": "Higher dividends",
+   "affects": "Shareholder returns",
+   "direction": "Positive",
+   "evidence": "Dividend raised to 10 sen from 8 sen (IR1 p.49)",
+   "why": "Shows confidence in earnings and cash flow."
+  },
+  {
+   "factor": "Valuation",
+   "affects": "Share price",
+   "direction": "Negative (risk)",
+   "evidence": "About 27 times FY2025 profit at RM4.56 (see Valuation)",
+   "why": "A growth premium; slower contract wins could weigh on the share price."
+  }
+ ],
+ "competitors": [
+  {
+   "name": "IJM Corporation, Sunway Construction, WCT, YTL Corporation",
+   "how": "Malaysian contractors bidding for the same rail, highway and data centre jobs",
+   "source": "General market knowledge, not the report"
+  },
+  {
+   "name": "Large Australian and international contractors",
+   "how": "Compete for Australian transport and energy projects",
+   "source": "General market knowledge"
+  },
+  {
+   "name": "S P Setia, Sime Darby Property, Eco World, Mah Sing",
+   "how": "Malaysian township developers competing for home buyers",
+   "source": "General market knowledge"
+  }
+ ],
+ "outlook": [
+  {
+   "tone": "Positive",
+   "text": "Entered FY2026 with a record orderbook and strong liquidity; a new 2026-2030 strategic plan is to be unveiled (IR1 p.33, p.49)."
+  },
+  {
+   "tone": "Positive",
+   "text": "Several more data centre packages are under tender and expected to add to the orderbook (IR1 p.36)."
+  },
+  {
+   "tone": "Neutral",
+   "text": "Net gearing of 53% is below the self-imposed 70% ceiling, leaving room to fund expansion (IR1 p.36)."
+  },
+  {
+   "tone": "Negative",
+   "text": "Risks named by management: global trade tensions and tariffs, skilled-worker shortages and material costs, cyber threats, extreme weather, interest rates and currencies (IR1 p.58-59)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Positive",
+  "text": "Management expects growth to continue on the back of a record RM38bn orderbook (IR1 p.33, p.49)."
+ }
+}

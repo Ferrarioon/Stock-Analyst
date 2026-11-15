@@ -90,7 +90,8 @@
     "value": 607.3,
     "kind": "total"
    }
-  ]
+  ],
+  "incomeNote": "Plus RM0.48 of other income per RM100, mostly interest on its cash. Cost of goods is after supplier rebates."
  },
  "trend": {
   "cols": [
@@ -101,7 +102,7 @@
    "Q2 2025",
    "Q2 2026"
   ],
-  "rows": [
+  "lines": [
    {
     "label": "Revenue",
     "values": [
@@ -111,10 +112,11 @@
      6144.3,
      2707.8,
      3075.9
-    ]
+    ],
+    "bold": 1
    },
    {
-    "label": "Cost of sales",
+    "label": "Cost of goods sold",
     "values": [
      -8088.4,
      -9206.7,
@@ -122,7 +124,20 @@
      -4913.5,
      -2166.4,
      -2470.7
-    ]
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Gross profit",
+    "values": [
+     1893.2,
+     2226.5,
+     1062.4,
+     1230.8,
+     541.5,
+     605.3
+    ],
+    "bold": 1
    },
    {
     "label": "Other income",
@@ -133,10 +148,11 @@
      27.5,
      13.1,
      13.7
-    ]
+    ],
+    "bold": 0
    },
    {
-    "label": "Administrative and other operating expenses",
+    "label": "Operating expenses",
     "values": [
      -1245.9,
      -1430.7,
@@ -144,7 +160,8 @@
      -766.4,
      -348.2,
      -388.9
-    ]
+    ],
+    "bold": 0
    },
    {
     "label": "Finance costs",
@@ -155,10 +172,23 @@
      -25.2,
      -12.0,
      -12.7
-    ]
+    ],
+    "bold": 0
    },
    {
-    "label": "Income tax",
+    "label": "Profit before tax",
+    "values": [
+     633.7,
+     803.4,
+     386.3,
+     466.8,
+     194.4,
+     217.4
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Tax",
     "values": [
      -168.3,
      -196.1,
@@ -166,7 +196,8 @@
      -114.2,
      -49.8,
      -53.5
-    ]
+    ],
+    "bold": 0
    },
    {
     "label": "Profit after tax",
@@ -177,7 +208,8 @@
      352.5,
      144.6,
      163.9
-    ]
+    ],
+    "bold": 1
    }
   ]
  },
@@ -209,7 +241,8 @@
    18.27,
    18.97,
    19.47
-  ]
+  ],
+  "note": "Gross margin (what is left after buying goods): 2021 18.24% · 2022 18.03% · 2023 18.27% · 2024 18.97% · 2025 19.47%"
  },
  "balance": {
   "date": "30 Jun 2026",
@@ -355,6 +388,127 @@
    550.1,
    318.4,
    236.2
+  ],
+  "wfPeriod": "FY2025",
+  "waterfall": [
+   {
+    "l": "Cash from running the shops",
+    "v": 903.3,
+    "total": 1
+   },
+   {
+    "l": "New shops, warehouses, equipment",
+    "v": -173.3,
+    "total": 0
+   },
+   {
+    "l": "Rent on shops and warehouses",
+    "v": -179.8,
+    "total": 0
+   },
+   {
+    "l": "Dividends to shareholders",
+    "v": -378.0,
+    "total": 0
+   },
+   {
+    "l": "Left over",
+    "v": 172.1,
+    "total": 1
+   }
+  ],
+  "wfNote": "Cash from running the shops paid for expansion, rent and dividends, with RM172 m to spare.",
+  "table": [
+   {
+    "label": "Cash from operations before working capital",
+    "values": [
+     926.5,
+     1107.5,
+     533.4,
+     628.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Working capital change",
+    "values": [
+     -226.3,
+     41.1,
+     32.8,
+     -103.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Interest and tax paid",
+    "values": [
+     -211.7,
+     -245.3,
+     -96.4,
+     -124.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Cash from operations",
+    "values": [
+     488.4,
+     903.3,
+     469.9,
+     400.4
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Purchase of property, plant and equipment (capex)",
+    "values": [
+     -170.7,
+     -173.3,
+     -64.1,
+     -66.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Repayment of lease liabilities (rent)",
+    "values": [
+     -160.6,
+     -179.8,
+     -87.3,
+     -97.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Free cash flow after rent",
+    "values": [
+     157.2,
+     550.1,
+     318.4,
+     236.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Dividends paid",
+    "values": [
+     -200.0,
+     -378.0,
+     -189.0,
+     -189.0
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net (purchase) of short-term investments and deposits",
+    "values": [
+     -479.0,
+     -277.0,
+     -228.6,
+     -80.2
+    ],
+    "bold": 0
+   }
   ]
  },
  "metrics": [
@@ -570,5 +724,43 @@
  "outlookOverall": {
   "tone": "Positive",
   "text": "Management expects FY2026 to grow, while naming cost and competition risks (AR p.46)."
- }
+ },
+ "fyNote": "1H = January to June, Q2 = April to June. 2026 figures are unaudited.",
+ "how": {
+  "title": "How sales are made",
+  "text": "Revenue = number of shop visits x average basket",
+  "facts": [
+   [
+    "Shop visits",
+    "287.6 million transactions in 1H2026 (+15.7%)"
+   ],
+   [
+    "Average basket",
+    "RM21.4"
+   ],
+   [
+    "Shops",
+    "3,151 outlets at 30 June 2026"
+   ],
+   [
+    "Sales per shop",
+    "RM3.93 m a year (FY2025)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "3,151 outlets",
+  "scale_label": "shops across Malaysia"
+ },
+ "growth": {
+  "period": "first half 2026",
+  "revenue": 15.5,
+  "profit": 21.8
+ },
+ "debt": {
+  "netCash": true,
+  "value": "RM884 m",
+  "label": "net cash, no bank borrowings"
+ },
+ "segments": null
 }

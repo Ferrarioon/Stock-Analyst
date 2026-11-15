@@ -475,3 +475,12 @@ nav a.on { background: var(--solid); color: var(--on-solid); }
 :root[data-theme="dark"] .flip-b { background: linear-gradient(160deg, #262628, #1a1a1b 60%, #2b2416); }
 :root[data-theme="dark"] .geo-bar i, :root[data-theme="dark"] .wf-track i.tot { background: linear-gradient(90deg, #5a5a5e, var(--accent)); }
 :root[data-theme="dark"] .logo, :root[data-theme="light"] .logo { background: linear-gradient(135deg, #f6d27a, #b8862b 55%, #2a2a2c 100%); }
+/* segments + waterfall zero line */
+.segs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.seg-card { background: var(--glass-strong); border: 1px solid var(--line); border-radius: 20px; padding: 14px; }
+.seg-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; } .seg-top i { width: 12px; height: 12px; border-radius: 4px; } .seg-top b { font-size: 15px; }
+.seg-bars { display: grid; grid-template-columns: 58px 1fr auto; gap: 6px 10px; align-items: center; font-size: 12.5px; }
+.seg-bars span { color: var(--muted); } .sb { height: 10px; border-radius: 6px; background: var(--grey-bg); overflow: hidden; } .sb i { display: block; height: 100%; border-radius: 6px; transition: width 1s cubic-bezier(.2,.8,.2,1); }
+.seg-card p { margin: 10px 0 0; font-size: 13px; color: var(--ink2); }
+.wf-track em { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--muted); }
+.fy-bars i.r { background: linear-gradient(90deg, #a87b22, #e2b553); } .fy-bars i.p { background: #3fbf85; }

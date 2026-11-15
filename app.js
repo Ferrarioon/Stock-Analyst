@@ -250,7 +250,7 @@ function drawChart(cv, px, calls, st, pre) {
     }
   } else line(px.c, cssv('--ink'), 1.7);
   if (st.layers.ma200) line(pre.ma200, '#e0913a', 1.3);
-  if (st.layers.ma50) line(pre.ma50, '#7c6fd6', 1.3);
+  if (st.layers.ma50) line(pre.ma50, '#c9a24a', 1.3);
   // call markers and target diamonds in broker colours
   vis.forEach(c => {
     const i = pos[c.date]; if (i < a || i > b) return;
@@ -308,6 +308,7 @@ const LAYMAN = {   // plain-English meaning of each metric, keyed by the start o
   'Inventory days': v => `Goods sit on shelves and in warehouses for about ${v} days before being sold.`,
   'Payable days': v => `It pays suppliers about ${v} days after buying, so suppliers fund much of the stock.`,
 };
+const plainOf = m => m.plain || laymanFor(m);
 const laymanFor = m => { const k = Object.keys(LAYMAN).find(k => m.label.startsWith(k)); return k ? LAYMAN[k](m.value) : ''; };
 const RM100_TIPS = {   // what each cost means in everyday words
   'Cost of goods sold': 'Buying the rice, noodles, drinks and toiletries it sells, after discounts from suppliers.',
@@ -328,7 +329,7 @@ const PIC_RULES = [[/valuation|share price/i, 'pricetag'], [/outlet|shop|store|b
   [/net cash|balance sheet|debt|borrow/i, 'safe'], [/risk|regulat|policy/i, 'shield'], [/growth|expan/i, 'growth'], [/delivery|transport|fleet/i, 'truck']];
 const picFor = t => (PIC_RULES.find(([r]) => r.test(t)) || [0, 'magnifier'])[1];
 const bgPic = src => `style="background-image:url('${esc(src)}')"`;
-const PIE_COLS = ['#8f86e8', '#e0913a', '#d6336c', '#1c7ed6', '#9aa0b4', '#c08ad6', '#0c8599', '#2b9a66'];
+const PIE_COLS = ['#c9a24a', '#6b6f76', '#d97757', '#a3a5aa', '#e6c983', '#46494f', '#b07a52', '#d6d0c2'];
 
 function countUps(root) {                 // animate numbers marked data-count="1234.5" data-dec="1" data-pre="RM" data-suf=" m"
   root.querySelectorAll('[data-count]').forEach(el => {
@@ -358,27 +359,26 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
     <span class="s-tag">${tag}</span>${opts.ai ? '<span class="s-aib">AI illustration</span>' : ''}<div class="s-body">${body}</div></div>`;
   if (b) cards.push(story('What it does', ai[0] ? ai[0].src : LIBPIC('shop'), `<b class="s-head">${esc(b.oneLine)}</b>`, { ai: 1, cls: 'photo' }));
   if (f) {
-    const it = f.pnl.items, rev = it[0].value, pat = it[it.length - 1].value;
+    const it = f.pnl.items, rev = it[0].value, pat = it[it.length - 1].value, st = f.story || {}, c1 = it.find(x => x.kind === 'cost');
     const big = ai[2] || ai[1];
-    cards.push(story('How big', big ? big.src : LIBPIC('warehouse'), `<div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>sales in ${esc(f.pnl.period)}</b>
-      <div class="s-num sm">${esc(f.revenueFormula.outlets.split(' at ')[0])}</div><b>shops across Malaysia</b>`, { ai: 1, cls: big ? 'photo' : '' }));
+    cards.push(story('How big', big ? big.src : LIBPIC('warehouse'), `<div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>revenue in ${esc(f.pnl.period)}</b>
+      <div class="s-num sm">${esc(st.scale_value || '')}</div><b>${esc(st.scale_label || '')}</b>`, { ai: 1, cls: big ? 'photo' : '' }));
     cards.push(story('Out of every RM100', LIBPIC('coins'), `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>
-      <small>RM${(Math.abs(it[1].value) / rev * 100).toFixed(0)} goes to buying the goods it sells</small>`, { ai: 1 }));
-    const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values, P = T.rows.find(r => r.label === 'Profit after tax').values, g = (a, i) => (a[i] / a[i - 1] - 1) * 100;
-    cards.push(story('Still growing?', LIBPIC('growth'), `<div class="s-num ${g(R, 3) >= 0 ? 'up' : 'dn'}">${g(R, 3) >= 0 ? '▲' : '▼'} ${cnt(Math.abs(g(R, 3)), 1, '', '%')}</div><b>sales, first half 2026</b>
-      <div class="s-num sm ${g(P, 3) >= 0 ? 'up' : 'dn'}">${g(P, 3) >= 0 ? '▲' : '▼'} ${Math.abs(g(P, 3)).toFixed(1)}%</div><b>profit, same period</b>`, { ai: 1 }));
-    const nc = f.metrics.find(m => m.label.startsWith('Net cash'));
-    cards.push(story('Any debt?', LIBPIC('safe'), `<div class="s-num">${nc ? esc(nc.value) : '–'}</div><b>net cash, no bank borrowings</b><small>Its suppliers are paid after about ${esc((f.metrics.find(m => m.label.startsWith('Payable')) || {}).value || '–')} days</small>`, { ai: 1 }));
+      <small>RM${(Math.abs(c1.value) / rev * 100).toFixed(0)} goes to ${esc(c1.label.toLowerCase())}</small>`, { ai: 1 }));
+    const gr = f.growth;
+    cards.push(story('Still growing?', LIBPIC('growth'), `<div class="s-num ${gr.revenue >= 0 ? 'up' : 'dn'}">${gr.revenue >= 0 ? '▲' : '▼'} ${cnt(Math.abs(gr.revenue), 1, '', '%')}</div><b>revenue, ${esc(gr.period)}</b>
+      <div class="s-num sm ${gr.profit >= 0 ? 'up' : 'dn'}">${gr.profit >= 0 ? '▲' : '▼'} ${Math.abs(gr.profit).toFixed(1)}%</div><b>profit, same period</b>`, { ai: 1 }));
+    if (f.debt && f.debt.value) cards.push(story(f.debt.netCash ? 'Any debt?' : 'How much debt?', LIBPIC('safe'), `<div class="s-num">${esc(f.debt.value)}</div><b>${esc(f.debt.label)}</b>
+      ${(() => { const g = f.metrics.find(m => m.label.startsWith('Net gearing')); return g ? `<small>Net gearing ${esc(g.value)} of shareholders' funds</small>` : ''; })()}`, { ai: 1 }));
     const pe = f.metrics.find(m => m.label.startsWith('P/E'));
-    cards.push(story('Price tag', LIBPIC('pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(laymanFor(pe)) : ''}</small>`, { ai: 1 }));
+    cards.push(story('Price tag', LIBPIC('pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(plainOf(pe)) : ''}</small>`, { ai: 1 }));
   }
   cards.push(story('What analysts say', LIBPIC('binoculars'), `<div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
     <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1 }));
   const chips = [];
   if (f) {
-    const T = f.trend, R = T.rows.find(r => r.label === 'Revenue').values;
-    chips.push([R[3] > R[2] ? 'Growing sales' : 'Sales falling', R[3] > R[2] ? 'high' : 'low']);
-    chips.push([f.metrics.find(m => m.label.startsWith('Net cash')) ? 'Net cash' : 'Has debt', 'high']);
+    chips.push([f.growth.revenue >= 0 ? 'Growing revenue' : 'Revenue falling', f.growth.revenue >= 0 ? 'high' : 'low']);
+    if (f.debt && f.debt.value) { const g = parseFloat((f.metrics.find(m => m.label.startsWith('Net gearing')) || {}).value); chips.push(f.debt.netCash ? ['Net cash', 'high'] : [g > 100 ? 'High debt' : 'Has net debt', g > 100 ? 'low' : 'medium']); }
     const pe = parseFloat((f.metrics.find(m => m.label.startsWith('P/E')) || {}).value);
     if (pe) chips.push([pe > 25 ? 'Priced for growth' : pe < 12 ? 'Low price tag' : 'Middle price tag', pe > 25 ? 'medium' : 'high']);
   }
@@ -390,59 +390,56 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
 }
 
 function moneyPanel(f) {
-  const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1], inc = it.find(x => x.kind === 'income');
-  const parts = [...costs.map((c, i) => ({ l: c.label, v: Math.abs(c.value) / rev * 100, c: PIE_COLS[i % PIE_COLS.length] })), { l: 'Profit after tax', v: pat.value / rev * 100, c: '#2b9a66' }];
-  const T = f.trend, row = l => (T.rows.find(r => r.label === l) || { values: [] }).values;
-  const R = row('Revenue'), C = row('Cost of sales'), O = row('Other income'), A = row('Administrative and other operating expenses'), F = row('Finance costs'), X = row('Income tax'), P = row('Profit after tax');
-  const GP = R.map((v, i) => v + C[i]), PBT = R.map((v, i) => v + C[i] + O[i] + A[i] + F[i]);
-  const lines = [['Revenue', R, 1], ['Cost of goods sold', C], ['Gross profit', GP, 1], ['Other income', O], ['Operating expenses', A], ['Finance costs', F], ['Profit before tax', PBT, 1], ['Tax', X], ['Profit after tax', P, 1]];
-  const yoy = (a, i) => i % 2 === 1 && a[i - 1] ? `<br><small class="${a[i] >= a[i - 1] ? 'pos' : 'neg'}">${a[i] >= a[i - 1] ? '+' : ''}${((a[i] / a[i - 1] - 1) * 100).toFixed(1)}%</small>` : '';
-  const fy = f.fiveYear, fyMax = Math.max(...fy.revenue), pMax = Math.max(...fy.pat);
-  return `<div class="glass card"><h2>Where every RM100 of sales goes <small class="sub">${esc(f.pnl.period)}</small></h2>
+  const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1], incs = it.filter(x => x.kind === 'income');
+  const parts = [...costs.map((c, i) => ({ l: c.label, v: Math.abs(c.value) / rev * 100, c: PIE_COLS[i % PIE_COLS.length], tip: c.tip })), { l: pat.label, v: pat.value / rev * 100, c: '#3fbf85', tip: pat.tip }];
+  const T = f.trend, yoy = (a, i) => i % 2 === 1 && a[i - 1] ? `<br><small class="${a[i] >= a[i - 1] ? 'pos' : 'neg'}">${a[i] >= a[i - 1] ? '+' : ''}${((a[i] / Math.abs(a[i - 1]) - 1) * 100).toFixed(1)}%</small>` : '';
+  const fy = f.fiveYear, fyMax = Math.max(...fy.revenue), pMax = Math.max(...fy.pat), seg = f.segments, h = f.how;
+  const segTot = seg ? seg.rows.reduce((t, r) => t + r.revenue, 0) : 0, segP = seg ? seg.rows.reduce((t, r) => t + Math.max(0, r.profit), 0) : 0, gTot = seg && seg.geo ? seg.geo.reduce((t, r) => t + r.value, 0) : 0;
+  return `<div class="glass card"><h2>Where every RM100 of revenue goes <small class="sub">${esc(f.pnl.period)}</small></h2>
     <div class="rm100-wrap">${donut(parts, 'pie')}
       <div class="rm100-list">${parts.map((p, i) => `<button class="rm-item" data-i="${i}"><i style="background:${p.c}"></i><span>${esc(p.l.replace(' (depreciation of leases)', ''))}</span><b>RM${p.v.toFixed(2)}</b></button>`).join('')}
         <div class="rm-tip" id="rm-tip"><b>Tap a slice or a line</b><br>to see what each cost means in everyday words.</div></div></div>
-    <p class="note">Plus RM${(inc.value / rev * 100).toFixed(2)} of other income per RM100, mostly interest on its cash. Cost of goods is after supplier rebates.</p></div>
-  <div class="glass card"><div class="head"><h2>Sales and profit over time</h2><div class="seg" id="pl-mode"><button data-m="simple" class="on">Simple</button><button data-m="detail">Detailed</button></div></div>
-    <div id="pl-simple">${fy.cols.map((y, i) => `<div class="fy big"><span>${y}</span><div class="fy-bars"><i class="r" data-w="${(fy.revenue[i] / fyMax * 100).toFixed(1)}%" style="width:0"></i><i class="p" data-w="${(fy.pat[i] / pMax * 100).toFixed(1)}%" style="width:0"></i></div>
-      <div class="fy-n"><b>RM${(fy.revenue[i] / 1000).toFixed(2)} bn</b><b class="pos">RM${Math.round(fy.pat[i])} m profit</b></div></div>`).join('')}
-      <div class="legend"><span><i style="background:#8f86e8"></i>Sales</span><span><i style="background:#2b9a66"></i>Profit after tax (own scale)</span></div>
-      <p class="note">Gross margin (what is left after buying goods): ${fy.cols.map((y, i) => `${y} ${fy.gm[i]}%`).join(' · ')}</p></div>
+    <p class="note">${esc(f.pnl.incomeNote || (incs.length ? `Plus RM${(incs.reduce((t, x) => t + x.value, 0) / rev * 100).toFixed(2)} of other income per RM100.` : ''))}</p></div>
+  ${seg ? `<div class="glass card"><h2>Its businesses <small class="sub">${esc(seg.period)}</small></h2>
+    <div class="segs">${seg.rows.map((r, i) => `<div class="seg-card"><div class="seg-top"><i style="background:${PIE_COLS[i % PIE_COLS.length]}"></i><b>${esc(r.name)}</b></div>
+      <div class="seg-bars"><span>Revenue</span><div class="sb"><i style="width:0;background:${PIE_COLS[i % PIE_COLS.length]}" data-w="${(r.revenue / segTot * 100).toFixed(1)}%"></i></div><b>RM${fmtM(r.revenue)} m · ${(r.revenue / segTot * 100).toFixed(0)}%</b>
+        <span>Profit</span><div class="sb"><i style="width:0;background:#3fbf85" data-w="${(Math.max(0, r.profit) / segP * 100).toFixed(1)}%"></i></div><b class="${r.profit < 0 ? 'neg' : ''}">RM${fmtM(r.profit)} m · ${segP ? (r.profit / segP * 100).toFixed(0) : 0}%</b></div>
+      ${r.tip ? `<p>${esc(r.tip)}</p>` : ''}</div>`).join('')}</div>
+    ${seg.geo && seg.geo.length ? `<h3 style="margin-top:16px">Where revenue comes from</h3>${seg.geo.map(g => `<div class="geo-row"><span>${esc(g.name)}</span><div class="geo-bar"><i style="width:0" data-w="${(g.value / gTot * 100).toFixed(1)}%"></i></div><b>${(g.value / gTot * 100).toFixed(0)}%</b></div>`).join('')}` : ''}
+    ${seg.note ? `<p class="note">${esc(seg.note)}</p>` : ''}</div>` : ''}
+  <div class="glass card"><div class="head"><h2>Revenue and profit over time</h2><div class="seg" id="pl-mode"><button data-m="simple" class="on">Simple</button><button data-m="detail">Detailed</button></div></div>
+    <div id="pl-simple">${fy.cols.map((y, i) => `<div class="fy big"><span>${y}</span><div class="fy-bars"><i class="r" data-w="${(fy.revenue[i] / fyMax * 100).toFixed(1)}%" style="width:0"></i><i class="p" data-w="${(Math.max(0, fy.pat[i]) / pMax * 100).toFixed(1)}%" style="width:0"></i></div>
+      <div class="fy-n"><b>RM${(fy.revenue[i] / 1000).toFixed(2)} bn</b><b class="${fy.pat[i] < 0 ? 'neg' : 'pos'}">RM${Math.round(fy.pat[i]).toLocaleString()} m profit</b></div></div>`).join('')}
+      <div class="legend"><span><i style="background:#c9a24a"></i>Revenue</span><span><i style="background:#3fbf85"></i>Profit (own scale)</span></div>
+      ${fy.note ? `<p class="note">${esc(fy.note)}</p>` : ''}</div>
     <div id="pl-detail" hidden><div class="tablewrap"><table class="fin-t"><thead><tr><th>RM million</th>${T.cols.map(c => `<th class="num">${esc(c)}</th>`).join('')}</tr></thead><tbody>
-      ${lines.map(([l, a, b]) => `<tr class="${b ? 'tot' : ''}"><td>${l}</td>${a.map((v, i) => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}${b ? yoy(a, i) : ''}</td>`).join('')}</tr>`).join('')}
-      <tr><td><i>Gross margin</i></td>${GP.map((v, i) => `<td class="num"><i>${(v / R[i] * 100).toFixed(1)}%</i></td>`).join('')}</tr>
-      <tr><td><i>Net margin</i></td>${P.map((v, i) => `<td class="num"><i>${(v / R[i] * 100).toFixed(1)}%</i></td>`).join('')}</tr></tbody></table></div>
-      <p class="note">Growth compares with the same period a year earlier. 1H = January to June, Q2 = April to June. 2026 figures are unaudited.</p></div></div>
-  <div class="glass card"><h2>How sales are made</h2><div class="fin-formula">
-      <div class="wide"><small>The formula</small><b>${esc(f.revenueFormula.text)}</b></div>
-      <div><small>Shop visits</small><b>${esc(f.revenueFormula.visits)}</b></div><div><small>Average basket</small><b>${esc(f.revenueFormula.basket)}</b></div>
-      <div><small>Shops</small><b>${esc(f.revenueFormula.outlets)}</b></div><div><small>Sales per shop</small><b>RM${f.revenueFormula.perOutlet} m a year</b></div></div>
-    <p class="note">${esc(f.segmentNote)}</p></div>`;
+      ${T.lines.map(l => `<tr class="${l.bold ? 'tot' : ''}"><td>${esc(l.label)}</td>${l.values.map((v, i) => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}${l.bold ? yoy(l.values, i) : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+      <p class="note">Growth under each total compares with the period a year earlier.${f.fyNote ? ' ' + esc(f.fyNote) : ''}</p></div></div>
+  <div class="glass card"><h2>${esc(h.title)}</h2><div class="fin-formula">
+      <div class="wide"><small>The formula</small><b>${esc(h.text)}</b></div>
+      ${h.facts.map(([k, v]) => `<div><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join('')}</div>
+    ${f.segmentNote ? `<p class="note">${esc(f.segmentNote)}</p>` : ''}</div>`;
 }
 
-function waterfall(steps) {               // horizontal cash waterfall: start bar, ups and downs, end bar
+function waterfall(steps) {               // horizontal cash waterfall: totals, ups and downs (handles negative values)
   let run = 0; const pts = steps.map(s => { const from = s.total ? 0 : run; run = s.total ? s.v : run + s.v; return { ...s, from, to: s.total ? s.v : run }; });
-  const mx = Math.max(...pts.map(p => Math.max(p.from, p.to))), W = 100;
-  return `<div class="wf">${pts.map(p => { const a = Math.min(p.from, p.to) / mx * W, w = Math.abs(p.to - p.from) / mx * W;
-    return `<div class="wf-row"><span class="wf-l">${esc(p.l)}</span><div class="wf-track"><i class="${p.total ? 'tot' : p.v >= 0 ? 'up' : 'dn'}" style="left:${a.toFixed(2)}%;width:0" data-w="${Math.max(.6, w).toFixed(2)}%"></i></div>
+  const mx = Math.max(0, ...pts.map(p => Math.max(p.from, p.to))), mn = Math.min(0, ...pts.map(p => Math.min(p.from, p.to))), W = mx - mn || 1, X = v => (v - mn) / W * 100;
+  return `<div class="wf">${pts.map(p => { const a = X(Math.min(p.from, p.to)), w = Math.abs(p.to - p.from) / W * 100;
+    return `<div class="wf-row"><span class="wf-l">${esc(p.l)}</span><div class="wf-track">${mn < 0 ? `<em style="left:${X(0).toFixed(2)}%"></em>` : ''}<i class="${p.total ? 'tot' : p.v >= 0 ? 'up' : 'dn'}" style="left:${a.toFixed(2)}%;width:0" data-w="${Math.max(.6, w).toFixed(2)}%"></i></div>
       <b class="${p.total ? '' : p.v >= 0 ? 'pos' : 'neg'}">${p.v >= 0 && !p.total ? '+' : ''}${Math.round(p.v).toLocaleString()}</b></div>`; }).join('')}</div>`;
 }
 
 function healthPanel(f) {
   const bs = f.balance, aTot = bs.assets.reduce((t, x) => t + x.value, 0), liabs = [...bs.liabilities, { label: "Shareholders' equity", value: bs.equity }];
-  const ACOL = ['#6c63d9', '#8f86e8', '#b9b4f2', '#e0913a', '#f2b56b', '#d9d6f7', '#2b9a66', '#7fcfa4'], LCOL = ['#c0392b', '#e0675a', '#9aa0b4', '#d6336c', '#f0a3b5', '#2b9a66'];
+  const ACOL = ['#c9a24a', '#e2c27a', '#8a8f98', '#5f6670', '#b38a3a', '#d8d2c2', '#3fbf85', '#9bd6b6'], LCOL = ['#c8503f', '#e0675a', '#8a8f98', '#d6336c', '#f0a3b5', '#3fbf85'];
   const stack = (arr, cols) => `<div class="bsbar">${arr.map((x, i) => x.value ? `<span style="width:0;background:${cols[i % cols.length]}" data-w="${(x.value / aTot * 100).toFixed(2)}%" title="${esc(x.label)}: RM${fmtM(x.value)} m"></span>` : '').join('')}</div>
     <div class="bs-legend">${arr.map((x, i) => `<div><i style="background:${cols[i % cols.length]}"></i>${esc(x.label)}<b>${fmtM(x.value)}</b></div>`).join('')}</div>`;
-  const cf = f.cash, k = 1, ocf = cf.ocf[k], capex = cf.rows.find(r => r.label.startsWith('Purchase')).values[k], rent = cf.rows.find(r => r.label.startsWith('Repayment')).values[k], div = cf.rows.find(r => r.label.startsWith('Dividends')).values[k];
-  return `<div class="glass card"><h2>Where the cash came from and went <small class="sub">${esc(cf.cols[k])}, RM million</small></h2>
-    ${waterfall([{ l: 'Cash from running the shops', v: ocf, total: 1 }, { l: 'New shops, warehouses, equipment', v: capex }, { l: 'Rent on shops and warehouses', v: rent }, { l: 'Dividends to shareholders', v: div }, { l: 'Left over', v: ocf + capex + rent + div, total: 1 }])}
-    <p class="note">Cash from running the shops paid for expansion, rent and dividends, with RM${Math.round(ocf + capex + rent + div)} m to spare.</p>
+  const cf = f.cash, end = cf.waterfall[cf.waterfall.length - 1];
+  return `<div class="glass card"><h2>Where the cash came from and went <small class="sub">${esc(cf.wfPeriod)}, RM million</small></h2>
+    ${waterfall(cf.waterfall)}
+    <p class="note">${esc(cf.wfNote || `${end.l}: RM${Math.round(end.v)} m.`)}</p>
     <details class="more"><summary>See the full cash flow table</summary><div class="tablewrap"><table class="fin-t"><thead><tr><th>RM million</th>${cf.cols.map(c => `<th class="num">${esc(c)}</th>`).join('')}</tr></thead><tbody>
-      ${cf.rows.slice(0, 3).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}</td>`).join('')}</tr>`).join('')}
-      <tr class="tot"><td>Cash from operations</td>${cf.ocf.map(v => `<td class="num">${fmtM(v)}</td>`).join('')}</tr>
-      ${cf.rows.slice(3, 5).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">(${fmtM(-v)})</td>`).join('')}</tr>`).join('')}
-      <tr class="tot"><td>Free cash flow after rent</td>${cf.fcf.map(v => `<td class="num">${fmtM(v)}</td>`).join('')}</tr>
-      ${cf.rows.slice(5).map(r => `<tr><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}</td>`).join('')}</tr>`).join('')}
+      ${cf.table.map(r => `<tr class="${r.bold ? 'tot' : ''}"><td>${esc(r.label)}</td>${r.values.map(v => `<td class="num">${v < 0 ? '(' + fmtM(-v) + ')' : fmtM(v)}</td>`).join('')}</tr>`).join('')}
     </tbody></table></div></details></div>
   <div class="glass card"><h2>What it owns vs. what it owes <small class="sub">${esc(bs.date)}, RM million</small></h2>
     <div class="owe-grid"><div><div class="owe-h">Owns <b>RM${cnt(aTot / 1000, 2)} bn</b></div>${stack(bs.assets, ACOL)}</div>
@@ -460,7 +457,7 @@ function gauge(v, max, zones) {          // semicircle gauge; zones = [[upTo, la
 const VAL_GROUPS = [
   ['Price tag', 'Is the share cheap or expensive?', 'pricetag', /^(Market value|P\/E|EPS|Price to book|EV|Free cash flow yield)/],
   ['Business quality', 'Does it make good money?', 'growth', /^(Return on equity|Gross margin|Net margin|Revenue growth|Profit growth)/],
-  ['Safety', 'Could it get into trouble?', 'safe', /^(Net cash|Free cash flow after|Inventory|Payable|Debt|Gearing)/],
+  ['Safety', 'Could it get into trouble?', 'safe', /^(Net cash|Net debt|Net gearing|Free cash flow(?! yield)|Inventory|Payable|Debt|Gearing|Current ratio|CET1|Capital|Loan|Gross impaired)/],
   ['Cash back to you', 'What do shareholders receive?', 'coins', /^(Dividend|Payout)/],
 ];
 function valuationPanel(f) {
@@ -476,11 +473,11 @@ function valuationPanel(f) {
     <div class="heroes">${heroes.map(([no, q, m, pic, max, zones]) => { const g = gauge(n(m), max, zones);
       return `<div class="hero-m"><div class="hm-top"><div class="hm-pic" ${bgPic(LIBPIC(pic))}></div><span class="hm-no">${no}</span><div class="hm-q">${q}</div></div>
         <div class="hm-g">${g.svg}<div class="hm-v">${esc(m.value)}</div></div><span class="badge ${g.zone[2] === 'good' ? 'high' : g.zone[2] === 'warn' ? 'medium' : ''}">${g.zone[1]}</span>
-        <small class="hm-l">${esc(m.label)}</small><p>${esc(laymanFor(m))}</p></div>`; }).join('')}</div>
+        <small class="hm-l">${esc(m.label)}</small><p>${esc(plainOf(m))}</p></div>`; }).join('')}</div>
     <p class="note">Gauge zones are general rules of thumb for reading these numbers, not official benchmarks; a fast-growing company often carries a high price tag.</p></div>
   <div class="glass card"><div class="biz-tag">Dig deeper</div><h2 style="margin-top:4px">Every number, grouped by the question it answers</h2><p class="sub">Tap a line to see what it means.</p>
     <div class="vgroups">${groups.map(([t, q, pic, ms]) => `<div class="vgroup"><div class="vg-head"><div class="vg-pic" ${bgPic(LIBPIC(pic))}></div><div><b>${t}</b><small>${q}</small></div></div>
-      ${ms.map(m => `<button class="mrow"><span class="mr-l">${esc(m.label)}</span><b>${esc(m.value)}</b><span class="m-plain">${esc(laymanFor(m))}</span></button>`).join('')}</div>`).join('')}</div>
+      ${ms.map(m => `<button class="mrow"><span class="mr-l">${esc(m.label)}</span><b>${esc(m.value)}</b><span class="m-plain">${esc(plainOf(m))}</span></button>`).join('')}</div>`).join('')}</div>
     <p class="note">Valuation uses the share price of RM${f.price} on ${fdate(f.priceDate)}. "Last 12 months" = July 2025 to June 2026. These describe the company; they are not a recommendation.</p></div>`;
 }
 
@@ -526,7 +523,7 @@ async function stock(id, tab) {
   }).join('');
   const all = hitStats(calls);
   const tps = IDX.brokers.map(br => s.latest[br] && s.latest[br].tp).filter(Boolean), avgTp = tps.length ? avg(tps) : null;
-  const has = { business: !!b, money: !!f, health: !!f, valuation: !!f, drivers: !!f };
+  const has = { business: !!b, money: !!(f && f.how), health: !!(f && f.cash && f.cash.waterfall), valuation: !!f, drivers: !!f };
   const tabs = TABS.filter(([k]) => has[k] !== false);
   tab = tabs.some(([k]) => k === tab) ? tab : 'overview';
   const panels = {
@@ -550,7 +547,7 @@ async function stock(id, tab) {
           <div class="seg" id="ctype"><button data-t="candle" class="on">Candles</button><button data-t="line">Line</button></div>
           <div class="seg" id="zoom"><button data-z="in" title="Zoom in">＋</button><button data-z="out" title="Zoom out">－</button><button data-z="reset" title="Show all">Reset</button></div></div></div>
       <div class="chart-layers" id="layers">${IDX.brokers.filter(br => calls.some(c => c.broker === br)).map(br => `<label><input type="checkbox" data-b="${esc(br)}" checked>${bdot(br)}${esc(br)}</label>`).join('')}
-        <label><input type="checkbox" data-l="ma50" checked><i class="ln" style="background:#7c6fd6"></i>50-day avg</label><label><input type="checkbox" data-l="ma200" checked><i class="ln" style="background:#e0913a"></i>200-day avg</label>
+        <label><input type="checkbox" data-l="ma50" checked><i class="ln" style="background:#c9a24a"></i>50-day avg</label><label><input type="checkbox" data-l="ma200" checked><i class="ln" style="background:#e0913a"></i>200-day avg</label>
         <label><input type="checkbox" data-l="band"><i class="ln dash"></i>52-week high / low</label><label><input type="checkbox" data-l="tp" checked>Target lines</label></div>
       <canvas id="chart" class="chart"></canvas>
       <p class="note">Scroll on the chart to zoom, drag to move, double-click to show everything. Markers sit at the report date in each broker's colour: ▲ Buy, ▼ Sell, ● Neutral.
@@ -597,12 +594,12 @@ function renderPerf(px) {
 function wireMoney(f) {
   const pie = $('#pie'); if (!pie) return;
   const it = f.pnl.items, rev = it[0].value, costs = it.filter(x => x.kind === 'cost'), pat = it[it.length - 1];
-  const parts = [...costs, pat].map(x => ({ l: x.label, v: Math.abs(x.value) / rev * 100, m: Math.abs(x.value) }));
+  const parts = [...costs, pat].map(x => ({ l: x.label, v: Math.abs(x.value) / rev * 100, m: Math.abs(x.value), tip: x.tip }));
   const pick = i => {
     pie.querySelectorAll('path').forEach((p, j) => p.classList.toggle('dim', j !== i));
     document.querySelectorAll('.rm-item').forEach((b, j) => b.classList.toggle('on', j === i));
     $('#pie-v').textContent = 'RM' + parts[i].v.toFixed(2); $('#pie-l').textContent = 'of every RM100';
-    $('#rm-tip').innerHTML = `<b>${esc(parts[i].l)}</b><br>${esc(RM100_TIPS[parts[i].l] || '')}<br><small class="sub">RM${Math.round(parts[i].m).toLocaleString()} million in ${esc(f.pnl.period)}</small>`;
+    $('#rm-tip').innerHTML = `<b>${esc(parts[i].l)}</b><br>${esc(parts[i].tip || RM100_TIPS[parts[i].l] || '')}<br><small class="sub">RM${Math.round(parts[i].m).toLocaleString()} million in ${esc(f.pnl.period)}</small>`;
   };
   pie.querySelectorAll('path').forEach(p => { p.onclick = () => pick(+p.dataset.i); p.onmouseenter = () => pick(+p.dataset.i); });
   document.querySelectorAll('.rm-item').forEach(b => { b.onclick = () => pick(+b.dataset.i); b.onmouseenter = () => pick(+b.dataset.i); });
@@ -620,7 +617,7 @@ function wireFlips() {
 }
 
 /* ---------- business profile (data/b/<id>.json, summarised from the company's annual report) ---------- */
-const BIZ_COLORS = ['#6c63d9', '#3fa58a', '#e0913a', '#d9a520', '#c08ad6', '#5b9bd5'];
+const BIZ_COLORS = ['#c9a24a', '#6b6f76', '#d97757', '#a3a5aa', '#e6c983', '#46494f'];
 function shareBar(items, key) {
   const tot = items.reduce((t, x) => t + (x[key] || 0), 0);
   if (!tot) return '';

@@ -136,5 +136,22 @@
     "channel": "Gamuda Berhad",
     "channelUrl": "https://www.youtube.com/@GamudaBerhadChannel"
   },
-  "aiImages": []
+  "aiImages": [
+    {
+      "src": "data/b/img/5398_1.jpg",
+      "caption": "Building an elevated light-rail line, the kind of work Gamuda does in Penang"
+    },
+    {
+      "src": "data/b/img/5398_2.jpg",
+      "caption": "A master-planned township with a lake and parks, like those Gamuda Land builds"
+    },
+    {
+      "src": "data/b/img/5398_3.jpg",
+      "caption": "A tunnel boring machine digging an underground metro line"
+    },
+    {
+      "src": "data/b/img/5398_4.jpg",
+      "caption": "A large data centre under construction, a fast-growing business for Gamuda"
+    }
+  ]
 }

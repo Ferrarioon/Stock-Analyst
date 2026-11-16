@@ -484,3 +484,11 @@ nav a.on { background: var(--solid); color: var(--on-solid); }
 .seg-card p { margin: 10px 0 0; font-size: 13px; color: var(--ink2); }
 .wf-track em { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--muted); }
 .fy-bars i.r { background: linear-gradient(90deg, #a87b22, #e2b553); } .fy-bars i.p { background: #3fbf85; }
+/* supply chain */
+.sc-flow { display: grid; grid-template-columns: 1fr 40px 1fr; gap: 12px; align-items: stretch; margin-top: 10px; }
+.sc-col { background: var(--glass-strong); border: 1px solid var(--line); border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.sc-h { display: flex; gap: 10px; align-items: center; margin-bottom: 4px; } .sc-h b { display: block; font-size: 15px; } .sc-h small { color: var(--muted); font-size: 12px; }
+.sc-row { display: grid; gap: 2px; padding: 9px 10px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); }
+.sc-row b { font-size: 13.5px; } .sc-row span { font-size: 13px; color: var(--ink2); } .sc-row small { font-size: 11px; color: var(--muted); }
+.sc-mid { display: grid; place-items: center; color: var(--accent); font-size: 24px; }
+@media (max-width: 800px) { .sc-flow { grid-template-columns: 1fr; } .sc-mid span { display: inline-block; transform: rotate(90deg); } }

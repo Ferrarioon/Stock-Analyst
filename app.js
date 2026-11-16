@@ -288,7 +288,7 @@ function showTip(e, cv, px, calls, st) {
 const fmtM = v => v == null ? '–' : Math.round(v).toLocaleString();
 const dirBadge = d => { const k = /^Positive/.test(d) ? 'high' : /^Negative/.test(d) ? 'low' : 'medium'; const a = /^Positive/.test(d) ? '▲ ' : /^Negative/.test(d) ? '▼ ' : '● '; return `<span class="badge ${k}">${a}${esc(d)}</span>`; };
 /* ---------- stock page: tabs, story cards and interactive infographics ---------- */
-const TABS = [['overview', 'Overview'], ['business', 'Business'], ['money', 'Money'], ['health', 'Health'], ['valuation', 'Valuation'], ['drivers', 'What moves it'], ['analysts', 'Analysts'], ['price', 'Price chart']];
+const TABS = [['overview', 'Overview'], ['business', 'Business'], ['financial', 'Financial'], ['health', 'Health'], ['valuation', 'Valuation'], ['drivers', 'What moves it'], ['analysts', 'Analysts'], ['price', 'Price chart']];
 const LAYMAN = {   // plain-English meaning of each metric, keyed by the start of its label
   'Market value': v => `What the whole company costs at today's share price: ${v}.`,
   'P/E': v => `You pay about RM${parseFloat(v)} for every RM1 of profit the company makes in a year. A high number means investors expect strong growth.`,
@@ -354,7 +354,8 @@ function donut(parts, id, big = 'RM100', small = 'of revenue') {               /
 }
 
 function overviewPanel(s, b, f, calls, all, avgTp) {
-  const cards = [], ai = (b && b.aiImages) || [];
+  const cards = [], ai = (b && b.aiImages) || [], sp = (f && f.story && f.story.pics) || {};
+  const spic = (k, lib) => sp[k] || LIBPIC(lib);
   const story = (tag, pic, body, opts = {}) => `<div class="story${opts.cls ? ' ' + opts.cls : ''}"><div class="s-pic" ${bgPic(pic)}></div><div class="s-shade"></div>
     <span class="s-tag">${tag}</span>${opts.ai ? '<span class="s-aib">AI illustration</span>' : ''}<div class="s-body">${body}</div></div>`;
   if (b) cards.push(story('What it does', ai[0] ? ai[0].src : LIBPIC('shop'), `<b class="s-head">${esc(b.oneLine)}</b>`, { ai: 1, cls: 'photo' }));
@@ -363,18 +364,18 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
     const big = ai[2] || ai[1];
     cards.push(story('How big', big ? big.src : LIBPIC('warehouse'), `<div class="s-num">RM${cnt(rev / 1000, 1)} bn</div><b>revenue in ${esc(f.pnl.period)}</b>
       <div class="s-num sm">${esc(st.scale_value || '')}</div><b>${esc(st.scale_label || '')}</b>`, { ai: 1, cls: big ? 'photo' : '' }));
-    cards.push(story('Out of every RM100', LIBPIC('coins'), (pat < 0 ? `<div class="s-num dn">−RM${cnt(-pat / rev * 100, 2)}</div><b>lost, before one-off gains</b>` : `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>`) + `
-      <small>RM${(Math.abs(c1.value) / rev * 100).toFixed(0)} goes to ${esc(c1.label.toLowerCase())}</small>`, { ai: 1 }));
+    cards.push(story('Out of every RM100', spic('rm100', 'coins'), (pat < 0 ? `<div class="s-num dn">−RM${cnt(-pat / rev * 100, 2)}</div><b>lost, before one-off gains</b>` : `<div class="s-num">RM${cnt(pat / rev * 100, 2)}</div><b>ends up as profit</b>`) + `
+      <small>RM${(Math.abs(c1.value) / rev * 100).toFixed(0)} goes to ${esc(c1.label.toLowerCase())}</small>`, { ai: 1, cls: 'photo' }));
     const gr = f.growth;
-    cards.push(story('Still growing?', LIBPIC('growth'), `<div class="s-num ${gr.revenue >= 0 ? 'up' : 'dn'}">${gr.revenue >= 0 ? '▲' : '▼'} ${cnt(Math.abs(gr.revenue), 1, '', '%')}</div><b>revenue, ${esc(gr.period)}</b>
-      ${gr.profit == null ? `<small>${esc(gr.profitNote || '')}</small>` : `<div class="s-num sm ${gr.profit >= 0 ? 'up' : 'dn'}">${gr.profit >= 0 ? '▲' : '▼'} ${Math.abs(gr.profit).toFixed(1)}%</div><b>profit, same period</b>`}`, { ai: 1 }));
-    if (f.debt && f.debt.value) cards.push(story(f.debt.netCash ? 'Any debt?' : 'How much debt?', LIBPIC('safe'), `<div class="s-num">${esc(f.debt.value)}</div><b>${esc(f.debt.label)}</b>
-      ${(() => { const g = f.metrics.find(m => m.label.startsWith('Net gearing')); return g ? `<small>Net gearing ${esc(g.value)} of shareholders' funds</small>` : ''; })()}`, { ai: 1 }));
+    cards.push(story('Still growing?', spic('growth', 'growth'), `<div class="s-num ${gr.revenue >= 0 ? 'up' : 'dn'}">${gr.revenue >= 0 ? '▲' : '▼'} ${cnt(Math.abs(gr.revenue), 1, '', '%')}</div><b>revenue, ${esc(gr.period)}</b>
+      ${gr.profit == null ? `<small>${esc(gr.profitNote || '')}</small>` : `<div class="s-num sm ${gr.profit >= 0 ? 'up' : 'dn'}">${gr.profit >= 0 ? '▲' : '▼'} ${Math.abs(gr.profit).toFixed(1)}%</div><b>profit, same period</b>`}`, { ai: 1, cls: 'photo' }));
+    if (f.debt && f.debt.value) cards.push(story(f.debt.netCash ? 'Any debt?' : 'How much debt?', spic('debt', 'safe'), `<div class="s-num">${esc(f.debt.value)}</div><b>${esc(f.debt.label)}</b>
+      ${(() => { const g = f.metrics.find(m => m.label.startsWith('Net gearing')); return g ? `<small>Net gearing ${esc(g.value)} of shareholders' funds</small>` : ''; })()}`, { ai: 1, cls: 'photo' }));
     const pe = f.metrics.find(m => m.label.startsWith('P/E'));
-    cards.push(story('Price tag', LIBPIC('pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(plainOf(pe)) : ''}</small>`, { ai: 1 }));
+    cards.push(story('Price tag', spic('pricetag', 'pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(plainOf(pe)) : ''}</small>`, { ai: 1, cls: 'photo' }));
   }
-  cards.push(story('What analysts say', LIBPIC('binoculars'), `<div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
-    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1 }));
+  cards.push(story('What analysts say', spic('analysts', 'binoculars'), `<div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
+    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1, cls: 'photo' }));
   const chips = [];
   if (f) {
     chips.push([f.growth.revenue >= 0 ? 'Growing revenue' : 'Revenue falling', f.growth.revenue >= 0 ? 'high' : 'low']);
@@ -386,7 +387,7 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
   return `<div class="chips">${chips.map(([t, k]) => `<span class="badge ${k}">${esc(t)}</span>`).join('')}</div>
     <div class="stories" id="stories">${cards.join('')}</div>
     <div class="story-nav"><button class="btn ghost sm" data-dir="-1">‹</button><span class="sub">Swipe or use the arrows</span><button class="btn ghost sm" data-dir="1">›</button></div>
-    ${f || b ? `<div class="next-hint">Want the details? ${[b && ['business', 'How the business works'], f && ['money', 'Where the money goes'], f && ['drivers', 'What moves the share price']].filter(Boolean).map(([k, t]) => `<a href="#" data-goto="${k}">${t} →</a>`).join('')}</div>` : ''}`;
+    ${f || b ? `<div class="next-hint">Want the details? ${[b && ['business', 'How the business works'], f && ['financial', 'The financials'], f && ['drivers', 'What moves the share price']].filter(Boolean).map(([k, t]) => `<a href="#" data-goto="${k}">${t} →</a>`).join('')}</div>` : ''}`;
 }
 
 function moneyPanel(f) {
@@ -498,6 +499,16 @@ function outlookBlock(f) {
     <p class="note">Tone is our plain reading of management's own words in its reports, not a forecast.</p>`;
 }
 
+function supplyBlock(sc) {                // who the company buys from and sells to (from its reports)
+  const col = (title, icon, rows) => `<div class="sc-col"><div class="sc-h"><span class="ring ${icon === 'in' ? 'gold' : 'teal'}"><svg viewBox="0 0 24 24">${icon === 'in'
+      ? '<path d="M3 12h13M11 6l6 6-6 6"/><path d="M21 4v16"/>' : '<path d="M3 4v16"/><path d="M8 12h13M15 6l6 6-6 6"/>'}</svg></span><div><b>${title}</b>
+      <small>${icon === 'in' ? 'What it needs to run the business' : 'Who pays the company'}</small></div></div>
+    ${rows.map(([who, what, src]) => `<div class="sc-row"><b>${esc(who)}</b><span>${esc(what)}</span><small>${esc(src)}</small></div>`).join('')}</div>`;
+  return `<div class="glass card"><div class="biz-tag">Supply chain</div><h2 style="margin-top:4px">Who it buys from, and who it sells to</h2>
+    <div class="sc-flow">${col('Suppliers', 'in', sc.suppliers)}<div class="sc-mid"><span>${'→'}</span></div>${col('Customers', 'out', sc.customers)}</div>
+    ${sc.note ? `<p class="note">${esc(sc.note)}</p>` : ''}</div>`;
+}
+
 function driversPanel(f) {
   const kind = d => /^Positive/.test(d) ? 'pos' : /^Negative/.test(d) ? 'neg' : 'watch';
   return `<div class="glass card"><h2>What moves sales, profit and the share price</h2>
@@ -505,7 +516,7 @@ function driversPanel(f) {
       <button data-k="neg">▼ Hurting ${f.drivers.filter(d => kind(d.direction) === 'neg').length}</button><button data-k="watch">● To watch ${f.drivers.filter(d => kind(d.direction) === 'watch').length}</button></div>
     <p class="sub">Tap a card to flip it.</p>
     <div class="flips">${f.drivers.map(d => `<div class="flip ${kind(d.direction)}" data-k="${kind(d.direction)}" tabindex="0"><div class="flip-in">
-      <div class="flip-f"><div class="flip-pic" ${bgPic(LIBPIC(picFor(d.factor)))}>${dirBadge(d.direction)}</div><div class="flip-t"><b>${esc(d.factor)}</b><span class="sub">Affects: ${esc(d.affects)}</span><small class="flip-hint">Tap to flip ↻</small></div></div>
+      <div class="flip-f"><div class="flip-pic" ${bgPic(d.pic || LIBPIC(picFor(d.factor)))}>${dirBadge(d.direction)}</div><div class="flip-t"><b>${esc(d.factor)}</b><span class="sub">Affects: ${esc(d.affects)}</span><small class="flip-hint">Tap to flip ↻</small></div></div>
       <div class="flip-b"><b>Why it matters</b><p>${esc(d.why)}</p><small>${esc(d.evidence)}</small></div></div></div>`).join('')}</div>
     <p class="note">"Helping" or "hurting" is a plain reading of each factor from the company's reports, not a forecast or a recommendation.</p></div>
   <div class="two"><div class="glass card"><h2>Competitors</h2>${f.competitors.map(c => `<div class="row-item"><span><b>${esc(c.name)}</b><br><small>${esc(c.how)}</small></span><small class="sub" style="max-width:40%;text-align:right">${esc(c.source)}</small></div>`).join('')}</div>
@@ -532,12 +543,13 @@ async function stock(id, tab) {
   }).join('');
   const all = hitStats(calls);
   const tps = IDX.brokers.map(br => s.latest[br] && s.latest[br].tp).filter(Boolean), avgTp = tps.length ? avg(tps) : null;
-  const has = { business: !!b, money: !!(f && f.how), health: !!(f && f.balance && (f.cash || f.safety)), valuation: !!f, drivers: !!f };
+  const has = { business: !!b, financial: !!(f && f.how), health: !!(f && f.balance && (f.cash || f.safety)), valuation: !!f, drivers: !!f };
   const tabs = TABS.filter(([k]) => has[k] !== false);
+  if (tab === 'money') tab = 'financial';                 // old links
   tab = tabs.some(([k]) => k === tab) ? tab : 'overview';
   const panels = {
     overview: overviewPanel(s, b, f, calls, all, avgTp),
-    business: b ? businessCard(b) : '', money: f ? moneyPanel(f) : '', health: f ? healthPanel(f) : '', valuation: f ? valuationPanel(f) : '', drivers: f ? driversPanel(f) : '',
+    business: b ? businessCard(b) + (f && f.supply ? supplyBlock(f.supply) : '') : '', financial: f ? moneyPanel(f) : '', health: f ? healthPanel(f) : '', valuation: f ? valuationPanel(f) : '', drivers: f ? driversPanel(f) : '',
     analysts: `<div class="glass card"><h2>Latest call and accuracy by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th>Latest report</th><th>Call</th>
       <th class="num">Price at call</th><th class="num">Target price</th><th class="num">Latest price</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th>Analyst</th>
       <th class="num">Buy calls reached target (this stock)</th><th>Accuracy</th><th class="num">Avg days to target</th>

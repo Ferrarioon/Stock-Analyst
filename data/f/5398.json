@@ -550,14 +550,14 @@
    "plain": "What the whole company costs at today's share price: RM27.2 billion."
   },
   {
-   "label": "P/E (FY2026 profit)",
+   "label": "P/E (FY2026)",
    "value": "25.9x",
    "plain": "You pay about RM26 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
    "label": "EPS (FY2026)",
    "value": "17.62 sen",
-   "plain": "Profit earned for each share you own over the year."
+   "plain": "Profit earned for each share you own over the last year."
   },
   {
    "label": "Dividend yield (FY2026 dividends)",
@@ -565,7 +565,7 @@
    "plain": "For every RM100 of shares, about RM2.2 a year comes back as cash dividends."
   },
   {
-   "label": "Payout ratio FY2026",
+   "label": "Payout ratio",
    "value": "57%",
    "plain": "Of every RM100 profit, about RM57 is paid out; the rest is kept to grow."
   },
@@ -575,7 +575,7 @@
    "plain": "The share price is 2.1 times the accounting value of what shareholders own."
   },
   {
-   "label": "Return on equity FY2026",
+   "label": "Return on equity (FY2026)",
    "value": "8%",
    "plain": "For every RM100 shareholders have in the company, it earned about RM8 profit last year."
   },
@@ -587,12 +587,12 @@
   {
    "label": "Revenue growth FY2026",
    "value": "+15.3%",
-   "plain": "Revenue compared with the year before."
+   "plain": "Revenue compared with the same period a year earlier."
   },
   {
    "label": "Profit growth FY2026",
    "value": "+4.9%",
-   "plain": "Profit to shareholders compared with the year before."
+   "plain": "Profit to shareholders compared with the same period a year earlier."
   },
   {
    "label": "Net debt",

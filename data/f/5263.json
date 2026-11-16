@@ -3,157 +3,162 @@
  "price": 7.81,
  "priceDate": "2026-11-13",
  "unit": "RM million",
- "fyNote": "Financial year ends 31 December.",
+ "fyNote": "Financial year ends 31 December. 1H = January to June 2026 (unaudited). Next results: Q3 2026, due late November 2026.",
  "sources": [
+  {
+   "title": "SunCon quarterly report, half-year to 30 June 2026",
+   "url": "https://ir2.chartnexus.com/suncon/doc/qr/q2_2026.pdf"
+  },
   {
    "title": "Sunway Construction Integrated Annual Report 2025",
    "url": "https://www.sunwayconstruction.com.my/annual-report-2025/template/pdf/SunCon-IAR25.pdf"
   }
  ],
- "segmentNote": "Mostly a builder: construction is 96% of revenue. Data centres were the biggest source of new work in 2025 (AR p.13, p.248).",
+ "segmentNote": "Mostly a builder: construction is 93% of revenue. Data centres make up 70% of the order book (Q2 p.10, p.25).",
  "how": {
   "title": "How Sunway Construction makes money",
   "text": "Revenue = construction work done for clients, billed as each project progresses + sales of precast concrete parts",
   "facts": [
    [
     "Order book (work still to do)",
-    "RM5.7 billion (AR p.15)"
+    "RM10.5 billion, an all-time high (Q2 p.19)"
    ],
    [
-    "New orders in 2025",
-    "RM5.2 billion, a record (AR p.13)"
+    "New orders in 2026 so far",
+    "RM6.85 billion; 2026 target raised to RM7-9 billion (Q2 p.19)"
    ],
    [
-    "Data centre orders in 2025",
-    "RM2.9 billion (AR p.13)"
+    "Data centres in the order book",
+    "70% (Q2 p.25)"
    ],
    [
-    "Orders from Sunway group projects",
-    "RM1.9 billion (AR p.13)"
+    "Sunway Group projects in the order book",
+    "23% (Q2 p.25)"
    ]
   ]
  },
  "story": {
-  "scale_value": "RM5.7 bn",
+  "scale_value": "RM10.5 bn",
   "scale_label": "order book: work won but not yet built",
-  "debt_label": "net cash, more cash than borrowings"
+  "debt_label": "net cash, more cash than borrowings",
+  "pics": {
+   "rm100": "data/b/img/5263_s1.jpg",
+   "growth": "data/b/img/5263_s2.jpg",
+   "debt": "data/b/img/5263_s3.jpg",
+   "pricetag": "data/b/img/5263_s4.jpg",
+   "analysts": "data/b/img/5263_s5.jpg"
+  }
  },
  "growth": {
-  "period": "FY2025",
-  "revenue": 51.6,
-  "profit": 93.6
+  "period": "1H2026",
+  "revenue": -29.1,
+  "profit": 39.1
  },
  "debt": {
   "netCash": true,
-  "value": "RM1,700 m",
+  "value": "RM1,208 m",
   "label": "net cash, more cash than borrowings"
  },
  "pnl": {
-  "period": "FY2025",
+  "period": "1H2026",
   "items": [
    {
     "label": "Revenue",
-    "value": 5338.7,
+    "value": 2040.4,
     "kind": "total"
    },
    {
-    "label": "Construction costs",
-    "value": -4515.6,
+    "label": "Operating costs (construction, staff, admin)",
+    "value": -1819.6,
     "kind": "cost",
-    "tip": "Subcontractors, materials, site staff and equipment for projects."
-   },
-   {
-    "label": "Administrative expenses",
-    "value": -349.2,
-    "kind": "cost",
-    "tip": "Head office, staff bonuses and share options, IT and tender costs."
+    "tip": "Subcontractors, materials, site staff, equipment and head office."
    },
    {
     "label": "Tax",
-    "value": -123.5,
+    "value": -63.2,
     "kind": "cost",
     "tip": "Corporate income tax."
    },
    {
     "label": "Finance costs",
-    "value": -46.9,
+    "value": -8.7,
     "kind": "cost",
     "tip": "Interest on short-term trade financing and loans."
    },
    {
     "label": "Partners' share of profit",
-    "value": -40.3,
+    "value": -0.8,
     "kind": "cost",
     "tip": "Profit belonging to joint-venture partners in subsidiaries."
    },
    {
-    "label": "Impairments and other costs",
-    "value": -41.6,
-    "kind": "cost",
-    "tip": "Allowances for customers who may not pay, and other costs."
+    "label": "Interest and distribution income",
+    "value": 42.5,
+    "kind": "income",
+    "tip": ""
    },
    {
-    "label": "Interest and distribution income",
-    "value": 108.8,
+    "label": "Write-back of bad-debt allowances",
+    "value": 19.4,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Other income",
-    "value": 15.9,
+    "value": 5.8,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Joint ventures",
-    "value": 15.3,
+    "value": 6.2,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Profit to shareholders",
-    "value": 361.8,
+    "value": 222.0,
     "kind": "total",
     "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
    }
   ],
-  "incomeNote": "Plus about RM2.62 per RM100 of revenue from interest on its cash, other income and joint ventures."
+  "incomeNote": "Plus about RM3.62 per RM100 of revenue from interest on its cash, write-backs, other income and joint ventures."
  },
  "trend": {
   "cols": [
    "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "lines": [
    {
     "label": "Revenue",
     "values": [
      3521.7,
-     5338.7
+     5338.7,
+     2877.4,
+     2040.4
     ],
     "bold": 1
    },
    {
-    "label": "Construction costs",
+    "label": "Operating expenses",
     "values": [
-     -3043.7,
-     -4515.6
+     -3310.5,
+     -4876.2,
+     -2659.2,
+     -1819.6
     ],
     "bold": 0
    },
    {
-    "label": "Gross profit",
+    "label": "Other income and impairments",
     "values": [
-     478.0,
-     823.1
-    ],
-    "bold": 1
-   },
-   {
-    "label": "Admin, impairments and other",
-    "values": [
-     -215.9,
-     -374.9
+     51.0,
+     -14.3,
+     5.9,
+     25.2
     ],
     "bold": 0
    },
@@ -161,7 +166,9 @@
     "label": "Operating profit",
     "values": [
      262.2,
-     448.2
+     448.2,
+     224.1,
+     246.0
     ],
     "bold": 1
    },
@@ -169,7 +176,9 @@
     "label": "Interest income less finance costs",
     "values": [
      10.5,
-     61.9
+     61.9,
+     6.6,
+     33.8
     ],
     "bold": 0
    },
@@ -177,7 +186,9 @@
     "label": "Joint ventures",
     "values": [
      0.3,
-     15.3
+     15.3,
+     5.2,
+     6.2
     ],
     "bold": 0
    },
@@ -185,7 +196,9 @@
     "label": "Profit before tax",
     "values": [
      273.0,
-     525.5
+     525.5,
+     235.8,
+     286.0
     ],
     "bold": 1
    },
@@ -193,7 +206,9 @@
     "label": "Tax",
     "values": [
      -75.9,
-     -123.5
+     -123.5,
+     -55.9,
+     -63.2
     ],
     "bold": 0
    },
@@ -201,7 +216,9 @@
     "label": "Partners' share",
     "values": [
      -10.1,
-     -40.3
+     -40.3,
+     -20.4,
+     -0.8
     ],
     "bold": 0
    },
@@ -209,7 +226,9 @@
     "label": "Profit to shareholders",
     "values": [
      186.9,
-     361.8
+     361.8,
+     159.6,
+     222.0
     ],
     "bold": 1
    }
@@ -237,215 +256,220 @@
    187,
    362
   ],
-  "note": "New orders won (RM billion): 2021 1.5 · 2022 2.6 · 2023 2.5 · 2024 4.2 · 2025 5.2. Profit nearly doubled in 2025 on data-centre work."
+  "note": "Full years. First half 2026: revenue RM2.04bn (-29%) as big data-centre jobs neared completion, but profit RM222m (+39%) on better margins and write-backs."
  },
  "segments": {
-  "period": "FY2025",
+  "period": "1H2026",
   "rows": [
    {
     "name": "Construction",
-    "revenue": 5131.6,
-    "profit": 349.7,
-    "tip": "Building data centres, factories, warehouses, buildings and infrastructure in Malaysia, plus public housing in Singapore."
+    "revenue": 1892.2,
+    "profit": 211.8,
+    "tip": "Data centres, buildings, infrastructure and fit-out work in Malaysia, Singapore and India."
    },
    {
     "name": "Precast concrete",
-    "revenue": 207.1,
-    "profit": 12.1,
-    "tip": "Making precast concrete parts in factories, mainly for Singapore public housing."
+    "revenue": 148.2,
+    "profit": 10.2,
+    "tip": "Factory-made concrete parts, mainly for Singapore public housing."
    }
   ],
   "geo": [],
-  "note": "Revenue from outside customers; profit attributable to shareholders by segment (AR p.248)."
+  "note": "Half-year to 30 June 2026, revenue from outside customers (Q2 p.10)."
  },
  "balance": {
-  "date": "31 Dec 2025",
+  "date": "30 Jun 2026",
   "assets": [
    {
+    "label": "Money owed by customers and others",
+    "value": 2381.9
+   },
+   {
     "label": "Cash",
-    "value": 2000.1
-   },
-   {
-    "label": "Money owed by customers",
-    "value": 1661.1
-   },
-   {
-    "label": "Owed by Sunway companies and joint ventures",
-    "value": 180.4
+    "value": 1638.6
    },
    {
     "label": "Joint ventures and investments",
-    "value": 208.5
+    "value": 213.8
    },
    {
     "label": "Equipment and other",
-    "value": 374.0
+    "value": 238.2
    }
   ],
   "liabilities": [
    {
-    "label": "Owed to subcontractors and suppliers",
-    "value": 2965.2
+    "label": "Owed to subcontractors, suppliers and others",
+    "value": 3292.1
    },
    {
     "label": "Borrowings",
-    "value": 300.2
-   },
-   {
-    "label": "Owed to Sunway companies and joint ventures",
-    "value": 221.2
+    "value": 430.2
    },
    {
     "label": "Tax, leases and other",
-    "value": 72.1
+    "value": 52.9
    }
   ],
-  "equity": 865.3,
-  "note": "A light, cash-rich builder: RM2.0bn of cash against RM0.3bn of borrowings. Most of its funding comes from what it owes subcontractors and suppliers (RM3.0bn), which is normal for contractors."
+  "equity": 697.3,
+  "note": "Still cash-rich: RM1.6bn of cash against RM0.4bn of borrowings at June 2026. Equity fell to RM0.7bn because the special dividend paid out more than the half-year's profit (Q2 p.5)."
  },
  "cash": {
-  "wfPeriod": "FY2025",
+  "wfPeriod": "1H2026",
   "waterfall": [
    {
     "l": "Cash from operations",
-    "v": 1619.1,
+    "v": 201.6,
     "total": 1
    },
    {
     "l": "Equipment",
-    "v": -44.1,
+    "v": -2.4,
     "total": 0
    },
    {
     "l": "Other investing",
-    "v": 15.0,
+    "v": 85.4,
     "total": 0
    },
    {
-    "l": "Loans repaid (net)",
-    "v": -415.6,
+    "l": "New borrowing (net)",
+    "v": 132.9,
     "total": 0
    },
    {
-    "l": "Dividends paid",
-    "v": -304.8,
+    "l": "Dividends paid (incl. special)",
+    "v": -724.9,
     "total": 0
    },
    {
     "l": "Shares issued (ESOS)",
-    "v": 106.4,
+    "v": 37.1,
     "total": 0
    },
    {
     "l": "Leases and other",
-    "v": 6.4,
+    "v": -0.4,
     "total": 0
    },
    {
-    "l": "Increase in cash",
-    "v": 982.4,
+    "l": "Change in cash",
+    "v": -270.7,
     "total": 1
    }
   ],
-  "wfNote": "Cash from operations reached RM1.6bn, helped by RM793m more owed to subcontractors and suppliers. The 23 sen special dividend declared in November was mostly paid after year-end.",
+  "wfNote": "In the first half of 2026 SunCon paid RM725m of dividends, including the 23 sen special, far more than the RM202m of cash its operations produced; cash fell to RM1.6bn.",
   "cols": [
-   "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "table": [
    {
     "label": "Operating cash before working capital",
     "values": [
-     259.7,
-     527.3
+     527.3,
+     248.0,
+     250.9
     ],
     "bold": 0
    },
    {
     "label": "Working capital changes",
     "values": [
-     534.7,
-     1134.9
+     1134.9,
+     754.7,
+     -22.7
     ],
     "bold": 0
    },
    {
     "label": "Interest, tax and dividends received/paid",
     "values": [
-     -77.9,
-     -43.2
+     -43.2,
+     -9.5,
+     -26.7
     ],
     "bold": 0
    },
    {
     "label": "Cash from operations",
     "values": [
-     716.4,
-     1619.1
+     1619.1,
+     993.2,
+     201.6
     ],
     "bold": 1
    },
    {
     "label": "Equipment",
     "values": [
-     -9.4,
-     -44.1
+     -44.1,
+     -13.8,
+     -2.4
     ],
     "bold": 0
    },
    {
     "label": "Other investing",
     "values": [
-     147.8,
-     15.0
+     15.0,
+     11.5,
+     85.4
     ],
     "bold": 0
    },
    {
     "label": "Net cash from investing",
     "values": [
-     138.4,
-     -29.1
+     -29.1,
+     -2.3,
+     83.0
     ],
     "bold": 1
    },
    {
-    "label": "Loans repaid (net)",
+    "label": "Net borrowing",
     "values": [
-     -163.6,
-     -415.6
+     -415.6,
+     -26.5,
+     132.9
     ],
     "bold": 0
    },
    {
     "label": "Dividends paid",
     "values": [
-     -116.0,
-     -304.8
+     -304.8,
+     -97.1,
+     -724.9
     ],
     "bold": 0
    },
    {
     "label": "Shares, leases and other",
     "values": [
-     -23.7,
-     112.8
+     112.8,
+     69.7,
+     36.7
     ],
     "bold": 0
    },
    {
     "label": "Net cash used in financing",
     "values": [
-     -303.4,
-     -607.6
+     -607.6,
+     -54.0,
+     -555.3
     ],
     "bold": 1
    },
    {
     "label": "Net change in cash",
     "values": [
-     551.5,
-     982.4
+     982.4,
+     936.9,
+     -270.7
     ],
     "bold": 1
    }
@@ -462,150 +486,219 @@
    "plain": "What the whole company costs at today's share price: RM10.3 billion."
   },
   {
-   "label": "P/E (FY2025 profit)",
-   "value": "28.6x",
-   "plain": "You pay about RM29 for every RM1 of yearly profit. A high number means investors expect growth."
+   "label": "P/E (last 12 months)",
+   "value": "24.4x",
+   "plain": "You pay about RM24 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
-   "label": "EPS (FY2025)",
-   "value": "27.32 sen",
-   "plain": "Profit earned for each share you own over the year."
+   "label": "EPS (last 12 months)",
+   "value": "32.03 sen",
+   "plain": "Profit earned for each share you own over the last year."
   },
   {
-   "label": "Dividend yield (FY2025 dividends)",
+   "label": "Dividend yield (FY2025 incl. 23 sen special)",
    "value": "6.5%",
-   "plain": "Includes a one-off 23 sen special dividend. Without it, the regular dividends of 27.5 sen give about 3.5%."
+   "plain": "FY2025 dividends including a one-off 23 sen special. Without it, the regular 27.5 sen gives about 3.5%."
   },
   {
-   "label": "Payout ratio FY2025",
-   "value": "184%",
-   "plain": "Paid out more than the year's profit because of the special dividend; regular payouts were 53-60% in earlier years (AR p.15)."
+   "label": "Payout ratio",
+   "value": "119%",
+   "plain": "FY2025 dividends of 50.5 sen against last-12-month profit: above 100% because of the special dividend."
   },
   {
    "label": "Price to book",
-   "value": "13.2x",
-   "plain": "The share price is 13.2 times the accounting value of what shareholders own."
+   "value": "16.7x",
+   "plain": "The share price is 16.7 times the accounting value of what shareholders own."
   },
   {
-   "label": "Return on equity FY2025",
-   "value": "44%",
-   "plain": "For every RM100 shareholders have in the company, it earned about RM44 profit last year."
+   "label": "Return on equity (last 12 months)",
+   "value": "61%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM61 profit last year."
   },
   {
-   "label": "Net margin FY2025",
-   "value": "6.8%",
-   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM6.78."
+   "label": "Net margin 1H2026",
+   "value": "10.9%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM10.88."
   },
   {
-   "label": "Revenue growth FY2025",
-   "value": "+51.6%",
-   "plain": "Revenue compared with the year before."
+   "label": "Revenue growth 1H2026",
+   "value": "-29.1%",
+   "plain": "Revenue compared with the same period a year earlier."
   },
   {
-   "label": "Profit growth FY2025",
-   "value": "+93.6%",
-   "plain": "Profit to shareholders compared with the year before."
+   "label": "Profit growth 1H2026",
+   "value": "+39.1%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
   },
   {
    "label": "Net cash",
-   "value": "RM1,700 m",
-   "plain": "Cash and investments minus borrowings: RM1,700 million. Positive means no net debt."
+   "value": "RM1,208 m",
+   "plain": "Cash and investments minus borrowings: RM1,208 million. Positive means no net debt."
   },
   {
-   "label": "Free cash flow FY2025",
-   "value": "RM1,575 m",
-   "plain": "Cash from operations minus spending on assets and land: RM1,575 million. Negative means it borrowed or used savings to fund growth."
+   "label": "Free cash flow 1H2026",
+   "value": "RM199 m",
+   "plain": "Cash from operations minus spending on assets and land: RM199 million. Negative means it borrowed or used savings to fund growth."
   },
   {
    "label": "Free cash flow yield",
-   "value": "15.2%",
+   "value": "1.9%",
    "plain": "That spare cash as a share of the company's market value."
-  },
-  {
-   "label": "EV / EBITDA",
-   "value": "14.7x",
-   "plain": "A price tag that includes debt: about 14.7 times its yearly cash earnings before interest and tax."
   }
  ],
  "drivers": [
   {
-   "factor": "Data centre boom",
+   "factor": "Record order book",
    "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "RM2.9bn of data centre orders in 2025; RM13-14bn of data-centre contracts expected to progress by mid-2026 (AR p.13, p.17)",
-   "why": "The main source of new work and profit growth."
+   "evidence": "Order book at an all-time high of RM10.5bn; RM6.85bn won in 2026, target raised to RM7-9bn (Q2 p.19)",
+   "why": "Gives strong earnings visibility for the next two years.",
+   "pic": "data/b/img/5263_d1.jpg"
   },
   {
-   "factor": "Record new orders",
+   "factor": "Data-centre wave",
    "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "RM5.2bn of new orders in 2025, the highest since listing (AR p.13)",
-   "why": "Keeps revenue growing for the next two years."
+   "evidence": "Data centres are 70% of the order book; three new data-centre jobs in 1H2026 (Q2 p.19, p.25)",
+   "why": "AI and cloud demand keep the pipeline full.",
+   "pic": "data/b/img/5263_d2.jpg"
   },
   {
-   "factor": "Order book size",
+   "factor": "Revenue dip between projects",
    "affects": "Revenue",
-   "direction": "Watch",
-   "evidence": "RM5.7bn order book is about one year of revenue (AR p.15)",
-   "why": "SunCon must keep winning jobs to sustain growth."
+   "direction": "Negative",
+   "evidence": "1H2026 revenue fell 29% as earlier data-centre jobs neared completion (Q2 p.3, p.25)",
+   "why": "New jobs take time to ramp up; revenue should recover as they progress.",
+   "pic": "data/b/img/5263_d3.jpg"
   },
   {
-   "factor": "Sunway group projects",
-   "affects": "Revenue",
-   "direction": "Positive",
-   "evidence": "RM1.9bn of orders from in-house Sunway developments (AR p.13)",
-   "why": "Steady work from its parent, but tied to Sunway's property plans."
-  },
-  {
-   "factor": "Singapore public housing",
-   "affects": "Revenue",
-   "direction": "Positive",
-   "evidence": "Continued work on Singapore's Build-To-Order programme (AR p.14, p.37)",
-   "why": "Government-backed demand for precast and building work."
-  },
-  {
-   "factor": "Higher margins",
+   "factor": "Better margins",
    "affects": "Profit",
    "direction": "Positive",
-   "evidence": "Gross margin rose from 13.6% to 15.4% (AR p.237)",
-   "why": "Data centre jobs and execution lifted profitability."
+   "evidence": "Profit to shareholders +39% despite lower revenue (Q2 p.3)",
+   "why": "Selective bidding for higher-margin work.",
+   "pic": "data/b/img/5263_d4.jpg"
+  },
+  {
+   "factor": "Bad-debt write-backs",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "RM19m net write-back of impairments helped 1H2026 profit (Q2 p.3)",
+   "why": "Helpful, but may not repeat.",
+   "pic": null
+  },
+  {
+   "factor": "Sunway Group projects",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "23% of the order book from parent projects like the RTS TOD and Sunway Ipoh Mall (Q2 p.25)",
+   "why": "A stable base of work; tied to Sunway's own plans.",
+   "pic": null
+  },
+  {
+   "factor": "Singapore precast",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Precast revenue doubled to RM148m in 1H2026 (Q2 p.10)",
+   "why": "Government-backed housing demand.",
+   "pic": null
+  },
+  {
+   "factor": "Malaysia's economy",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "GDP grew 6.0% and construction 6.5% in Q2 2026 (Q2 p.19)",
+   "why": "Supports more building activity.",
+   "pic": null
   },
   {
    "factor": "Input costs",
    "affects": "Costs",
    "direction": "Negative",
-   "evidence": "Higher electricity tariffs, wage adjustments and material price swings (AR p.13)",
-   "why": "Fixed-price contracts lose margin when costs rise."
+   "evidence": "Higher electricity tariffs, wages and material prices (AR p.13)",
+   "why": "Fixed-price contracts lose margin when costs rise.",
+   "pic": null
   },
   {
-   "factor": "Bad-debt allowances",
-   "affects": "Profit",
-   "direction": "Negative",
-   "evidence": "RM30m net impairment on receivables vs a RM10m write-back in 2024 (AR p.237)",
-   "why": "Shows some customers are slower to pay."
+   "factor": "Customer concentration",
+   "affects": "Risk",
+   "direction": "Watch",
+   "evidence": "Data-centre jobs for a few multinational clients dominate the order book (Q2 p.25)",
+   "why": "Delays or cancellations by one client would matter.",
+   "pic": null
   },
   {
    "factor": "Net cash",
    "affects": "Risk",
    "direction": "Positive",
-   "evidence": "RM2.0bn cash vs RM0.3bn borrowings at end-2025 (AR p.238-239)",
-   "why": "Strong balance sheet to fund growth and dividends."
+   "evidence": "RM1.6bn cash vs RM0.4bn borrowings at June 2026 (Q2 p.5)",
+   "why": "Strong balance sheet.",
+   "pic": null
   },
   {
-   "factor": "Special dividend",
+   "factor": "Special dividend paid",
    "affects": "Shareholder returns",
    "direction": "Watch",
-   "evidence": "50.5 sen including a 23 sen special; payout 184% of profit (AR p.15)",
-   "why": "Generous, but the special part may not repeat."
+   "evidence": "RM725m of dividends paid in 1H2026, including the 23 sen special (Q2 p.7)",
+   "why": "Generous, but the special part may not repeat.",
+   "pic": null
   },
   {
    "factor": "Valuation",
    "affects": "Share price",
    "direction": "Negative (risk)",
-   "evidence": "About 29 times FY2025 profit at RM7.81 (see Valuation)",
-   "why": "The price assumes the data-centre wave continues."
+   "evidence": "About 24 times last-12-month profit at RM7.81 (see Valuation)",
+   "why": "The price assumes the data-centre wave continues.",
+   "pic": null
   }
  ],
+ "supply": {
+  "suppliers": [
+   [
+    "Subcontractors and specialists",
+    "Mechanical, electrical, piling and fit-out trades; most of the RM1.8bn operating costs in 1H2026",
+    "Q2 p.3"
+   ],
+   [
+    "Building materials",
+    "Steel, concrete and cables, including inputs for its precast factories",
+    "Q2 p.10; AR p.13"
+   ],
+   [
+    "Sunway Group companies",
+    "Some services and amounts owed within the Sunway group",
+    "AR p.239"
+   ],
+   [
+    "Lenders",
+    "Short-term trade financing and loans: RM430m of borrowings at June 2026",
+    "Q2 p.5"
+   ]
+  ],
+  "customers": [
+   [
+    "Multinational data-centre owners",
+    "Data centres in Johor and Serendah: 70% of the RM10.5bn order book",
+    "Q2 p.25"
+   ],
+   [
+    "Sunway Group (its parent)",
+    "Hospitals, malls and transit-oriented developments: 23% of the order book",
+    "Q2 p.25"
+   ],
+   [
+    "Singapore public housing",
+    "Precast concrete parts for public housing projects: 7% of the order book",
+    "Q2 p.25"
+   ],
+   [
+    "Infrastructure owners",
+    "RTS Link to Singapore; a highway project in India",
+    "Q2 p.25"
+   ]
+  ],
+  "note": "The report names the projects but describes data-centre clients only as 'MNC' (multinational companies)."
+ },
  "competitors": [
   {
    "name": "Gamuda, IJM, WCT, Kerjaya Prospek",
@@ -619,30 +712,30 @@
   },
   {
    "name": "Singapore precast and building contractors",
-   "how": "Compete for HDB public housing work",
+   "how": "Compete for public housing work",
    "source": "General market knowledge"
   }
  ],
  "outlook": [
   {
    "tone": "Positive",
-   "text": "About RM13-14bn of data-centre construction contracts are expected to progress towards delivery by mid-2026 (AR p.17)."
+   "text": "All-time-high RM10.5bn order book provides strong earnings visibility; 2026 order target raised to RM7-9bn (Q2 p.19)."
   },
   {
    "tone": "Positive",
-   "text": "Industrial, logistics and selected public projects are expected to support construction demand (AR p.17)."
+   "text": "AI and cloud adoption expected to sustain a healthy pipeline of data-centre investment in Malaysia (Q2 p.19)."
   },
   {
    "tone": "Neutral",
-   "text": "Malaysia's growth in 2026 is expected to be moderate but resilient (AR p.17)."
+   "text": "Will stay selective, prioritising projects with healthy margins and achievable timelines (Q2 p.19)."
   },
   {
    "tone": "Negative",
-   "text": "Cost pressures from electricity tariffs, wages and materials, and global uncertainty (AR p.13, p.17)."
+   "text": "Cost pressures from electricity tariffs, wages and materials (AR p.13)."
   }
  ],
  "outlookOverall": {
   "tone": "Positive",
-  "text": "Management expects a steady pipeline of data-centre, industrial and infrastructure work in 2026 (AR p.17)."
+  "text": "Management points to a record order book and a strong data-centre pipeline (Q2 p.19)."
  }
 }

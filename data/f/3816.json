@@ -3,29 +3,33 @@
  "price": 7.72,
  "priceDate": "2026-11-13",
  "unit": "RM million",
- "fyNote": "Financial year ends 31 December. Income statement rebuilt from the value-added statement; see the workbook for the balancing line.",
+ "fyNote": "Financial year ends 31 December. 1H = January to June 2026 (unaudited, from MISC's results release). Return on equity uses equity at December 2025. Next results: Q3 2026, due late November 2026.",
  "sources": [
   {
+   "title": "MISC results release, half-year to 30 June 2026",
+   "url": "https://www.miscgroup.com/media/media-releases/misc-group-financial-results-for-the-second-quarter-of-2026"
+  },
+  {
    "title": "MISC Integrated Annual Report 2025",
-   "url": "https://www.miscgroup.com/awcontent/Web/Documents/IntegratedAnnualReport/IAR-2025.pdf"
+   "url": "https://www.miscgroup.com/awcontent/Web/Documents/IntegratedAnnualReport/Integrated-Annual-Report-2025.pdf"
   }
  ],
- "segmentNote": "Four businesses; tankers (Petroleum & Products) earn the most revenue and profit (AR p.54).",
+ "segmentNote": "Four businesses; tankers (Petroleum & Products) earn the most revenue and profit (AR p.54; PR).",
  "how": {
   "title": "How MISC makes money",
   "text": "Revenue = long-term charter fees for ships and floating production units + freight from shorter voyages + shipyard project work",
   "facts": [
    [
-    "Tanker fleet use",
+    "Revenue 1H2026",
+    "RM7.68 billion, +38.8% (PR)"
+   ],
+   [
+    "Tanker fleet use (FY2025)",
     "Over 96% of days earning (AR p.54)"
    ],
    [
-    "Offshore units running",
+    "Offshore units running (FY2025)",
     "Over 97% uptime (AR p.57)"
-   ],
-   [
-    "Shipyard use",
-    "Yard 90%, drydock 86% (AR p.60)"
    ],
    [
     "Income base",
@@ -36,20 +40,27 @@
  "story": {
   "scale_value": "4 businesses",
   "scale_label": "ships, gas carriers, offshore units and a shipyard",
-  "debt_label": "net debt (borrowings minus cash)"
+  "debt_label": "net debt at Dec 2025 (borrowings minus cash)",
+  "pics": {
+   "rm100": "data/b/img/3816_s1.jpg",
+   "growth": "data/b/img/3816_s2.jpg",
+   "debt": "data/b/img/3816_s3.jpg",
+   "pricetag": "data/b/img/3816_s4.jpg",
+   "analysts": "data/b/img/3816_s5.jpg"
+  }
  },
  "growth": {
-  "period": "FY2025",
-  "revenue": -15.8,
-  "profit": 42.5
+  "period": "1H2026",
+  "revenue": 38.8,
+  "profit": 62.0
  },
  "debt": {
   "netCash": false,
   "value": "RM6.8 bn",
-  "label": "net debt (borrowings minus cash)"
+  "label": "net debt at Dec 2025 (borrowings minus cash)"
  },
  "pnl": {
-  "period": "FY2025",
+  "period": "FY2025 (latest detailed breakdown)",
   "items": [
    {
     "label": "Revenue",
@@ -78,7 +89,7 @@
     "label": "Finance costs",
     "value": -654.0,
     "kind": "cost",
-    "tip": "Interest on RM12.9bn of borrowings."
+    "tip": "Interest on borrowings."
    },
    {
     "label": "Other items",
@@ -135,75 +146,53 @@
     "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
    }
   ],
-  "incomeNote": "Plus about RM12.36 per RM100 of revenue from other income (including an insurance recovery), interest, ship sales and a gain on buying an FPSO."
+  "incomeNote": "FY2025 breakdown (AR p.76); the 2026 results release does not split costs. Plus about RM12.36 per RM100 of revenue from other income, interest, ship sales and other gains."
  },
  "trend": {
   "cols": [
    "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "lines": [
    {
     "label": "Revenue",
     "values": [
      13237.5,
-     11146.1
+     11146.1,
+     5537.4,
+     7684.8
     ],
     "bold": 1
    },
    {
-    "label": "Goods and services bought",
+    "label": "Operating costs",
     "values": [
-     -6609.3,
-     -4680.4
+     -10643.8,
+     -8369.6,
+     -3925.0,
+     -5738.9
     ],
     "bold": 0
    },
    {
-    "label": "Employment costs",
+    "label": "Operating profit",
     "values": [
-     -2256.3,
-     -2307.1
+     2593.7,
+     2776.5,
+     1612.4,
+     1945.9
     ],
-    "bold": 0
+    "bold": 1
    },
    {
-    "label": "Depreciation and impairment",
+    "label": "Net finance costs, ship sales and other",
     "values": [
-     -3238.7,
-     -2881.4
-    ],
-    "bold": 0
-   },
-   {
-    "label": "Other income and gains",
-    "values": [
-     360.4,
-     1099.1
-    ],
-    "bold": 0
-   },
-   {
-    "label": "Net finance costs",
-    "values": [
-     -314.3,
-     -404.7
-    ],
-    "bold": 0
-   },
-   {
-    "label": "Joint ventures and associates",
-    "values": [
-     97.1,
-     29.0
-    ],
-    "bold": 0
-   },
-   {
-    "label": "Other items (balancing)",
-    "values": [
-     7.0,
-     -138.7
+     -1310.2,
+     -914.5,
+     -392.7,
+     29.8
     ],
     "bold": 0
    },
@@ -211,7 +200,9 @@
     "label": "Profit before tax",
     "values": [
      1283.5,
-     1862.0
+     1862.0,
+     1219.7,
+     1975.7
     ],
     "bold": 1
    },
@@ -219,7 +210,9 @@
     "label": "Tax",
     "values": [
      -50.3,
-     -123.9
+     -123.9,
+     -38.7,
+     -55.5
     ],
     "bold": 0
    },
@@ -227,7 +220,9 @@
     "label": "Partners' share",
     "values": [
      -39.7,
-     -37.9
+     -37.9,
+     -10.9,
+     -24.5
     ],
     "bold": 0
    },
@@ -235,7 +230,9 @@
     "label": "Profit to shareholders",
     "values": [
      1193.5,
-     1700.2
+     1700.2,
+     1170.1,
+     1895.7
     ],
     "bold": 1
    }
@@ -263,7 +260,7 @@
    1194,
    1700
   ],
-  "note": "Revenue fell in 2025 mainly because heavy engineering projects finished and some gas carrier contracts ended; profit rose on the new FPSO and lower impairments."
+  "note": "Full years. First half 2026: revenue RM7.68bn (+38.8%) and profit RM1,896m (+62.0%), helped by very high crude tanker rates and gains on ship sales (PR)."
  },
  "segments": {
   "period": "FY2025",
@@ -272,29 +269,29 @@
     "name": "Petroleum & Products (AET tankers)",
     "revenue": 5169.8,
     "profit": 1412.7,
-    "tip": "Oil and product tankers and shuttle tankers; earned more in 2025 on higher freight rates."
+    "tip": "Oil and product tankers; the main driver of the jump in 1H2026 profit on high crude tanker rates (PR)."
    },
    {
     "name": "Gas Assets & Solutions",
     "revenue": 2095.0,
     "profit": 692.4,
-    "tip": "LNG and ethane carriers on long charters, mostly to PETRONAS; lower after contract expiries and vessel lay-ups."
+    "tip": "LNG carriers on long charters; lower in 1H2026 after vessel disposals, lay-ups and lower rates (PR)."
    },
    {
     "name": "Offshore",
     "revenue": 1931.0,
     "profit": 865.4,
-    "tip": "Floating production units (FPSOs) leased to oil companies; jumped as a new FPSO in Brazil started work."
+    "tip": "Floating production units leased to oil companies; higher construction revenue in 1H2026 (PR)."
    },
    {
     "name": "Marine & Heavy Engineering",
     "revenue": 1976.3,
     "profit": 115.6,
-    "tip": "Shipyard building offshore platforms and repairing ships in Pasir Gudang, Johor."
+    "tip": "Shipyard building offshore structures and repairing ships in Johor; projects in higher construction phases (PR)."
    }
   ],
   "geo": [],
-  "note": "Profit here is segment operating profit. Segment revenues add to slightly more than group revenue because of inter-segment sales."
+  "note": "Full-year 2025 split; the results release describes segment trends for 1H2026 but gives no segment figures."
  },
  "balance": {
   "date": "31 Dec 2025",
@@ -319,48 +316,48 @@
    }
   ],
   "equity": 34704.5,
-  "note": "Most of what MISC owns is ships and offshore units, many on long contracts. Assets and equity shrank in 2025 mainly because a weaker US dollar lowered their ringgit value (AR p.73)."
+  "note": "Balance sheet at 31 December 2025 (the results release gives only net assets per share for June 2026: RM7.86, up from RM7.62). Most assets are ships and offshore units on long contracts."
  },
  "cash": null,
  "safety": [
   {
-   "label": "Cash from operations FY2025",
-   "value": "RM5,656 m",
-   "plain": "Up 32% from RM4,277m, helped by better collections from customers."
+   "label": "Cash from operations 1H2026",
+   "value": "RM3,622 m",
+   "plain": "Up 52.5% from RM2,375m a year earlier, mainly from the tanker business."
   },
   {
-   "label": "Cash in the bank",
+   "label": "Cash in the bank (Dec 2025)",
    "value": "RM6,096 m",
    "plain": "Cash at 31 December 2025."
   },
   {
-   "label": "Borrowings",
+   "label": "Borrowings (Dec 2025)",
    "value": "RM12,880 m",
-   "plain": "Down from RM15,494m after repaying USD400m of notes in April 2025 and a weaker US dollar."
+   "plain": "Down from RM15,494m after repaying USD400m of notes in 2025."
   },
   {
-   "label": "Net debt to equity",
+   "label": "Net debt to equity (Dec 2025)",
    "value": "0.20x",
    "plain": "Borrowings minus cash are only a fifth of shareholders' funds: low for a shipping company."
   },
   {
-   "label": "Interest cover",
+   "label": "Interest cover (FY2025)",
    "value": "3.9x",
    "plain": "Earnings before interest and tax cover interest costs about 4 times."
   },
   {
-   "label": "Dividends paid in 2025",
-   "value": "RM1,607 m",
-   "plain": "Cash returned to shareholders during the year."
+   "label": "Net assets per share (Jun 2026)",
+   "value": "RM7.86",
+   "plain": "Up from RM7.62 at December 2025."
   },
   {
-   "label": "Committed capital spending",
+   "label": "Committed capital spending (Dec 2025)",
    "value": "RM7,859 m",
    "plain": "Ships and projects already ordered or contracted, to be paid over coming years."
   }
  ],
  "safetyTitle": "Cash and debt at a glance",
- "safetyIntro": "MISC's integrated report gives these cash and debt figures; the full cash flow statement is in its separate audited accounts. Tap a card to see what it means.",
+ "safetyIntro": "MISC's annual report and results release give these cash and debt figures; full statements are filed separately. Tap a card to see what it means.",
  "bank": false,
  "metrics": [
   {
@@ -369,14 +366,14 @@
    "plain": "What the whole company costs at today's share price: RM34.5 billion."
   },
   {
-   "label": "P/E (FY2025 profit)",
-   "value": "20.3x",
-   "plain": "You pay about RM20 for every RM1 of yearly profit. A high number means investors expect growth."
+   "label": "P/E (last 12 months)",
+   "value": "14.2x",
+   "plain": "You pay about RM14 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
-   "label": "EPS (FY2025)",
-   "value": "38.09 sen",
-   "plain": "Profit earned for each share you own over the year."
+   "label": "EPS (last 12 months)",
+   "value": "54.34 sen",
+   "plain": "Profit earned for each share you own over the last year."
   },
   {
    "label": "Dividend yield (FY2025 dividends)",
@@ -384,9 +381,9 @@
    "plain": "For every RM100 of shares, about RM4.9 a year comes back as cash dividends."
   },
   {
-   "label": "Payout ratio FY2025",
-   "value": "100%",
-   "plain": "Of every RM100 profit, about RM100 is paid out; the rest is kept to grow."
+   "label": "Payout ratio",
+   "value": "70%",
+   "plain": "Of every RM100 profit, about RM70 is paid out; the rest is kept to grow."
   },
   {
    "label": "Price to book",
@@ -394,24 +391,24 @@
    "plain": "The share price is 1.0 times the accounting value of what shareholders own."
   },
   {
-   "label": "Return on equity FY2025",
-   "value": "5%",
-   "plain": "For every RM100 shareholders have in the company, it earned about RM5 profit last year."
+   "label": "Return on equity (last 12 months)",
+   "value": "7%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM7 profit last year."
   },
   {
-   "label": "Net margin FY2025",
-   "value": "15.3%",
-   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM15.25."
+   "label": "Net margin 1H2026",
+   "value": "24.7%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM24.67."
   },
   {
-   "label": "Revenue growth FY2025",
-   "value": "-15.8%",
-   "plain": "Revenue compared with the year before."
+   "label": "Revenue growth 1H2026",
+   "value": "+38.8%",
+   "plain": "Revenue compared with the same period a year earlier."
   },
   {
-   "label": "Profit growth FY2025",
-   "value": "+42.5%",
-   "plain": "Profit to shareholders compared with the year before."
+   "label": "Profit growth 1H2026",
+   "value": "+62.0%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
   },
   {
    "label": "Net debt",
@@ -424,104 +421,164 @@
    "plain": "Net debt is 20% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
   },
   {
-   "label": "Interest cover",
+   "label": "Interest cover (FY2025)",
    "value": "3.9x",
    "plain": "Earnings before interest and tax cover interest costs about 4 times (AR p.75)."
   }
  ],
  "drivers": [
   {
-   "factor": "Long-term contracts",
-   "affects": "Revenue",
-   "direction": "Positive",
-   "evidence": "Revenue is anchored on contracted, recurring income with selective spot exposure (AR p.16)",
-   "why": "Makes earnings steadier than most shipping companies."
-  },
-  {
-   "factor": "New LNG carrier charters",
-   "affects": "Revenue",
-   "direction": "Positive",
-   "evidence": "Long-term charters for five newbuild LNG carriers with PETRONAS LNG secured in early 2026 (AR p.14)",
-   "why": "Locks in income for many years once the ships are delivered."
-  },
-  {
-   "factor": "New FPSO in Brazil",
+   "factor": "Crude tanker rates",
    "affects": "Profit",
    "direction": "Positive",
-   "evidence": "FPSO Marechal Duque de Caxias started operating; Offshore operating profit rose from RM52m to RM865m (AR p.74)",
-   "why": "A large new earner for the Offshore business."
+   "evidence": "Elevated crude tanker rates drove an exceptional second quarter for the Petroleum business (PR)",
+   "why": "The biggest swing factor in 2026 profit.",
+   "pic": "data/b/img/3816_d1.jpg"
   },
   {
-   "factor": "Gas carrier contracts ending",
+   "factor": "Rates may cool",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "Management is 'measured' about 2H2026: the Petroleum contribution may moderate (PR)",
+   "why": "Spot rates can fall as fast as they rose.",
+   "pic": "data/b/img/3816_d2.jpg"
+  },
+  {
+   "factor": "New LNG carriers on charter",
    "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Two LNG carriers delivered and started long-term charters with SeaRiver Maritime (PR)",
+   "why": "Locks in income for many years.",
+   "pic": "data/b/img/3816_d3.jpg"
+  },
+  {
+   "factor": "Older gas carriers",
+   "affects": "Profit",
    "direction": "Negative",
-   "evidence": "Gas segment revenue fell from RM2,987m to RM2,095m on contract expiries, lay-ups and lower charter rates (AR p.51, p.73)",
-   "why": "Older ships without new charters earn less."
+   "evidence": "Gas revenue fell on disposals, lay-ups and lower rates; older vessels depreciated faster (PR)",
+   "why": "Old steam-turbine ships struggle to find work.",
+   "pic": "data/b/img/3816_d4.jpg"
+  },
+  {
+   "factor": "Offshore projects",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Higher construction revenue from an FSO and a floating production unit (PR)",
+   "why": "Builds future long-term income.",
+   "pic": "data/b/img/3816_d5.jpg"
+  },
+  {
+   "factor": "FPSO shutdown",
+   "affects": "Profit",
+   "direction": "Negative",
+   "evidence": "Operational shutdown of an FPSO weighed on offshore profit in 1H2026 (PR)",
+   "why": "Lost days on a large earning asset.",
+   "pic": "data/b/img/3816_d6.jpg"
   },
   {
    "factor": "Shipyard work",
    "affects": "Revenue",
-   "direction": "Negative",
-   "evidence": "Heavy engineering revenue fell 45% as projects neared completion (AR p.74)",
-   "why": "Lumpy: depends on winning and starting new projects."
-  },
-  {
-   "factor": "Tanker freight rates",
-   "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "Petroleum & Products revenue rose on higher freight rates and more earning days (AR p.73)",
-   "why": "Rates can swing quickly with global oil trade."
+   "evidence": "Heavy engineering projects moved into higher construction phases (PR)",
+   "why": "Higher yard revenue and repair demand from LNG carrier dry-docking.",
+   "pic": "data/b/img/3816_d7.jpg"
   },
   {
-   "factor": "Middle East conflict",
-   "affects": "Risk",
-   "direction": "Watch",
-   "evidence": "Management says escalation is affecting energy supply chains, trade routes and freight markets (AR p.31)",
-   "why": "Can lift freight rates but raises operating and safety risk."
-  },
-  {
-   "factor": "US dollar",
+   "factor": "Ship sales",
    "affects": "Profit",
-   "direction": "Negative",
-   "evidence": "A stronger ringgit cut the ringgit value of assets and equity (AR p.73)",
-   "why": "Most income is in US dollars."
+   "direction": "Positive",
+   "evidence": "Gains on disposing of ships boosted 2Q2026 profit (PR)",
+   "why": "One-off gains that may not repeat.",
+   "pic": "data/b/img/3816_d8.jpg"
   },
   {
-   "factor": "Lower debt",
+   "factor": "Middle East and Hormuz",
+   "affects": "Risk",
+   "direction": "Watch",
+   "evidence": "Uncertainty around the Strait of Hormuz expected to keep spot rates volatile (PR)",
+   "why": "Can lift rates but raises risk to ships and crews.",
+   "pic": "data/b/img/3816_d9.jpg"
+  },
+  {
+   "factor": "Carbon-dioxide shipping",
+   "affects": "Growth",
+   "direction": "Positive",
+   "evidence": "Second long-term CO2 carrier charter with Northern Lights JV (PR)",
+   "why": "A new market in the energy transition.",
+   "pic": "data/b/img/3816_d10.jpg"
+  },
+  {
+   "factor": "Low debt",
    "affects": "Risk",
    "direction": "Positive",
-   "evidence": "Repaid USD400m of notes; net debt/equity 0.20x; interest cover 3.9x (AR p.73, p.75)",
-   "why": "A strong balance sheet to fund new ships."
+   "evidence": "Net debt/equity 0.20x and interest cover 3.9x at end-2025 (AR p.75)",
+   "why": "Room to fund new ships.",
+   "pic": "data/b/img/3816_d11.jpg"
   },
   {
-   "factor": "Big spending ahead",
-   "affects": "Cash flow",
-   "direction": "Watch",
-   "evidence": "RM7.9bn of committed capital spending (AR p.73)",
-   "why": "Uses cash now for income later."
-  },
-  {
-   "factor": "Decarbonisation rules",
-   "affects": "Costs",
-   "direction": "Watch",
-   "evidence": "IMO net-zero rules delayed to October 2026; EU rules advancing (AR p.33)",
-   "why": "May require cleaner, costlier ships, but also creates demand for new-energy shipping."
-  },
-  {
-   "factor": "Higher dividend",
+   "factor": "Steady dividends",
    "affects": "Shareholder returns",
    "direction": "Positive",
-   "evidence": "Dividend raised to 38 sen from 36 sen (AR p.73)",
-   "why": "Shows confidence in cash flow."
+   "evidence": "16 sen paid for 1H2026; 38 sen for FY2025 (PR; AR p.73)",
+   "why": "Regular quarterly payouts.",
+   "pic": "data/b/img/3816_d12.jpg"
   },
   {
    "factor": "Valuation",
    "affects": "Share price",
    "direction": "Neutral",
-   "evidence": "About 20 times FY2025 profit and about 1 times book value at RM7.72 (see Valuation)",
-   "why": "Investors pay for steady contracted income."
+   "evidence": "About 14 times last-12-month profit at RM7.72 (see Valuation)",
+   "why": "Cheaper than a year ago thanks to higher profit, but tanker profits are cyclical.",
+   "pic": "data/b/img/3816_d13.jpg"
   }
  ],
+ "supply": {
+  "suppliers": [
+   [
+    "Shipyards",
+    "Build its new LNG carriers, tankers and carbon-dioxide carriers; MHB signed an MoU with Hanwha Power Systems on newbuilding projects",
+    "PR; AR p.14"
+   ],
+   [
+    "Seafarers and yard workers",
+    "Employment costs of RM2.3bn in FY2025",
+    "AR p.76"
+   ],
+   [
+    "Fuel, port and repair services",
+    "Part of RM4.7bn of goods and services bought in FY2025",
+    "AR p.76"
+   ],
+   [
+    "Lenders",
+    "Banks and bond investors: RM12.9bn of borrowings at end-2025",
+    "AR p.75"
+   ]
+  ],
+  "customers": [
+   [
+    "PETRONAS group (its parent)",
+    "Long-term charters for LNG carriers and a floating regasification unit for PETRONAS Gas",
+    "PR; AR p.14"
+   ],
+   [
+    "International energy companies",
+    "LNG carrier charters with SeaRiver Maritime; an FSO in Papua New Guinea for ExxonMobil PNG",
+    "PR; AR p.14"
+   ],
+   [
+    "Carbon-capture projects",
+    "Northern Lights JV: two long-term carbon-dioxide carrier charters",
+    "PR; AR p.14"
+   ],
+   [
+    "Oil traders and producers",
+    "Tanker voyages at market (spot) rates and on contracts through AET",
+    "PR"
+   ]
+  ],
+  "note": "MISC is part of the PETRONAS group, which is both a major customer and its controlling shareholder. The sources do not give each customer's share of revenue."
+ },
  "competitors": [
   {
    "name": "Large shipping and LNG carrier owners (e.g. NYK, MOL, K Line, Teekay)",
@@ -542,23 +599,23 @@
  "outlook": [
   {
    "tone": "Positive",
-   "text": "Entered 2026 with encouraging momentum: five new LNG carrier charters with PETRONAS and an FSO contract with ExxonMobil in Papua New Guinea (AR p.14)."
+   "text": "Strong LNG supply growth, especially from the Americas, supports long-term LNG carrier charter rates (PR)."
   },
   {
    "tone": "Positive",
-   "text": "First carbon-dioxide carrier charter secured, an entry into carbon transport (AR p.14)."
+   "text": "Offshore expected to stay resilient on a strong pipeline of FPSO awards in Asia, South America and Africa (PR)."
   },
   {
    "tone": "Neutral",
-   "text": "2026 priorities: disciplined leverage, liquidity planning and spending on committed projects and fleet renewal (AR p.16)."
+   "text": "Measured expectations for 2H2026: the strong Petroleum contribution may moderate (PR)."
   },
   {
    "tone": "Negative",
-   "text": "Risks named: interest-rate uncertainty, geopolitical fragmentation and the Middle East conflict affecting trade routes (AR p.16, p.31)."
+   "text": "Geopolitical uncertainty and the Strait of Hormuz will keep spot rates volatile; older steam-turbine LNG carriers face pressure (PR)."
   }
  ],
  "outlookOverall": {
   "tone": "Positive",
-  "text": "Management says MISC entered 2026 with encouraging momentum and new long-term contracts (AR p.14)."
+  "text": "Management reports an exceptional first half and long-term contract wins, but is measured about the second half (PR)."
  }
 }

@@ -3,151 +3,166 @@
  "price": 7.93,
  "priceDate": "2026-11-13",
  "unit": "RM million",
- "fyNote": "Financial year ends 31 December. IHH reports in RM million.",
+ "fyNote": "Financial year ends 31 December. 1H = January to June; 2026 figures are unaudited. Valuation uses the last 12 months (July 2025 to June 2026). Next results: Q3 2026, due late November 2026.",
  "sources": [
+  {
+   "title": "IHH interim financial report, half-year to 30 June 2026",
+   "url": "https://ihhmy.listedcompany.com/misc/qr/IHH_Q2_2026_Quarterly_Report.pdf"
+  },
   {
    "title": "IHH Healthcare Annual Report 2025",
    "url": "https://ihhmy.listedcompany.com/misc/ar/IHH_Annual_Report_2025.pdf"
   }
  ],
- "segmentNote": "Hospitals in five home markets earn almost all revenue; Turkiye and Europe is the largest, Singapore the most profitable (AR p.218).",
+ "segmentNote": "Hospitals in five home markets earn almost all revenue; Turkiye and Europe is the largest (Q2 p.16).",
  "how": {
   "title": "How IHH makes money",
   "text": "Revenue = patients treated (hospital stays and outpatient visits) x average bill per patient",
   "facts": [
    [
-    "Malaysia",
+    "Malaysia (FY2025)",
     "263,233 admissions, average bill RM11,441 (AR p.20)"
    ],
    [
-    "Singapore",
+    "Singapore (FY2025)",
     "56,385 admissions, average bill RM63,582 (AR p.20)"
    ],
    [
-    "India",
+    "India (FY2025)",
     "338,548 admissions, average bill RM9,212 (AR p.20)"
    ],
    [
-    "Turkiye and Europe",
-    "270,671 admissions, average bill RM13,302 (AR p.20)"
+    "Revenue 1H2026",
+    "RM13.6 billion, +8% (Q2 p.2)"
    ]
   ]
  },
  "story": {
   "scale_value": "89 hospitals",
   "scale_label": "plus clinics and labs, in 10 countries",
-  "debt_label": "net debt including leases"
+  "debt_label": "net debt including leases",
+  "pics": {
+   "rm100": "data/b/img/5225_s1.jpg",
+   "growth": "data/b/img/5225_s2.jpg",
+   "debt": "data/b/img/5225_s3.jpg",
+   "pricetag": "data/b/img/5225_s4.jpg",
+   "analysts": "data/b/img/5225_s5.jpg"
+  }
  },
  "growth": {
-  "period": "FY2025",
-  "revenue": 5.6,
-  "profit": -20.9
+  "period": "1H2026",
+  "revenue": 8.0,
+  "profit": 15.0
  },
  "debt": {
   "netCash": false,
-  "value": "RM13.9 bn",
+  "value": "RM13.8 bn",
   "label": "net debt including leases"
  },
  "pnl": {
-  "period": "FY2025",
+  "period": "1H2026",
   "items": [
    {
     "label": "Revenue",
-    "value": 25745.0,
+    "value": 13599.0,
     "kind": "total"
    },
    {
     "label": "Staff costs",
-    "value": -9921.0,
+    "value": -5454.0,
     "kind": "cost",
     "tip": "Salaries for doctors, nurses and hospital staff, the biggest cost."
    },
    {
     "label": "Medicines and consumables",
-    "value": -5225.0,
+    "value": -2712.0,
     "kind": "cost",
     "tip": "Drugs, implants, surgical supplies and other materials used on patients."
    },
    {
     "label": "Other operating costs",
-    "value": -3297.0,
+    "value": -1590.0,
     "kind": "cost",
-    "tip": "Utilities, maintenance, rent on short leases, bad debts and other running costs."
+    "tip": "Utilities, maintenance, short leases, bad debts and other running costs."
    },
    {
     "label": "Purchases and contracted services",
-    "value": -2062.0,
+    "value": -1022.0,
     "kind": "cost",
     "tip": "Outside services such as specialists, cleaning, catering and lab work."
    },
    {
     "label": "Depreciation and amortisation",
-    "value": -1911.0,
+    "value": -1031.0,
     "kind": "cost",
     "tip": "Wear and tear on hospital buildings and medical equipment."
    },
    {
-    "label": "Finance costs",
-    "value": -1086.0,
+    "label": "Tax",
+    "value": -606.0,
     "kind": "cost",
-    "tip": "Interest on RM13bn of borrowings and on leases."
+    "tip": "Income tax; doubled in 1H2026, partly from Turkiye's high-inflation accounting."
    },
    {
-    "label": "Tax",
-    "value": -821.0,
+    "label": "Finance costs",
+    "value": -555.0,
     "kind": "cost",
-    "tip": "Income tax, raised in 2025 by deferred tax adjustments."
+    "tip": "Interest on borrowings and leases."
    },
    {
     "label": "Partners' share of profit",
-    "value": -506.0,
+    "value": -297.0,
     "kind": "cost",
     "tip": "Profit belonging to minority shareholders, for example in Fortis and Parkway Life REIT."
    },
    {
     "label": "Other income",
-    "value": 551.0,
+    "value": 233.0,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Finance income",
-    "value": 200.0,
+    "value": 155.0,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Hyperinflation gain",
-    "value": 402.0,
+    "value": 365.0,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Associates and joint ventures",
-    "value": 32.0,
+    "value": 16.0,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Profit to shareholders",
-    "value": 2101.0,
+    "value": 1101.0,
     "kind": "total",
     "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
    }
   ],
-  "incomeNote": "Plus about RM4.57 per RM100 of revenue from other income, interest and an accounting gain from Turkiye's high inflation."
+  "incomeNote": "Plus about RM5.70 per RM100 of revenue from other income, interest and an accounting gain from Turkiye's high inflation."
  },
  "trend": {
   "cols": [
    "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "lines": [
    {
     "label": "Revenue",
     "values": [
      24383.0,
-     25745.0
+     25745.0,
+     12592.0,
+     13599.0
     ],
     "bold": 1
    },
@@ -155,7 +170,9 @@
     "label": "Staff costs",
     "values": [
      -9241.0,
-     -9921.0
+     -9921.0,
+     -4966.0,
+     -5454.0
     ],
     "bold": 0
    },
@@ -163,7 +180,9 @@
     "label": "Medicines, supplies and contracted services",
     "values": [
      -6820.0,
-     -7287.0
+     -7287.0,
+     -3570.0,
+     -3734.0
     ],
     "bold": 0
    },
@@ -171,7 +190,9 @@
     "label": "Depreciation and amortisation",
     "values": [
      -1734.0,
-     -1911.0
+     -1911.0,
+     -932.0,
+     -1031.0
     ],
     "bold": 0
    },
@@ -179,7 +200,9 @@
     "label": "Other operating costs",
     "values": [
      -3284.0,
-     -3297.0
+     -3297.0,
+     -1552.0,
+     -1590.0
     ],
     "bold": 0
    },
@@ -187,7 +210,9 @@
     "label": "Other income",
     "values": [
      726.0,
-     551.0
+     551.0,
+     197.0,
+     233.0
     ],
     "bold": 0
    },
@@ -195,7 +220,9 @@
     "label": "Net finance costs",
     "values": [
      -792.0,
-     -886.0
+     -886.0,
+     -413.0,
+     -400.0
     ],
     "bold": 0
    },
@@ -203,7 +230,9 @@
     "label": "Hyperinflation gain",
     "values": [
      489.0,
-     402.0
+     402.0,
+     118.0,
+     365.0
     ],
     "bold": 0
    },
@@ -211,7 +240,9 @@
     "label": "Profit before tax",
     "values": [
      3756.0,
-     3428.0
+     3428.0,
+     1489.0,
+     2004.0
     ],
     "bold": 1
    },
@@ -219,7 +250,9 @@
     "label": "Tax",
     "values": [
      -594.0,
-     -821.0
+     -821.0,
+     -297.0,
+     -606.0
     ],
     "bold": 0
    },
@@ -227,7 +260,9 @@
     "label": "Partners' share",
     "values": [
      -505.0,
-     -506.0
+     -506.0,
+     -235.0,
+     -297.0
     ],
     "bold": 0
    },
@@ -235,7 +270,9 @@
     "label": "Profit to shareholders",
     "values": [
      2657.0,
-     2101.0
+     2101.0,
+     957.0,
+     1101.0
     ],
     "bold": 1
    }
@@ -263,282 +300,298 @@
    2657,
    2101
   ],
-  "note": "Core profit, without one-off items (RM million): 2021 1,595 · 2022 1,381 · 2023 1,280 · 2024 1,685 · 2025 1,818. Reported profit fell in 2025 because of deferred tax changes, while core profit rose 8%."
+  "note": "Full years. Core profit without one-offs (RM million): 2021 1,595 · 2022 1,381 · 2023 1,280 · 2024 1,685 · 2025 1,818. First half 2026: revenue RM13.6bn (+8%), profit RM1,101m (+15%)."
  },
  "segments": {
-  "period": "FY2025",
+  "period": "1H2026",
   "rows": [
    {
     "name": "Turkiye and Europe (Acibadem)",
-    "revenue": 8448.0,
-    "profit": 765.0,
-    "tip": "29 hospitals in Turkiye and Europe under the Acibadem brand; the biggest market by revenue."
+    "revenue": 4721.0,
+    "profit": 535.0,
+    "tip": "Acibadem hospitals in Turkiye and Europe; the biggest market by revenue."
    },
    {
     "name": "Singapore (Mount Elizabeth, Gleneagles)",
-    "revenue": 5950.0,
-    "profit": 918.0,
-    "tip": "4 premium hospitals; the highest bill per patient and the most profit."
+    "revenue": 2705.0,
+    "profit": 328.0,
+    "tip": "Premium hospitals with the highest bill per patient."
    },
    {
     "name": "Malaysia (Pantai, Gleneagles, Prince Court)",
-    "revenue": 4825.0,
-    "profit": 636.0,
-    "tip": "18 hospitals; admissions and average bills both rose in 2025."
+    "revenue": 2537.0,
+    "profit": 324.0,
+    "tip": "18 hospitals; growing admissions and bills."
    },
    {
     "name": "India (Fortis, Gleneagles)",
-    "revenue": 4176.0,
-    "profit": 301.0,
-    "tip": "31 hospitals; IHH bought more of Fortis in 2025."
+    "revenue": 2026.0,
+    "profit": 174.0,
+    "tip": "IHH completed its offer for more Fortis shares in November 2025."
    },
    {
     "name": "Greater China",
-    "revenue": 1620.0,
-    "profit": -190.0,
+    "revenue": 832.0,
+    "profit": -56.0,
     "tip": "Hospitals and clinics in Hong Kong and Shanghai; still loss-making."
    },
    {
     "name": "Labs (diagnostic laboratories)",
-    "revenue": 1023.0,
-    "profit": 212.0,
-    "tip": "Blood tests and other lab services for hospitals and clinics."
+    "revenue": 484.0,
+    "profit": 109.0,
+    "tip": "Blood tests and other lab services."
    },
    {
     "name": "Parkway Life REIT",
-    "revenue": 178.0,
-    "profit": 226.0,
+    "revenue": 77.0,
+    "profit": 145.0,
     "tip": "Owns hospital and nursing-home buildings and rents them out."
    }
   ],
   "geo": [],
-  "note": "Profit for the year by segment, before head-office costs, eliminations and the Turkiye hyperinflation adjustment (AR p.218)."
+  "note": "Half-year to 30 June 2026. Profit by segment before head-office costs, eliminations and the Turkiye hyperinflation adjustment (Q2 p.16)."
  },
  "balance": {
-  "date": "31 Dec 2025",
+  "date": "30 Jun 2026",
   "assets": [
    {
     "label": "Hospitals, buildings and equipment",
-    "value": 22266.0
+    "value": 22505.0
    },
    {
     "label": "Goodwill and brands from acquisitions",
-    "value": 19490.0
+    "value": 20228.0
    },
    {
     "label": "Leased buildings",
-    "value": 7781.0
+    "value": 7866.0
    },
    {
     "label": "Money owed by patients and insurers",
-    "value": 3645.0
+    "value": 3972.0
    },
    {
     "label": "Cash and investments",
-    "value": 2509.0
+    "value": 2134.0
    },
    {
     "label": "Medicines and supplies",
-    "value": 719.0
+    "value": 965.0
    },
    {
     "label": "Other assets",
-    "value": 1207.0
+    "value": 1150.0
    }
   ],
   "liabilities": [
    {
     "label": "Borrowings",
-    "value": 13384.0
+    "value": 12976.0
    },
    {
     "label": "Lease liabilities",
-    "value": 2155.0
+    "value": 2205.0
    },
    {
     "label": "Owed to suppliers and staff",
-    "value": 5701.0
+    "value": 5822.0
    },
    {
     "label": "Tax and other",
-    "value": 2276.0
+    "value": 2629.0
    }
   ],
-  "equity": 34101.0,
-  "note": "More than a quarter of what IHH owns is goodwill: the premium it paid when buying hospital groups such as Acibadem and Fortis. Net debt including leases is 0.41 times equity (AR p.50)."
+  "equity": 35188.0,
+  "note": "More than a quarter of what IHH owns is goodwill: the premium it paid when buying hospital groups such as Acibadem and Fortis. Borrowings were trimmed slightly in the first half of 2026."
  },
  "cash": {
-  "wfPeriod": "FY2025",
+  "wfPeriod": "1H2026",
   "waterfall": [
    {
     "l": "Cash from running the hospitals",
-    "v": 5574.0,
+    "v": 2403.0,
     "total": 1
    },
    {
     "l": "New hospitals, equipment and IT",
-    "v": -3699.0,
+    "v": -1632.0,
     "total": 0
    },
    {
     "l": "Buying hospitals and stakes",
-    "v": -1039.0,
+    "v": -166.0,
     "total": 0
    },
    {
     "l": "Interest paid",
-    "v": -700.0,
+    "v": -359.0,
     "total": 0
    },
    {
     "l": "Lease payments",
-    "v": -434.0,
+    "v": -271.0,
     "total": 0
    },
    {
     "l": "Dividends",
-    "v": -1112.0,
+    "v": -608.0,
     "total": 0
    },
    {
-    "l": "New borrowing (net)",
-    "v": 994.0,
+    "l": "Borrowing repaid (net)",
+    "v": -277.0,
     "total": 0
    },
    {
     "l": "Other items",
-    "v": 621.0,
+    "v": 408.0,
     "total": 0
    },
    {
-    "l": "Increase in cash",
-    "v": 205.0,
+    "l": "Change in cash",
+    "v": -502.0,
     "total": 1
    }
   ],
-  "wfNote": "Hospitals generated RM5.6bn of cash, enough to pay for RM3.7bn of new capacity, interest and dividends; acquisitions such as more of Fortis were partly funded with new borrowing.",
+  "wfNote": "In the first half of 2026 the hospitals generated RM2.4bn of cash, which paid for RM1.6bn of new capacity, dividends and some debt repayment.",
   "cols": [
-   "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "table": [
    {
     "label": "Operating profit before working capital",
     "values": [
-     5623.0,
-     5819.0
+     5819.0,
+     2746.0,
+     3110.0
     ],
     "bold": 0
    },
    {
     "label": "Working capital changes",
     "values": [
-     -715.0,
-     414.0
+     414.0,
+     54.0,
+     -440.0
     ],
     "bold": 0
    },
    {
     "label": "Tax paid",
     "values": [
-     -623.0,
-     -659.0
+     -659.0,
+     -319.0,
+     -267.0
     ],
     "bold": 0
    },
    {
     "label": "Cash from operations",
     "values": [
-     4285.0,
-     5574.0
+     5574.0,
+     2481.0,
+     2403.0
     ],
     "bold": 1
    },
    {
     "label": "Hospitals, equipment and IT",
     "values": [
-     -3855.0,
-     -3699.0
+     -3699.0,
+     -2155.0,
+     -1632.0
     ],
     "bold": 0
    },
    {
     "label": "Acquisitions",
     "values": [
-     -4159.0,
-     -352.0
+     -352.0,
+     0.0,
+     -166.0
     ],
     "bold": 0
    },
    {
     "label": "Other investing",
     "values": [
-     -233.0,
-     357.0
+     357.0,
+     391.0,
+     408.0
     ],
     "bold": 0
    },
    {
     "label": "Net cash used in investing",
     "values": [
-     -8247.0,
-     -3694.0
+     -3694.0,
+     -1764.0,
+     -1390.0
     ],
     "bold": 1
    },
    {
     "label": "Interest paid",
     "values": [
-     -512.0,
-     -700.0
+     -700.0,
+     -310.0,
+     -359.0
     ],
     "bold": 0
    },
    {
     "label": "New borrowing (net)",
     "values": [
-     5097.0,
-     994.0
+     994.0,
+     936.0,
+     -277.0
     ],
     "bold": 0
    },
    {
     "label": "Lease payments",
     "values": [
-     -678.0,
-     -434.0
+     -434.0,
+     -196.0,
+     -271.0
     ],
     "bold": 0
    },
    {
     "label": "Dividends",
     "values": [
-     -1224.0,
-     -1112.0
+     -1112.0,
+     -525.0,
+     -608.0
     ],
     "bold": 0
    },
    {
     "label": "Minority buy-outs and other",
     "values": [
-     350.0,
-     -423.0
+     -423.0,
+     -536.0,
+     0.0
     ],
     "bold": 0
    },
    {
     "label": "Net cash from financing",
     "values": [
-     3033.0,
-     -1675.0
+     -1675.0,
+     -631.0,
+     -1515.0
     ],
     "bold": 1
    },
    {
     "label": "Net change in cash",
     "values": [
-     -929.0,
-     205.0
+     205.0,
+     86.0,
+     -502.0
     ],
     "bold": 1
    }
@@ -555,14 +608,14 @@
    "plain": "What the whole company costs at today's share price: RM70.1 billion."
   },
   {
-   "label": "P/E (FY2025 profit)",
-   "value": "33.4x",
-   "plain": "You pay about RM33 for every RM1 of yearly profit. A high number means investors expect growth."
+   "label": "P/E (last 12 months)",
+   "value": "31.2x",
+   "plain": "You pay about RM31 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
-   "label": "EPS (FY2025)",
-   "value": "23.78 sen",
-   "plain": "Profit earned for each share you own over the year."
+   "label": "EPS (last 12 months)",
+   "value": "25.41 sen",
+   "plain": "Profit earned for each share you own over the last year."
   },
   {
    "label": "Dividend yield (FY2025 dividends)",
@@ -570,59 +623,54 @@
    "plain": "For every RM100 of shares, about RM1.3 a year comes back as cash dividends."
   },
   {
-   "label": "Payout ratio FY2025",
-   "value": "44%",
-   "plain": "Of every RM100 profit, about RM44 is paid out; the rest is kept to grow."
+   "label": "Payout ratio",
+   "value": "41%",
+   "plain": "Of every RM100 profit, about RM41 is paid out; the rest is kept to grow."
   },
   {
    "label": "Price to book",
-   "value": "2.3x",
-   "plain": "The share price is 2.3 times the accounting value of what shareholders own."
+   "value": "2.2x",
+   "plain": "The share price is 2.2 times the accounting value of what shareholders own."
   },
   {
-   "label": "Return on equity FY2025",
+   "label": "Return on equity (last 12 months)",
    "value": "7%",
    "plain": "For every RM100 shareholders have in the company, it earned about RM7 profit last year."
   },
   {
-   "label": "Net margin FY2025",
-   "value": "8.2%",
-   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM8.16."
+   "label": "Net margin 1H2026",
+   "value": "8.1%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM8.10."
   },
   {
-   "label": "Revenue growth FY2025",
-   "value": "+5.6%",
-   "plain": "Revenue compared with the year before."
+   "label": "Revenue growth 1H2026",
+   "value": "+8.0%",
+   "plain": "Revenue compared with the same period a year earlier."
   },
   {
-   "label": "Profit growth FY2025",
-   "value": "-20.9%",
-   "plain": "Profit to shareholders compared with the year before."
+   "label": "Profit growth 1H2026",
+   "value": "+15.0%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
   },
   {
    "label": "Net debt",
-   "value": "RM13.94 bn",
-   "plain": "Borrowings minus cash: RM13.94 billion owed to lenders after using all its cash."
+   "value": "RM13.77 bn",
+   "plain": "Borrowings minus cash: RM13.77 billion owed to lenders after using all its cash."
   },
   {
    "label": "Net gearing",
-   "value": "41%",
-   "plain": "Net debt is 41% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
+   "value": "39%",
+   "plain": "Net debt is 39% of shareholders' funds. Under 50% is usually seen as comfortable; above 100% means lenders fund more than owners."
   },
   {
-   "label": "Free cash flow FY2025",
-   "value": "RM1,875 m",
-   "plain": "Cash from operations minus spending on assets and land: RM1,875 million. Negative means it borrowed or used savings to fund growth."
+   "label": "Free cash flow 1H2026",
+   "value": "RM771 m",
+   "plain": "Cash from operations minus spending on assets and land: RM771 million. Negative means it borrowed or used savings to fund growth."
   },
   {
    "label": "Free cash flow yield",
-   "value": "2.7%",
+   "value": "1.1%",
    "plain": "That spare cash as a share of the company's market value."
-  },
-  {
-   "label": "EV / EBITDA",
-   "value": "15.0x",
-   "plain": "A price tag that includes debt: about 15 times IHH's yearly cash earnings (EBITDA RM5.6bn as reported)."
   },
   {
    "label": "Core profit FY2025",
@@ -635,94 +683,154 @@
    "factor": "Ageing populations",
    "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "Management cites ageing populations and rising lifestyle diseases as tailwinds (AR p.50, p.52)",
-   "why": "Long-term demand for hospital care keeps growing."
+   "evidence": "Demand stays resilient on demographics, health awareness and complex care (Q2 p.28)",
+   "why": "Long-term demand for hospital care keeps growing.",
+   "pic": "data/b/img/5225_d1.jpg"
   },
   {
    "factor": "More complex cases",
    "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "Average bill per admission rose in every market, e.g. Malaysia RM10,667 to RM11,441 (AR p.20)",
-   "why": "Higher-value treatments lift revenue per patient."
+   "evidence": "Revenue up 8% in 1H2026 to RM13.6bn; average bills rose in every market in 2025 (Q2 p.2; AR p.20)",
+   "why": "Higher-value treatments lift revenue per patient.",
+   "pic": "data/b/img/5225_d2.jpg"
   },
   {
    "factor": "New beds",
    "affects": "Revenue",
    "direction": "Positive",
    "evidence": "More than 1,400 operational beds added in FY2025 (AR p.51)",
-   "why": "More capacity means more patients, once new wards fill up."
+   "why": "More capacity means more patients, once new wards fill up.",
+   "pic": "data/b/img/5225_d3.jpg"
   },
   {
    "factor": "Acquisitions",
    "affects": "Growth",
    "direction": "Positive",
-   "evidence": "Bought 80% of Bayindir (Turkiye), Shrimann hospital (India) and more of Fortis (AR p.51)",
-   "why": "Adds hospitals quickly, but costs cash and raises debt."
+   "evidence": "Bought hospitals in Turkiye and India; Fortis offer completed November 2025 (AR p.51; Q2 p.11)",
+   "why": "Adds hospitals quickly, but costs cash.",
+   "pic": "data/b/img/5225_d4.jpg"
   },
   {
-   "factor": "Singapore slowdown",
-   "affects": "Profit",
+   "factor": "Medical travellers",
+   "affects": "Revenue",
    "direction": "Negative",
-   "evidence": "Singapore admissions fell from 61,909 to 56,385 and EBITDA from RM1,825m to RM1,666m (AR p.18, p.20)",
-   "why": "Its most profitable market; Mount Elizabeth Orchard has since re-opened after renovation."
+   "evidence": "Middle East tensions led some foreign patients to defer elective procedures (Q2 p.28)",
+   "why": "Hits premium hospitals that serve foreign patients; management says the impact is limited.",
+   "pic": "data/b/img/5225_d5.jpg"
   },
   {
-   "factor": "Medical inflation and insurers",
+   "factor": "Insurer pressure",
    "affects": "Margin",
    "direction": "Negative",
-   "evidence": "Management names medical inflation and payor (insurer) pressure as challenges (AR p.51)",
-   "why": "Insurers and governments push back on price increases."
+   "evidence": "Insurers, corporate payors and regulators focus on affordability and usage (Q2 p.28)",
+   "why": "Limits how fast prices can rise.",
+   "pic": "data/b/img/5225_d6.jpg"
   },
   {
-   "factor": "Staff costs and talent",
+   "factor": "Wages and supplies",
    "affects": "Costs",
    "direction": "Negative",
-   "evidence": "Staff costs RM9.9bn, 39% of revenue; talent shortage named as a challenge (AR p.159, p.51)",
-   "why": "Nurse and doctor wages rise faster than prices in some markets."
+   "evidence": "Staff costs +10% in 1H2026, faster than revenue; pressure from consumables, drugs and utilities (Q2 p.2, p.28)",
+   "why": "Squeezes margins unless efficiency improves.",
+   "pic": "data/b/img/5225_d7.jpg"
   },
   {
-   "factor": "Currency moves",
+   "factor": "Cost-cutting programme",
+   "affects": "Margin",
+   "direction": "Positive",
+   "evidence": "Multi-year transformation: technology, digitalisation and productivity programmes (Q2 p.28)",
+   "why": "Aims to protect margins.",
+   "pic": "data/b/img/5225_d8.jpg"
+  },
+  {
+   "factor": "Higher tax charge",
    "affects": "Profit",
-   "direction": "Negative",
-   "evidence": "Revenue growth was partly offset by currency translation (AR p.50)",
-   "why": "Most revenue is earned outside Malaysia, so a stronger ringgit lowers reported profit."
+   "direction": "Watch",
+   "evidence": "Tax doubled to RM606m in 1H2026, partly linked to Turkiye's hyperinflation accounting (Q2 p.2, p.16)",
+   "why": "Lowers profit even as the hospitals do well.",
+   "pic": "data/b/img/5225_d9.jpg"
   },
   {
    "factor": "Turkiye hyperinflation",
    "affects": "Profit",
    "direction": "Watch",
-   "evidence": "A RM402m accounting gain from hyperinflation in 2025 (RM489m in 2024) (AR p.159)",
-   "why": "Makes reported profit swing; investors focus on core profit instead."
+   "evidence": "RM365m accounting gain from hyperinflation in 1H2026 (Q2 p.2)",
+   "why": "Makes reported profit swing; investors look at core profit too.",
+   "pic": "data/b/img/5225_d10.jpg"
   },
   {
-   "factor": "One-off tax items",
+   "factor": "Currency moves",
    "affects": "Profit",
-   "direction": "Watch",
-   "evidence": "Reported profit fell 21% on deferred tax changes; core profit rose 8% (AR p.50)",
-   "why": "Explains why headline profit and the underlying business moved in opposite directions."
+   "direction": "Negative",
+   "evidence": "Management flags exposure to currency moves against the ringgit (Q2 p.28)",
+   "why": "Most revenue is earned outside Malaysia.",
+   "pic": "data/b/img/5225_d11.jpg"
   },
   {
-   "factor": "Debt",
-   "affects": "Risk",
-   "direction": "Watch",
-   "evidence": "Net debt to equity 0.41 (AR p.50)",
-   "why": "Moderate; leaves room for more acquisitions."
-  },
-  {
-   "factor": "Higher dividend",
+   "factor": "Steady dividend",
    "affects": "Shareholder returns",
    "direction": "Positive",
-   "evidence": "Dividend raised to 10.5 sen from 10.0 sen (AR p.51)",
-   "why": "Signals confidence in steady cash flow."
+   "evidence": "FY2025 dividend raised to 10.5 sen (AR p.51)",
+   "why": "Signals confidence in steady cash flow.",
+   "pic": "data/b/img/5225_d12.jpg"
   },
   {
    "factor": "Valuation",
    "affects": "Share price",
    "direction": "Negative (risk)",
-   "evidence": "About 33 times reported FY2025 profit at RM7.93 (see Valuation)",
-   "why": "Investors pay a premium for a defensive, growing business; slower growth would hurt."
+   "evidence": "About 31 times last-12-month profit at RM7.93 (see Valuation)",
+   "why": "Investors pay a premium for a defensive, growing business; slower growth would hurt.",
+   "pic": "data/b/img/5225_d13.jpg"
   }
  ],
+ "supply": {
+  "suppliers": [
+   [
+    "Doctors, nurses and staff",
+    "Staff costs are the biggest cost: RM5.5bn in 1H2026; wage inflation is a key pressure",
+    "Q2 p.2, p.28"
+   ],
+   [
+    "Pharmaceutical and medical-supply companies",
+    "Medicines, implants and consumables used on patients",
+    "Q2 p.28; AR p.159"
+   ],
+   [
+    "Contracted service providers",
+    "Outside services such as specialist, cleaning, catering and laboratory work",
+    "AR p.159"
+   ],
+   [
+    "Utilities and equipment makers",
+    "Electricity and water; scanners, surgical robots and other medical technology",
+    "Q2 p.28; AR p.51"
+   ]
+  ],
+  "customers": [
+   [
+    "Patients",
+    "Local patients across 10 countries; Turkiye and Europe is the biggest market by revenue",
+    "Q2 p.16"
+   ],
+   [
+    "Insurers and corporate payors",
+    "Pay many hospital bills; focused on affordability and controlling usage",
+    "Q2 p.28"
+   ],
+   [
+    "Governments and regulators",
+    "Set healthcare rules and pay for some public schemes",
+    "Q2 p.28"
+   ],
+   [
+    "Medical travellers",
+    "Foreign patients; some delayed elective treatment because of Middle East tensions",
+    "Q2 p.28"
+   ]
+  ],
+  "note": "The reports describe these groups but do not give a revenue share for each payor type or name individual suppliers."
+ },
  "competitors": [
   {
    "name": "KPJ Healthcare, Sunway Healthcare, Columbia Asia",
@@ -748,23 +856,23 @@
  "outlook": [
   {
    "tone": "Positive",
-   "text": "Enters 2026 with positive momentum from a strong core performance in FY2025 (AR p.51)."
+   "text": "Demand for quality healthcare remains resilient, supported by demographics and demand for complex care (Q2 p.28)."
   },
   {
    "tone": "Positive",
-   "text": "Aims for double-digit return on equity (excluding hyperinflation and one-off items) by 2028 (AR p.51)."
+   "text": "Multi-year transformation programmes expected to improve efficiency and support margins (Q2 p.28)."
   },
   {
    "tone": "Neutral",
-   "text": "Plans: more capacity in existing hospitals, selective acquisitions and steady dividends (AR p.51)."
+   "text": "Management is 'cautiously optimistic' about delivering sustainable growth (Q2 p.28)."
   },
   {
    "tone": "Negative",
-   "text": "Challenges named: medical inflation, insurer pressure, talent shortages, geopolitical tension and cyber threats (AR p.51, p.58)."
+   "text": "Cost pressures (wages, consumables, drugs, utilities), insurer pressure, Middle East tensions and currency moves (Q2 p.28)."
   }
  ],
  "outlookOverall": {
   "tone": "Positive",
-  "text": "Management says IHH enters 2026 with positive momentum and is well placed for rising healthcare demand (AR p.51)."
+  "text": "Management is cautiously optimistic, citing resilient demand and a diversified network (Q2 p.28)."
  }
 }

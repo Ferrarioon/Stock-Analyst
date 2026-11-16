@@ -587,98 +587,112 @@
    "affects": "Revenue",
    "direction": "Positive",
    "evidence": "3,151 outlets at Jun 2026, +257 in a year; target about 250 new outlets a year (AR p.22, Q2 p.11)",
-   "why": "The main growth engine: each new shop adds sales. Investors pay a premium while openings stay on track; a slowdown would hurt the valuation."
+   "why": "The main growth engine: each new shop adds sales. Investors pay a premium while openings stay on track; a slowdown would hurt the valuation.",
+   "pic": "data/b/img/5326_d1.jpg"
   },
   {
    "factor": "Customer transactions x basket size",
    "affects": "Revenue",
    "direction": "Neutral",
    "evidence": "Transactions +13.6% to 146.4m in Q2 2026; basket stable at about RM21 (Q2 p.11)",
-   "why": "Growth comes from more visits, not bigger baskets. A falling basket would signal weaker spending."
+   "why": "Growth comes from more visits, not bigger baskets. A falling basket would signal weaker spending.",
+   "pic": "data/b/img/5326_d2.jpg"
   },
   {
    "factor": "Longer opening hours",
    "affects": "Revenue",
    "direction": "Positive",
    "evidence": "Earlier opening nationwide lifted traffic (Q2 p.11; AR p.22)",
-   "why": "Extra sales from existing shops at little extra cost."
+   "why": "Extra sales from existing shops at little extra cost.",
+   "pic": "data/b/img/5326_d3.jpg"
   },
   {
    "factor": "99 Bulksales e-commerce",
    "affects": "Revenue",
    "direction": "Positive (small)",
    "evidence": "Added about RM22.4m revenue in 1H2026 (Q2 p.12)",
-   "why": "Small today (under 0.5% of revenue); an option for future growth."
+   "why": "Small today (under 0.5% of revenue); an option for future growth.",
+   "pic": "data/b/img/5326_d4.jpg"
   },
   {
    "factor": "Consumer spending",
    "affects": "Revenue",
    "direction": "Negative",
    "evidence": "Management notes softer demand and cautious spending (Q2 p.13)",
-   "why": "Essentials are defensive, but weaker spending can slow sales growth per shop."
+   "why": "Essentials are defensive, but weaker spending can slow sales growth per shop.",
+   "pic": null
   },
   {
    "factor": "Competition",
    "affects": "Revenue and margin",
    "direction": "Negative",
    "evidence": "Market is competitive and fragmented: mini-markets, supermarkets, hypermarkets, online grocery (AR p.55, p.46)",
-   "why": "Price competition could limit margin gains."
+   "why": "Price competition could limit margin gains.",
+   "pic": null
   },
   {
    "factor": "Buying power and supplier rebates",
    "affects": "Gross margin",
    "direction": "Positive",
    "evidence": "Gross margin up from 19.0% (FY2024) to 19.5% (FY2025) and 20.0% (1H2026) from scale and direct sourcing (AR p.44; Q2 p.12)",
-   "why": "Every 0.1 percentage point of margin is roughly RM12m of gross profit a year."
+   "why": "Every 0.1 percentage point of margin is roughly RM12m of gross profit a year.",
+   "pic": null
   },
   {
    "factor": "Wages",
    "affects": "Costs",
    "direction": "Negative",
    "evidence": "Personnel costs rose 18.2% to RM862.6m in FY2025, faster than revenue (AR p.211)",
-   "why": "The largest operating cost; minimum-wage rises squeeze profit."
+   "why": "The largest operating cost; minimum-wage rises squeeze profit.",
+   "pic": null
   },
   {
    "factor": "Utilities and green initiatives",
    "affects": "Costs",
    "direction": "Positive",
    "evidence": "Utility costs fell in 1H2026 from energy-efficiency upgrades and solar (Q2 p.12)",
-   "why": "Offsets part of the wage pressure."
+   "why": "Offsets part of the wage pressure.",
+   "pic": null
   },
   {
    "factor": "Depreciation from expansion",
    "affects": "Costs",
    "direction": "Negative (short term)",
    "evidence": "Higher depreciation from new shops and warehouses (Q2 p.11-12)",
-   "why": "Front-loaded cost of growth; earns back as new shops mature."
+   "why": "Front-loaded cost of growth; earns back as new shops mature.",
+   "pic": null
   },
   {
    "factor": "New distribution centre (Semenyih)",
    "affects": "Capacity",
    "direction": "Positive",
    "evidence": "Opened July 2026, supports about 180 outlets (Q2 p.13)",
-   "why": "Removes a bottleneck for opening more shops."
+   "why": "Removes a bottleneck for opening more shops.",
+   "pic": null
   },
   {
    "factor": "China pilot",
    "affects": "Growth / risk",
    "direction": "Watch",
    "evidence": "5 pilot outlets in Fuzhou, under 10 more planned (AR p.10; analyst commentary)",
-   "why": "Tiny today; success could add a new market, failure costs little."
+   "why": "Tiny today; success could add a new market, failure costs little.",
+   "pic": null
   },
   {
    "factor": "Net cash balance sheet",
    "affects": "Risk",
    "direction": "Positive",
    "evidence": "Borrowings fully repaid by Jun 2026; RM884m cash and short-term investments (Q2 p.3)",
-   "why": "Lowers financial risk and supports dividends."
+   "why": "Lowers financial risk and supports dividends.",
+   "pic": null
   },
   {
    "factor": "Valuation",
    "affects": "Share price",
    "direction": "Negative (risk)",
    "evidence": "About 38 times trailing earnings at RM3.03 (see Metrics)",
-   "why": "A high multiple prices in steady growth; any earnings miss can hit the share price hard."
+   "why": "A high multiple prices in steady growth; any earnings miss can hit the share price hard.",
+   "pic": null
   }
  ],
  "competitors": [
@@ -750,7 +764,14 @@
  },
  "story": {
   "scale_value": "3,151 outlets",
-  "scale_label": "shops across Malaysia"
+  "scale_label": "shops across Malaysia",
+  "pics": {
+   "rm100": "data/b/img/5326_s1.jpg",
+   "growth": "data/b/img/5326_s2.jpg",
+   "debt": "data/b/img/5326_s3.jpg",
+   "pricetag": "data/b/img/5326_s4.jpg",
+   "analysts": "data/b/img/5326_s5.jpg"
+  }
  },
  "growth": {
   "period": "first half 2026",
@@ -762,5 +783,47 @@
   "value": "RM884 m",
   "label": "net cash, no bank borrowings"
  },
- "segments": null
+ "segments": null,
+ "supply": {
+  "suppliers": [
+   [
+    "Consumer-goods makers and distributors",
+    "Rice, noodles, drinks, toiletries and other everyday items; bigger scale and direct sourcing earn supplier rebates",
+    "AR p.44; Q2 p.12"
+   ],
+   [
+    "Shop-lot and warehouse landlords",
+    "Rent on about 3,150 shop lots and its distribution centres (RM180m of lease payments in FY2025)",
+    "AR p.188"
+   ],
+   [
+    "Staff",
+    "25,647 employees: cashiers, warehouse workers, drivers and office staff",
+    "AR p.57"
+   ],
+   [
+    "Utilities and logistics providers",
+    "Electricity, repairs and transport; utility costs fell in 1H2026 after energy-saving upgrades",
+    "Q2 p.12"
+   ]
+  ],
+  "customers": [
+   [
+    "Neighbourhood households",
+    "Shoppers buying daily essentials: 287.6 million transactions in 1H2026, average basket RM21.4",
+    "Q2 p.11-12"
+   ],
+   [
+    "Small businesses buying in bulk",
+    "99 Bulksales online wholesale: about RM22.4m of revenue in 1H2026",
+    "Q2 p.12"
+   ],
+   [
+    "Bill-payment users",
+    "Speedpoint in-store services such as top-ups and bill payments (commission income)",
+    "AR p.209"
+   ]
+  ],
+  "note": "The report does not name individual suppliers. Almost all revenue comes from selling goods to individual shoppers."
+ }
 }

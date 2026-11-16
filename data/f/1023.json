@@ -3,8 +3,12 @@
  "price": 7.08,
  "priceDate": "2026-11-13",
  "unit": "RM million",
- "fyNote": "Financial year ends 31 December. 'Net income' is a bank's revenue: interest earned minus interest paid, plus fees and other income.",
+ "fyNote": "Financial year ends 31 December. 'Net income' is a bank's revenue: interest earned minus interest paid, plus fees and other income. 1H = January to June; 2026 unaudited. Next results: Q3 2026, due late November 2026.",
  "sources": [
+  {
+   "title": "CIMB interim financial statements, half-year to 30 June 2026",
+   "url": "https://www.cimb.com/content/dam/cimb/group/documents/investor-relations/financial-information/cimb-group/2026/june-2026/2q26-cimb-group-financial-statement.pdf"
+  },
   {
    "title": "CIMB Integrated Annual Report 2025",
    "url": "https://www.cimb.com/content/dam/cimb/group/documents/investor-relations/annual-reports/2025/cimb-iar2025.pdf"
@@ -17,30 +21,37 @@
   "facts": [
    [
     "Loans to customers",
-    "RM452.9 billion (AR p.77)"
+    "RM450.6 billion at 30 Jun 2026 (Q2 p.1)"
    ],
    [
-    "Customer deposits",
-    "RM524.4 billion (AR p.77)"
+    "Customer deposits and investment accounts",
+    "RM519.7 billion (Q2 p.1)"
    ],
    [
-    "Net interest margin",
-    "2.13% (AR p.77)"
+    "Net income 1H2026",
+    "RM10.97 billion, -1.2% (Q2 p.64)"
    ],
    [
-    "Income from fees and other non-interest sources",
-    "31.7% of total (AR p.70)"
+    "Branches and staff",
+    "524 branches, over 33,000 employees (PR p.3)"
    ]
   ]
  },
  "story": {
-  "scale_value": "RM453 bn",
-  "scale_label": "lent to customers across ASEAN"
+  "scale_value": "RM451 bn",
+  "scale_label": "lent to customers across ASEAN",
+  "pics": {
+   "rm100": "data/b/img/1023_s1.jpg",
+   "growth": "data/b/img/1023_s2.jpg",
+   "debt": "data/b/img/1023_s3.jpg",
+   "pricetag": "data/b/img/1023_s4.jpg",
+   "analysts": "data/b/img/1023_s5.jpg"
+  }
  },
  "growth": {
-  "period": "FY2025",
-  "revenue": 0.7,
-  "profit": 1.7
+  "period": "1H2026",
+  "revenue": -1.2,
+  "profit": -0.2
  },
  "debt": {
   "netCash": false,
@@ -48,75 +59,79 @@
   "label": ""
  },
  "pnl": {
-  "period": "FY2025",
+  "period": "1H2026",
   "items": [
    {
     "label": "Net income",
-    "value": 22467.4,
+    "value": 10972.4,
     "kind": "total"
    },
    {
     "label": "Staff costs",
-    "value": -6343.7,
+    "value": -3116.9,
     "kind": "cost",
-    "tip": "Salaries and benefits for about 32,800 employees."
+    "tip": "Salaries and benefits for about 33,000 employees."
    },
    {
     "label": "Other running costs",
-    "value": -3264.6,
+    "value": -1472.8,
     "kind": "cost",
     "tip": "Branches, IT systems, marketing and other overheads."
    },
    {
     "label": "Depreciation and amortisation",
-    "value": -1018.7,
+    "value": -479.8,
     "kind": "cost",
     "tip": "Wear and tear on buildings, computers and software."
    },
    {
     "label": "Provisions for bad loans",
-    "value": -1254.1,
+    "value": -824.2,
     "kind": "cost",
     "tip": "Money set aside for loans that may not be repaid, after write-backs."
    },
    {
     "label": "Tax and zakat",
-    "value": -2651.6,
+    "value": -1232.1,
     "kind": "cost",
     "tip": "Corporate tax and zakat (Islamic levy) in each country."
    },
    {
     "label": "Partners' share of profit",
-    "value": -168.9,
+    "value": -71.6,
     "kind": "cost",
     "tip": "Profit belonging to minority shareholders in subsidiaries."
    },
    {
     "label": "Share of joint ventures and associates",
-    "value": 93.6,
+    "value": 79.9,
     "kind": "income",
     "tip": ""
    },
    {
     "label": "Profit to shareholders",
-    "value": 7859.6,
+    "value": 3854.7,
     "kind": "total",
     "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
    }
   ],
-  "incomeNote": "Net income is CIMB's revenue after paying interest on deposits. Plus RM0.42 per RM100 from joint ventures such as Touch 'n Go."
+  "incomeNote": "Net income is CIMB's revenue after paying interest on deposits. Plus RM0.73 per RM100 from joint ventures such as Touch 'n Go."
  },
  "trend": {
   "cols": [
    "FY2024",
-   "FY2025"
+   "FY2025",
+   "1H2025",
+   "1H2026"
   ],
   "lines": [
    {
     "label": "Net interest income",
     "values": [
      11363.9,
-     11263.2
+     11263.2,
+     5604.6,
+     5371.8
     ],
     "bold": 0
    },
@@ -124,7 +139,9 @@
     "label": "Islamic banking income",
     "values": [
      4740.6,
-     4958.8
+     4958.8,
+     2481.1,
+     2416.2
     ],
     "bold": 0
    },
@@ -132,7 +149,9 @@
     "label": "Fees, trading and other income",
     "values": [
      6196.7,
-     6245.5
+     6245.5,
+     3015.1,
+     3184.3
     ],
     "bold": 0
    },
@@ -140,7 +159,9 @@
     "label": "Net income",
     "values": [
      22301.2,
-     22467.4
+     22467.4,
+     11100.8,
+     10972.4
     ],
     "bold": 1
    },
@@ -148,7 +169,9 @@
     "label": "Staff costs",
     "values": [
      -6347.5,
-     -6343.7
+     -6343.7,
+     -3118.4,
+     -3116.9
     ],
     "bold": 0
    },
@@ -156,7 +179,9 @@
     "label": "Other overheads and depreciation",
     "values": [
      -4072.8,
-     -4283.3
+     -4283.3,
+     -2012.5,
+     -1952.6
     ],
     "bold": 0
    },
@@ -164,7 +189,9 @@
     "label": "Profit before provisions",
     "values": [
      11880.9,
-     11840.5
+     11840.5,
+     5969.8,
+     5902.8
     ],
     "bold": 1
    },
@@ -172,7 +199,9 @@
     "label": "Provisions for bad loans",
     "values": [
      -1503.8,
-     -1254.1
+     -1254.1,
+     -715.2,
+     -824.2
     ],
     "bold": 0
    },
@@ -180,7 +209,9 @@
     "label": "Joint ventures and associates",
     "values": [
      18.8,
-     93.6
+     93.6,
+     19.9,
+     79.9
     ],
     "bold": 0
    },
@@ -188,7 +219,9 @@
     "label": "Profit before tax",
     "values": [
      10395.9,
-     10680.0
+     10680.0,
+     5274.6,
+     5158.4
     ],
     "bold": 1
    },
@@ -196,7 +229,9 @@
     "label": "Tax and zakat",
     "values": [
      -2476.5,
-     -2651.6
+     -2651.6,
+     -1316.7,
+     -1232.1
     ],
     "bold": 0
    },
@@ -204,7 +239,9 @@
     "label": "Partners' share",
     "values": [
      -191.3,
-     -168.9
+     -168.9,
+     -95.8,
+     -71.6
     ],
     "bold": 0
    },
@@ -212,7 +249,9 @@
     "label": "Profit to shareholders",
     "values": [
      7728.0,
-     7859.6
+     7859.6,
+     3862.1,
+     3854.7
     ],
     "bold": 1
    }
@@ -240,7 +279,7 @@
    7728,
    7860
   ],
-  "note": "Revenue here is net income. Return on equity rose from 7.5% (2021) to 11.3% (2025) (AR p.77)."
+  "note": "Full years; revenue here is net income. First half 2026: net income RM10.97bn (-1.2%), profit RM3.85bn (-0.2%), return on equity 11.0% (Q2 p.64)."
  },
  "segments": {
   "period": "FY2025",
@@ -249,25 +288,25 @@
     "name": "Consumer Banking",
     "revenue": 9098.0,
     "profit": 2801.0,
-    "tip": "Home loans, car loans, credit cards, savings accounts and wealth products for individuals."
+    "tip": "Home loans, car loans, cards, savings and wealth for individuals. 1H2026 profit before tax fell 16% on higher provisions (Q2 p.65)."
    },
    {
     "name": "Wholesale Banking",
     "revenue": 6203.0,
     "profit": 4510.0,
-    "tip": "Loans, bonds, deals advice and treasury for large companies and governments; profit up 17% in 2025."
+    "tip": "Loans, bonds and treasury for large companies; 1H2026 profit before tax +7% (Q2 p.65)."
    },
    {
     "name": "Commercial Banking",
     "revenue": 4110.0,
     "profit": 1793.0,
-    "tip": "Loans and cash management for small and medium businesses; profit down 13%."
+    "tip": "Loans and cash management for SMEs; 1H2026 profit before tax +12.6% (Q2 p.65)."
    },
    {
     "name": "Digital assets and group funding",
     "revenue": 3056.0,
     "profit": 1576.0,
-    "tip": "Treasury, digital banks (Philippines, Vietnam) and stakes such as Touch 'n Go."
+    "tip": "Treasury, digital banks and Touch 'n Go; 1H2026 profit before tax -16% (Q2 p.65)."
    }
   ],
   "geo": [
@@ -292,64 +331,71 @@
     "value": 1238.0
    }
   ],
-  "note": "Profit is profit before tax. Malaysia earned 61% of group profit before tax (AR p.72-73)."
+  "note": "Full-year 2025 split (the interim report gives growth rates, not full segment figures). Malaysia earned 61% of 2025 profit before tax (AR p.72-73)."
  },
  "balance": {
-  "date": "31 Dec 2025",
+  "date": "30 Jun 2026",
   "assets": [
    {
     "label": "Loans to customers",
-    "value": 452947.2
+    "value": 450594.8
    },
    {
-    "label": "Investments, cash and other assets",
-    "value": 325777.2
+    "label": "Bonds and other investments",
+    "value": 233131.7
+   },
+   {
+    "label": "Cash, interbank and central bank deposits",
+    "value": 59046.4
+   },
+   {
+    "label": "Derivatives, goodwill and other",
+    "value": 52078.3
    }
   ],
   "liabilities": [
    {
-    "label": "Customer deposits",
-    "value": 524428.8
+    "label": "Customer deposits and investment accounts",
+    "value": 519719.1
    },
    {
-    "label": "Other borrowings and liabilities",
-    "value": 182387.9
+    "label": "Bank deposits, repos and bonds issued",
+    "value": 142274.8
+   },
+   {
+    "label": "Derivatives and other liabilities",
+    "value": 61175.8
    }
   ],
-  "equity": 71907.8,
+  "equity": 71681.5,
   "note": "A bank's balance sheet is mostly other people's money: customer deposits fund the loans. Shareholders' funds are only about 9% of assets, which is why capital ratios matter."
  },
  "cash": null,
  "safety": [
   {
    "label": "CET1 capital ratio",
-   "value": "14.3%",
-   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans. Management targets at least 14%."
+   "value": "14.0%",
+   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans."
   },
   {
    "label": "Gross impaired loans",
-   "value": "1.7%",
-   "plain": "Loans in trouble as a share of all loans, down from 2.1% in 2024. Lower is better."
+   "value": "1.6%",
+   "plain": "Loans in trouble as a share of all loans. Lower is better."
   },
   {
-   "label": "Loan loss allowance coverage",
+   "label": "Loan loss allowance coverage (FY2025)",
    "value": "103.2%",
    "plain": "Money already set aside covers all of the troubled loans."
   },
   {
-   "label": "Loan to deposit ratio",
+   "label": "Loan to deposit ratio (FY2025)",
    "value": "86.4%",
    "plain": "The bank lends out about RM86 of every RM100 deposited; the rest is kept liquid or invested."
   },
   {
-   "label": "CASA ratio",
+   "label": "CASA ratio (FY2025)",
    "value": "42.7%",
    "plain": "Share of deposits in current and savings accounts, which pay little interest and keep funding cheap."
-  },
-  {
-   "label": "Loan loss charge",
-   "value": "0.30%",
-   "plain": "Yearly cost of bad loans as a share of all loans (0.25% in 2024)."
   }
  ],
  "safetyTitle": null,
@@ -362,22 +408,22 @@
    "plain": "What the whole company costs at today's share price: RM76.4 billion."
   },
   {
-   "label": "P/E (FY2025 profit)",
+   "label": "P/E (last 12 months)",
    "value": "9.7x",
    "plain": "You pay about RM10 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
-   "label": "EPS (FY2025)",
-   "value": "72.83 sen",
-   "plain": "Profit earned for each share you own over the year."
+   "label": "EPS (last 12 months)",
+   "value": "72.77 sen",
+   "plain": "Profit earned for each share you own over the last year."
   },
   {
-   "label": "Dividend yield (FY2025 dividends)",
+   "label": "Dividend yield (FY2025 incl. 7 sen special)",
    "value": "6.7%",
    "plain": "For every RM100 of shares, about RM6.7 a year comes back as cash dividends."
   },
   {
-   "label": "Payout ratio FY2025",
+   "label": "Payout ratio",
    "value": "65%",
    "plain": "Of every RM100 profit, about RM65 is paid out; the rest is kept to grow."
   },
@@ -387,159 +433,214 @@
    "plain": "The share price is 1.1 times the accounting value of what shareholders own."
   },
   {
-   "label": "Return on equity FY2025",
+   "label": "Return on equity (last 12 months)",
    "value": "11%",
    "plain": "For every RM100 shareholders have in the company, it earned about RM11 profit last year."
   },
   {
-   "label": "Net margin FY2025",
-   "value": "35.0%",
-   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM34.98."
+   "label": "Net margin 1H2026",
+   "value": "35.1%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM35.13."
   },
   {
-   "label": "Revenue growth FY2025",
-   "value": "+0.7%",
-   "plain": "Revenue compared with the year before."
+   "label": "Revenue growth 1H2026",
+   "value": "-1.2%",
+   "plain": "Revenue compared with the same period a year earlier."
   },
   {
-   "label": "Profit growth FY2025",
-   "value": "+1.7%",
-   "plain": "Profit to shareholders compared with the year before."
+   "label": "Profit growth 1H2026",
+   "value": "-0.2%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
   },
   {
-   "label": "Net interest margin",
+   "label": "Net interest margin (FY2025)",
    "value": "2.13%",
-   "plain": "Interest earned on loans minus interest paid on deposits, as a share of lending: about RM2.13 a year on every RM100 lent (2.21% in 2024)."
+   "plain": "Interest earned on loans minus interest paid on deposits: about RM2.13 a year on every RM100 lent. Management says it narrowed further in 1H2026 but expects the pressure to ease (Q2 p.64)."
   },
   {
-   "label": "Cost to income",
-   "value": "47.3%",
-   "plain": "Of every RM100 of income, about RM47 is spent on staff, branches and IT. Lower is more efficient."
+   "label": "Cost to income (2Q2026)",
+   "value": "45.2%",
+   "plain": "Of every RM100 of income, about RM45 is spent on staff, branches and IT, down 2 points from the previous quarter. Lower is more efficient."
   },
   {
    "label": "CET1 capital ratio",
-   "value": "14.3%",
-   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans. Management targets at least 14%."
+   "value": "14.0%",
+   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans."
   },
   {
    "label": "Gross impaired loans",
-   "value": "1.7%",
-   "plain": "Loans in trouble as a share of all loans, down from 2.1% in 2024. Lower is better."
+   "value": "1.6%",
+   "plain": "Loans in trouble as a share of all loans. Lower is better."
   },
   {
-   "label": "Loan loss allowance coverage",
+   "label": "Loan loss allowance coverage (FY2025)",
    "value": "103.2%",
    "plain": "Money already set aside covers all of the troubled loans."
   },
   {
-   "label": "Loan to deposit ratio",
+   "label": "Loan to deposit ratio (FY2025)",
    "value": "86.4%",
    "plain": "The bank lends out about RM86 of every RM100 deposited; the rest is kept liquid or invested."
   },
   {
-   "label": "CASA ratio",
+   "label": "CASA ratio (FY2025)",
    "value": "42.7%",
    "plain": "Share of deposits in current and savings accounts, which pay little interest and keep funding cheap."
-  },
-  {
-   "label": "Loan loss charge",
-   "value": "0.30%",
-   "plain": "Yearly cost of bad loans as a share of all loans (0.25% in 2024)."
   }
  ],
  "drivers": [
   {
-   "factor": "Interest rate cuts",
+   "factor": "Shrinking interest margin",
    "affects": "Revenue",
    "direction": "Negative",
-   "evidence": "Net interest margin fell from 2.21% to 2.13% after rate cuts across its markets, incl. a 25bp OPR cut in Malaysia (AR p.70, p.77)",
-   "why": "Lower rates shrink what the bank earns on each ringgit lent."
+   "evidence": "Net income fell 1.2% in 1H2026 as lower rates squeezed the net interest margin (Q2 p.64)",
+   "why": "Lower rates shrink what the bank earns on each ringgit lent.",
+   "pic": "data/b/img/1023_d1.jpg"
   },
   {
-   "factor": "Cheaper deposits",
+   "factor": "Cheaper deposits and Indonesia repricing",
    "affects": "Margin",
    "direction": "Positive",
-   "evidence": "Cost of funds fell 21bps; CASA ratio 42.7% (AR p.70)",
-   "why": "Cheap current and savings accounts protect the margin."
+   "evidence": "Management expects margin pressure to ease from loan repricing in Indonesia and cheaper deposits (Q2 p.64)",
+   "why": "Would let interest income grow again.",
+   "pic": "data/b/img/1023_d2.jpg"
   },
   {
    "factor": "Fees and wealth income",
    "affects": "Revenue",
    "direction": "Positive",
-   "evidence": "Non-interest income up 3.1%, now 31.7% of income; wealth AUM +9.2% (AR p.24, p.71)",
-   "why": "Less dependence on interest rates."
+   "evidence": "Non-interest income up 6% quarter on quarter on wealth and treasury sales (Q2 p.64)",
+   "why": "Less dependence on interest rates.",
+   "pic": "data/b/img/1023_d3.jpg"
   },
   {
    "factor": "Loan growth",
    "affects": "Revenue",
-   "direction": "Neutral",
-   "evidence": "Gross loans +0.2% (+3.1% in constant currency); deliberately selective lending (AR p.70)",
-   "why": "Slow lending limits income growth but protects quality."
+   "direction": "Positive",
+   "evidence": "Loans +1.1% in the quarter (constant currency); a healthy loan pipeline (Q2 p.64; PR p.2)",
+   "why": "More loans mean more interest income.",
+   "pic": "data/b/img/1023_d4.jpg"
   },
   {
-   "factor": "Asset quality",
+   "factor": "Record-low bad loans",
    "affects": "Risk",
    "direction": "Positive",
-   "evidence": "Gross impaired loans fell from 2.1% to 1.7% (AR p.77)",
-   "why": "Fewer bad loans mean lower future losses."
+   "evidence": "Gross impaired loans at an all-time low of 1.6% (Q2 p.64)",
+   "why": "Fewer bad loans mean lower future losses.",
+   "pic": "data/b/img/1023_d5.jpg"
   },
   {
-   "factor": "Provisions",
+   "factor": "Higher provisions",
    "affects": "Profit",
    "direction": "Negative",
-   "evidence": "Loan loss charge rose from 0.25% to 0.30% (AR p.77)",
-   "why": "Higher provisions eat into profit."
+   "evidence": "Provisions rose 15.2% in 1H2026 on higher overlays (Q2 p.64)",
+   "why": "Money set aside for possible losses lowers profit.",
+   "pic": "data/b/img/1023_d6.jpg"
   },
   {
-   "factor": "Wholesale banking",
+   "factor": "Cost discipline",
    "affects": "Profit",
    "direction": "Positive",
-   "evidence": "PBT +17.2% to RM4.51bn on strong treasury and markets (AR p.71)",
-   "why": "The biggest profit engine in 2025."
+   "evidence": "Operating expenses fell 1.2%; cost-to-income improved to 45.2% in 2Q2026 (Q2 p.64)",
+   "why": "Efficiency protects profit while income is flat.",
+   "pic": "data/b/img/1023_d7.jpg"
   },
   {
-   "factor": "Commercial banking",
+   "factor": "Consumer banking",
    "affects": "Profit",
    "direction": "Negative",
-   "evidence": "PBT -13.2% to RM1.79bn from margin pressure and provisions (AR p.72)",
-   "why": "SME lending is competitive."
+   "evidence": "Consumer Banking profit before tax fell 16% in 1H2026 (Q2 p.65)",
+   "why": "Its biggest income line is under pressure from margins and provisions.",
+   "pic": "data/b/img/1023_d8.jpg"
   },
   {
-   "factor": "Malaysia strength",
+   "factor": "Wholesale and commercial banking",
    "affects": "Profit",
    "direction": "Positive",
-   "evidence": "Malaysia PBT +10.6%, 61% of group (AR p.72)",
-   "why": "Home market is doing well."
+   "evidence": "Wholesale profit before tax +7% and Commercial +12.6% in 1H2026 (Q2 p.65)",
+   "why": "Strong corporate and SME businesses offset consumer weakness.",
+   "pic": "data/b/img/1023_d9.jpg"
   },
   {
-   "factor": "Thailand",
+   "factor": "Touch 'n Go",
+   "affects": "Growth",
+   "direction": "Positive",
+   "evidence": "TNG Group profit more than doubled in 1H2026; TNG Digital payment value +69% (PR p.2; Q2 p.65)",
+   "why": "A fast-growing digital business shared with the bank.",
+   "pic": "data/b/img/1023_d10.jpg"
+  },
+  {
+   "factor": "Leaving weak businesses",
    "affects": "Profit",
-   "direction": "Negative",
-   "evidence": "CIMB Thai PBT -20.3%; business being recalibrated (AR p.73)",
-   "why": "A drag until the restructuring works."
-  },
-  {
-   "factor": "Currency moves",
-   "affects": "Revenue",
-   "direction": "Negative",
-   "evidence": "Revenue +0.7% reported but +4.2% in constant currency (AR p.73)",
-   "why": "A stronger ringgit lowers overseas earnings in ringgit."
+   "direction": "Watch",
+   "evidence": "Exited CIMB Thailand's auto finance business; moving capital to higher-return areas (PR p.2)",
+   "why": "Short-term costs for better long-term returns.",
+   "pic": "data/b/img/1023_d11.jpg"
   },
   {
    "factor": "Capital returns",
    "affects": "Shareholder returns",
    "direction": "Positive",
-   "evidence": "Up to RM2bn to be returned by end-2027; 7 sen special dividend paid (AR p.71)",
-   "why": "Extra cash for shareholders on top of regular dividends."
+   "evidence": "55% payout; up to RM2bn extra capital return by end-2027 (PR p.1; AR p.71)",
+   "why": "Steady cash for shareholders.",
+   "pic": "data/b/img/1023_d12.jpg"
   },
   {
    "factor": "Valuation",
    "affects": "Share price",
    "direction": "Neutral",
-   "evidence": "About 9.7 times profit and 1.1 times book value at RM7.08 (see Valuation)",
-   "why": "Typical for a large Malaysian bank; re-rating needs higher ROE."
+   "evidence": "About 9.7 times last-12-month profit and 1.1 times book value at RM7.08 (see Valuation)",
+   "why": "Typical for a large Malaysian bank; re-rating needs higher ROE.",
+   "pic": "data/b/img/1023_d13.jpg"
   }
  ],
+ "supply": {
+  "suppliers": [
+   [
+    "Depositors",
+    "Individuals and companies whose savings fund most of the loans: RM520bn of deposits and investment accounts",
+    "Q2 p.1"
+   ],
+   [
+    "Bond and wholesale lenders",
+    "Investors and banks lending through bonds, sukuk, repos and interbank deposits",
+    "Q2 p.1"
+   ],
+   [
+    "Staff",
+    "About 33,000 employees; personnel costs are RM3.1bn in 1H2026",
+    "PR p.3; Q2 p.28"
+   ],
+   [
+    "Technology and service vendors",
+    "IT systems, outsourced services, security and repairs",
+    "Q2 p.28"
+   ]
+  ],
+  "customers": [
+   [
+    "Individuals (Consumer Banking)",
+    "Home, car and personal loans, cards, savings and wealth products",
+    "Q2 p.65; AR p.72"
+   ],
+   [
+    "Small and medium businesses (Commercial Banking)",
+    "Business loans and cash management",
+    "Q2 p.65"
+   ],
+   [
+    "Large companies and governments (Wholesale Banking)",
+    "Corporate loans, bonds, deals advice and treasury",
+    "Q2 p.65"
+   ],
+   [
+    "Digital users",
+    "Touch 'n Go eWallet (a joint venture) and digital banks in the Philippines and Vietnam",
+    "PR p.2; Q2 p.65"
+   ]
+  ],
+  "note": "For a bank, depositors are effectively the suppliers of its money. The report does not name individual clients."
+ },
  "competitors": [
   {
    "name": "Maybank, Public Bank, RHB, Hong Leong Bank, AmBank",
@@ -560,23 +661,23 @@
  "outlook": [
   {
    "tone": "Positive",
-   "text": "Malaysia's 2026 performance is expected to track the country's positive economic and investment outlook (AR p.72)."
+   "text": "Regional demand across key markets remains relatively resilient; focus on asset and loan growth with a healthy pipeline (Q2 p.66; PR p.2)."
   },
   {
    "tone": "Positive",
-   "text": "Plans to return up to RM2 billion of capital to shareholders by end-2027 (AR p.71)."
+   "text": "Committed to the multi-year capital return plan, backed by a strong capital position (PR p.2)."
   },
   {
    "tone": "Neutral",
-   "text": "Keeps CET1 at or above 14% while moving capital to higher-return businesses under Forward30 (AR p.70-71)."
+   "text": "Will optimise funding costs, cross-sell and keep costs disciplined under Forward30 (Q2 p.66)."
   },
   {
    "tone": "Negative",
-   "text": "External headwinds persist from slower global growth and trade tariffs; Thailand is being restructured (AR p.38, p.73)."
+   "text": "Cautious on 2H2026: volatile energy prices, shifting trade policies, global conflicts and changing interest rates (Q2 p.66)."
   }
  ],
  "outlookOverall": {
-  "tone": "Positive",
-  "text": "Management says Forward30 is progressing steadily, with Malaysia expected to stay strong (AR p.24, p.72)."
+  "tone": "Neutral",
+  "text": "Management keeps a cautious view of 2H2026 but says regional demand remains resilient (Q2 p.66)."
  }
 }

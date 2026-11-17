@@ -585,7 +585,7 @@
    "direction": "Watch",
    "evidence": "RM19m net write-back of impairments helped 1H2026 profit (Q2 p.3)",
    "why": "Helpful, but may not repeat.",
-   "pic": null
+   "pic": "data/b/img/5263_d5.jpg"
   },
   {
    "factor": "Sunway Group projects",
@@ -593,7 +593,7 @@
    "direction": "Positive",
    "evidence": "23% of the order book from parent projects like the RTS TOD and Sunway Ipoh Mall (Q2 p.25)",
    "why": "A stable base of work; tied to Sunway's own plans.",
-   "pic": null
+   "pic": "data/b/img/5263_d6.jpg"
   },
   {
    "factor": "Singapore precast",
@@ -601,7 +601,7 @@
    "direction": "Positive",
    "evidence": "Precast revenue doubled to RM148m in 1H2026 (Q2 p.10)",
    "why": "Government-backed housing demand.",
-   "pic": null
+   "pic": "data/b/img/5263_d7.jpg"
   },
   {
    "factor": "Malaysia's economy",
@@ -609,7 +609,7 @@
    "direction": "Positive",
    "evidence": "GDP grew 6.0% and construction 6.5% in Q2 2026 (Q2 p.19)",
    "why": "Supports more building activity.",
-   "pic": null
+   "pic": "data/b/img/5263_d8.jpg"
   },
   {
    "factor": "Input costs",
@@ -617,7 +617,7 @@
    "direction": "Negative",
    "evidence": "Higher electricity tariffs, wages and material prices (AR p.13)",
    "why": "Fixed-price contracts lose margin when costs rise.",
-   "pic": null
+   "pic": "data/b/img/5263_d9.jpg"
   },
   {
    "factor": "Customer concentration",
@@ -625,7 +625,7 @@
    "direction": "Watch",
    "evidence": "Data-centre jobs for a few multinational clients dominate the order book (Q2 p.25)",
    "why": "Delays or cancellations by one client would matter.",
-   "pic": null
+   "pic": "data/b/img/5263_d10.jpg"
   },
   {
    "factor": "Net cash",
@@ -633,7 +633,7 @@
    "direction": "Positive",
    "evidence": "RM1.6bn cash vs RM0.4bn borrowings at June 2026 (Q2 p.5)",
    "why": "Strong balance sheet.",
-   "pic": null
+   "pic": "data/b/img/5263_d11.jpg"
   },
   {
    "factor": "Special dividend paid",
@@ -641,7 +641,7 @@
    "direction": "Watch",
    "evidence": "RM725m of dividends paid in 1H2026, including the 23 sen special (Q2 p.7)",
    "why": "Generous, but the special part may not repeat.",
-   "pic": null
+   "pic": "data/b/img/5263_d12.jpg"
   },
   {
    "factor": "Valuation",
@@ -649,7 +649,7 @@
    "direction": "Negative (risk)",
    "evidence": "About 24 times last-12-month profit at RM7.81 (see Valuation)",
    "why": "The price assumes the data-centre wave continues.",
-   "pic": null
+   "pic": "data/b/img/5263_d13.jpg"
   }
  ],
  "supply": {

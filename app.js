@@ -42,7 +42,7 @@ function status(c, stop) {
 
 /* ---------- data ---------- */
 async function load() {
-  const [idx, calls] = await Promise.all([fetch('data/index.json').then(r => r.json()), fetch('data/calls.json').then(r => r.json())]);
+  const [idx, calls] = await Promise.all([fetch('data/index.json', { cache: 'no-cache' }).then(r => r.json()), fetch('data/calls.json', { cache: 'no-cache' }).then(r => r.json())]);
   IDX = idx;
   CALLS = calls.rows.map(r => Object.fromEntries(calls.fields.map((f, i) => [f, r[i]])));
   IDX.stocks.forEach(s => { BYID[s.id] = s; CALLS_BY[s.id] = []; });
@@ -528,7 +528,7 @@ async function stock(id, tab) {
   const s = BYID[id];
   if (!s) { view.innerHTML = '<h1>Stock not found</h1><a class="btn" href="#/stocks">Back to stocks</a>'; return; }
   const calls = CALLS_BY[id] || [];
-  const get = u => fetch(u).then(r => r.ok ? r.json() : null).catch(() => null);
+  const get = u => fetch(u, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
   const [b, f] = await Promise.all([get(`data/b/${encodeURIComponent(id)}.json`), get(`data/f/${encodeURIComponent(id)}.json`)]);
   const latestCall = br => calls.find(c => c.broker === br);
   const rows = IDX.brokers.filter(br => s.latest[br]).map(br => {

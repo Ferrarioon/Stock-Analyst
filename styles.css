@@ -492,3 +492,12 @@ nav a.on { background: var(--solid); color: var(--on-solid); }
 .sc-row b { font-size: 13.5px; } .sc-row span { font-size: 13px; color: var(--ink2); } .sc-row small { font-size: 11px; color: var(--muted); }
 .sc-mid { display: grid; place-items: center; color: var(--accent); font-size: 24px; }
 @media (max-width: 800px) { .sc-flow { grid-template-columns: 1fr; } .sc-mid span { display: inline-block; transform: rotate(90deg); } }
+
+/* financial sector page */
+.sgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.sbox { border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sbox > small:first-child { color: var(--muted); font-size: 11.5px; } .sbox b { font-size: 20px; }
+.spark { display: block; max-width: 100%; height: auto; }
+.sbar { position: relative; height: 18px; border-radius: 999px; background: var(--grey-bg); overflow: hidden; min-width: 80px; }
+.sbar i { position: absolute; inset: 0 auto 0 0; background: var(--accent); opacity: .75; border-radius: 999px; }
+.sbar span { position: relative; font-size: 11.5px; font-weight: 600; padding-left: 8px; line-height: 18px; }

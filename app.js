@@ -774,13 +774,116 @@ function method() {
     <h3>Important</h3><p>This site is independent research based on publicly available broker reports and market prices. It is not investment advice or a recommendation to buy or sell any security, and past accuracy does not predict future results. Figures are read automatically from reports and may contain errors.</p></div>`;
 }
 
+/* ---------- financial sector (data/sector/financials.json, written by fundamentals/database/export_sector_web.py) ---------- */
+let SECTOR = null;
+const fpct = (v, d = 1) => v == null || isNaN(v) ? '–' : (v * 100).toFixed(d) + '%';
+const coLink = r => r.id && BYID[r.id] ? `<a href="#/stock/${esc(r.id)}" style="text-decoration:underline">${esc(r.name)}</a>` : esc(r.name);
+function spark(pts, w = 120, h = 34) {
+  const p = (pts || []).filter(x => x[1] != null); if (p.length < 2) return '<small class="sub">–</small>';
+  const v = p.map(x => x[1]), lo = Math.min(...v), hi = Math.max(...v), span = hi - lo || 1;
+  const xy = p.map((x, i) => [i / (p.length - 1) * (w - 6) + 3, h - 3 - (x[1] - lo) / span * (h - 6)]);
+  const [lx, ly] = xy[xy.length - 1];
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" role="img" aria-label="trend ${esc(p[0][0])} to ${esc(p[p.length - 1][0])}">`
+    + `<polyline points="${xy.map(a => a[0].toFixed(1) + ',' + a[1].toFixed(1)).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>`
+    + `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="2.6" fill="var(--accent)"/></svg>`;
+}
+const scoreBar = (v, max = 100, label) => v == null ? '–' : `<div class="sbar"><i style="width:${Math.max(3, Math.min(100, v / max * 100)).toFixed(0)}%"></i><span>${label ?? Number(v).toFixed(0)}</span></div>`;
+const monthName = m => new Date(m + '-01T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+const bankPriceDate = S => { const d = S.banks.map(b => b.valuation['Price date']).filter(Boolean).sort().pop(); return d ? fdate(d) : '–'; };
+
+async function sector(tab) {
+  if (!SECTOR) {
+    view.innerHTML = '<p class="loading">Loading the financial sector…</p>';
+    SECTOR = await fetch('data/sector/financials.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  }
+  const S = SECTOR;
+  if (!S) { view.innerHTML = '<h1>Financial sector</h1><p>The sector data file is not available yet.</p>'; return; }
+  const I = S.industry, K = I.kpis;
+  const TABS_S = [['overview', 'Industry'], ['banks', 'Banks'], ['nonbanks', 'Insurers & other financials'], ['season', 'Results season'], ['method', 'How it works']];
+  tab = TABS_S.some(([k]) => k === tab) ? tab : 'overview';
+  const sname = { 'Loans growth (y/y)': 'Loan growth (y/y)', 'Deposits growth (y/y)': 'Deposit growth (y/y)', 'Gross impaired loans ratio': 'Gross impaired loans ratio',
+    'CASA ratio': 'CASA ratio (current + savings deposits)', 'CET1 ratio': 'CET1 capital ratio', 'Liquidity coverage ratio': 'Liquidity coverage ratio' };
+  const dec = k => /impaired|CET1/.test(k) ? 2 : /Liquidity/.test(k) ? 0 : 1;
+
+  const overview = `<div class="pricebar">
+      <div><small>System loans</small><b>RM${K['System loans (RM bn)'] ? Number(K['System loans (RM bn)']).toLocaleString('en-GB', { maximumFractionDigits: 0 }) : '–'} bn</b></div>
+      <div><small>Loan growth y/y</small><b>${fpct(K['Loan growth (y/y)'])}</b></div>
+      <div><small>Gross impaired loans</small><b>${fpct(K['Gross impaired loans ratio'], 2)}</b></div>
+      <div><small>CASA ratio</small><b>${fpct(K['CASA ratio'])}</b></div>
+      <div><small>CET1 ratio</small><b>${fpct(K['CET1 ratio'], 2)}</b></div>
+      <div><small>Liquidity coverage</small><b>${fpct(K['Liquidity coverage ratio'], 0)}</b></div>
+      <div><small>OPR</small><b>${fpct(K.OPR, 2)}</b></div></div>
+    <div class="glass card"><h2>Malaysian banking system, ${monthName(I.month)}</h2>
+      <div class="sgrid">${Object.entries(I.series).map(([k, s]) => `<div class="sbox"><small>${esc(sname[k] || k)}</small><b>${fpct(s.length ? s[s.length - 1][1] : null, dec(k))}</b>${spark(s, 220, 54)}<small class="sub">${s.length ? monthName(s[0][0]) + ' – ' + monthName(s[s.length - 1][0]) : ''}</small></div>`).join('')}</div>
+      <p class="note">${esc(I.source)}</p></div>
+    <div class="two"><div class="glass card"><h2>What the system lends for</h2>${Object.entries(I.loan_mix).filter(e => e[1] != null).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<div class="row-item"><span>${esc(k[0].toUpperCase() + k.slice(1))}</span><span style="min-width:45%">${scoreBar(v * 100, 50, fpct(v))}</span></div>`).join('')}
+        <p class="note">Share of total banking-system loans for the main household loan types.</p></div>
+      <div class="glass card"><h2>Interest-rate decisions (OPR)</h2>${I.opr_moves.length ? I.opr_moves.slice().reverse().map(o => `<div class="row-item"><span>${fdate(o.date)}</span><span><b>${Number(o.level).toFixed(2)}%</b> <small class="${o.change > 0 ? 'neg' : 'pos'}">${o.change > 0 ? '+' : ''}${Number(o.change).toFixed(2)} pts</small></span></div>`).join('') : '<p>No changes in the period.</p>'}
+        <p class="note">Bank Negara's Overnight Policy Rate. Changes move what banks earn on loans and pay on deposits.</p></div></div>
+    <div class="two"><div class="glass card"><h2>Bank ranking at a glance</h2>${S.banks.map(b => `<div class="row-item"><span><b>${b.rank}.</b> ${coLink(b)}<br><small>${fpct(b.market_share)} of system loans</small></span><span style="min-width:40%">${scoreBar(b.score)}</span></div>`).join('')}
+        <a class="btn" style="margin-top:10px;display:inline-block" href="#/sector/banks">Full bank scorecard</a></div>
+      <div class="glass card"><h2>Results season — quarter to ${fdate(S.season_quarter)}</h2>
+        <div class="sub" style="margin-bottom:8px">${S.season.filter(x => x.reported).length} of ${S.season.length} companies up to date</div>
+        ${S.season.filter(x => x.reported).map(x => `<div class="row-item"><span>${coLink(x)}<br><small>${esc(x.latest_label)} · ${esc(x.group)}</small></span><span class="badge high">Reported</span></div>`).join('')}
+        <a class="btn" style="margin-top:10px;display:inline-block" href="#/sector/season">Who is still due</a></div></div>`;
+
+  const bm = (b, k, d = 1) => fpct(b.metrics[k], d);
+  const cats = Object.keys(S.banks[0].categories);
+  const banks = `<div class="glass card"><h2>Bank scorecard — 12 months to ${fdate(S.peer_date)}</h2>
+      <div class="tablewrap"><table><thead><tr><th>#</th><th>Bank</th><th>Overall</th>${cats.map(c => `<th class="num">${esc(c)}</th>`).join('')}
+        <th class="num">ROE</th><th class="num">Cost-to-income</th><th class="num">Credit cost</th><th class="num">Gross impaired loans</th><th class="num">CET1</th><th class="num">CASA</th>
+        <th class="num">Loan growth</th><th class="num">Profit growth</th><th class="num">Share of system loans</th><th class="num">P/E</th><th class="num">P/B</th><th class="num">Dividend yield</th><th>Profit, last 8 quarters</th></tr></thead>
+      <tbody>${S.banks.map(b => `<tr><td>${b.rank}</td><td><b>${coLink(b)}</b><br><small class="sub">latest: ${esc(b.latest_label)}</small></td><td style="min-width:110px">${scoreBar(b.score)}</td>
+        ${cats.map(c => `<td class="num">${b.categories[c] == null ? '–' : Math.round(b.categories[c])}</td>`).join('')}
+        <td class="num">${bm(b, 'ROE (12m)')}</td><td class="num">${bm(b, 'Cost-to-income')}</td><td class="num">${b.metrics['Credit cost'] == null ? '–' : Math.round(b.metrics['Credit cost']) + ' bp'}</td><td class="num">${bm(b, 'Gross impaired loans ratio', 2)}</td>
+        <td class="num">${bm(b, 'CET1 ratio')}</td><td class="num">${bm(b, 'CASA ratio')}</td><td class="num">${spct(b.metrics['Loan growth (y/y)'])}</td><td class="num">${spct(b.metrics['Profit growth (12m)'])}</td>
+        <td class="num">${fpct(b.market_share)}</td><td class="num">${num(b.valuation['P/E (x)'], 1)}</td><td class="num">${num(b.valuation['P/B (x)'], 2)}</td><td class="num">${fpct(b.valuation['Dividend yield'])}</td>
+        <td>${spark(b.trend)}</td></tr>`).join('')}</tbody></table></div>
+      <p class="note">${esc(S.bank_note)} Prices to ${bankPriceDate(S)}. Hong Leong Financial owns about 64% of Hong Leong Bank, so the two overlap.</p></div>`;
+
+  const subs = [...new Set(S.nonbanks.map(r => r.subsector))];
+  const extra = { 'Insurance & takaful': [['Insurance service margin (TTM)', 'Insurance service margin'], ['Investment income share of PBT (TTM)', 'Investment income / pre-tax profit']],
+    'Consumer & specialist finance': [['Credit cost (TTM, % of receivables)', 'Credit cost'], ['Receivables growth y/y', 'Receivables growth']],
+    'Islamic finance group': [['Credit cost (TTM, % of receivables)', 'Credit cost'], ['Receivables growth y/y', 'Financing growth']],
+    'Capital markets': [['Pre-tax margin (TTM)', 'Pre-tax margin'], ['Revenue growth y/y (TTM)', 'Revenue growth']] };
+  const nonbanks = subs.map(sub => {
+    const rows = S.nonbanks.filter(r => r.subsector === sub), ex = extra[sub] || [];
+    return `<div class="glass card"><h2>${esc(sub)}</h2><div class="tablewrap"><table><thead><tr><th>Company</th><th>Latest quarter</th>${rows.length > 1 ? '<th class="num">Score</th>' : ''}
+      <th class="num">ROE</th><th class="num">Profit growth</th>${ex.map(e => `<th class="num">${esc(e[1])}</th>`).join('')}<th class="num">P/E</th><th class="num">P/B</th><th class="num">Dividend yield</th><th>Profit, last 8 quarters</th></tr></thead>
+      <tbody>${rows.map(r => `<tr><td><b>${coLink(r)}</b>${r.code === '1163' ? '<br><small class="sub">Has listed preference shares (ICPS); P/B is approximate</small>' : ''}</td><td>${esc(r.label)}<br><small class="sub">${fdate(r.quarter_end)}</small></td>
+        ${rows.length > 1 ? `<td class="num">${r.score == null ? '–' : Number(r.score).toFixed(1)}</td>` : ''}<td class="num">${fpct(r.metrics['ROE (TTM)'])}</td><td class="num">${spct(r.metrics['Profit growth y/y (TTM)'])}</td>
+        ${ex.map(e => `<td class="num">${fpct(r.metrics[e[0]], e[0].includes('Credit') ? 2 : 1)}</td>`).join('')}<td class="num">${num(r.metrics['P/E (TTM)'], 1)}</td><td class="num">${num(r.metrics['P/B'], 2)}</td>
+        <td class="num">${fpct(r.metrics['Dividend yield (12m)'])}</td><td>${spark(r.trend)}</td></tr>`).join('')}</tbody></table></div>
+      ${rows.length > 1 ? '<p class="note">Score = average rank within this subsector across its measures (1 = best). Each company is measured at its own latest quarter; figures are the last 12 months.</p>'
+        : '<p class="note">MBSB is the only listed Islamic finance group of its kind, so it is shown without a peer score.</p>'}</div>`;
+  }).join('');
+
+  const season = `<div class="glass card"><h2>Results season — quarter to ${fdate(S.season_quarter)}</h2>
+      <div class="tablewrap"><table><thead><tr><th>Company</th><th>Type</th><th>Latest report in the database</th><th>Status</th><th>Next report</th><th>What stood out</th></tr></thead>
+      <tbody>${S.season.slice().sort((a, b) => (b.reported - a.reported) || a.group.localeCompare(b.group) || a.name.localeCompare(b.name)).map(x => `<tr><td><b>${coLink(x)}</b></td><td>${esc(x.group)}</td>
+        <td>${esc(x.latest_label || '–')} <small class="sub">${x.latest ? fdate(x.latest) : ''}</small></td><td>${x.reported ? '<span class="badge high">Up to date</span>' : '<span class="badge medium">Due</span>'}</td>
+        <td>${esc(x.next_label || '–')} <small class="sub">${x.next ? 'quarter to ' + fdate(x.next) : ''}</small></td><td><small>${x.reported ? (x.flags.map(esc).join('<br>') || 'No large moves') : '–'}</small></td></tr>`).join('')}</tbody></table></div>
+      <p class="note">Companies file quarterly results within two months of each quarter end. New reports are picked up each evening, checked, and this page is rebuilt.</p></div>`;
+
+  const methodP = `<div class="glass card"><h2>How this page is built</h2><ol class="biz-plain">${S.method.map(m => `<li>${esc(m)}</li>`).join('')}</ol>
+      <p class="note">Last rebuilt ${fdate(S.built)}. Banks compared at ${fdate(S.peer_date)}. Banking-system data to ${monthName(I.month)}.</p></div>`;
+
+  const panels = { overview, banks, nonbanks, season, method: methodP };
+  view.innerHTML = `<h1>Financial sector</h1>
+    <div class="pills" style="margin:-8px 0 14px"><span class="pill">10 banks · 13 insurers and other financials</span><span class="pill">Banks compared at ${fdate(S.peer_date)}</span><span class="pill">Banking system: ${monthName(I.month)}</span><span class="pill">Rebuilt ${fdate(S.built)}</span></div>
+    <nav class="tabs" id="stabs">${TABS_S.map(([k, t]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}">${t}</button>`).join('')}</nav>
+    <section class="panel stack enter">${panels[tab]}</section>
+    <p class="note">Analysis of figures the companies reported. Not investment advice.</p>`;
+  $('#stabs').onclick = e => { const t = e.target.closest('button'); if (t) location.hash = '#/sector/' + t.dataset.t; };
+}
+
 /* ---------- router ---------- */
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?'), parts = path.split('/').filter(Boolean), params = new URLSearchParams(qs || '');
   const page = parts[0] || 'home';
   document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.r === (page === 'stock' ? 'stocks' : page)));
   window.onresize = null; window.onmouseup = null; $('#tip').hidden = true; window.scrollTo(0, 0);
-  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), latest, brokers, method }[page] || home)();
+  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), sector: () => sector(parts[1]), latest, brokers, method }[page] || home)();
 }
 /* light / dark theme: remembered per browser, defaults to the device setting */
 function setTheme(t) {

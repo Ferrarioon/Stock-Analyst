@@ -1,0 +1,114 @@
+{
+ "code": "5185",
+ "name": "Affin Bank Berhad",
+ "period": "Q3 FY2026, quarter to 2026-09-30",
+ "source": {
+  "title": "Affin Bank quarterly report Q3 FY2026",
+  "url": "https://affin.listedcompany.com/newsroom/ABB_Quarterly_Report_Q3_2026.pdf"
+ },
+ "oneLine": "A Malaysian bank growing quickly from a smaller base, with Islamic banking, investment banking and an insurance associate.",
+ "inPlainWords": [
+  "Affin lends to individuals and businesses in Malaysia through Affin Bank and Affin Islamic.",
+  "Its investment bank (Affin Hwang IB) earns fees from broking and deals.",
+  "It is expanding its loan book much faster than the industry."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, 3Q2026 (quarter) (RM million)",
+ "segments": [
+  {
+   "name": "Commercial Banking",
+   "revenue": 735.2,
+   "profit": 250.6,
+   "desc": "Conventional and Islamic loans and deposits for individuals and businesses"
+  },
+  {
+   "name": "Investment Banking",
+   "revenue": 92.9,
+   "profit": 28.6,
+   "desc": "Broking, deal advice and capital markets"
+  },
+  {
+   "name": "Others",
+   "revenue": 23.1,
+   "profit": -1.1,
+   "desc": "Other operations"
+  },
+  {
+   "name": "Insurance (associate)",
+   "revenue": 0.0,
+   "profit": 4.2,
+   "desc": "Share of profit from its insurance associate"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q3 FY2026 report p.30). Inter-segment eliminations (a net cost of RM126.1m in the quarter) are left out.",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 84300
+  },
+  {
+   "name": "Outside Malaysia",
+   "value": 2369
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM85.6 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM78.1 billion"
+  },
+  {
+   "label": "Net income 9M2026",
+   "value": "RM1.99 billion"
+  },
+  {
+   "label": "Profit to shareholders 9M2026",
+   "value": "RM0.38 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "12.3%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "1.76%"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

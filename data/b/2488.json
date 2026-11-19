@@ -1,0 +1,110 @@
+{
+ "code": "2488",
+ "name": "Alliance Bank Malaysia Berhad",
+ "period": "Q1 FY2027, quarter to 2026-06-30",
+ "source": {
+  "title": "Alliance Bank quarterly report Q1 FY2027",
+  "url": "https://www.alliancebank.com.my/Alliance/media/ABMB/IR-QuarterlyResults/FinancialYear2026-2027/qr_q1_2026.pdf"
+ },
+ "oneLine": "A mid-sized Malaysian bank focused on small and medium businesses and consumers.",
+ "inPlainWords": [
+  "Alliance Bank lends to small and medium businesses and to individuals, all in Malaysia.",
+  "Business banking earns most of its profit.",
+  "It has a relatively high share of low-cost current and savings deposits."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, 1Q FY2027 (quarter) (RM million)",
+ "segments": [
+  {
+   "name": "Business Banking",
+   "revenue": 285.5,
+   "profit": 227.1,
+   "desc": "Loans and cash management for SMEs and companies"
+  },
+  {
+   "name": "Consumer Banking",
+   "revenue": 230.9,
+   "profit": 22.4,
+   "desc": "Mortgages, personal loans, cards and deposits for individuals"
+  },
+  {
+   "name": "Financial Markets",
+   "revenue": 108.7,
+   "profit": 91.6,
+   "desc": "Treasury and investments"
+  },
+  {
+   "name": "Others",
+   "revenue": 9.1,
+   "profit": -8.2,
+   "desc": "Other operations"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q1 FY2027 report p.37). ",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 67808
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM66.7 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM70.5 billion"
+  },
+  {
+   "label": "Net income 3M FY2027",
+   "value": "RM0.63 billion"
+  },
+  {
+   "label": "Profit to shareholders 3M FY2027",
+   "value": "RM0.25 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "13.0%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "1.83%"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

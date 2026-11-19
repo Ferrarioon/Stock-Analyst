@@ -1,0 +1,139 @@
+{
+ "code": "1295",
+ "name": "Public Bank Berhad",
+ "period": "Q3 FY2026, quarter to 2026-09-30",
+ "source": {
+  "title": "Public Bank quarterly report Q3 FY2026",
+  "url": "https://www.publicbankgroup.com/media/etudi2ao/pbb-condensed-interim-fs-3q26.pdf"
+ },
+ "oneLine": "Malaysia's second-largest lender, focused on home, car and small-business loans, with a large unit-trust business (Public Mutual).",
+ "inPlainWords": [
+  "Public Bank is a retail-focused bank: most of its lending is mortgages, hire purchase (car loans) and loans to small and medium businesses.",
+  "About 95% of its loans are in Malaysia; it also operates in Hong Kong and Cambodia.",
+  "Its unit-trust arm, Public Mutual, earns fees on savings invested in funds.",
+  "It is known for having one of the lowest shares of bad loans in the industry."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, 3Q2026 (quarter) (RM million)",
+ "segments": [
+  {
+   "name": "Retail operations",
+   "revenue": 1833.2,
+   "profit": 1163.0,
+   "desc": "Home loans, deposits, cards and loans to small businesses"
+  },
+  {
+   "name": "Head office, treasury and others",
+   "revenue": 591.2,
+   "profit": 371.8,
+   "desc": "Funding, treasury and group-level income"
+  },
+  {
+   "name": "Overseas operations",
+   "revenue": 378.2,
+   "profit": 101.2,
+   "desc": "Banking in Hong Kong and Cambodia"
+  },
+  {
+   "name": "Fund management (Public Mutual)",
+   "revenue": 338.4,
+   "profit": 246.9,
+   "desc": "Unit trusts sold to Malaysian savers"
+  },
+  {
+   "name": "Hire purchase",
+   "revenue": 279.8,
+   "profit": 114.4,
+   "desc": "Car financing"
+  },
+  {
+   "name": "Corporate lending",
+   "revenue": 163.2,
+   "profit": 163.2,
+   "desc": "Loans to larger companies"
+  },
+  {
+   "name": "General insurance",
+   "revenue": 115.0,
+   "profit": 110.1,
+   "desc": "Motor, fire and other insurance"
+  },
+  {
+   "name": "Treasury, capital markets and investment banking",
+   "revenue": 85.7,
+   "profit": 58.9,
+   "desc": "Bond trading, money markets and deal advice"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q3 FY2026 report p.46). Third-quarter 2026 figures; the report gives the segment split for the quarter.",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 441485
+  },
+  {
+   "name": "Outside Malaysia",
+   "value": 25026
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM463.1 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM461.0 billion"
+  },
+  {
+   "label": "Net income 9M2026",
+   "value": "RM11.26 billion"
+  },
+  {
+   "label": "Profit to shareholders 9M2026",
+   "value": "RM5.35 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "14.5%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "0.55%"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

@@ -1,0 +1,109 @@
+{
+ "code": "1082",
+ "name": "Hong Leong Financial Group Berhad",
+ "period": "Q4 FY2026, quarter to 2026-06-30",
+ "source": {
+  "title": "Hong Leong Financial quarterly report Q4 FY2026",
+  "url": "https://www.hlfg.com.my/investor-relations/img-pdf/fqr/2026/HLFG_Q4_2026.pdf"
+ },
+ "oneLine": "The holding company of Hong Leong Bank, Hong Leong Assurance and Hong Leong Capital.",
+ "inPlainWords": [
+  "HLFG owns about 64% of Hong Leong Bank, which earns most of its profit.",
+  "It also owns insurer Hong Leong Assurance and investment bank Hong Leong Capital.",
+  "Because it owns only part of the bank, about a third of group profit belongs to minority shareholders.",
+  "Its shares usually trade at a discount to the value of the companies it owns."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, FY2026 (12 months) (RM million)",
+ "segments": [
+  {
+   "name": "Commercial banking (Hong Leong Bank)",
+   "revenue": 6693.3,
+   "profit": 5480.5,
+   "desc": "Banking in Malaysia and abroad, including the China associate"
+  },
+  {
+   "name": "Insurance (Hong Leong Assurance)",
+   "revenue": 666.9,
+   "profit": 742.5,
+   "desc": "Life and takaful insurance"
+  },
+  {
+   "name": "Investment banking (Hong Leong Capital)",
+   "revenue": 227.0,
+   "profit": 85.4,
+   "desc": "Stockbroking, fund management and deal advice"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q4 FY2026 report p.11). Other operations and inter-segment eliminations are left out.",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 209362
+  },
+  {
+   "name": "Outside Malaysia",
+   "value": 17144
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM225.5 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM249.0 billion"
+  },
+  {
+   "label": "Net income FY2026",
+   "value": "RM7.60 billion"
+  },
+  {
+   "label": "Profit to shareholders FY2026",
+   "value": "RM3.43 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "12.1%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "0.57%"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

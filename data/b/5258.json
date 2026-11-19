@@ -1,0 +1,105 @@
+{
+ "code": "5258",
+ "name": "Bank Islam Malaysia Berhad",
+ "period": "Q2 FY2026, quarter to 2026-06-30",
+ "source": {
+  "title": "Bank Islam quarterly report Q2 FY2026",
+  "url": "https://disclosure.bursamalaysia.com/FileAccess/apbursaweb/download?id=239671&name=EA_FR_ATTACHMENTS"
+ },
+ "oneLine": "Malaysia's first Islamic bank, offering Shariah-compliant financing, deposits and investment accounts.",
+ "inPlainWords": [
+  "Bank Islam provides Shariah-compliant home, personal and business financing, and takes deposits and investment-account money.",
+  "Instead of interest, depositors share in the profit the bank earns on financing.",
+  "Most of its customers are individuals, especially civil servants with salary-deducted financing.",
+  "It is growing sustainable and social finance as part of its strategy (Q B3)."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, 2Q2026 (quarter) (RM million)",
+ "segments": [
+  {
+   "name": "Retail Banking",
+   "revenue": 469.2,
+   "profit": 89.9,
+   "desc": "Home and personal financing and deposits for individuals"
+  },
+  {
+   "name": "Institutional Banking",
+   "revenue": 251.9,
+   "profit": 140.3,
+   "desc": "Financing and treasury for companies and government agencies"
+  },
+  {
+   "name": "Head office and others",
+   "revenue": 61.3,
+   "profit": -44.2,
+   "desc": "Treasury and group functions"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q2 FY2026 report p.36). ",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 77899
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM77.1 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM64.4 billion"
+  },
+  {
+   "label": "Net income 1H2026",
+   "value": "RM1.42 billion"
+  },
+  {
+   "label": "Profit to shareholders 1H2026",
+   "value": "RM0.25 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "13.1%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "0.98%"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

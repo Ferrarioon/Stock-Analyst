@@ -1,0 +1,501 @@
+{
+ "code": "1082",
+ "price": 17.24,
+ "priceDate": "2026-11-17",
+ "unit": "RM million",
+ "fyNote": "Financial year ends 30 June. HLFG is a holding company: it owns about 64% of Hong Leong Bank, plus insurance (Hong Leong Assurance) and investment banking (Hong Leong Capital). Figures are the sum of the quarters reported in the quarterly reports; the latest is Q4 FY2026 (quarter to 30 Jun 2026), unaudited.",
+ "sources": [
+  {
+   "title": "Hong Leong Financial quarterly report Q4 FY2026 (quarter to 30 Jun 2026)",
+   "url": "https://www.hlfg.com.my/investor-relations/img-pdf/fqr/2026/HLFG_Q4_2026.pdf"
+  }
+ ],
+ "segmentNote": "Other operations and inter-segment eliminations are left out.",
+ "how": {
+  "title": "How Hong Leong Financial makes money",
+  "text": "Income = interest earned on loans - interest paid on deposits + fees, trading and Islamic banking income",
+  "facts": [
+   [
+    "Loans to customers",
+    "RM225.5 billion at 30 Jun 2026"
+   ],
+   [
+    "Customer deposits",
+    "RM249.0 billion"
+   ],
+   [
+    "Net income FY2026",
+    "RM7.60 billion"
+   ],
+   [
+    "Share of all bank loans in Malaysia",
+    "8.6% (domestic loans vs Bank Negara system total)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "RM225 bn",
+  "scale_label": "lent to customers",
+  "pics": {}
+ },
+ "growth": {
+  "period": "FY2026",
+  "revenue": 5.4,
+  "profit": 5.5
+ },
+ "debt": {
+  "netCash": false,
+  "value": "",
+  "label": ""
+ },
+ "pnl": {
+  "period": "FY2026",
+  "items": [
+   {
+    "label": "Net income",
+    "value": 7603.2,
+    "kind": "total"
+   },
+   {
+    "label": "Running costs",
+    "value": -2671.5,
+    "kind": "cost",
+    "tip": "Staff, branches, IT systems, marketing and depreciation."
+   },
+   {
+    "label": "Provisions for bad loans",
+    "value": -79.3,
+    "kind": "cost",
+    "tip": "Money set aside for loans that may not be repaid, after write-backs."
+   },
+   {
+    "label": "Tax and zakat",
+    "value": -1162.6,
+    "kind": "cost",
+    "tip": "Corporate tax and zakat (Islamic levy)."
+   },
+   {
+    "label": "Partners' share of profit",
+    "value": -1710.8,
+    "kind": "cost",
+    "tip": "Profit belonging to minority shareholders in subsidiaries."
+   },
+   {
+    "label": "Associates and other items",
+    "value": 1455.8,
+    "kind": "income",
+    "tip": "Share of associates' profit and other items, net."
+   },
+   {
+    "label": "Profit to shareholders",
+    "value": 3434.7,
+    "kind": "total",
+    "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
+   }
+  ],
+  "incomeNote": "Net income is the bank's revenue after paying interest to depositors."
+ },
+ "trend": {
+  "cols": [
+   "FY2025",
+   "FY2026"
+  ],
+  "lines": [
+   {
+    "label": "Net interest income",
+    "values": [
+     4056.0,
+     4133.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Income from Islamic banking",
+    "values": [
+     1159.8,
+     1242.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Fees, trading and other income",
+    "values": [
+     1998.4,
+     2227.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net income",
+    "values": [
+     7214.1,
+     7603.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Operating expenses",
+    "values": [
+     -2633.1,
+     -2671.5
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before provisions",
+    "values": [
+     4581.0,
+     4931.7
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Provisions for bad loans",
+    "values": [
+     383.3,
+     -79.3
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other impairment, associates and other items",
+    "values": [
+     1138.3,
+     1455.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before tax and zakat",
+    "values": [
+     6102.7,
+     6308.1
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Tax and zakat",
+    "values": [
+     -1236.6,
+     -1162.6
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Non-controlling interests",
+    "values": [
+     -1611.4,
+     -1710.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit to shareholders",
+    "values": [
+     3254.7,
+     3434.7
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2025,
+   2026
+  ],
+  "revenue": [
+   7214,
+   7603
+  ],
+  "pat": [
+   3255,
+   3435
+  ],
+  "note": "Full financial years held in the database; revenue here is net income (interest, Islamic and fee income after paying depositors)."
+ },
+ "segments": {
+  "period": "FY2026 (12 months)",
+  "rows": [
+   {
+    "name": "Commercial banking (Hong Leong Bank)",
+    "revenue": 6693.3,
+    "profit": 5480.5,
+    "tip": "Banking in Malaysia and abroad, including the China associate"
+   },
+   {
+    "name": "Insurance (Hong Leong Assurance)",
+    "revenue": 666.9,
+    "profit": 742.5,
+    "tip": "Life and takaful insurance"
+   },
+   {
+    "name": "Investment banking (Hong Leong Capital)",
+    "revenue": 227.0,
+    "profit": 85.4,
+    "tip": "Stockbroking, fund management and deal advice"
+   }
+  ],
+  "geo": [
+   {
+    "name": "Malaysia",
+    "value": 209362.3
+   },
+   {
+    "name": "Outside Malaysia",
+    "value": 17144.3
+   }
+  ],
+  "note": "Other operations and inter-segment eliminations are left out."
+ },
+ "balance": {
+  "date": "30 Jun 2026",
+  "assets": [
+   {
+    "label": "Loans to customers",
+    "value": 225483.9
+   },
+   {
+    "label": "Bonds and other investments",
+    "value": 111132.2
+   },
+   {
+    "label": "Cash, interbank and central bank deposits",
+    "value": 17547.5
+   },
+   {
+    "label": "Other assets",
+    "value": 15662.6
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Customer deposits and investment accounts",
+    "value": 251678.4
+   },
+   {
+    "label": "Bank deposits, repos and bonds issued",
+    "value": 15504.2
+   },
+   {
+    "label": "Other liabilities",
+    "value": 51873.9
+   }
+  ],
+  "equity": 50769.7,
+  "note": "A bank's balance sheet is mostly other people's money: customer deposits fund the loans. Shareholders' funds are about 9% of assets, which is why capital ratios matter."
+ },
+ "cash": null,
+ "safety": [
+  {
+   "label": "CET1 capital ratio",
+   "value": "12.1%",
+   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans. Bank Negara's minimum is 4.5% plus buffers. As printed in the report's capital note; some banks print it before deducting the proposed dividend."
+  },
+  {
+   "label": "Total capital ratio",
+   "value": "14.9%",
+   "plain": "All qualifying capital as a share of risk-weighted loans; the regulatory minimum is 8% plus buffers."
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "0.57%",
+   "plain": "Loans in trouble as a share of all loans. Lower is better."
+  },
+  {
+   "label": "Loan loss allowance coverage",
+   "value": "79%",
+   "plain": "Money already set aside for losses, compared with the troubled loans. Above 100% means fully covered."
+  },
+  {
+   "label": "Loan to deposit ratio",
+   "value": "90.6%",
+   "plain": "The bank lends out about RM91 of every RM100 deposited."
+  },
+  {
+   "label": "CASA ratio",
+   "value": "36.5%",
+   "plain": "Share of deposits in current and savings accounts, which pay little interest and keep funding cheap."
+  },
+  {
+   "label": "Liquidity coverage ratio",
+   "value": "129%",
+   "plain": "Cash and easy-to-sell assets against 30 days of stressed outflows; the minimum is 100%."
+  }
+ ],
+ "safetyTitle": null,
+ "safetyIntro": null,
+ "bank": true,
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM19.6 bn",
+   "plain": "What the whole company costs at today's share price: RM19.6 billion."
+  },
+  {
+   "label": "P/E (FY2026)",
+   "value": "5.7x",
+   "plain": "You pay about RM6 for every RM1 of yearly profit. A high number means investors expect growth."
+  },
+  {
+   "label": "EPS (FY2026)",
+   "value": "302.84 sen",
+   "plain": "Profit earned for each share you own over the last year."
+  },
+  {
+   "label": "Dividend yield (dividends paid in the last 12 months)",
+   "value": "4.6%",
+   "plain": "For every RM100 of shares, about RM4.6 a year comes back as cash dividends."
+  },
+  {
+   "label": "Payout ratio",
+   "value": "26%",
+   "plain": "Of every RM100 profit, about RM26 is paid out; the rest is kept to grow."
+  },
+  {
+   "label": "Price to book",
+   "value": "0.6x",
+   "plain": "The share price is 0.6 times the accounting value of what shareholders own."
+  },
+  {
+   "label": "Return on equity (FY2026)",
+   "value": "10%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM10 profit last year."
+  },
+  {
+   "label": "Net margin FY2026",
+   "value": "45.2%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM45.17."
+  },
+  {
+   "label": "Revenue growth FY2026",
+   "value": "+5.4%",
+   "plain": "Revenue compared with the same period a year earlier."
+  },
+  {
+   "label": "Profit growth FY2026",
+   "value": "+5.5%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
+  },
+  {
+   "label": "Cost to income (FY2026)",
+   "value": "35.1%",
+   "plain": "Of every RM100 of income, about RM35 is spent on staff, branches and IT. Lower is more efficient."
+  },
+  {
+   "label": "Credit cost (FY2026, annualised)",
+   "value": "4 bp",
+   "plain": "Provisions for bad loans equal to 0.04% of loans a year. Lower is better."
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "Hong Leong Bank's results",
+   "affects": "Profit",
+   "direction": "Positive",
+   "evidence": "Commercial banking earned RM5.48bn of the group's RM6.31bn pre-tax profit in FY2026 (Q p.11)",
+   "why": "The bank drives almost everything.",
+   "pic": null
+  },
+  {
+   "factor": "Insurance",
+   "affects": "Profit",
+   "direction": "Positive",
+   "evidence": "Insurance pre-tax profit of RM742.5m in FY2026 (Q p.11)",
+   "why": "A second, steadier earnings stream.",
+   "pic": null
+  },
+  {
+   "factor": "Minority share",
+   "affects": "Profit",
+   "direction": "Watch",
+   "evidence": "RM1.71bn of FY2026 profit belonged to minority shareholders, leaving RM3.43bn for HLFG (Q p.11)",
+   "why": "Owners get only part of the bank's profit.",
+   "pic": null
+  },
+  {
+   "factor": "Investment banking",
+   "affects": "Profit",
+   "direction": "Neutral",
+   "evidence": "Hong Leong Capital pre-tax profit RM85.4m in FY2026 (Q p.11)",
+   "why": "Small and market-sensitive.",
+   "pic": null
+  },
+  {
+   "factor": "Holding-company discount",
+   "affects": "Share price",
+   "direction": "Watch",
+   "evidence": "Trades at a lower P/B than Hong Leong Bank (see Valuation)",
+   "why": "Investors pay less for indirect ownership.",
+   "pic": null
+  }
+ ],
+ "supply": {
+  "suppliers": [
+   [
+    "Depositors",
+    "Individuals and companies whose savings fund most of the loans: RM249.0 billion of customer deposits",
+    "latest balance sheet"
+   ],
+   [
+    "Bond and wholesale lenders",
+    "Investors and banks lending through bonds, sukuk, repos and interbank deposits",
+    "latest balance sheet"
+   ],
+   [
+    "Staff, branches and technology",
+    "Running costs of RM2.67 billion in FY2026: salaries, premises, IT systems and outside services",
+    "income statement"
+   ]
+  ],
+  "customers": [
+   [
+    "Commercial banking (Hong Leong Bank)",
+    "Banking in Malaysia and abroad, including the China associate",
+    "Q4 FY2026 report p.11"
+   ],
+   [
+    "Insurance (Hong Leong Assurance)",
+    "Life and takaful insurance",
+    "Q4 FY2026 report p.11"
+   ],
+   [
+    "Investment banking (Hong Leong Capital)",
+    "Stockbroking, fund management and deal advice",
+    "Q4 FY2026 report p.11"
+   ]
+  ],
+  "note": "For a bank, depositors are effectively the suppliers of its money. The reports do not name individual clients."
+ },
+ "competitors": [
+  {
+   "name": "Maybank, Public Bank, CIMB, RHB, AmBank",
+   "how": "Other Malaysian banks competing for the same loans, deposits and fees",
+   "source": "Stock Analyst bank coverage"
+  },
+  {
+   "name": "Alliance Bank, Affin Bank, Bank Islam, Bank Rakyat and foreign banks",
+   "how": "Smaller and foreign banks in the same markets",
+   "source": "General market knowledge, not the report"
+  },
+  {
+   "name": "Digital banks (GXBank, Boost Bank, AEON Bank and others)",
+   "how": "App-based banks licensed by Bank Negara, competing for deposits and small loans",
+   "source": "General market knowledge"
+  }
+ ],
+ "outlook": [
+  {
+   "tone": "Neutral",
+   "text": "Global outlook uncertain: Middle East tensions, commodity prices, inflation and US trade policy (Q B3)."
+  },
+  {
+   "tone": "Positive",
+   "text": "Well positioned through credit discipline, prudent asset quality and cost control (Q B3)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Neutral",
+  "text": "Management stays focused on credit discipline, asset quality and cost control in a challenging environment (Q B3)."
+ }
+}

@@ -1,0 +1,125 @@
+{
+ "code": "1155",
+ "name": "Malayan Banking Berhad (Maybank)",
+ "period": "Q2 FY2026, quarter to 2026-06-30",
+ "source": {
+  "title": "Maybank quarterly report Q2 FY2026",
+  "url": "https://maybank.listedcompany.com/newsroom/Maybank_Group_FS_-_June_2026_(Bursa)_20260827.pdf"
+ },
+ "oneLine": "Malaysia's largest bank and listed company, with big operations in Singapore and Indonesia plus insurance and takaful (Etiqa).",
+ "inPlainWords": [
+  "Maybank takes deposits and lends to individuals, small businesses and large companies, mainly in Malaysia, Singapore and Indonesia.",
+  "About two-thirds of its loans are in Malaysia, where it lends close to one in five ringgit of all bank loans.",
+  "Islamic banking (Maybank Islamic) is a large part of the business, and it also sells insurance and takaful through Etiqa.",
+  "It employs over 43,000 people across the group (FY2025 integrated report part 1 p30)."
+ ],
+ "flow": [
+  {
+   "label": "Depositors",
+   "detail": "Customers place savings and deposits with the bank, which pays them interest."
+  },
+  {
+   "label": "The bank",
+   "detail": "It lends that money out as home, car, personal and business loans at a higher rate."
+  },
+  {
+   "label": "Borrowers",
+   "detail": "Borrowers repay with interest; the gap between the two rates is the bank's main income."
+  },
+  {
+   "label": "Fees",
+   "detail": "It also earns fees from cards, wealth products, insurance sales and transactions."
+  }
+ ],
+ "moneyNote": "",
+ "segmentsTitle": "Business segments, 1H2026 (RM million)",
+ "segments": [
+  {
+   "name": "Community Financial Services",
+   "revenue": 8577.8,
+   "profit": 3063.7,
+   "desc": "Loans, deposits, cards and wealth for individuals and small businesses"
+  },
+  {
+   "name": "Corporate Banking and Global Markets",
+   "revenue": 4595.8,
+   "profit": 3195.1,
+   "desc": "Loans, cash management and treasury for large companies"
+  },
+  {
+   "name": "Insurance and Takaful (Etiqa)",
+   "revenue": 721.6,
+   "profit": 634.6,
+   "desc": "Life, general and family takaful insurance"
+  },
+  {
+   "name": "Investment Banking",
+   "revenue": 1042.8,
+   "profit": 418.5,
+   "desc": "Share broking, deal advice and capital raising (Maybank Investment Bank)"
+  },
+  {
+   "name": "Asset Management",
+   "revenue": 50.5,
+   "profit": -1.3,
+   "desc": "Unit trusts and funds"
+  }
+ ],
+ "segmentNote": "Revenue is net income (after paying depositors); profit is profit before tax by segment (Q2 FY2026 report p.57). Head office and others (a net cost of RM377.7m in 1H2026) is left out of the split.",
+ "geographyTitle": "Loans by location (RM million)",
+ "geographyUnit": "RM million",
+ "geography": [
+  {
+   "name": "Malaysia",
+   "value": 451684
+  },
+  {
+   "name": "Outside Malaysia",
+   "value": 244257
+  }
+ ],
+ "keyFacts": [
+  {
+   "label": "Loans to customers",
+   "value": "RM686.4 billion"
+  },
+  {
+   "label": "Customer deposits",
+   "value": "RM700.9 billion"
+  },
+  {
+   "label": "Net income 1H2026",
+   "value": "RM14.61 billion"
+  },
+  {
+   "label": "Profit to shareholders 1H2026",
+   "value": "RM5.17 billion"
+  },
+  {
+   "label": "CET1 capital ratio",
+   "value": "15.7%"
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "1.35%"
+  },
+  {
+   "label": "Employees",
+   "value": "Over 43,300"
+  }
+ ],
+ "aiImages": [
+  {
+   "src": "data/lib/safe.jpg",
+   "caption": "Deposits: savers' money kept safe and paid a return"
+  },
+  {
+   "src": "data/lib/coins.jpg",
+   "caption": "Interest and fees: what borrowers and customers pay the bank"
+  },
+  {
+   "src": "data/lib/growth.jpg",
+   "caption": "Loans: money lent so homes, cars and businesses can grow"
+  }
+ ]
+}

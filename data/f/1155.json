@@ -1,0 +1,577 @@
+{
+ "code": "1155",
+ "price": 9.92,
+ "priceDate": "2026-11-18",
+ "unit": "RM million",
+ "fyNote": "Financial year ends 31 December. 'Net income' is a bank's revenue: interest earned minus interest paid, plus Islamic banking, insurance and fee income. Figures are the sum of the quarters reported in the quarterly reports; the latest is Q2 FY2026 (quarter to 30 Jun 2026), unaudited.",
+ "sources": [
+  {
+   "title": "Maybank quarterly report Q2 FY2026 (quarter to 30 Jun 2026)",
+   "url": "https://maybank.listedcompany.com/newsroom/Maybank_Group_FS_-_June_2026_(Bursa)_20260827.pdf"
+  }
+ ],
+ "segmentNote": "Head office and others (a net cost of RM377.7m in 1H2026) is left out of the split.",
+ "how": {
+  "title": "How Maybank makes money",
+  "text": "Income = interest earned on loans - interest paid on deposits + fees, trading and Islamic banking income",
+  "facts": [
+   [
+    "Loans to customers",
+    "RM686.4 billion at 30 Jun 2026"
+   ],
+   [
+    "Customer deposits",
+    "RM700.9 billion"
+   ],
+   [
+    "Net income 1H2026",
+    "RM14.61 billion"
+   ],
+   [
+    "Share of all bank loans in Malaysia",
+    "18.6% (domestic loans vs Bank Negara system total)"
+   ]
+  ]
+ },
+ "story": {
+  "scale_value": "RM686 bn",
+  "scale_label": "lent to customers",
+  "pics": {}
+ },
+ "growth": {
+  "period": "1H2026",
+  "revenue": -5.1,
+  "profit": -0.9
+ },
+ "debt": {
+  "netCash": false,
+  "value": "",
+  "label": ""
+ },
+ "pnl": {
+  "period": "1H2026",
+  "items": [
+   {
+    "label": "Net income",
+    "value": 14610.9,
+    "kind": "total"
+   },
+   {
+    "label": "Running costs",
+    "value": -7234.7,
+    "kind": "cost",
+    "tip": "Staff, branches, IT systems, marketing and depreciation."
+   },
+   {
+    "label": "Provisions for bad loans",
+    "value": -798.2,
+    "kind": "cost",
+    "tip": "Money set aside for loans that may not be repaid, after write-backs."
+   },
+   {
+    "label": "Tax and zakat",
+    "value": -1611.8,
+    "kind": "cost",
+    "tip": "Corporate tax and zakat (Islamic levy)."
+   },
+   {
+    "label": "Partners' share of profit",
+    "value": -150.1,
+    "kind": "cost",
+    "tip": "Profit belonging to minority shareholders in subsidiaries."
+   },
+   {
+    "label": "Associates and other items",
+    "value": 354.9,
+    "kind": "income",
+    "tip": "Share of associates' profit and other items, net."
+   },
+   {
+    "label": "Profit to shareholders",
+    "value": 5171.0,
+    "kind": "total",
+    "tip": "What is left for shareholders: paid as dividends or kept to grow the business."
+   }
+  ],
+  "incomeNote": "Net income is the bank's revenue after paying interest to depositors."
+ },
+ "trend": {
+  "cols": [
+   "FY2024",
+   "FY2025",
+   "1H2025",
+   "1H2026"
+  ],
+  "lines": [
+   {
+    "label": "Net interest income",
+    "values": [
+     12807.4,
+     13157.0,
+     6394.7,
+     6364.4
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Income from Islamic banking",
+    "values": [
+     8346.4,
+     8653.3,
+     4274.8,
+     4477.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Fees, trading and other income",
+    "values": [
+     8418.7,
+     8569.2,
+     4727.1,
+     3768.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Net income",
+    "values": [
+     29572.5,
+     30379.5,
+     15396.6,
+     14610.9
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Operating expenses",
+    "values": [
+     -14460.2,
+     -14839.2,
+     -7528.0,
+     -7234.7
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before provisions",
+    "values": [
+     15112.3,
+     15540.3,
+     7868.6,
+     7376.2
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Provisions for bad loans",
+    "values": [
+     -1670.5,
+     -562.1,
+     -807.6,
+     -798.2
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Other impairment, associates and other items",
+    "values": [
+     259.8,
+     -644.4,
+     44.7,
+     354.9
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit before tax and zakat",
+    "values": [
+     13701.6,
+     14333.8,
+     7105.7,
+     6932.9
+    ],
+    "bold": 1
+   },
+   {
+    "label": "Tax and zakat",
+    "values": [
+     -3195.2,
+     -3502.4,
+     -1760.1,
+     -1611.8
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Non-controlling interests",
+    "values": [
+     -417.7,
+     -317.4,
+     -128.8,
+     -150.1
+    ],
+    "bold": 0
+   },
+   {
+    "label": "Profit to shareholders",
+    "values": [
+     10088.7,
+     10513.9,
+     5216.9,
+     5171.0
+    ],
+    "bold": 1
+   }
+  ]
+ },
+ "fiveYear": {
+  "cols": [
+   2024,
+   2025
+  ],
+  "revenue": [
+   29573,
+   30380
+  ],
+  "pat": [
+   10089,
+   10514
+  ],
+  "note": "Full financial years held in the database; revenue here is net income (interest, Islamic and fee income after paying depositors)."
+ },
+ "segments": {
+  "period": "1H2026",
+  "rows": [
+   {
+    "name": "Community Financial Services",
+    "revenue": 8577.8,
+    "profit": 3063.7,
+    "tip": "Loans, deposits, cards and wealth for individuals and small businesses"
+   },
+   {
+    "name": "Corporate Banking and Global Markets",
+    "revenue": 4595.8,
+    "profit": 3195.1,
+    "tip": "Loans, cash management and treasury for large companies"
+   },
+   {
+    "name": "Insurance and Takaful (Etiqa)",
+    "revenue": 721.6,
+    "profit": 634.6,
+    "tip": "Life, general and family takaful insurance"
+   },
+   {
+    "name": "Investment Banking",
+    "revenue": 1042.8,
+    "profit": 418.5,
+    "tip": "Share broking, deal advice and capital raising (Maybank Investment Bank)"
+   },
+   {
+    "name": "Asset Management",
+    "revenue": 50.5,
+    "profit": -1.3,
+    "tip": "Unit trusts and funds"
+   }
+  ],
+  "geo": [
+   {
+    "name": "Malaysia",
+    "value": 451684.1
+   },
+   {
+    "name": "Outside Malaysia",
+    "value": 244256.7
+   }
+  ],
+  "note": "Head office and others (a net cost of RM377.7m in 1H2026) is left out of the split."
+ },
+ "balance": {
+  "date": "30 Jun 2026",
+  "assets": [
+   {
+    "label": "Loans to customers",
+    "value": 686393.9
+   },
+   {
+    "label": "Bonds and other investments",
+    "value": 305928.7
+   },
+   {
+    "label": "Cash, interbank and central bank deposits",
+    "value": 50932.7
+   },
+   {
+    "label": "Other assets",
+    "value": 36925.5
+   }
+  ],
+  "liabilities": [
+   {
+    "label": "Customer deposits and investment accounts",
+    "value": 734520.3
+   },
+   {
+    "label": "Bank deposits, repos and bonds issued",
+    "value": 97177.1
+   },
+   {
+    "label": "Other liabilities",
+    "value": 151947.0
+   }
+  ],
+  "equity": 96536.3,
+  "note": "A bank's balance sheet is mostly other people's money: customer deposits fund the loans. Shareholders' funds are about 9% of assets, which is why capital ratios matter."
+ },
+ "cash": null,
+ "safety": [
+  {
+   "label": "CET1 capital ratio",
+   "value": "15.7%",
+   "plain": "The bank's own capital as a cushion against losses, as a share of its risk-weighted loans. Bank Negara's minimum is 4.5% plus buffers. As printed in the report's capital note; some banks print it before deducting the proposed dividend."
+  },
+  {
+   "label": "Total capital ratio",
+   "value": "19.4%",
+   "plain": "All qualifying capital as a share of risk-weighted loans; the regulatory minimum is 8% plus buffers."
+  },
+  {
+   "label": "Gross impaired loans",
+   "value": "1.35%",
+   "plain": "Loans in trouble as a share of all loans. Lower is better."
+  },
+  {
+   "label": "Loan loss allowance coverage",
+   "value": "102%",
+   "plain": "Money already set aside for losses, compared with the troubled loans. Above 100% means fully covered."
+  },
+  {
+   "label": "Loan to deposit ratio",
+   "value": "97.9%",
+   "plain": "The bank lends out about RM98 of every RM100 deposited."
+  },
+  {
+   "label": "CASA ratio",
+   "value": "39.5%",
+   "plain": "Share of deposits in current and savings accounts, which pay little interest and keep funding cheap."
+  },
+  {
+   "label": "Liquidity coverage ratio",
+   "value": "138%",
+   "plain": "Cash and easy-to-sell assets against 30 days of stressed outflows; the minimum is 100%."
+  }
+ ],
+ "safetyTitle": null,
+ "safetyIntro": null,
+ "bank": true,
+ "metrics": [
+  {
+   "label": "Market value",
+   "value": "RM119.7 bn",
+   "plain": "What the whole company costs at today's share price: RM119.7 billion."
+  },
+  {
+   "label": "P/E (last 12 months)",
+   "value": "11.4x",
+   "plain": "You pay about RM11 for every RM1 of yearly profit. A high number means investors expect growth."
+  },
+  {
+   "label": "EPS (last 12 months)",
+   "value": "86.73 sen",
+   "plain": "Profit earned for each share you own over the last year."
+  },
+  {
+   "label": "Dividend yield (dividends paid in the last 12 months)",
+   "value": "6.5%",
+   "plain": "For every RM100 of shares, about RM6.5 a year comes back as cash dividends."
+  },
+  {
+   "label": "Payout ratio",
+   "value": "74%",
+   "plain": "Of every RM100 profit, about RM74 is paid out; the rest is kept to grow."
+  },
+  {
+   "label": "Price to book",
+   "value": "1.3x",
+   "plain": "The share price is 1.3 times the accounting value of what shareholders own."
+  },
+  {
+   "label": "Return on equity (last 12 months)",
+   "value": "11%",
+   "plain": "For every RM100 shareholders have in the company, it earned about RM11 profit last year."
+  },
+  {
+   "label": "Net margin 1H2026",
+   "value": "35.4%",
+   "plain": "What is left as profit for shareholders from every RM100 of revenue: RM35.39."
+  },
+  {
+   "label": "Revenue growth 1H2026",
+   "value": "-5.1%",
+   "plain": "Revenue compared with the same period a year earlier."
+  },
+  {
+   "label": "Profit growth 1H2026",
+   "value": "-0.9%",
+   "plain": "Profit to shareholders compared with the same period a year earlier."
+  },
+  {
+   "label": "Cost to income (1H2026)",
+   "value": "49.5%",
+   "plain": "Of every RM100 of income, about RM50 is spent on staff, branches and IT. Lower is more efficient."
+  },
+  {
+   "label": "Credit cost (1H2026, annualised)",
+   "value": "24 bp",
+   "plain": "Provisions for bad loans equal to 0.24% of loans a year. Lower is better."
+  }
+ ],
+ "drivers": [
+  {
+   "factor": "Lower trading and FX gains",
+   "affects": "Revenue",
+   "direction": "Negative",
+   "evidence": "Other operating income fell 15.4% to RM4.04bn in 1H2026 on mark-to-market losses and lower foreign-exchange gains (Q B1)",
+   "why": "Market-related income swings with bond prices and currencies.",
+   "pic": null
+  },
+  {
+   "factor": "Steady interest and Islamic income",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Net interest and Islamic banking income rose 1.6% to RM10.84bn in 1H2026 (Q B1)",
+   "why": "Its core lending income keeps growing slowly.",
+   "pic": null
+  },
+  {
+   "factor": "Insurance results weaker",
+   "affects": "Profit",
+   "direction": "Negative",
+   "evidence": "Insurance/takaful service result fell 21.7% to RM677.9m in 1H2026 (Q B1)",
+   "why": "Etiqa adds diversification but its earnings vary.",
+   "pic": null
+  },
+  {
+   "factor": "Loan growth",
+   "affects": "Revenue",
+   "direction": "Positive",
+   "evidence": "Loans to customers grew 3.0% in the year to June 2026 (database)",
+   "why": "More loans mean more interest income.",
+   "pic": null
+  },
+  {
+   "factor": "Bad-loan provisions stable",
+   "affects": "Risk",
+   "direction": "Neutral",
+   "evidence": "Provisions of RM798m in 1H2026 against RM808m a year earlier (database)",
+   "why": "Credit costs are under control.",
+   "pic": null
+  },
+  {
+   "factor": "Strong capital",
+   "affects": "Shareholder returns",
+   "direction": "Positive",
+   "evidence": "CET1 capital ratio of 15.7% before the declared dividend (Q notes)",
+   "why": "Room to keep paying high dividends.",
+   "pic": null
+  },
+  {
+   "factor": "Regional economies",
+   "affects": "Growth",
+   "direction": "Positive",
+   "evidence": "Management expects Malaysia GDP growth of 5.3%, Indonesia 5.3% and Singapore 5.2% in 2026 (Q B3 p.107)",
+   "why": "Its three home markets are all expected to grow.",
+   "pic": null
+  },
+  {
+   "factor": "Growth priorities",
+   "affects": "Growth",
+   "direction": "Watch",
+   "evidence": "Focus on Islamic finance, wealth, payments and corporate and investment banking, plus technology, data and AI (Q B3)",
+   "why": "Execution will decide whether fee income grows.",
+   "pic": null
+  }
+ ],
+ "supply": {
+  "suppliers": [
+   [
+    "Depositors",
+    "Individuals and companies whose savings fund most of the loans: RM700.9 billion of customer deposits",
+    "latest balance sheet"
+   ],
+   [
+    "Bond and wholesale lenders",
+    "Investors and banks lending through bonds, sukuk, repos and interbank deposits",
+    "latest balance sheet"
+   ],
+   [
+    "Staff, branches and technology",
+    "Running costs of RM7.23 billion in 1H2026: salaries, premises, IT systems and outside services",
+    "income statement"
+   ]
+  ],
+  "customers": [
+   [
+    "Community Financial Services",
+    "Loans, deposits, cards and wealth for individuals and small businesses",
+    "Q2 FY2026 report p.57"
+   ],
+   [
+    "Corporate Banking and Global Markets",
+    "Loans, cash management and treasury for large companies",
+    "Q2 FY2026 report p.57"
+   ],
+   [
+    "Insurance and Takaful (Etiqa)",
+    "Life, general and family takaful insurance",
+    "Q2 FY2026 report p.57"
+   ],
+   [
+    "Investment Banking",
+    "Share broking, deal advice and capital raising (Maybank Investment Bank)",
+    "Q2 FY2026 report p.57"
+   ],
+   [
+    "Asset Management",
+    "Unit trusts and funds",
+    "Q2 FY2026 report p.57"
+   ]
+  ],
+  "note": "For a bank, depositors are effectively the suppliers of its money. The reports do not name individual clients."
+ },
+ "competitors": [
+  {
+   "name": "Public Bank, CIMB, RHB, Hong Leong Bank, AmBank",
+   "how": "Other Malaysian banks competing for the same loans, deposits and fees",
+   "source": "Stock Analyst bank coverage"
+  },
+  {
+   "name": "Alliance Bank, Affin Bank, Bank Islam, Bank Rakyat and foreign banks",
+   "how": "Smaller and foreign banks in the same markets",
+   "source": "General market knowledge, not the report"
+  },
+  {
+   "name": "Digital banks (GXBank, Boost Bank, AEON Bank and others)",
+   "how": "App-based banks licensed by Bank Negara, competing for deposits and small loans",
+   "source": "General market knowledge"
+  }
+ ],
+ "outlook": [
+  {
+   "tone": "Positive",
+   "text": "Malaysia's outlook remains constructive: GDP growth projected at 5.3% in 2026, with the OPR expected to stay at 2.75% (Q B3 p.107)."
+  },
+  {
+   "tone": "Positive",
+   "text": "Growth priorities: regional Islamic finance, wealth management, transactions and payments, and corporate and investment banking (Q B3)."
+  },
+  {
+   "tone": "Neutral",
+   "text": "Global growth expected to moderate to 3.1% in 2026; Middle East supply disruptions may push inflation up (Q B3)."
+  }
+ ],
+ "outlookOverall": {
+  "tone": "Positive",
+  "text": "Management sees resilient growth across its ASEAN markets in 2026 and keeps investing in technology and capital efficiency (Q B3 p.107)."
+ }
+}

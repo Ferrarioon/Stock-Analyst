@@ -770,7 +770,8 @@ function method() {
       <li><b>Calls:</b> shown as Buy, Neutral, Sell or Not Rated. Kenanga's Outperform, Market Perform and Underperform are mapped to Buy, Neutral and Sell.</li></ul>
     <h3>Data</h3><ul><li>${IDX.reports.toLocaleString()} company reports from ${IDX.brokers.map(esc).join(', ')}, ${fdate(IDX.first)} to ${fdate(IDX.last)}.</li>
       <li>Prices and dividends to ${fdate(IDX.asof)}; data refreshed ${esc(IDX.generated)}.</li>
-      <li>Reports whose printed price does not match the market price, or whose stock has no price history, are left out of the accuracy figures.</li></ul>
+      <li>Reports whose printed price does not match the market price, or whose stock has no price history, are left out of the accuracy figures.</li>
+      <li>Kenanga, RHB and MIDF calls are read from their full reports. Calls from other brokers (for example CGS International, Malacca Securities and Maybank IB) are read from the brokers' own research summaries posted in public market channels; when a post gives no share price, the previous day's close is used. These newer sources have few resolved calls so far.</li></ul>
     <h3>Important</h3><p>This site is independent research based on publicly available broker reports and market prices. It is not investment advice or a recommendation to buy or sell any security, and past accuracy does not predict future results. Figures are read automatically from reports and may contain errors.</p></div>`;
 }
 

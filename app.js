@@ -980,13 +980,65 @@ async function sector(tab) {
   }
 }
 
+/* ---------- Agent HQ (data/agents.json: the agents' roles and every run they log) ---------- */
+const fstamp = s => s ? esc(String(s).replace('T', ' ').slice(0, 16)) : '–';
+const runBadge = s => `<span class="badge ${s === 'Success' ? 'hit' : s === 'Failed' ? 'stop' : s === 'Retrying' ? 'exp' : ''}">${esc(s || '–')}</span>`;
+async function agents() {
+  view.innerHTML = '<p class="loading">Loading Agent HQ…</p>';
+  const hq = await fetch('data/agents.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  if (!hq) { view.innerHTML = '<h1>Agent HQ</h1><p class="loading">Could not load data/agents.json.</p>'; return; }
+  const runs = (hq.runs || []).slice().sort((a, b) => String(b.at).localeCompare(String(a.at)));
+  const open = r => r.status === 'Failed' && !r.resolved;
+  hq.agents.forEach(a => {                       // same rules as the Agent HQ sheet: any unresolved failure = Error
+    const mine = runs.filter(r => r.agent === a.name);
+    a.open = mine.filter(open).length; a.last = mine[0]?.at || null;
+    a.state = a.open ? 'Error' : a.last ? 'OK' : 'Not run yet';
+  });
+  const openN = runs.filter(open).length, inErr = hq.agents.filter(a => a.open).length, lastRun = runs[0]?.at;
+  const stateBadge = s => `<span class="badge ${s === 'Error' ? 'stop' : s === 'OK' ? 'hit' : ''}">${s}</span>`;
+  const step = (n, title) => `<div class="flow-step"><b>Step ${n} – ${title}</b>${hq.agents.filter(a => a.step === n).map(a => `<span style="display:flex;justify-content:space-between;gap:8px;margin-top:6px">${esc(a.name)} ${stateBadge(a.state)}</span>`).join('')}</div>`;
+  view.innerHTML = `<h1>Agent HQ</h1>
+    ${openN ? `<div class="glass card" style="background:var(--red-bg);color:var(--red);margin-bottom:14px"><b>⚠ ${openN} open error${openN > 1 ? 's' : ''} across ${inErr} agent${inErr > 1 ? 's' : ''}.</b> See the run log below for what failed and the action needed.</div>` : ''}
+    <div class="stats" style="margin-bottom:14px">
+      <div class="stat"><small>Open errors</small><b class="${openN ? 'neg' : 'pos'}">${openN}</b></div>
+      <div class="stat"><small>Agents in error</small><b class="${inErr ? 'neg' : 'pos'}">${inErr} of ${hq.agents.length}</b></div>
+      <div class="stat"><small>Last run</small><b>${fstamp(lastRun)}</b></div>
+      <div class="stat"><small>Page data updated</small><b>${fstamp(hq.generated)}</b></div></div>
+    <div class="flow" style="margin-bottom:14px">${step(1, 'Capture')}<span class="arrow">→</span>${step(2, 'Extraction')}</div>
+    <div class="stack">
+    <div class="glass card"><h2>Agents</h2><div class="tablewrap"><table><thead><tr><th>Agent</th><th>Type</th><th>Status</th><th class="num">Open errors</th><th>Last run</th><th>Role</th></tr></thead>
+      <tbody>${hq.agents.map((a, i) => `<tr data-i="${i}" style="cursor:pointer${a.open ? ';background:var(--red-bg)' : ''}"><td><b>${esc(a.name)}</b></td><td>${esc(a.type)}</td><td>${stateBadge(a.state)}</td>
+        <td class="num">${a.open}</td><td>${fstamp(a.last)}</td><td style="white-space:normal;min-width:260px">${esc(a.role)}</td></tr>`).join('')}</tbody></table></div>
+      <p class="note">Select an agent to see what it does, its checks before hand-off and what it does when it fails.</p><div id="ag-detail"></div></div>
+    <div class="glass card"><h2>Run log</h2>
+      <div class="filters"><label>Agent<select id="r-a"><option value="">All agents</option>${hq.agents.map(a => `<option>${esc(a.name)}</option>`).join('')}</select></label>
+        <label>Status<select id="r-s"><option value="">All</option><option value="open">Open errors only</option><option>Failed</option><option>Retrying</option><option>Success</option></select></label></div>
+      <div class="tablewrap"><table><thead><tr><th>Logged at</th><th>Agent</th><th>Status</th><th>Company</th><th>Stock code</th><th>Task</th><th>Error</th><th>Action needed</th><th>Resolved</th></tr></thead><tbody id="r-rows"></tbody></table></div>
+      <p class="note" id="r-count"></p></div></div>`;
+  const detail = i => { const a = hq.agents[i];
+    $('#ag-detail').innerHTML = `<div class="biz-note" style="margin-top:12px"><h3 style="margin:0 0 6px">${esc(a.name)}</h3>
+      <p><b>Trigger:</b> ${esc(a.trigger)}<br><b>Input:</b> ${esc(a.input)}<br><b>Output:</b> ${esc(a.output)}<br><b>Fills:</b> ${esc(a.fills)}</p>
+      <b>Checks before hand-off</b><ul style="margin:4px 0 8px">${a.checks.map(c => `<li>${esc(c)}</li>`).join('')}</ul><b>On failure:</b> ${esc(a.onFailure)}</div>`; };
+  view.querySelectorAll('tr[data-i]').forEach(tr => tr.onclick = () => detail(+tr.dataset.i));
+  const draw = () => {
+    const ag = $('#r-a').value, st = $('#r-s').value;
+    const list = runs.filter(r => (!ag || r.agent === ag) && (!st || (st === 'open' ? open(r) : r.status === st)));
+    $('#r-rows').innerHTML = list.slice(0, 500).map(r => `<tr${open(r) ? ' style="background:var(--red-bg)"' : ''}><td>${fstamp(r.at)}</td><td>${esc(r.agent)}</td><td>${runBadge(r.status)}</td><td>${esc(r.company || '–')}</td>
+      <td>${esc(r.code || '–')}</td><td>${esc(r.task || '–')}</td><td style="white-space:normal;min-width:220px">${esc(r.error || '')}</td><td style="white-space:normal;min-width:200px">${esc(r.action || '')}</td><td>${r.resolved ? 'Yes' : r.status === 'Failed' ? 'No' : ''}</td></tr>`).join('')
+      || '<tr><td colspan="9" class="sub">No runs logged yet.</td></tr>';
+    $('#r-count').textContent = `${list.length.toLocaleString()} run${list.length === 1 ? '' : 's'}${list.length > 500 ? ' (showing the newest 500)' : ''}.`;
+  };
+  ['r-a', 'r-s'].forEach(id => $('#' + id).addEventListener('input', draw));
+  draw();
+}
+
 /* ---------- router ---------- */
 function route() {
   const [path, qs] = (location.hash.slice(1) || '/').split('?'), parts = path.split('/').filter(Boolean), params = new URLSearchParams(qs || '');
   const page = parts[0] || 'home';
   document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.r === (page === 'stock' ? 'stocks' : page)));
   window.onresize = null; window.onmouseup = null; $('#tip').hidden = true; window.scrollTo(0, 0);
-  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), sector: () => sector(parts[1]), latest, brokers, method }[page] || home)();
+  ({ home, stocks: () => stocks(params), stock: () => stock(decodeURIComponent(parts[1] || ''), parts[2]), sector: () => sector(parts[1]), latest, brokers, agents, method }[page] || home)();
 }
 /* light / dark theme: remembered per browser, defaults to the device setting */
 function setTheme(t) {

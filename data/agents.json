@@ -1,0 +1,101 @@
+{
+  "generated": "2026-11-19 22:00",
+  "agents": [
+    {
+      "name": "Data Capture – Reports", "type": "Capture", "step": 1,
+      "role": "Downloads each company's quarterly and annual reports into the local reports folder as soon as they are published.",
+      "trigger": "A listed company publishes a quarterly or annual report.",
+      "input": "Company announcements / report listing.",
+      "output": "Report file saved locally, one file per company per period.",
+      "fills": "Financial Data: Download Agent, Report Available, Downloaded On",
+      "checks": [
+        "File name: StockCode_CompanyName_PeriodEnd_Q or _AR (e.g. 1155_Maybank_2026-09-30_Q)",
+        "Report Available = date on the announcement, not the download date",
+        "Downloaded On recorded with date and time (MYT)",
+        "No duplicate file for the same company + period",
+        "File opens and holds the financial statements, not a cover page only",
+        "Hand-off: tell Data Extraction – Reports which files are new"
+      ],
+      "onFailure": "Retry up to 3 times. If still failing (site down, file missing, file corrupt), log a Failed run with the error and the action needed."
+    },
+    {
+      "name": "Data Capture – Target Price", "type": "Capture", "step": 1,
+      "role": "Collects analyst target price calls from Telegram channels and company websites.",
+      "trigger": "A new target price post or update appears on a watched Telegram channel or company website.",
+      "input": "Telegram channels and company / IR websites on the watch list.",
+      "output": "Saved post or page (screenshot or text) with its link and published time.",
+      "fills": "Target Price: Published On, Captured On, Source Link, Capture Agent",
+      "checks": [
+        "Keep the original post or page, with its link",
+        "Published On = time of the post, not the capture time",
+        "Skip reposts of a call already captured (same source, company, price and date)",
+        "Hand-off: tell Data Extraction – Target Price what is new"
+      ],
+      "onFailure": "Retry up to 3 times. If a channel or site cannot be reached, or a post cannot be read, log a Failed run."
+    },
+    {
+      "name": "Data Capture – News", "type": "Capture", "step": 1,
+      "role": "Collects news about the tracked companies.",
+      "trigger": "New article or announcement about a tracked company.",
+      "input": "News sites and company announcements.",
+      "output": "Saved article with its link and published time.",
+      "fills": "News: Published On, Captured On, Link, Capture Agent",
+      "checks": [
+        "Only companies already in Financial Data (or the watch list)",
+        "Published On = time of the article",
+        "One article once: skip duplicates of the same link or headline",
+        "Hand-off: tell Data Extraction – News what is new"
+      ],
+      "onFailure": "Retry up to 3 times. If a source cannot be reached, log a Failed run."
+    },
+    {
+      "name": "Data Extraction – Reports", "type": "Extraction", "step": 2,
+      "role": "Reads each quarterly and annual report and writes every statement line into Financial Data.",
+      "trigger": "Data Capture – Reports hands over new files.",
+      "input": "Report files from Data Capture – Reports.",
+      "output": "One row per statement line in Financial Data.",
+      "fills": "Financial Data: Company Name, Stock Code, Data Item, Statement Line, Value, Period End, As Of, Market, Industry, Last Updated, Updated By, Extract Agent, Download Delay",
+      "checks": [
+        "Stock Code as text so leading zeros stay (e.g. 0166)",
+        "Data Item is one of: Income Statement, Balance Sheet, Cash Flow Statement, Changes in Equity",
+        "Statement Line exactly as the report labels it",
+        "Value as a plain number; losses negative; same unit as the report",
+        "As Of: 2026-Q3 for quarterly, FY2026 for annual",
+        "Totals tie out: total assets = equity + liabilities; net profit matches the report",
+        "Never overwrite an older period: a restated figure is a new row with a new As Of"
+      ],
+      "onFailure": "If a file cannot be read or totals do not tie out, write nothing for that company and log a Failed run."
+    },
+    {
+      "name": "Data Extraction – Target Price", "type": "Extraction", "step": 2,
+      "role": "Records each target price call in the Target Price table.",
+      "trigger": "Data Capture – Target Price hands over new posts.",
+      "input": "Saved posts and pages from Data Capture – Target Price.",
+      "output": "One row per call in Target Price.",
+      "fills": "Target Price: Company Name, Stock Code, Target Price, Call, Analyst / Source, Channel, Delay, Extract Agent, Last Updated, Updated By",
+      "checks": [
+        "Target Price as a number in RM",
+        "Call is Buy, Hold or Sell only",
+        "Analyst / Source names the house or analyst",
+        "A new call from the same source is a new row; never overwrite the old one"
+      ],
+      "onFailure": "If the price, company or source is unclear, write nothing for it and log a Failed run."
+    },
+    {
+      "name": "Data Extraction – News", "type": "Extraction", "step": 2,
+      "role": "Records each news item, with a short summary, in the News table.",
+      "trigger": "Data Capture – News hands over new articles.",
+      "input": "Saved articles from Data Capture – News.",
+      "output": "One row per article in News.",
+      "fills": "News: Company Name, Stock Code, Headline, Summary, Category, Source, Delay, Extract Agent, Last Updated, Updated By",
+      "checks": [
+        "Headline exactly as published",
+        "Summary in 1 to 2 sentences, facts only",
+        "Category is one of: Earnings, Corporate Action, Contract / Deal, Management, Regulatory, Other",
+        "One row per article; never duplicate a link"
+      ],
+      "onFailure": "If an article cannot be read or matched to a company, log a Failed run."
+    }
+  ],
+  "runs": []
+}

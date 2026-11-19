@@ -501,3 +501,12 @@ nav a.on { background: var(--solid); color: var(--on-solid); }
 .sbar { position: relative; height: 18px; border-radius: 999px; background: var(--grey-bg); overflow: hidden; min-width: 80px; }
 .sbar i { position: absolute; inset: 0 auto 0 0; background: var(--accent); opacity: .75; border-radius: 999px; }
 .sbar span { position: relative; font-size: 11.5px; font-weight: 600; padding-left: 8px; line-height: 18px; }
+
+.lchart svg { width: 100%; height: 260px; display: block; } .lchart .ax { font-size: 10.5px; fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink2); margin-top: 6px; } .legend i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; margin-right: 6px; vertical-align: middle; }
+.corr { display: inline-block; min-width: 46px; padding: 2px 8px; border-radius: 999px; font-weight: 600; font-size: 12px; color: var(--c); background: color-mix(in srgb, var(--c) calc(var(--a) * 22%), transparent); }
+.niche { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.nbox { border: 1px solid var(--line); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.nhead { display: flex; flex-direction: column; } .nlead { font-size: 13px; }
+.nrow { display: grid; grid-template-columns: 110px 1fr; gap: 8px; align-items: center; font-size: 12.5px; }
+.pill.on { outline: 2px solid var(--accent); }

@@ -791,6 +791,30 @@ const scoreBar = (v, max = 100, label) => v == null ? '–' : `<div class="sbar"
 const monthName = m => new Date(m + '-01T00:00:00').toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
 const bankPriceDate = S => { const d = S.banks.map(b => b.valuation['Price date']).filter(Boolean).sort().pop(); return d ? fdate(d) : '–'; };
 
+/* multi-line chart: series = [{name, pts:[[label, value]], color}], months on the x axis */
+const LC_COLS = ['#c9a24a', '#6c63d9', '#2e8b6e', '#d97757', '#6b6f76', '#4a90c9'];
+function lineChart(series, { w = 760, h = 260, unit = '%', dec = 2, step = false } = {}) {
+  const all = series.flatMap(s => s.pts.filter(p => p[1] != null));
+  if (!all.length) return '<p class="sub">No data.</p>';
+  const xs = [...new Set(all.map(p => p[0]))].sort(), xi = Object.fromEntries(xs.map((x, i) => [x, i]));
+  let lo = Math.min(...all.map(p => p[1])), hi = Math.max(...all.map(p => p[1])); const pad = (hi - lo) * 0.08 || 1; lo -= pad; hi += pad;
+  const L = 44, R = 10, T = 10, B = 26, X = i => L + i / Math.max(1, xs.length - 1) * (w - L - R), Y = v => T + (hi - v) / (hi - lo) * (h - T - B);
+  const ticks = 5, grid = [...Array(ticks + 1)].map((_, i) => lo + (hi - lo) * i / ticks);
+  const years = xs.filter((x, i) => x.endsWith('-01') || i === 0);
+  const path = s => { const p = s.pts.filter(q => q[1] != null && q[0] in xi); if (!p.length) return '';
+    let d = ''; p.forEach((q, i) => { const x = X(xi[q[0]]), y = Y(q[1]); if (!i) d += `M${x.toFixed(1)},${y.toFixed(1)}`; else if (step) d += `H${x.toFixed(1)}V${y.toFixed(1)}`; else d += `L${x.toFixed(1)},${y.toFixed(1)}`; });
+    return `<path d="${d}" fill="none" stroke="${s.color}" stroke-width="${s.thick ? 2.6 : 1.8}" stroke-linejoin="round"/>`; };
+  const lastv = s => { const p = s.pts.filter(q => q[1] != null); return p.length ? p[p.length - 1][1] : null; };
+  return `<div class="lchart"><svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img" aria-label="${esc(series.map(s => s.name).join(', '))}">
+    ${grid.map(g => `<line x1="${L}" x2="${w - R}" y1="${Y(g).toFixed(1)}" y2="${Y(g).toFixed(1)}" stroke="var(--line)"/><text x="${L - 6}" y="${(Y(g) + 4).toFixed(1)}" text-anchor="end" class="ax">${g.toFixed(dec > 1 ? 1 : dec)}${unit}</text>`).join('')}
+    ${years.map(x => `<text x="${X(xi[x]).toFixed(1)}" y="${h - 6}" text-anchor="middle" class="ax">${x.slice(0, 4)}</text>`).join('')}
+    ${series.map(path).join('')}</svg>
+    <div class="legend">${series.map(s => `<span><i style="background:${s.color}"></i>${esc(s.name)} <b>${lastv(s) == null ? '' : Number(lastv(s)).toFixed(dec) + unit}</b></span>`).join('')}</div></div>`;
+}
+const corrCell = v => v == null ? '<td class="num">–</td>' : `<td class="num"><span class="corr" style="--c:${v >= 0 ? 'var(--green)' : 'var(--red)'};--a:${Math.min(1, Math.abs(v)).toFixed(2)}">${v > 0 ? '+' : ''}${v.toFixed(2)}</span></td>`;
+const corrWord = v => v == null ? '' : Math.abs(v) >= 0.6 ? 'strong' : Math.abs(v) >= 0.3 ? 'moderate' : Math.abs(v) >= 0.15 ? 'weak' : 'no clear link';
+let SECTOR_NEWS = null;
+
 async function sector(tab) {
   if (!SECTOR) {
     view.innerHTML = '<p class="loading">Loading the financial sector…</p>';
@@ -799,7 +823,7 @@ async function sector(tab) {
   const S = SECTOR;
   if (!S) { view.innerHTML = '<h1>Financial sector</h1><p>The sector data file is not available yet.</p>'; return; }
   const I = S.industry, K = I.kpis;
-  const TABS_S = [['overview', 'Industry'], ['banks', 'Banks'], ['nonbanks', 'Insurers & other financials'], ['season', 'Results season'], ['method', 'How it works']];
+  const TABS_S = [['overview', 'Industry'], ['drivers', 'What drives banks'], ['rates', 'Interest rates'], ['share', 'Market share'], ['banks', 'Banks'], ['nonbanks', 'Insurers & other financials'], ['news', 'News'], ['season', 'Results season'], ['method', 'How it works']];
   tab = TABS_S.some(([k]) => k === tab) ? tab : 'overview';
   const sname = { 'Loans growth (y/y)': 'Loan growth (y/y)', 'Deposits growth (y/y)': 'Deposit growth (y/y)', 'Gross impaired loans ratio': 'Gross impaired loans ratio',
     'CASA ratio': 'CASA ratio (current + savings deposits)', 'CET1 ratio': 'CET1 capital ratio', 'Liquidity coverage ratio': 'Liquidity coverage ratio' };
@@ -868,13 +892,91 @@ async function sector(tab) {
   const methodP = `<div class="glass card"><h2>How this page is built</h2><ol class="biz-plain">${S.method.map(m => `<li>${esc(m)}</li>`).join('')}</ol>
       <p class="note">Last rebuilt ${fdate(S.built)}. Banks compared at ${fdate(S.peer_date)}. Banking-system data to ${monthName(I.month)}.</p></div>`;
 
-  const panels = { overview, banks, nonbanks, season, method: methodP };
+  // ---- what drives banks: index, factors, correlation
+  const D = S.drivers || {}, R = S.rates || {}, NI = S.niche || {};
+  const idxPts = (D.index || []).map(r => [r[0], r[1]]), kPts = (D.index || []).map(r => [r[0], r[2]]);
+  const lastI = idxPts.length ? idxPts[idxPts.length - 1][1] : null, lastK = kPts.length ? kPts[kPts.length - 1][1] : null;
+  const expWord = e => e === '+' ? 'Up together' : e === '-' ? 'Opposite' : 'Either way';
+  const drivers = `<div class="glass card"><h2>Malaysian banks index vs the market</h2>
+      ${lineChart([{ name: 'Stock Analyst banks index (9 banks, total return)', pts: idxPts, color: LC_COLS[0], thick: 1 }, { name: 'FBM KLCI (price, rebased)', pts: kPts, color: LC_COLS[4] }], { unit: '', dec: 0 })}
+      <p class="note">Both start at 100 in ${idxPts.length ? monthName(idxPts[0][0]) : ''}. Banks have returned ${lastI ? (lastI - 100).toFixed(0) + '%' : '–'} including dividends, against ${lastK ? (lastK - 100).toFixed(0) + '%' : '–'} for the KLCI's price.
+        The index weights each bank by its market value: ${Object.entries(D.weights || {}).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, v]) => esc(k) + ' ' + fpct(v, 0)).join(', ')} and others. Hong Leong Financial is left out because it owns Hong Leong Bank.</p></div>
+    <div class="glass card"><h2>What moves bank shares, and how closely</h2>
+      <div class="tablewrap"><table><thead><tr><th>Factor</th><th>Latest</th><th>Expected link</th><th class="num">Month to month</th><th class="num">Over 12 months</th><th>Reading</th><th>Last 5 years</th><th>Why it matters</th></tr></thead>
+      <tbody>${(D.correlations || []).map(c => `<tr><td><b>${esc(c.factor)}</b></td><td>${c.latest == null ? '–' : Number(c.latest).toLocaleString('en-GB', { maximumFractionDigits: 2 })}<br><small class="sub">${esc(c.latest_month || '')}</small></td>
+        <td>${expWord(c.expected)}</td>${corrCell(c.monthly)}${corrCell(c.yearly)}<td><small>${esc(corrWord(c.yearly ?? c.monthly))}</small></td>
+        <td>${spark((D.factor_series || {})[c.factor] || [], 110, 30)}</td><td><small>${esc(c.why)}</small></td></tr>`).join('')}</tbody></table></div>
+      <p class="note">Correlation runs from −1 to +1: +1 means bank shares always rose when the factor rose, −1 always fell, 0 no link. "Month to month" compares monthly changes;
+        "over 12 months" compares year-on-year changes (overlapping windows, so read it as a pattern). ${esc(D.note || '')}</p></div>
+    <div class="glass card"><h2>Bank shares after each interest-rate decision</h2>
+      <div class="tablewrap"><table><thead><tr><th>Decision</th><th class="num">Change</th><th class="num">New OPR</th><th class="num">Banks index, next 3 months</th></tr></thead>
+      <tbody>${(D.opr_events || []).slice().reverse().map(e => `<tr><td>${fdate(e.date)}</td><td class="num">${e.change > 0 ? '+' : ''}${Number(e.change).toFixed(2)} pts</td><td class="num">${Number(e.level).toFixed(2)}%</td><td class="num">${spct(e.bank_index_3m_after == null ? null : e.bank_index_3m_after / 100)}</td></tr>`).join('')}</tbody></table></div>
+      <p class="note">${(() => { const ev = D.opr_events || [], up = ev.filter(e => e.change > 0 && e.bank_index_3m_after != null).map(e => e.bank_index_3m_after), dn = ev.filter(e => e.change < 0 && e.bank_index_3m_after != null);
+        return (up.length ? `After the ${up.length} rate rises shown, the banks index moved between ${Math.min(...up).toFixed(1)}% and ${Math.max(...up).toFixed(1)}% over the next three months. ` : '')
+          + dn.map(e => `After the ${fdate(e.date)} cut it moved ${e.bank_index_3m_after > 0 ? '+' : ''}${e.bank_index_3m_after.toFixed(1)}%. `).join('')
+          + 'Rate decisions alone have not set the direction of bank shares; growth, the ringgit and the wider market matter as much.'; })()}</p></div>`;
+
+  // ---- interest rates: history line chart and each bank's published rates
+  const sy = R.system || {}, cut = (a, s) => (a || []).filter(p => p[0] >= s);
+  const rateHist = `<div class="glass card"><h2>Interest rates over time</h2>
+      ${lineChart([{ name: 'OPR (Bank Negara policy rate)', pts: cut(sy['OPR (%)'], '2019-01'), color: LC_COLS[0], thick: 1 },
+                   { name: 'Average lending rate, all loans', pts: cut(sy['Average lending rate, outstanding loans (%)'], '2019-01'), color: LC_COLS[1] },
+                   { name: 'Base rate (weighted)', pts: cut(sy['Base rate, weighted (%)'], '2019-01'), color: LC_COLS[5] },
+                   { name: '12-month fixed deposit', pts: cut(sy['Fixed deposit 12-month (%)'], '2019-01'), color: LC_COLS[2] },
+                   { name: 'Savings deposit', pts: cut(sy['Savings deposit (%)'], '2019-01'), color: LC_COLS[4] },
+                   { name: '10-year government bond', pts: cut(sy['10-year government bond yield (%)'], '2019-01'), color: LC_COLS[3] }], { unit: '%', dec: 2 })}
+      <p class="note">Monthly averages for commercial banks. When the OPR moves, deposit rates and the base rate follow within a month or two; the average rate on all outstanding loans moves more slowly.
+        ${esc((R.sources || {}).system || '')}</p></div>
+    <div class="glass card"><h2>The bank's spread: what it charges minus what it pays</h2>
+      ${lineChart([{ name: 'Average lending rate minus 12-month deposit rate', pts: cut(sy['Lending-deposit spread (pts)'], '2015-01'), color: LC_COLS[0], thick: 1 }], { unit: ' pts', dec: 2, h: 200 })}
+      <p class="note">A rough guide to margins: the wider the gap, the more banks earn on each ringgit they lend.</p></div>`;
+  const pb = (R.per_bank || []).slice().sort((a, b) => ((a.conventional || a.islamic || {}).base_rate || 9) - ((b.conventional || b.islamic || {}).base_rate || 9));
+  const rateBanks = `<div class="glass card"><h2>Each bank's published lending rates today</h2>
+      <div class="tablewrap"><table><thead><tr><th>Bank</th><th class="num">Base rate</th><th class="num">Base lending rate</th><th class="num">Typical new home-loan rate</th><th class="num">Islamic arm: base rate</th><th class="num">Islamic: typical financing rate</th></tr></thead>
+      <tbody>${pb.map(b => { const c = b.conventional || {}, i = b.islamic || {}; const f = v => v == null ? '–' : Number(v).toFixed(2) + '%';
+        return `<tr><td><b>${esc(b.bank)}</b></td><td class="num">${f(c.base_rate)}</td><td class="num">${f(c.base_lending_rate)}</td><td class="num">${f(c.effective_lending_rate)}</td><td class="num">${f(i.base_rate)}</td><td class="num">${f(i.effective_financing_rate)}</td></tr>`; }).join('')}</tbody></table></div>
+      <p class="note">${esc((R.notes || {})['Base rate'] || '')} ${esc((R.notes || {})['Effective lending rate'] || '')} Source: ${esc((R.sources || {}).per_bank || '')}.
+        A lower base rate usually means cheaper funding (for example Maybank's large pool of current and savings deposits).</p></div>`;
+
+  // ---- market share and niche leaders
+  const ms = NI.market_share || [];
+  const share = `<div class="two"><div class="glass card"><h2>Share of all bank loans in Malaysia</h2>
+      ${ms.map(m => `<div class="row-item"><span><b>${esc(m.bank)}</b><br><small class="sub">RM${Number(m.domestic_loans_rm_bn).toLocaleString('en-GB', { maximumFractionDigits: 0 })} bn of Malaysian loans</small></span><span style="min-width:45%">${scoreBar(m.share_of_system_loans * 100, 20, fpct(m.share_of_system_loans))}</span></div>`).join('')}
+      <p class="note">Malaysian loans of each bank against the banking system's RM${NI.system_loans_rm_bn ? Number(NI.system_loans_rm_bn).toLocaleString('en-GB', { maximumFractionDigits: 0 }) : '–'} bn (Bank Negara, ${esc(NI.system_month || '')}). The rest is held by other local, foreign, Islamic and development banks.</p></div>
+    <div class="glass card"><h2>Deposits and cheap funding</h2>
+      ${(NI.deposits || []).map(d => `<div class="row-item"><span><b>${esc(d.bank)}</b><br><small class="sub">RM${d.deposits_rm_bn ?? '–'} bn deposits · ${fpct(d.casa_ratio)} in current and savings accounts</small></span><span style="min-width:40%">${scoreBar((d.casa_share || 0) * 100, 40, fpct(d.casa_share) + ' of CASA')}</span></div>`).join('')}
+      <p class="note">CASA = current and savings accounts, the cheapest money a bank can lend out. Share is of the 9 listed banks combined.</p></div></div>
+    <div class="glass card"><h2>Who leads which business</h2>
+      <div class="niche">${(NI.niches || []).map(n => `<div class="nbox"><div class="nhead"><b>${esc(n.niche)}</b><small class="sub">${esc(n.desc)}</small></div>
+        <div class="nlead">Leader: <b>${esc(n.leader || '–')}</b></div>
+        ${n.banks.slice(0, 5).map(b => `<div class="nrow"><span>${esc(b.bank)}</span>${scoreBar(b.share * 100, 50, fpct(b.share, 0))}</div>`).join('')}
+        <small class="sub">RM${n.total_rm_bn} bn across ${n.covered} banks${n.system_rm_bn ? ` · banking system RM${Number(n.system_rm_bn).toLocaleString('en-GB', { maximumFractionDigits: 0 })} bn` : ''}</small></div>`).join('')}</div>
+      <p class="note">${esc(NI.note || '')} Measured at ${NI.asof ? fdate(NI.asof) : '–'}. Not every bank publishes every breakdown, so a niche may cover fewer than 9 banks.</p></div>`;
+
+  // ---- news (public headlines with links; loaded on demand)
+  const newsP = `<div class="glass card"><h2>Financial-sector news</h2><div class="pills" id="ntopics" style="margin:0 0 10px"></div><div id="nlist"><p class="loading">Loading headlines…</p></div>
+      <p class="note">Headlines and links from public business news feeds (Bernama, New Straits Times, Free Malaysia Today, Malay Mail, Borneo Post), refreshed each evening and tagged by company and topic. Read the full story at the source.</p></div>`;
+
+  const panels = { overview, drivers, rates: rateHist + rateBanks, share, banks, nonbanks, news: newsP, season, method: methodP };
   view.innerHTML = `<h1>Financial sector</h1>
     <div class="pills" style="margin:-8px 0 14px"><span class="pill">10 banks · 13 insurers and other financials</span><span class="pill">Banks compared at ${fdate(S.peer_date)}</span><span class="pill">Banking system: ${monthName(I.month)}</span><span class="pill">Rebuilt ${fdate(S.built)}</span></div>
     <nav class="tabs" id="stabs">${TABS_S.map(([k, t]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}">${t}</button>`).join('')}</nav>
     <section class="panel stack enter">${panels[tab]}</section>
     <p class="note">Analysis of figures the companies reported. Not investment advice.</p>`;
   $('#stabs').onclick = e => { const t = e.target.closest('button'); if (t) location.hash = '#/sector/' + t.dataset.t; };
+  if (tab === 'news') {
+    if (!SECTOR_NEWS) SECTOR_NEWS = await fetch('data/news/financial.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+    const N = SECTOR_NEWS, list = $('#nlist'), tp = $('#ntopics'); if (!list) return;
+    if (!N) { list.innerHTML = '<p>No headlines yet.</p>'; return; }
+    const topics = ['all', 'banks', 'rates', 'insurance', 'economy', 'ringgit', 'oil', 'markets', 'results'];
+    const draw = t => { tp.innerHTML = topics.map(x => `<button class="pill ${x === t ? 'on' : ''}" data-t="${x}" style="cursor:pointer;border:0">${x === 'all' ? 'All' : x[0].toUpperCase() + x.slice(1)}</button>`).join('');
+      const it = N.items.filter(i => t === 'all' || (i.topics || []).includes(t)).slice(0, 80);
+      list.innerHTML = it.map(i => `<div class="row-item"><span><a href="${esc(i.url)}" target="_blank" rel="noopener" style="text-decoration:underline"><b>${esc(i.title)}</b></a><br>
+        <small class="sub">${esc(i.source)} · ${i.published ? new Date(i.published).toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }) : ''}${(i.companies || []).length ? ' · ' + i.companies.map(c => BYID[c.id] ? `<a href="#/stock/${esc(c.id)}">${esc(BYID[c.id].t)}</a>` : esc(c.name)).join(', ') : ''}</small></span>
+        <small class="sub" style="text-align:right">${(i.topics || []).map(esc).join(' · ')}</small></div>`).join('') || '<p>No headlines for this topic in the last 30 days.</p>'; };
+    tp.onclick = e => { const b = e.target.closest('button'); if (b) draw(b.dataset.t); };
+    draw('all');
+  }
 }
 
 /* ---------- router ---------- */

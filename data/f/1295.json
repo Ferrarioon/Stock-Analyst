@@ -1,7 +1,7 @@
 {
  "code": "1295",
- "price": 4.5,
- "priceDate": "2026-11-18",
+ "price": 4.49,
+ "priceDate": "2026-11-20",
  "unit": "RM million",
  "fyNote": "Financial year ends 31 December. 'Net income' is a bank's revenue: interest earned minus interest paid, plus Islamic banking, fund management and fee income. Figures are the sum of the quarters reported in the quarterly reports; the latest is Q3 FY2026 (quarter to 30 Sep 2026), unaudited.",
  "sources": [
@@ -385,12 +385,12 @@
  "metrics": [
   {
    "label": "Market value",
-   "value": "RM87.2 bn",
-   "plain": "What the whole company costs at today's share price: RM87.2 billion."
+   "value": "RM87.0 bn",
+   "plain": "What the whole company costs at today's share price: RM87.0 billion."
   },
   {
    "label": "P/E (last 12 months)",
-   "value": "12.1x",
+   "value": "12.0x",
    "plain": "You pay about RM12 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {

@@ -1,7 +1,7 @@
 {
  "code": "1066",
- "price": 7.63,
- "priceDate": "2026-11-18",
+ "price": 7.65,
+ "priceDate": "2026-11-20",
  "unit": "RM million",
  "fyNote": "Financial year ends 31 December. 'Net income' is a bank's revenue: interest earned minus interest paid, plus Islamic banking and fee income. Figures are the sum of the quarters reported in the quarterly reports; the latest is Q2 FY2026 (quarter to 30 Jun 2026), unaudited.",
  "sources": [
@@ -367,8 +367,8 @@
  "metrics": [
   {
    "label": "Market value",
-   "value": "RM33.3 bn",
-   "plain": "What the whole company costs at today's share price: RM33.3 billion."
+   "value": "RM33.4 bn",
+   "plain": "What the whole company costs at today's share price: RM33.4 billion."
   },
   {
    "label": "P/E (last 12 months)",
@@ -382,8 +382,8 @@
   },
   {
    "label": "Dividend yield (dividends paid in the last 12 months)",
-   "value": "6.6%",
-   "plain": "For every RM100 of shares, about RM6.6 a year comes back as cash dividends."
+   "value": "6.5%",
+   "plain": "For every RM100 of shares, about RM6.5 a year comes back as cash dividends."
   },
   {
    "label": "Payout ratio",

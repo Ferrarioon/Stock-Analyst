@@ -1,7 +1,7 @@
 {
  "code": "5258",
- "price": 1.9,
- "priceDate": "2026-11-18",
+ "price": 1.87,
+ "priceDate": "2026-11-20",
  "unit": "RM million",
  "fyNote": "Financial year ends 31 December. As a full Islamic bank its revenue is financing and investment income after the share paid to depositors; impairment is added back so costs compare with other banks. Figures are the sum of the quarters reported in the quarterly reports; the latest is Q2 FY2026 (quarter to 30 Jun 2026), unaudited.",
  "sources": [
@@ -325,12 +325,12 @@
  "metrics": [
   {
    "label": "Market value",
-   "value": "RM4.3 bn",
-   "plain": "What the whole company costs at today's share price: RM4.3 billion."
+   "value": "RM4.2 bn",
+   "plain": "What the whole company costs at today's share price: RM4.2 billion."
   },
   {
    "label": "P/E (last 12 months)",
-   "value": "7.7x",
+   "value": "7.6x",
    "plain": "You pay about RM8 for every RM1 of yearly profit. A high number means investors expect growth."
   },
   {
@@ -340,8 +340,8 @@
   },
   {
    "label": "Dividend yield (dividends paid in the last 12 months)",
-   "value": "7.6%",
-   "plain": "For every RM100 of shares, about RM7.6 a year comes back as cash dividends."
+   "value": "7.7%",
+   "plain": "For every RM100 of shares, about RM7.7 a year comes back as cash dividends."
   },
   {
    "label": "Payout ratio",

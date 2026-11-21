@@ -15,13 +15,13 @@ let IDX, CALLS, BYID = {}, CALLS_BY = {};
 
 /* ---------- measures ---------- */
 const isBuy = c => c.call === 'BUY' && c.scored;
-function hitStats(calls) {                      // Buy calls: target reached within 12 months
+function hitStats(calls) {                      // Bullish calls: target reached within 12 months
   const b = calls.filter(isBuy), hit = b.filter(c => c.outcome === 'Hit').length, miss = b.filter(c => c.outcome === 'Missed').length;
   return { hit, miss, res: hit + miss, rate: hit + miss ? hit / (hit + miss) : null,
            days: avg(b.filter(c => c.outcome === 'Hit' && c.days != null).map(c => c.days)), dd: avg(b.filter(c => c.maxdd != null).map(c => c.maxdd)),
            t6: avg(b.filter(c => c.t6m != null).map(c => c.t6m)) };
 }
-function cutStats(calls, stop) {                // long Buy calls with a cut loss
+function cutStats(calls, stop) {                // long Bullish calls with a cut loss
   const b = calls.filter(c => isBuy(c) && c.upside > 0 && c.maxdd != null);
   const stopped = b.filter(c => c.maxdd <= -stop).length;
   const ok = b.filter(c => c.maxdd > -stop), hit = ok.filter(c => c.outcome === 'Hit').length, miss = ok.filter(c => c.outcome === 'Missed').length;
@@ -33,7 +33,9 @@ function accuracy(st) {
   return st.rate >= .6 ? ['High', 'high'] : st.rate >= .4 ? ['Medium', 'medium'] : ['Low', 'low'];
 }
 const accBadge = st => { const [t, k] = accuracy(st); return `<span class="badge ${k}">${t}</span>`; };
-const callBadge = c => `<span class="badge ${c === 'BUY' ? 'buy' : c === 'SELL' ? 'sell' : ''}">${esc(c)}</span>`;
+const CALL_WORD = { BUY: 'Bullish', SELL: 'Bearish', NEUTRAL: 'Neutral', 'NOT RATED': 'Not rated' };   // shown wording; data keeps the broker codes
+const callWord = c => CALL_WORD[c] || c;
+const callBadge = c => `<span class="badge ${c === 'BUY' ? 'buy' : c === 'SELL' ? 'sell' : ''}">${esc(callWord(c))}</span>`;
 function status(c, stop) {
   if (!c.scored) return ['No price data', ''];
   if (c.upside > 0 && c.maxdd != null && c.maxdd <= -stop) return ['Hit cut loss', 'stop'];
@@ -84,7 +86,7 @@ function home() {
     <div class="glass hero"><small>Analyst target prices, checked</small>
       <div class="big">How often do broker target prices actually get reached?</div>
       <div class="pills"><span class="pill">${IDX.reports.toLocaleString()} reports</span><span class="pill">${IDX.stocks.length} stocks</span>
-        <span class="pill">${IDX.brokers.map(esc).join(' · ')}</span><span class="pill">Buy calls reaching target: ${pct(all.rate)}</span>
+        <span class="pill">${IDX.brokers.map(esc).join(' · ')}</span><span class="pill">Bullish calls reaching target: ${pct(all.rate)}</span>
         <span class="pill">Prices to ${fdate(IDX.asof)}</span></div></div>
     <div class="actions">
       <a class="action" href="#/stocks"><span>🔍</span>Stocks</a><a class="action" href="#/latest"><span>🗓️</span>Latest</a>
@@ -92,12 +94,12 @@ function home() {
     <div class="two">
       <div><h2>Latest reports</h2><div class="glass card">${latest.map(c => `<div class="row-item"><span>${stockLink(c.id)}<br><small>${esc(c.broker)} · ${fdate(c.date)}</small></span>
         <span style="text-align:right">${callBadge(c.call)}<br><small>TP ${num(c.tp)} (${c.upside == null ? '–' : (c.upside > 0 ? '+' : '') + (c.upside * 100).toFixed(0) + '%'})</small></span></div>`).join('')}</div></div>
-      <div><h2>Most reliable Buy calls</h2><div class="glass card">${reliable.map(s => `<div class="row-item"><span>${stockLink(s.id)}<br><small>${esc(s.sector || '')}</small></span>
+      <div><h2>Most reliable Bullish calls</h2><div class="glass card">${reliable.map(s => `<div class="row-item"><span>${stockLink(s.id)}<br><small>${esc(s.sector || '')}</small></span>
         <span style="text-align:right"><b>${pct(s.st.rate)}</b><br><small>${s.st.hit} of ${s.st.res} reached target</small></span></div>`).join('')}</div></div>
     </div></div>
     <div class="glass right"><h2 style="margin:0">Find a stock</h2>${searchBox('q-home', 'Search here…')}
       <div class="tiles">${sectors.map(([s, n]) => `<a class="tile" href="#/stocks?sector=${encodeURIComponent(s)}"><b>${n}</b>${esc(s)}</a>`).join('')}</div>
-      <h2 style="margin:10px 0 0">Broker scoreboard</h2><div class="sub">Buy calls since 2023 that reached their target</div>
+      <h2 style="margin:10px 0 0">Broker scoreboard</h2><div class="sub">Bullish calls since 2023 that reached their target</div>
       ${board.map(([b, st]) => `<div class="stat"><small>${esc(b)} · ${st.res.toLocaleString()} resolved calls</small><b>${pct(st.rate)}</b></div>`).join('')}
       <a class="btn" style="text-align:center" href="#/brokers">Compare brokers</a></div></div>`;
   wireSearch('q-home');
@@ -108,9 +110,9 @@ function stocks(params) {
   view.innerHTML = `<div class="head"><h1>Stocks</h1></div>
     <div class="filters"><label>Search<input id="f-q" placeholder="Name or code"></label>
       <label>Sector<select id="f-sec"><option value="">All sectors</option>${sectors.map(s => `<option>${esc(s)}</option>`).join('')}</select></label>
-      <label>Sort by<select id="f-sort"><option value="t">Name</option><option value="rate">Buy hit rate</option><option value="n">Number of reports</option><option value="up">Upside to latest target</option></select></label></div>
+      <label>Sort by<select id="f-sort"><option value="t">Name</option><option value="rate">Bullish hit rate</option><option value="n">Number of reports</option><option value="up">Upside to latest target</option></select></label></div>
     <div class="glass card"><div class="tablewrap"><table><thead><tr><th>Stock</th><th>Company</th><th>Sector</th><th class="num">Last price</th><th class="num">Latest target</th>
-      <th class="num">Upside</th><th class="num">Reports</th><th class="num">Buy calls reached target</th><th>Accuracy</th></tr></thead><tbody id="rows"></tbody></table></div>
+      <th class="num">Upside</th><th class="num">Reports</th><th class="num">Bullish calls reached target</th><th>Accuracy</th></tr></thead><tbody id="rows"></tbody></table></div>
       <p class="note" id="count"></p></div>`;
   $('#f-sec').value = params.get('sector') || '';
   const lastTp = s => { const l = Object.values(s.latest).sort((a, b) => b.d.localeCompare(a.d))[0]; return l && l.tp; };
@@ -375,7 +377,7 @@ function overviewPanel(s, b, f, calls, all, avgTp) {
     cards.push(story('Price tag', spic('pricetag', 'pricetag'), `<div class="s-num">${pe ? esc(pe.value) : '–'}</div><b>times its yearly profit</b><small>${pe ? esc(plainOf(pe)) : ''}</small>`, { ai: 1, cls: 'photo' }));
   }
   cards.push(story('What analysts say', spic('analysts', 'binoculars'), `<div class="s-num">${avgTp ? 'RM' + num(avgTp) : '–'}</div><b>average target${avgTp && s.last ? ` (${(avgTp / s.last - 1) >= 0 ? '+' : ''}${((avgTp / s.last - 1) * 100).toFixed(0)}% from today)` : ''}</b>
-    <small>${all.res ? `Past Buy calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1, cls: 'photo' }));
+    <small>${all.res ? `Past Bullish calls on this stock reached target ${pct(all.rate)} of the time (${all.hit} of ${all.res})` : 'Not enough past calls to judge accuracy'}</small>`, { ai: 1, cls: 'photo' }));
   const chips = [];
   if (f) {
     chips.push([f.growth.revenue >= 0 ? 'Growing revenue' : 'Revenue falling', f.growth.revenue >= 0 ? 'high' : 'low']);
@@ -552,10 +554,10 @@ async function stock(id, tab) {
     business: b ? businessCard(b) + (f && f.supply ? supplyBlock(f.supply) : '') : '', financial: f ? moneyPanel(f) : '', health: f ? healthPanel(f) : '', valuation: f ? valuationPanel(f) : '', drivers: f ? driversPanel(f) : '',
     analysts: `<div class="glass card"><h2>Latest call and accuracy by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th>Latest report</th><th>Call</th>
       <th class="num">Price at call</th><th class="num">Target price</th><th class="num">Latest price</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th>Analyst</th>
-      <th class="num">Buy calls reached target (this stock)</th><th>Accuracy</th><th class="num">Avg days to target</th>
+      <th class="num">Bullish calls reached target (this stock)</th><th>Accuracy</th><th class="num">Avg days to target</th>
       <th class="num">Avg worst drop</th><th class="num">Broker, all stocks</th><th class="num">Analyst, all stocks</th></tr></thead><tbody>${rows}</tbody></table></div>
       <p class="note">Change since call = latest price vs the price on the report. Latest price to target = how far the price still has to move to reach the target.
-        Accuracy = share of resolved Buy calls whose target was reached within 12 months: High 60%+, Medium 40–60%, Low under 40%; under 5 resolved calls is too few to judge.</p></div>
+        Accuracy = share of resolved Bullish calls whose target was reached within 12 months: High 60%+, Medium 40–60%, Low under 40%; under 5 resolved calls is too few to judge.</p></div>
     <div class="glass card"><h2>All reports on this stock</h2><div class="tablewrap" style="max-height:520px"><table><thead><tr><th>Date</th><th>Broker</th><th>Call</th><th class="num">Price at call</th><th class="num">Target</th>
       <th class="num">Upside at call</th><th class="num">Change since call</th><th class="num">Latest price to target</th><th class="num">Up from 52w low</th><th class="num">Off 52w high</th><th>Result</th><th class="num">Days to target</th><th class="num">Worst drop</th><th class="num">6m return</th><th>Analyst</th></tr></thead>
       <tbody>${calls.map(c => { const [t, k] = status(c, 9); return `<tr><td>${fdate(c.date)}</td><td>${bdot(c.broker)}${esc(c.broker)}</td><td>${callBadge(c.call)}</td><td class="num">${num(c.price)}</td><td class="num">${num(c.tp)}</td>
@@ -571,7 +573,7 @@ async function stock(id, tab) {
         <label><input type="checkbox" data-l="ma50" checked><i class="ln" style="background:#c9a24a"></i>50-day avg</label><label><input type="checkbox" data-l="ma200" checked><i class="ln" style="background:#e0913a"></i>200-day avg</label>
         <label><input type="checkbox" data-l="band"><i class="ln dash"></i>52-week high / low</label><label><input type="checkbox" data-l="tp" checked>Target lines</label></div>
       <canvas id="chart" class="chart"></canvas>
-      <p class="note">Scroll on the chart to zoom, drag to move, double-click to show everything. Markers sit at the report date in each broker's colour: ▲ Buy, ▼ Sell, ● Neutral.
+      <p class="note">Scroll on the chart to zoom, drag to move, double-click to show everything. Markers sit at the report date in each broker's colour: ▲ Bullish, ▼ Bearish, ● Neutral.
         Dashed lines show each broker's target until its next report. Prices are adjusted for splits and bonus issues, not for dividends.</p></div>
     <div class="glass card" id="perf"></div>`,
   };
@@ -718,7 +720,7 @@ function businessCard(b) {
 function latest() {
   view.innerHTML = `<h1>Latest reports</h1>
     <div class="filters"><label>Broker<select id="l-b"><option value="">All brokers</option>${IDX.brokers.map(b => `<option>${esc(b)}</option>`).join('')}</select></label>
-      <label>Call<select id="l-c"><option value="">All calls</option><option>BUY</option><option>NEUTRAL</option><option>SELL</option><option>NOT RATED</option></select></label>
+      <label>Call<select id="l-c"><option value="">All calls</option><option value="BUY">Bullish</option><option value="NEUTRAL">Neutral</option><option value="SELL">Bearish</option><option value="NOT RATED">Not rated</option></select></label>
       <label>Reports from<input type="date" id="l-from" value="${daysAgo(IDX.last, 6)}"></label><label>Reports to<input type="date" id="l-to" value="${IDX.last}"></label>
       <label>Cut loss %<input type="number" id="l-stop" value="10" min="0" max="100" step="1"></label></div>
     <div class="glass card"><div class="tablewrap"><table><thead><tr><th>Date</th><th>Broker</th><th>Stock</th><th>Call</th><th class="num">Price on report</th><th class="num">Target</th><th class="num">Upside</th>
@@ -746,7 +748,7 @@ function brokers() {
     const from = $('#b-p').value, stop = (+$('#b-stop').value || 0) / 100 || 9, list = CALLS.filter(c => !from || c.date >= from);
     const row = (name, l) => { const st = hitStats(l), cs = cutStats(l, stop); return `<tr><td><b>${esc(name)}</b></td><td class="num">${l.length.toLocaleString()}</td><td class="num">${st.res.toLocaleString()}</td>
       <td class="num"><b>${pct(st.rate)}</b></td><td class="num">${pct(cs.rate)}</td><td class="num">${pct(cs.stopped)}</td><td class="num">${st.days == null ? '–' : Math.round(st.days)}</td><td class="num">${spct(st.dd)}</td><td class="num">${spct(st.t6)}</td></tr>`; };
-    $('#out').innerHTML = `<div class="glass card"><h2>Buy calls by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th class="num">Reports</th><th class="num">Buy calls resolved</th><th class="num">Reached target</th>
+    $('#out').innerHTML = `<div class="glass card"><h2>Bullish calls by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th class="num">Reports</th><th class="num">Bullish calls resolved</th><th class="num">Reached target</th>
       <th class="num">Reached target with cut loss</th><th class="num">Stopped out</th><th class="num">Avg days to target</th><th class="num">Avg worst drop</th><th class="num">Avg 6m return</th></tr></thead>
       <tbody>${IDX.brokers.map(b => row(b, list.filter(c => c.broker === b))).join('')}${row('All brokers', list)}</tbody></table></div>
       <p class="note">Reached target = the daily high touched the target price within 12 months. With a cut loss, a call counts as stopped out if the price first fell that far below the report price.</p></div>
@@ -763,11 +765,11 @@ function method() {
   view.innerHTML = `<h1>How it works</h1><div class="glass card prose">
     <h3>What this measures</h3><ul>
       <li><b>Reached target:</b> the share price's daily high touched the analyst's target price within 12 months of the report.</li>
-      <li><b>Accuracy rating:</b> share of resolved Buy calls that reached target. High is 60% or more, Medium 40–60%, Low under 40%. Fewer than 5 resolved calls is too few to judge.</li>
+      <li><b>Accuracy rating:</b> share of resolved Bullish calls that reached target. High is 60% or more, Medium 40–60%, Low under 40%. Fewer than 5 resolved calls is too few to judge.</li>
       <li><b>Worst drop:</b> the lowest price between the report and the day the target was reached (or the end of the 12 months).</li>
       <li><b>Cut loss:</b> a call counts as stopped out if the price fell that far below the report price before reaching the target.</li>
       <li><b>Up from 52-week low / off 52-week high:</b> where the report price stood against the previous 12 months' lowest and highest prices.</li>
-      <li><b>Calls:</b> shown as Buy, Neutral, Sell or Not Rated. Kenanga's Outperform, Market Perform and Underperform are mapped to Buy, Neutral and Sell.</li></ul>
+      <li><b>Calls:</b> shown as Bullish, Neutral, Bearish or Not Rated, not as buy or sell advice. A broker's Buy or Outperform is shown as Bullish, Hold or Market Perform as Neutral, and Sell or Underperform as Bearish.</li></ul>
     <h3>Data</h3><ul><li>${IDX.reports.toLocaleString()} company reports from ${IDX.brokers.map(esc).join(', ')}, ${fdate(IDX.first)} to ${fdate(IDX.last)}.</li>
       <li>Prices and dividends to ${fdate(IDX.asof)}; data refreshed ${esc(IDX.generated)}.</li>
       <li>Reports whose printed price does not match the market price, or whose stock has no price history, are left out of the accuracy figures.</li>

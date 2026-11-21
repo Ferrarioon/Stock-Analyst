@@ -43,10 +43,30 @@ function status(c, stop) {
 }
 
 /* ---------- data ---------- */
+/* Stocks filed under an old or wrong code: their calls belong to the listed stock on the right. */
+const ALIAS = { '8236': '5236', '2615': '7052', '5625': '5657', '5861': '5681', '6384': '6084', '9509': '9059', '5235': '5235SS',
+  xAMSKenanga: '0399', xBFIELDMKRHB: '0470', xECOSYSKenanga: '0477', xIHHMKRHB: '5225', xSENFONGMKRHB: '5308', xMMHEMKRHB: '5186' };
+const STILL_LISTED = new Set(['5235SS']);   // KLCCP stapled securities: listed, but not in the equities price list
+let CALLS_ALL, DELISTED = [];
 async function load() {
-  const [idx, calls] = await Promise.all([fetch('data/index.json', { cache: 'no-cache' }).then(r => r.json()), fetch('data/calls.json', { cache: 'no-cache' }).then(r => r.json())]);
+  const get = u => fetch(u, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null);
+  const [idx, calls, master] = await Promise.all([fetch('data/index.json', { cache: 'no-cache' }).then(r => r.json()), fetch('data/calls.json', { cache: 'no-cache' }).then(r => r.json()), get('data/stock_master.json')]);
   IDX = idx;
-  CALLS = calls.rows.map(r => Object.fromEntries(calls.fields.map((f, i) => [f, r[i]])));
+  const M = {}; (master?.stocks || []).forEach(m => { M[m.code] = m; });
+  CALLS_ALL = calls.rows.map(r => Object.fromEntries(calls.fields.map((f, i) => [f, r[i]])));
+  const ids = new Set(IDX.stocks.map(s => s.id));
+  IDX.stocks.forEach(s => {                                  // a duplicate whose real stock has no page of its own takes the real code
+    const to = ALIAS[s.id];
+    if (to && !ids.has(to)) { s.code = to; s.board = M[to]?.market || s.board; s.sector = M[to]?.sector || s.sector; if (M[to]) s.name = M[to].long; }
+  });
+  CALLS_ALL.forEach(c => { const to = ALIAS[c.id]; if (to && ids.has(to)) c.id = to; });
+  const merged = s => ALIAS[s.id] && ids.has(ALIAS[s.id]);
+  const delisted = s => !merged(s) && ['Not listed now', 'Unmapped'].includes(s.board) && !(master && M[s.code]) && !STILL_LISTED.has(s.code);
+  DELISTED = IDX.stocks.filter(delisted);
+  const gone = new Set([...DELISTED, ...IDX.stocks.filter(merged)].map(s => s.id));
+  IDX.stocks = IDX.stocks.filter(s => !gone.has(s.id));
+  IDX.stocks.forEach(s => { if (STILL_LISTED.has(s.code)) { s.board = 'Main'; if (s.sector === '(not listed)') s.sector = 'Real Estate Investment Trusts'; } });
+  CALLS = CALLS_ALL.filter(c => !gone.has(c.id));             // lists show listed stocks only; broker accuracy still counts every past call
   IDX.stocks.forEach(s => { BYID[s.id] = s; CALLS_BY[s.id] = []; });
   CALLS.forEach(c => (CALLS_BY[c.id] ||= []).push(c));
   IDX.stocks.forEach(s => { s.st = hitStats(CALLS_BY[s.id]); });
@@ -75,12 +95,12 @@ const stockLink = id => BYID[id] ? `<a href="#/stock/${esc(id)}"><b>${esc(BYID[i
 
 /* ---------- pages ---------- */
 function home() {
-  const all = hitStats(CALLS), since = '2023-01-01';
+  const all = hitStats(CALLS_ALL), since = '2023-01-01';
   const latest = CALLS.slice(0, 7);
   const reliable = IDX.stocks.filter(s => s.st.res >= 8).sort((a, b) => b.st.rate - a.st.rate || b.st.res - a.st.res).slice(0, 7);
   const sectors = Object.entries(IDX.stocks.reduce((m, s) => { if (s.sector && s.sector !== '(not listed)') m[s.sector] = (m[s.sector] || 0) + 1; return m; }, {}))
     .sort((a, b) => b[1] - a[1]).slice(0, 9);
-  const board = IDX.brokers.map(b => [b, hitStats(CALLS.filter(c => c.broker === b && c.date >= since))]);
+  const board = IDX.brokers.map(b => [b, hitStats(CALLS_ALL.filter(c => c.broker === b && c.date >= since))]);
   view.innerHTML = `<div class="home"><div>
     <h1>Welcome</h1>
     <div class="glass hero"><small>Analyst target prices, checked</small>
@@ -534,8 +554,8 @@ async function stock(id, tab) {
   const [b, f] = await Promise.all([get(`data/b/${encodeURIComponent(id)}.json`), get(`data/f/${encodeURIComponent(id)}.json`)]);
   const latestCall = br => calls.find(c => c.broker === br);
   const rows = IDX.brokers.filter(br => s.latest[br]).map(br => {
-    const l = s.latest[br], lc = latestCall(br), st = hitStats(calls.filter(c => c.broker === br)), bst = hitStats(CALLS.filter(c => c.broker === br));
-    const ast = l.an ? hitStats(CALLS.filter(c => c.analyst === l.an)) : null, p0 = lc && lc.price;
+    const l = s.latest[br], lc = latestCall(br), st = hitStats(calls.filter(c => c.broker === br)), bst = hitStats(CALLS_ALL.filter(c => c.broker === br));
+    const ast = l.an ? hitStats(CALLS_ALL.filter(c => c.analyst === l.an)) : null, p0 = lc && lc.price;
     return `<tr><td><b>${bdot(br)}${esc(br)}</b></td><td>${fdate(l.d)}</td><td>${callBadge(l.call)}${l.orig && l.orig !== l.call ? ` <small class="sub">${esc(l.orig)}</small>` : ''}</td>
       <td class="num">${num(p0)}</td><td class="num">${num(l.tp)}</td><td class="num">${num(s.last)}</td>
       <td class="num">${p0 && s.last ? spct(s.last / p0 - 1) : '–'}</td><td class="num"><b>${l.tp && s.last ? spct(l.tp / s.last - 1) : '–'}</b></td>
@@ -745,7 +765,7 @@ function brokers() {
       <label>Cut loss %<input type="number" id="b-stop" value="10" min="0" max="100" step="1"></label></div><div class="stack" id="out"></div>`;
   const bucket = (list, field, defs) => defs.map(([lab, a, b]) => { const st = hitStats(list.filter(c => c.upside > 0 && c[field] != null && c[field] >= a && c[field] < b)); return `<tr><td>${lab}</td><td class="num">${st.res.toLocaleString()}</td><td class="num"><b>${pct(st.rate)}</b></td><td class="num">${spct(st.t6)}</td></tr>`; }).join('');
   const draw = () => {
-    const from = $('#b-p').value, stop = (+$('#b-stop').value || 0) / 100 || 9, list = CALLS.filter(c => !from || c.date >= from);
+    const from = $('#b-p').value, stop = (+$('#b-stop').value || 0) / 100 || 9, list = CALLS_ALL.filter(c => !from || c.date >= from);
     const row = (name, l) => { const st = hitStats(l), cs = cutStats(l, stop); return `<tr><td><b>${esc(name)}</b></td><td class="num">${l.length.toLocaleString()}</td><td class="num">${st.res.toLocaleString()}</td>
       <td class="num"><b>${pct(st.rate)}</b></td><td class="num">${pct(cs.rate)}</td><td class="num">${pct(cs.stopped)}</td><td class="num">${st.days == null ? '–' : Math.round(st.days)}</td><td class="num">${spct(st.dd)}</td><td class="num">${spct(st.t6)}</td></tr>`; };
     $('#out').innerHTML = `<div class="glass card"><h2>Bullish calls by broker</h2><div class="tablewrap"><table><thead><tr><th>Broker</th><th class="num">Reports</th><th class="num">Bullish calls resolved</th><th class="num">Reached target</th>
@@ -772,6 +792,7 @@ function method() {
       <li><b>Calls:</b> shown as Bullish, Neutral, Bearish or Not Rated, not as buy or sell advice. A broker's Buy or Outperform is shown as Bullish, Hold or Market Perform as Neutral, and Sell or Underperform as Bearish.</li></ul>
     <h3>Data</h3><ul><li>${IDX.reports.toLocaleString()} company reports from ${IDX.brokers.map(esc).join(', ')}, ${fdate(IDX.first)} to ${fdate(IDX.last)}.</li>
       <li>Prices and dividends to ${fdate(IDX.asof)}; data refreshed ${esc(IDX.generated)}.</li>
+      <li>Stocks no longer listed on Bursa are left out of the stock lists, but their past calls still count in the broker accuracy figures.</li>
       <li>Reports whose printed price does not match the market price, or whose stock has no price history, are left out of the accuracy figures.</li>
       <li>Kenanga, RHB and MIDF calls are read from their full reports. Calls from other brokers (for example CGS International, Malacca Securities and Maybank IB) are read from the brokers' own research summaries posted in public market channels; when a post gives no share price, the previous day's close is used. These newer sources have few resolved calls so far.</li></ul>
     <h3>Important</h3><p>This site is independent research based on publicly available broker reports and market prices. It is not investment advice or a recommendation to buy or sell any security, and past accuracy does not predict future results. Figures are read automatically from reports and may contain errors.</p></div>`;

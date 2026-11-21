@@ -1,4 +1,4 @@
-/* Stock Analyst prototype — reads data/index.json, data/calls.json and data/s/<id>.json (written by combined/export_web.py). */
+/* Alpha Search prototype — reads data/index.json, data/calls.json and data/s/<id>.json (written by combined/export_web.py). */
 const $ = (s, el = document) => el.querySelector(s);
 const view = $('#view');
 const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -922,7 +922,7 @@ async function sector(tab) {
   const lastI = idxPts.length ? idxPts[idxPts.length - 1][1] : null, lastK = kPts.length ? kPts[kPts.length - 1][1] : null;
   const expWord = e => e === '+' ? 'Up together' : e === '-' ? 'Opposite' : 'Either way';
   const drivers = `<div class="glass card"><h2>Malaysian banks index vs the market</h2>
-      ${lineChart([{ name: 'Stock Analyst banks index (9 banks, total return)', pts: idxPts, color: LC_COLS[0], thick: 1 }, { name: 'FBM KLCI (price, rebased)', pts: kPts, color: LC_COLS[4] }], { unit: '', dec: 0 })}
+      ${lineChart([{ name: 'Alpha Search banks index (9 banks, total return)', pts: idxPts, color: LC_COLS[0], thick: 1 }, { name: 'FBM KLCI (price, rebased)', pts: kPts, color: LC_COLS[4] }], { unit: '', dec: 0 })}
       <p class="note">Both start at 100 in ${idxPts.length ? monthName(idxPts[0][0]) : ''}. Banks have returned ${lastI ? (lastI - 100).toFixed(0) + '%' : '–'} including dividends, against ${lastK ? (lastK - 100).toFixed(0) + '%' : '–'} for the KLCI's price.
         The index weights each bank by its market value: ${Object.entries(D.weights || {}).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([k, v]) => esc(k) + ' ' + fpct(v, 0)).join(', ')} and others. Hong Leong Financial is left out because it owns Hong Leong Bank.</p></div>
     <div class="glass card"><h2>What moves bank shares, and how closely</h2>
